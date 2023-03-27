@@ -1,5 +1,5 @@
 import path from 'path';
-import {readFile} from 'fs/promises';
+import { readFile } from 'fs/promises';
 
 export type Post = {
   title: string,

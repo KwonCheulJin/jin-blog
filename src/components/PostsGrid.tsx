@@ -5,7 +5,7 @@ type Props = {
   posts: Post[]
 }
 
-export default async function PostsGrid({posts}:Props) {
+export default function PostsGrid({posts}:Props) {
 
   const postCardList = posts.map((post, index) => (
     <li key={index}>
