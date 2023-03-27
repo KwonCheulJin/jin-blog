@@ -8,7 +8,6 @@ export default async function FeaturedPosts() {
   return (
     <section>
       <h2 className='text-2xl font-bold my-2'>Featured Posts</h2>
-      {/* @ts-expect-error Async Server Component */}
       <PostsGrid posts={posts}/>
     </section>
   )
