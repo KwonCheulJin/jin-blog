@@ -41,7 +41,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="w-full max-w-md">
+    <section className="w-full max-w-xl">
       {banner && <Banner banner={banner} />}
       <form
         onSubmit={onSummit}
