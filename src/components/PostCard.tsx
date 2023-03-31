@@ -17,7 +17,14 @@ export default function PostCard({ post: { title, description, date, category, p
           height={200}
         />
         <div className="flex flex-col items-center p-4">
-          <time className="self-end">{date.toLocaleString()}</time>
+          <time className="self-end">
+            {date.toLocaleString('ko-KR', {
+              year: 'numeric',
+              month: 'numeric',
+              day: 'numeric',
+              timeZone: 'UTC',
+            })}
+          </time>
           <h3 className="w-full truncate text-center text-lg font-bold">{title}</h3>
           <p className="w-full truncate text-center">{description}</p>
           <span className="bg-green-100 rounded-lg text-sm px-2 my-2">{category}</span>

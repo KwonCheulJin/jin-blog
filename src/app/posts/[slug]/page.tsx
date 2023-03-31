@@ -1,5 +1,5 @@
 import React from 'react';
-import { getFeaturedPosts, getPostData } from '@/service/posts';
+import { getAllPosts, getPostData } from '@/service/posts';
 import Image from 'next/image';
 import AdjacentPostCard from '@/components/AdjacentPostCard';
 import PostContent from '@/components/PostContent';
@@ -11,8 +11,8 @@ type Props = {
   };
 };
 
-export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
-  const post = await getPostData(slug);
+export function generateMetadata({ params: { slug } }: Props): Metadata {
+  const post = getPostData(slug);
   const { title, description } = post;
 
   return {
@@ -21,8 +21,8 @@ export async function generateMetadata({ params: { slug } }: Props): Promise<Met
   };
 }
 
-export default async function PostPage({ params: { slug } }: Props) {
-  const post = await getPostData(slug);
+export default function PostPage({ params: { slug } }: Props) {
+  const post = getPostData(slug);
   const { title, path, next, prev } = post;
   return (
     <article className="rounded-2xl overflow-hidden bg-gray-100 shadow-lg m-4">
@@ -42,8 +42,8 @@ export default async function PostPage({ params: { slug } }: Props) {
   );
 }
 
-export async function generateStaticParams() {
-  const posts = await getFeaturedPosts();
+export function generateStaticParams() {
+  const posts = getAllPosts();
   return posts.map((post) => ({
     slug: post.path,
   }));

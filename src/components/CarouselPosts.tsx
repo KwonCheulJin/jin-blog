@@ -1,8 +1,8 @@
 import MultiCarousel from './MultiCarousel';
 import { getNonFeaturedPosts } from '@/service/posts';
 
-export default async function CarouselPosts() {
-  const posts = await getNonFeaturedPosts();
+export default function CarouselPosts() {
+  const posts = getNonFeaturedPosts();
 
   return (
     <section className="m-8">
