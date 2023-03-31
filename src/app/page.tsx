@@ -6,9 +6,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* @ts-expect-error Async Server Component */}
       <FeaturedPosts />
-      {/* @ts-expect-error Async Server Component */}
       <CarouselPosts />
     </>
   );
