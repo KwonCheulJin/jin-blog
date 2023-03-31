@@ -1,12 +1,17 @@
 import Hero from '@/components/Hero';
-import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Me',
+  description: '저를 소개합니다',
+};
 
 const TITLE_CLASS = 'text-2xl font-bold text-gray-800 m-2';
 export default function AboutPage() {
   return (
     <>
       <Hero />
-      <section className="bg-gray-100 shadow-lg p-8 text-center">
+      <section className="bg-gray-100 shadow-lg p-8 text-center m-8">
         <h2 className={TITLE_CLASS}>Who Am I?</h2>
         <p>
           개발을 사랑하는 프론트엔드 개발자 <br />

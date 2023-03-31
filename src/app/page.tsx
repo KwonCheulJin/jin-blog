@@ -11,5 +11,5 @@ export default function Home() {
       {/* @ts-expect-error Async Server Component */}
       <CarouselPosts />
     </>
-  )
+  );
 }
