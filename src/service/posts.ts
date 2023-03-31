@@ -1,6 +1,5 @@
-import path from 'path';
-import { readFile } from 'fs/promises';
-import { cache } from 'react';
+import matter from 'gray-matter';
+import { readdirSync, readFileSync } from 'fs';
 
 export type Post = {
   title: string;
@@ -17,30 +16,45 @@ export type PostData = Post & {
   prev: Post | null;
 };
 
-export const getAllPosts = cache(async () => {
-  const filePath = path.join(process.cwd(), 'data', 'posts.json');
-  return readFile(filePath, 'utf-8')
-    .then<Post[]>(JSON.parse)
-    .then((posts) => posts.sort((a, b) => (a.date > b.date ? -1 : 1)));
-});
+const FOLDER = 'data/posts';
+export const getAllPosts = () => {
+  const files = readdirSync(FOLDER);
+  const markdownPosts = files.filter((file) => file.endsWith('.md'));
+  const posts = markdownPosts
+    .map((fileName) => {
+      const fileContents = readFileSync(`${FOLDER}/${fileName}`, 'utf-8');
+      const matterResult = matter(fileContents);
+      return {
+        title: matterResult.data.title,
+        description: matterResult.data.description,
+        date: matterResult.data.date,
+        category: matterResult.data.category,
+        path: matterResult.data.path,
+        featured: matterResult.data.featured,
+      };
+    })
+    .sort((a, b) => (a.date > b.date ? -1 : 1));
 
-export async function getFeaturedPosts(): Promise<Post[]> {
-  return getAllPosts().then((posts) => posts.filter((post) => post.featured));
+  return posts;
+};
+
+export function getFeaturedPosts(): Post[] {
+  return getAllPosts().filter((post) => post.featured);
 }
 
-export async function getNonFeaturedPosts(): Promise<Post[]> {
-  return getAllPosts().then((posts) => posts.filter((post) => !post.featured));
+export function getNonFeaturedPosts(): Post[] {
+  return getAllPosts().filter((post) => !post.featured);
 }
 
-export async function getPostData(fileName: string): Promise<PostData> {
-  const filePath = path.join(process.cwd(), 'data', 'posts', `${fileName}.md`);
-  const posts = await getAllPosts();
+export function getPostData(fileName: string): PostData {
+  const fileContents = readFileSync(`${FOLDER}/${fileName}.md`, 'utf-8');
+  const posts = getAllPosts();
   const post = posts.find((post) => post.path === fileName);
   if (!post) throw new Error(`${fileName}에 해당하는 포스트를 찾을 수 없음`);
 
   const index = posts.indexOf(post);
   const next = index > 0 ? posts[index - 1] : null;
   const prev = index < posts.length ? posts[index + 1] : null;
-  const content = await readFile(filePath, 'utf-8');
+  const content = matter(fileContents).content;
   return { ...post, content, next, prev };
 }
