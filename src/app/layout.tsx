@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
   },
+  openGraph: {
+    images: '/images/my-profile.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
