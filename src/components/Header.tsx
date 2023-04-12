@@ -1,24 +1,22 @@
-import Link from 'next/link';
-
-import { Nanum_Gothic } from 'next/font/google';
-
-const gothic = Nanum_Gothic({
-  weight: '700',
-  subsets: ['latin'],
-});
+import Logo from './Logo';
+import CustomLink from './CustomLink';
+import IconsNav from './IconsNav';
 
 export default function Header() {
   return (
-    <header className="flex item-center justify-between p-4 w-full max-w-screen-2xl mx-auto">
-      <h1 className={`${gothic.className} text-3xl font-bold`}>
-        <Link href="/">{"Jin's Blog"}</Link>
-      </h1>
+    <header className="w-full px-32 py-8 font-medium flex items-center justify-between">
       <nav className="flex gap-4">
-        <Link href="/">home</Link>
-        <Link href="/about">About</Link>
-        <Link href="/posts">Posts</Link>
-        <Link href="/contact">Contact</Link>
+        <CustomLink href="/" title="home" className="mr-4" />
+        <CustomLink href="/about" title="About" className="mx-4" />
+        <CustomLink href="/posts" title="Posts" className="mx-4" />
+        <CustomLink href="/contact" title="Contact" className="ml-4" />
       </nav>
+
+      <IconsNav />
+
+      <div className="absolute left-[50%] top-2 translate-x-[50%]">
+        <Logo />
+      </div>
     </header>
   );
 }

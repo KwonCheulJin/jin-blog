@@ -1,11 +1,14 @@
 import './globals.css';
 
-import { Open_Sans } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
-const sans = Open_Sans({ subsets: ['latin'] });
+const mont = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-mont',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -23,10 +26,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={sans.className}>
-      <body className="flex flex-col w-full">
+    <html lang="en" className={mont.className}>
+      <body className="font-mont bg-light w-full min-h-screen">
         <Header />
-        <main className="grow w-full max-w-screen-2xl mx-auto">{children}</main>
+        <main className="flex items-center text-dark w-full min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>
