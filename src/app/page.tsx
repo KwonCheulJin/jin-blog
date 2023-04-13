@@ -1,13 +1,10 @@
 import Hero from '@/components/Hero';
-import FeaturedPosts from '@/components/FeaturedPosts';
-import CarouselPosts from '@/components/CarouselPosts';
+import Layout from '@/components/Layout';
 
 export default function Home() {
   return (
-    <>
+    <Layout className="pt-0">
       <Hero />
-      <FeaturedPosts />
-      <CarouselPosts />
-    </>
+    </Layout>
   );
 }
