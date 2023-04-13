@@ -12,7 +12,14 @@ type Props = {
   address: string;
   work: string;
 };
-export default function Details({ position, company, companyLink, time, address, work }: Props) {
+export default function ExperienceDetail({
+  position,
+  company,
+  companyLink,
+  time,
+  address,
+  work,
+}: Props) {
   const ref = useRef<HTMLLIElement>(null);
   return (
     <li

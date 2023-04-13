@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import Details from './Details';
+import ExperienceDetails from './ExperienceDetails';
 
 export default function Experience() {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,7 +21,7 @@ export default function Experience() {
         />
 
         <ul className="w-full flex flex-col items-start justify-between ml-4">
-          <Details
+          <ExperienceDetails
             position="Software Engineer"
             company="opstech"
             companyLink="www.reverschool.com"
@@ -29,7 +29,7 @@ export default function Experience() {
             address="Remote work"
             work="리버스쿨(보안 교육 플랫폼)에서 프론트엔드를 맡아서 개발하고 있습니다."
           />
-          <Details
+          <ExperienceDetails
             position="Software Engineer"
             company="프리픽스"
             companyLink=""
