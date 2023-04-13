@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    images: '/images/my-profile.png',
+    images: 'https://jin-blog-blush.vercel.app/images/my-profile.png',
   },
 };
 
