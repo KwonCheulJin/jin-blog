@@ -17,7 +17,11 @@ export default function Details({ position, company, companyLink, time, address,
   return (
     <li
       ref={ref}
+<<<<<<< HEAD
       className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-start justify-between"
+=======
+      className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between"
+>>>>>>> 71008eaebd6c692bfc75f00bf72328f60304875c
     >
       <LiIcon reference={ref} />
       <motion.div
