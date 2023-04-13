@@ -13,7 +13,7 @@ type Props = {
 export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
-      className="prose max-w-none"
+      className="prose max-w-none font-medium text-xl"
       remarkPlugins={[remarkGfm]}
       components={{
         code({ node, inline, className, children, style, ...props }: CodeProps) {
@@ -30,11 +30,11 @@ export default function MarkdownViewer({ content }: Props) {
         },
         img: (image) => (
           <Image
-            className="w-full max-h-60 object-cover"
+            className="w-full max-h-90 object-fit"
             src={image.src || ''}
             alt={image.alt || ''}
             width={500}
-            height={350}
+            height={550}
           />
         ),
       }}

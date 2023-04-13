@@ -4,6 +4,7 @@ import AnimatedText from '@/components/AnimatedText';
 import Image from 'next/image';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
+import Education from '@/components/Education';
 
 export const metadata: Metadata = {
   title: 'About Me',
@@ -47,6 +48,7 @@ export default function AboutPage() {
         </div>
         <Skills />
         <Experience />
+        <Education />
       </Layout>
     </section>
   );
