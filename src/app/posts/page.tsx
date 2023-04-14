@@ -1,9 +1,10 @@
-import FilterablePosts from '@/components/FilterablePosts';
-import Layout from '@/components/Layout';
-import AnimatedText from '@/components/AnimatedText';
+import Layout from '@/components/common/Layout';
+import AnimatedText from '@/components/common/AnimatedText';
 import { getAllPosts } from '@/service/posts';
 
 import type { Metadata } from 'next';
+import FeaturedPosts from '@/components/post/FeaturedPosts';
+import PostCard from '@/components/post/PostCard';
 
 export const metadata: Metadata = {
   title: 'All Posts',
@@ -12,13 +13,16 @@ export const metadata: Metadata = {
 
 export default function PostsPage() {
   const posts = getAllPosts();
-  const categories = [...new Set(posts.map((post) => post.category))];
-
+  const allPosts = posts.map((post) => <PostCard key={post.path} post={post} />);
   return (
-    <section className="flex w-full flex-col items-center justify-center">
-      <Layout className="pt-12">
-        <AnimatedText text="Be positive and Authenticity!" className="pb-16" />
-        <FilterablePosts posts={posts} categories={categories} />
+    <section className="w-full flex flex-col items-center justify-center overflow-hidden">
+      <Layout className="pt-16">
+        <AnimatedText text="Be positive and Authenticity!" className="mb-16 dark:text-light" />
+        <FeaturedPosts />
+        <h2 className="font-bold text-4xl w-full text-center my-16 mt-32 dark:text-light">
+          All Posts
+        </h2>
+        <ul>{allPosts}</ul>
       </Layout>
     </section>
   );

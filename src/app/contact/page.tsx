@@ -1,7 +1,7 @@
-import ContactForm from '@/components/ContactForm';
-import AnimatedText from '@/components/AnimatedText';
 import type { Metadata } from 'next';
-import Layout from '@/components/Layout';
+import ContactForm from '@/components/contact/ContactForm';
+import AnimatedText from '@/components/common/AnimatedText';
+import Layout from '@/components/common/Layout';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <section className="flex flex-col items-center w-full">
       <Layout className="pt-12 flex flex-col items-center justify-center">
-        <AnimatedText text="Send me an email" className="pb-16" />
+        <AnimatedText text="Send me an email" className="pb-16 dark:text-light" />
         <ContactForm />
       </Layout>
     </section>
