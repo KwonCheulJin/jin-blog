@@ -24,10 +24,12 @@ export default function FeaturedPost({ post: { title, description, date, path } 
           alt={title}
           width={300}
           height={200}
+          priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
         />
       </Link>
       <Link href={`/posts/${path}`}>
-        <h2 className="capitalize text-2xl font-bold my-2 mt-4 hover:underline dark:text-light">
+        <h2 className="capitalize text-2xl font-bold my-2 mt-4 hover:underline dark:text-light xs:text-lg">
           {title}
         </h2>
       </Link>
