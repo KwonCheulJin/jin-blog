@@ -9,7 +9,7 @@ type Props = {
 export default function PostContent({ post }: Props) {
   const { title, description, date, content } = post;
   return (
-    <section className="flex flex-col p-8">
+    <section className="flex flex-col p-8 md:p-4">
       <div className="flex items-center self-end text-primary dark:text-primaryDark">
         <AiTwotoneCalendar />
         <p className="font-semibold ml-2">
@@ -21,8 +21,8 @@ export default function PostContent({ post }: Props) {
           })}
         </p>
       </div>
-      <h1 className="text-4xl font-bold text-dark dark:text-light">{title}</h1>
-      <p className="text-xl font-bold mt-2 text-dark dark:text-light">{description}</p>
+      <h1 className="text-4xl font-bold mt-4 text-dark dark:text-light">{title}</h1>
+      <p className="text-xl font-bold mt-4 text-dark dark:text-light">{description}</p>
       <div className="w-80 border-2 border-primary dark:border-primaryDark mt-4 mb-8"></div>
       <MarkdownViewer content={content} />
     </section>

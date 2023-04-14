@@ -10,15 +10,13 @@ export default function IconsNav() {
 
   return (
     <nav className="flex items-center justify-center flex-wrap">
-      <div className="w-6 h-6 mr-3"></div>
-      <div className="w-6 h-6 mx-3"></div>
       <motion.a
         href="https://github.com/KwonCheulJin"
         target="_blank"
         rel="noreferrer"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.9 }}
-        className="w-6 mx-3 text-3xl"
+        className="w-6 mr-3 text-3xl"
       >
         <AiOutlineTwitter className="text-sky-400" />
       </motion.a>
@@ -29,16 +27,16 @@ export default function IconsNav() {
         whileTap={{ scale: 0.9 }}
         className="w-6 mx-3 text-3xl"
       >
-        <AiFillGithub />
+        <AiFillGithub className="bg-light dark:bg-dark rounded-full" />
       </motion.a>
 
       <button
         type="button"
-        className="w-10 ml-3 text-2xl rounded-full "
+        className="w-6 ml-3 text-2xl rounded-full"
         onClick={() => setMode((prev) => (prev === 'light' ? 'dark' : 'light'))}
       >
         {mode === 'dark' ? (
-          <BsSunFill className="text-yellow-500" />
+          <BsSunFill className="text-yellow-500 m-0" />
         ) : (
           <BsMoonStarsFill className="hover:text-gray-500" />
         )}
