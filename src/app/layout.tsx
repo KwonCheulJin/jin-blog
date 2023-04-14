@@ -3,6 +3,7 @@ import './globals.css';
 import { Montserrat } from 'next/font/google';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
+import AnimatedLayout from '@/components/common/AnimatedLayout';
 import type { Metadata } from 'next';
 
 const mont = Montserrat({
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className={mont.className}>
       <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
         <Header />
-        <main className="flex items-center text-dark w-full min-h-screen">{children}</main>
+        <AnimatedLayout>{children}</AnimatedLayout>
         <Footer />
       </body>
     </html>

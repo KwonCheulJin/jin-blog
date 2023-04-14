@@ -5,12 +5,14 @@ export default function FeaturedPosts() {
   const posts = getFeaturedPosts();
 
   const featuredPosts = posts.map((post, index) => {
-    if (index <= 3) {
+    if (index <= 1) {
       return <FeaturedPost key={post.path} post={post} />;
     } else {
       return <></>;
     }
   });
 
-  return <ul className="grid grid-cols-2 gap-16">{featuredPosts}</ul>;
+  return (
+    <ul className="grid grid-cols-2 gap-16 lg:gap-8 md:grid-cols-1 md:gap-y-16">{featuredPosts}</ul>
+  );
 }
