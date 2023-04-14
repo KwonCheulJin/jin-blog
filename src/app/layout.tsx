@@ -1,8 +1,8 @@
 import './globals.css';
 
 import { Montserrat } from 'next/font/google';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
 import type { Metadata } from 'next';
 
 const mont = Montserrat({
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={mont.className}>
-      <body className="font-mont bg-light w-full min-h-screen">
+    <html lang="ko" className={mont.className}>
+      <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
         <Header />
         <main className="flex items-center text-dark w-full min-h-screen">{children}</main>
         <Footer />

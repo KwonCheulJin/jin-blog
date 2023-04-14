@@ -16,7 +16,7 @@ export default function CustomLink({ href, title, className = '' }: Props) {
       <span
         className={`h-[2px] inline-block w-0 bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
           pathname === href ? 'w-full' : 'w-0'
-        }`}
+        } dark:bg-light`}
       >
         &nbsp;
       </span>

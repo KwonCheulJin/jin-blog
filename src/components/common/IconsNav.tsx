@@ -1,13 +1,16 @@
 'use client';
 
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
+import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
 import { motion } from 'framer-motion';
+import useThemeSwitcher from '@/components/hooks/useThemeSwitcher';
 
 export default function IconsNav() {
+  const [mode, setMode] = useThemeSwitcher();
+
   return (
     <nav className="flex items-center justify-center flex-wrap">
       <div className="w-6 h-6 mr-3"></div>
-      <div className="w-6 h-6 mx-3"></div>
       <div className="w-6 h-6 mx-3"></div>
       <motion.a
         href="https://github.com/KwonCheulJin"
@@ -24,10 +27,22 @@ export default function IconsNav() {
         target="_blank"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.9 }}
-        className="w-6 ml-3 text-3xl"
+        className="w-6 mx-3 text-3xl"
       >
         <AiFillGithub />
       </motion.a>
+
+      <button
+        type="button"
+        className="w-10 ml-3 text-2xl rounded-full "
+        onClick={() => setMode((prev) => (prev === 'light' ? 'dark' : 'light'))}
+      >
+        {mode === 'dark' ? (
+          <BsSunFill className="text-yellow-500" />
+        ) : (
+          <BsMoonStarsFill className="hover:text-gray-500" />
+        )}
+      </button>
     </nav>
   );
 }

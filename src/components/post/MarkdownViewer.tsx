@@ -13,7 +13,7 @@ type Props = {
 export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
-      className="prose max-w-none font-medium text-xl"
+      className="prose dark:prose-invert max-w-none font-medium text-xl dark:text-light"
       remarkPlugins={[remarkGfm]}
       components={{
         code({ node, inline, className, children, style, ...props }: CodeProps) {
