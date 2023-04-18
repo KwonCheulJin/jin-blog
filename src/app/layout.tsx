@@ -4,6 +4,8 @@ import { Montserrat } from 'next/font/google';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import type { Metadata } from 'next';
+import Script from 'next/script';
+import { GTM_ID } from '@/lib/gtm';
 
 const mont = Montserrat({
   subsets: ['latin'],
@@ -27,6 +29,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={mont.className}>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', ${GTM_ID});
+        `}
+      </Script>
       <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
         <Header />
         <main className="flex items-center text-dark w-full min-h-screen dark:text-light">

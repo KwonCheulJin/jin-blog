@@ -1,4 +1,3 @@
-import Analytics from '@/components/common/Analytics';
 import { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 
@@ -7,7 +6,6 @@ export default function Document() {
     <Html>
       <Head />
       <body>
-        <Analytics />
         <Main />
         <NextScript />
         <Script id="theme-switcher" strategy="beforeInteractive">
