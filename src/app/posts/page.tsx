@@ -14,7 +14,9 @@ export const metadata: Metadata = {
 
 export default function PostsPage() {
   const posts = getAllPosts();
-  const allPosts = posts.map((post) => <PostCard key={post.path} post={post} />);
+  const allPosts = posts.map((post, index) => (
+    <PostCard key={`${post.path}-${index}`} post={post} />
+  ));
   return (
     <>
       <TransitionEffect />

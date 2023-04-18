@@ -14,6 +14,7 @@ export default function Details({ type, time, place, info }: Props) {
   const ref = useRef<HTMLLIElement>(null);
   return (
     <li
+      key={type}
       ref={ref}
       className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-start justify-between
       md:w-[80%]"
