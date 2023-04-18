@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Banner, { BannerData } from './Banner';
 import { sendContactEmail } from '@/service/contact';
+import { motion } from 'framer-motion';
 
 export type Form = {
   from: string;
@@ -84,9 +85,13 @@ export default function ContactForm() {
           onChange={onChange}
           className="resize-none text-black rounded-sm font-semibold"
         />
-        <button className="bg-yellow-300 text-black font-bold rounded-sm hover:bg-yellow-500">
+        <motion.button
+          whileHover={{ scale: 1.025 }}
+          transition={{ duration: 0.2 }}
+          className="bg-primary dark:bg-primaryDark text-light dark:text-dark font-bold rounded-sm"
+        >
           Summit
-        </button>
+        </motion.button>
       </form>
     </section>
   );

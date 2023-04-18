@@ -25,7 +25,10 @@ export default function Education() {
           "
         />
 
-        <ul className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2">
+        <ul
+          key="education-details"
+          className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2"
+        >
           <EducationDetails
             type="구공팩토리"
             time="2021-2021"
