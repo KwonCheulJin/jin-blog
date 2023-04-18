@@ -25,7 +25,10 @@ export default function Experience() {
           "
         />
 
-        <ul className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2">
+        <ul
+          key="experience-details"
+          className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2"
+        >
           <ExperienceDetails
             position="Software Engineer"
             company="opstech"

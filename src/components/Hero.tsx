@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import AnimatedText from '@/components/common/AnimatedText';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
@@ -26,7 +29,13 @@ export default function Hero() {
           Front-end Engineer
         </h3>
         <Link href="/contact" className="w-full lg:flex lg:items-center lg:justify-center">
-          <button className="bg-yellow-500 rounded-xl font-bold mt-2 px-3 py-1">Contact Me</button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+            className="bg-primary dark:bg-primaryDark text-light dark:text-dark rounded-xl font-bold mt-2 px-3 py-1"
+          >
+            Contact Me
+          </motion.button>
         </Link>
       </div>
     </section>

@@ -7,7 +7,7 @@ type Props = {
   post: Post;
 };
 
-export default function NewPostCard({ post: { title, date, path } }: Props) {
+export default function PostCard({ post: { title, date, path } }: Props) {
   return (
     <motion.li
       initial={{ y: 200 }}
