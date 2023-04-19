@@ -7,6 +7,7 @@ export type Post = {
   date: Date;
   category: string;
   path: string;
+  image: string;
   featured: boolean;
 };
 
@@ -30,6 +31,7 @@ export const getAllPosts = () => {
         date: matterResult.data.date,
         category: matterResult.data.category,
         path: matterResult.data.path,
+        image: matterResult.data.image,
         featured: matterResult.data.featured,
       };
     })

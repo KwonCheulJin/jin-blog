@@ -7,7 +7,7 @@ type Props = {
   post: Post;
 };
 
-export default function PostCard({ post: { title, date, path } }: Props) {
+export default function PostCard({ post: { title, date, path, image } }: Props) {
   return (
     <motion.li
       initial={{ y: 200 }}
@@ -17,7 +17,7 @@ export default function PostCard({ post: { title, date, path } }: Props) {
       border-dark border-r-4 border-b-4 dark:bg-dark dark:text-light dark:border-light
       sm:flex-col sm:items-start"
     >
-      <MovingImage title={title} path={path} />
+      <MovingImage title={title} path={path} image={image} />
       <time className="text-primary dark:text-primaryDark font-semibold pl-4 sm:self-start sm:pl-0 sm:pt-2 xs:text-sm">
         {date.toLocaleString('ko-KR', {
           year: 'numeric',

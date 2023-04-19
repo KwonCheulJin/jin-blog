@@ -24,7 +24,7 @@ export function generateMetadata({ params: { slug } }: Props): Metadata {
 
 export default function PostPage({ params: { slug } }: Props) {
   const post = getPostData(slug);
-  const { title, path, next, prev } = post;
+  const { title, image, next, prev } = post;
   return (
     <>
       <TransitionEffect />
@@ -32,10 +32,11 @@ export default function PostPage({ params: { slug } }: Props) {
         <article className="rounded-2xl overflow-hidden bg-light shadow-lg m-4 border-2 border-solid dark:bg-dark dark:border-light">
           <Image
             className="w-full h-1/5 max-h-[500px]"
-            src={`/images/posts/${path}.png`}
+            src={`/images/posts/${image}.png`}
             alt={title}
             width={760}
             height={420}
+            priority
           />
           <PostContent post={post} />
           <section className="flex lg:flex-row md:flex-col sm:flex-col shadow-md">
