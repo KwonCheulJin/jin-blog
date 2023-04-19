@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 export default function useThemeSwitcher(): [string, React.Dispatch<React.SetStateAction<string>>] {
-  const preferDarkQuery = '(prefer-color-scheme: dark)';
+  const preferDarkQuery = '(prefers-color-scheme: dark)';
   const [mode, setMode] = useState('');
 
   useEffect(() => {
