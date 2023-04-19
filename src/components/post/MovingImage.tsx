@@ -8,11 +8,12 @@ import { useRef } from 'react';
 type Props = {
   path: string;
   title: string;
+  image: string;
 };
 
 const FramerImage = motion(Image);
 
-export default function MovingImage({ path, title }: Props) {
+export default function MovingImage({ path, title, image }: Props) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -41,8 +42,8 @@ export default function MovingImage({ path, title }: Props) {
         style={{ x, y }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1, transition: { duration: 0.2 } }}
-        className="z-10 w-96 h-auto hidden absolute rounded-lg md:!hidden"
-        src={`/images/posts/${path}.png`}
+        className="z-30 w-96 h-auto hidden absolute rounded-lg md:!hidden"
+        src={`/images/posts/${image}.png`}
         alt={title}
         width={300}
         height={200}
