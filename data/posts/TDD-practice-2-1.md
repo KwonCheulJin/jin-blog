@@ -4,6 +4,7 @@ date: '2021-12-27'
 category: TDD JUnit
 description: 책을 활용한 TDD익숙해지기 (CHAPTER.2-1)
 path: TDD-practice-2-1
+image: TDD-practice
 featured: true
 ---
 
