@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { GTM_ID } from '@/lib/gtm';
 import ScrollUp from '@/components/common/ScrollUp';
+import { Analytics } from '@vercel/analytics/react';
 
 const mont = Montserrat({
   subsets: ['latin'],
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
