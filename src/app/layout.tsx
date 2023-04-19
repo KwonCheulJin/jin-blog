@@ -47,6 +47,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('config', '${GTM_ID}');
         `}
       </Script>
+      <Script id="theme-switcher" strategy="afterInteractive">
+        {`if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+          } else {
+            document.documentElement.classList.remove('dark')
+          }`}
+      </Script>
       <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
         <ScrollUp />
         <Header />
