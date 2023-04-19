@@ -77,7 +77,7 @@ featured: false
 > I : ISP(Interface Segregaion Principle) - 인터페이스 분리 원칙 <br>
 > D : DIP(Dpendency Inversion Principle) - 의존성 역전 원칙
 
-### Chapter.3 - [https://jin-blog-blush.vercel.app//posts/CleanCode-2/](https://jin-blog-blush.vercel.app//posts/CleanCode-2/)
+### Chapter.3 - [https://jin-blog-blush.vercel.app/posts/CleanCode-2/](https://jin-blog-blush.vercel.app/posts/CleanCode-2/)
 
 ## 04. 오류 처리
 
@@ -88,7 +88,7 @@ featured: false
 > C++역시 확인된 예외를 지원하지 않는다. 파이썬이나 루비도 마찬가지다. <br>
 > 그럼에도 불구하고 C#, C++, 파이썬, 루비는 안정적인 소프트웨어를 구현하기에 무리가 없다.
 
-### Chapter.7 - [https://jin-blog-blush.vercel.app//posts/CleanCode-6/](https://jin-blog-blush.vercel.app//posts/CleanCode-6/)
+### Chapter.7 - [https://jin-blog-blush.vercel.app/posts/CleanCode-6/](https://jin-blog-blush.vercel.app/posts/CleanCode-6/)
 
 ## 05. 테스트
 
@@ -122,7 +122,7 @@ featured: false
 
 - 테스트 하려는 실제 코드를 구현하기 직전에 구현한다.
 
-### Chapter.9 - [https://jin-blog-blush.vercel.app//posts/CleanCode-8/](https://jin-blog-blush.vercel.app//posts/CleanCode-8/)
+### Chapter.9 - [https://jin-blog-blush.vercel.app/posts/CleanCode-8/](https://jin-blog-blush.vercel.app/posts/CleanCode-8/)
 
 ## 06. 개선
 
@@ -139,4 +139,4 @@ featured: false
 
 - 책임에 따라 클래스를 나누고, 코드를 옮긴다. 테스트가 깨지지 않도록 확인하며 자잘한 변경을 조금씩 진행한다.
 
-### Chapter.14 - [https://www.devkcj.com/CleanCode-12/](https://www.devkcj.com/CleanCode-12/)
+### Chapter.14 - [https://jin-blog-blush.vercel.app/posts/CleanCode-12/](https://jin-blog-blush.vercel.app/posts/CleanCode-12/)
