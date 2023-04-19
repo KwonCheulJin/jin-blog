@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   openGraph: {
     images: 'https://jin-blog-blush.vercel.app/images/my-profile.png',
   },
+  other: {
+    'google-site-verification': 'PeVMqbjqq47qprclWhUS3i860ni8J5wXWOfc8Xy1_98',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
