@@ -6,6 +6,7 @@ import Footer from '@/components/common/Footer';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { GTM_ID } from '@/lib/gtm';
+import ScrollUp from '@/components/common/ScrollUp';
 
 const mont = Montserrat({
   subsets: ['latin'],
@@ -39,10 +40,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', ${GTM_ID});
+          gtag('config', '${GTM_ID}');
         `}
       </Script>
       <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
+        <ScrollUp />
         <Header />
         <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
           {children}
