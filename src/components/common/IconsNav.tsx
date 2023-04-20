@@ -11,7 +11,7 @@ export default function IconsNav() {
   return (
     <nav className="flex items-center justify-center flex-wrap">
       <motion.a
-        href="https://github.com/KwonCheulJin"
+        href="https://twitter.com/Charles_kwon77"
         target="_blank"
         rel="noreferrer"
         whileHover={{ y: -4 }}
