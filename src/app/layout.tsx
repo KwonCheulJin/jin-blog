@@ -4,10 +4,10 @@ import { Montserrat } from 'next/font/google';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import type { Metadata } from 'next';
-import Script from 'next/script';
-import { GTM_ID } from '@/lib/gtm';
+
 import ScrollUp from '@/components/common/ScrollUp';
 import { Analytics } from '@vercel/analytics/react';
+import ManageScript from '@/components/common/ManageScript';
 
 const mont = Montserrat({
   subsets: ['latin'],
@@ -35,31 +35,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={mont.className}>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${GTM_ID}');
-        `}
-      </Script>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5738419932125263"
-        crossOrigin="anonymous"
-      ></Script>
-      <Script id="theme-switcher" strategy="afterInteractive">
-        {`if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-          } else {
-            document.documentElement.classList.remove('dark')
-          }`}
-      </Script>
+      <ManageScript />
       <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
         <ScrollUp />
         <Header />
