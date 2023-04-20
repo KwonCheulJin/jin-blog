@@ -1,7 +1,7 @@
 ---
 title: TDD 실천법과 도구
 date: '2021-12-25'
-category: TDD JUnit
+category: TDD, JUnit, Java
 description: 책을 활용한 TDD익숙해지기 (CHAPTER.1)
 path: TDD-practice-1
 image: TDD-practice

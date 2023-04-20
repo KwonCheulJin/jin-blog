@@ -1,7 +1,7 @@
 ---
 title: Next.js 13 - SEO
 date: '2023-04-19'
-category: Next.js 13
+category: Next.js 13, SEO
 description: 새로운 메타데이터 API를 통한 검색 엔진 최적화 하는 방법
 path: next-13-new-metadata-settings
 image: next.js-13
