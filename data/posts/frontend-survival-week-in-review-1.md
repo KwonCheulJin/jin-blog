@@ -1,7 +1,7 @@
 ---
 title: 프론트엔드 생존코스 3기 1주차 회고
 date: '2023-04-13'
-category: 주간회고
+category: 주간회고, 메가테라, 프론트엔드 생존코스
 description: 1주차를 시작으로 매주 나를 돌아보자
 path: frontend-survival-week-in-review-1
 image: frontend-survival-week-in-review-1
