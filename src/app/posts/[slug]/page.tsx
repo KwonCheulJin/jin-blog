@@ -14,11 +14,12 @@ type Props = {
 
 export function generateMetadata({ params: { slug } }: Props): Metadata {
   const post = getPostData(slug);
-  const { title, description } = post;
+  const { title, description, category } = post;
 
   return {
     title,
     description,
+    keywords: category,
   };
 }
 
