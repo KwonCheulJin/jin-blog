@@ -133,6 +133,55 @@ export function generateMetadata({ params: { slug } }: Props): Metadata {
 
 ![dynamic-metadata.png](/images/next-13-new-metadata/dynamic-metadata.png)
 
-`아직 안전한 버전은 아니지만 그래도 개인 블로그를 운영하는데는 큰 문제점은 없어보인다.`<br />
+추가로 `robots.txt`와 `sitemap.xml`은 `app` 디렉토리에 `robots.ts`와 `sitemap.ts`를 추가해주면 `Next.js`에서 자동으로 생성해준다.
+
+`app/robots.ts`
+
+```ts
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: '/private/',
+    },
+    sitemap: 'https://jin-blog-blush.vercel.app/sitemap.xml',
+  };
+}
+```
+
+`app/sitemap.ts`
+
+```ts
+import { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: 'https://jin-blog-blush.vercel.app',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://jin-blog-blush.vercel.app/about',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://jin-blog-blush.vercel.app/posts',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://jin-blog-blush.vercel.app/contact',
+      lastModified: new Date(),
+    },
+  ];
+}
+```
+
+`현재 서비스를 React로만 구성하면서 SEO에 대해서 많은 고민을 하고 최대한 적용 해 볼수 있는 부분을 적용해 보았는데`<br />
+`CSR의 한계와 React 단일로 SEO를 구성하는게 한계가 있다고 느꼈었다. 그런데 Next.js로 위와 같은 작업을 해보면서 Next.js가 주는 장점이 많다고 생각되었다.`<br />
+`어떤 서비스를 만드는지에 따라서 차이는 있겠지만 개발자가 관리해야 하는 부분을 상대적으로 많이 줄여준다고 생각이 든다.`<br />
+`그리고 아직 안전한 버전은 아니지만 그래도 개인 블로그를 운영하는데는 큰 문제점은 없어보인다.`<br />
 `오늘을 시작으로 내가 Next.js 13으로 블로그를 만들면서 사용했던 라이브러리 및 문제점 해결 방법도 정리해서 올리도록 해야겠다.`<br />
 `안되는 부분을 github issue를 통해서 찾아보기도 하고 서비스를 만들면서 사용했던 방법도 추가해보면서 만들어가는 재미가 있는 것 같다.`
