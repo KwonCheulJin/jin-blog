@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     default: 'JIN의 블로그',
     template: 'JIN의 블로그 | %s',
   },
+  keywords: 'JIN, blog, front-end',
   description: 'front-end developer JIN',
   icons: {
     icon: '/favicon.ico',
@@ -47,6 +48,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('config', '${GTM_ID}');
         `}
       </Script>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5738419932125263"
+        crossOrigin="anonymous"
+      ></Script>
       <Script id="theme-switcher" strategy="afterInteractive">
         {`if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
