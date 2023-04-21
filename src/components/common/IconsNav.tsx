@@ -12,6 +12,7 @@ export default function IconsNav() {
     <nav className="flex items-center justify-center flex-wrap">
       <motion.a
         href="https://twitter.com/Charles_kwon77"
+        aria-label="Go to Twitter"
         target="_blank"
         rel="noreferrer"
         whileHover={{ y: -4 }}
@@ -22,6 +23,7 @@ export default function IconsNav() {
       </motion.a>
       <motion.a
         href="https://github.com/KwonCheulJin"
+        aria-label="Go to GitHub"
         target="_blank"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.9 }}
@@ -32,6 +34,7 @@ export default function IconsNav() {
 
       <button
         type="button"
+        aria-label="toggleTheme"
         className="w-6 ml-3 text-2xl rounded-full"
         onClick={() => setMode((prev) => (prev === 'light' ? 'dark' : 'light'))}
       >
