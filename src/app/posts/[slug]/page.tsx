@@ -30,7 +30,7 @@ export default function PostPage({ params: { slug } }: Props) {
     <>
       <TransitionEffect />
       <Layout className="pt-16 md:pt-12 sm:pt-8 md:p-8 sm:p-4">
-        <article className="rounded-2xl overflow-hidden bg-light shadow-lg m-4 border-2 border-solid dark:bg-dark dark:border-light">
+        <article className="rounded-2xl overflow-hidden bg-light shadow-lg border-2 border-solid dark:bg-dark dark:border-light">
           <Image
             className="w-full h-1/5 max-h-[500px]"
             src={`/images/posts/${image}.png`}

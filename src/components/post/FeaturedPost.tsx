@@ -14,7 +14,15 @@ const FramerImage = motion(Image);
 export default function FeaturedPost({ post: { title, description, date, path, image } }: Props) {
   return (
     <li className="relative col-span-1 w-full p-4 bg-light border border-solid border-dark rounded-2xl dark:bg-dark dark:border-light">
-      <div className="absolute top-0 -right-4 -z-10 w-[102%] h-[103%] rounded-[2.25rem] bg-dark rounded-br-3xl dark:bg-light" />
+      <div
+        className="absolute top-0 -z-10 -right-4 w-[102%] h-[103%] rounded-[2.25rem]
+      xl:w-[103%] xl:h-[105%] xl:rounded-[2rem]
+      lg:w-[102%] lg:h-[104%] lg:rounded-[2rem]
+      md:w-[102%] md:h-[104%] md:rounded-[1.8rem]
+      sm:w-[103%] sm:h-[104%] sm:rounded-[1.8rem]
+      xs:w-[104.5%] xs:h-[105%] xs:rounded-[1.8rem]
+      bg-dark rounded-br-3xl dark:bg-light "
+      />
       <Link href={`/posts/${path}`} className="w-full cursor-pointer overflow-hidden rounded-lg">
         <FramerImage
           className="w-full rounded-lg"
