@@ -18,6 +18,7 @@ export type PostData = Post & {
 };
 
 const FOLDER = 'data/posts';
+
 export const getAllPosts = () => {
   const files = readdirSync(FOLDER);
   const markdownPosts = files.filter((file) => file.endsWith('.md'));

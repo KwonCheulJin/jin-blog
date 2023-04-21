@@ -16,11 +16,12 @@ const mont = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: 'JIN의 블로그',
-    template: 'JIN의 블로그 | %s',
+    default: `Jin's Dev Log`,
+    template: `Jin's Dev Log | %s`,
   },
-  keywords: 'JIN, blog, front-end',
-  description: 'front-end developer JIN',
+  keywords:
+    'Jin, blog, front-end, 프론트앤드, 개발, 개발 블로그, React, Next.js, Dev Log, Dev, Log',
+  description: 'front-end developer Jin',
   icons: {
     icon: '/favicon.ico',
   },
