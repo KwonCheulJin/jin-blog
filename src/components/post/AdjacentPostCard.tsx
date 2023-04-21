@@ -14,7 +14,7 @@ export default function AdjacentPostCard({
   type,
 }: Props) {
   return (
-    <Link href={`/posts/${path}`} className="relative w-full bg-black max-h-56">
+    <Link href={`/posts/${path}`} className="relative w-full bg-black max-h-60">
       <Image
         className="w-full h-full opacity-40"
         src={`/images/posts/${image}.png`}
@@ -25,8 +25,8 @@ export default function AdjacentPostCard({
       <div className="group absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-around items-center text-white px-8">
         {type === 'prev' && <FaArrowLeft className={ICON_CLASS} />}
         <div className="w-full text-center">
-          <h3 className="text-3xl font-bold">{title}</h3>
-          <p className="font-bold">{description}</p>
+          <h3 className="text-3xl lg:text-2xl md:text-xl font-bold">{title}</h3>
+          <p className="text-lg lg:text-md md:text-sm font-bold">{description}</p>
         </div>
         {type === 'next' && <FaArrowRight className={ICON_CLASS} />}
       </div>
