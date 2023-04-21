@@ -25,7 +25,7 @@ export default function FeaturedPost({ post: { title, description, date, path, i
       />
       <Link href={`/posts/${path}`} className="w-full cursor-pointer overflow-hidden rounded-lg">
         <FramerImage
-          className="w-full rounded-lg h-80 md:h-auto"
+          className="w-full rounded-lg md:h-auto"
           whileHover={{ scale: 1.025 }}
           transition={{ duration: 0.2 }}
           src={`/images/posts/${image}.png`}
