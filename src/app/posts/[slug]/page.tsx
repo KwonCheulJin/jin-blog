@@ -5,11 +5,7 @@ import PostContent from '@/components/post/PostContent';
 import type { Metadata } from 'next';
 import Layout from '@/components/common/Layout';
 import TransitionEffect from '@/components/common/TransitionEffect';
-<<<<<<< HEAD
 import Comment from '@/components/post/Comment';
-=======
-import Comments from '@/components/post/Comment';
->>>>>>> 291b0e73d686e5735a15ee2ca33908744e93a27e
 
 type Props = {
   params: {
@@ -46,11 +42,7 @@ export default function PostPage({ params: { slug } }: Props) {
           />
           <PostContent post={post} />
           <section className="w-full border-t border-light">
-<<<<<<< HEAD
             <Comment />
-=======
-            <Comments />
->>>>>>> 291b0e73d686e5735a15ee2ca33908744e93a27e
           </section>
           <section className="flex lg:flex-row md:flex-col sm:flex-col shadow-md border-t border-light">
             {prev && <AdjacentPostCard post={prev} type="prev" />}
