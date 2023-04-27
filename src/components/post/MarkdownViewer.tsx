@@ -34,14 +34,16 @@ export default function MarkdownViewer({ content }: Props) {
           );
         },
         img: (image) => (
-          <Image
-            className="w-full h-auto object-fit"
-            src={image.src || ''}
-            alt={image.alt || ''}
-            width={500}
-            height={550}
-            priority
-          />
+          <div className="flex justify-center w-full">
+            <Image
+              className="w-[70%] h-auto object-fit"
+              src={image.src || ''}
+              alt={image.alt || ''}
+              width={500}
+              height={550}
+              priority
+            />
+          </div>
         ),
       }}
     >

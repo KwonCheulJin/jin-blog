@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 
-export default function Comments() {
+export default function Comment() {
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const scriptElement = document.createElement('script');
