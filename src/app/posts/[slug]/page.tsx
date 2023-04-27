@@ -5,7 +5,7 @@ import PostContent from '@/components/post/PostContent';
 import type { Metadata } from 'next';
 import Layout from '@/components/common/Layout';
 import TransitionEffect from '@/components/common/TransitionEffect';
-import Comments from '@/components/post/Comment';
+import Comment from '@/components/post/Comment';
 
 type Props = {
   params: {
@@ -42,7 +42,7 @@ export default function PostPage({ params: { slug } }: Props) {
           />
           <PostContent post={post} />
           <section className="w-full border-t border-light">
-            <Comments />
+            <Comment />
           </section>
           <section className="flex lg:flex-row md:flex-col sm:flex-col shadow-md border-t border-light">
             {prev && <AdjacentPostCard post={prev} type="prev" />}
