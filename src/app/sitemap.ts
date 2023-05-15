@@ -1,22 +1,17 @@
+import { getAllPosts } from '@/service/posts';
 import { MetadataRoute } from 'next';
-
+const URL = 'https://jin-blog-blush.vercel.app/';
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: 'https://jin-blog-blush.vercel.app',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://jin-blog-blush.vercel.app/about',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://jin-blog-blush.vercel.app/posts',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://jin-blog-blush.vercel.app/contact',
-      lastModified: new Date(),
-    },
-  ];
+  const getSortedPostsData = getAllPosts();
+  const posts = getSortedPostsData.map(({ path, date }) => ({
+    url: `${URL}/posts/${path}`,
+    lastModified: date,
+  }));
+
+  const routes = ['', '/about', '/posts', '/contact'].map((route) => ({
+    url: `${URL}${route}`,
+    lastModified: new Date().toISOString(),
+  }));
+
+  return [...routes, ...posts];
 }
