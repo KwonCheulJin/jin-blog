@@ -5,7 +5,7 @@ category: TDD, JUnit, Java
 description: 책을 활용한 TDD익숙해지기 (CHAPTER.2-2)
 path: TDD-practice-2-2
 image: TDD-practice
-featured: true
+featured: false
 ---
 
 # github link - [TDD_practice](https://github.com/KwonCheulJin/TDD_practice)
