@@ -37,11 +37,11 @@ export default function FeaturedPost({ post: { title, description, date, path, i
         />
       </Link>
       <Link href={`/posts/${path}`}>
-        <h2 className="capitalize text-2xl font-bold my-2 mt-4 hover:underline dark:text-light xs:text-lg">
+        <h2 className="capitalize text-2xl truncate font-bold my-2 mt-4 hover:underline dark:text-light xs:text-lg">
           {title}
         </h2>
       </Link>
-      <p className="text-sm mb-2 dark:text-light">{description}</p>
+      <p className="text-sm mb-2 truncate dark:text-light">{description}</p>
       <time className="text-primary dark:text-primaryDark font-semibold">
         {date.toLocaleString('ko-KR', {
           year: 'numeric',
