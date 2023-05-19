@@ -8,6 +8,8 @@ image: frontend-survival-week-in-review-1
 featured: true
 ---
 
+## [1주차 데브노트](https://jin-11.gitbook.io/jin-devnote/week1)
+
 ## 1. 프론트엔드 생존코스 시작
 
 - 1주차 강의를 월, 화에 몰아서 보고 데브노트까지 작성하였는데 1주차 강의의 키워드를 보면서 데브노트를

@@ -8,7 +8,7 @@ image: megaptera-3
 featured: true
 ---
 
-## [4주차 데브노트](https://app.gitbook.com/o/rpCdeGOgdsnJBUGbANJL/s/Pv23gpr03QFWD8VRyZjc/week4)
+## [4주차 데브노트](https://jin-11.gitbook.io/jin-devnote/week4)
 
 ## 1. 3주차 학습 + express로 백엔드를 구축하고 api를 통해 데이터를 가져오는 학습
 
