@@ -8,7 +8,7 @@ image: megaptera-2
 featured: true
 ---
 
-## [3주차 데브노트](https://app.gitbook.com/o/rpCdeGOgdsnJBUGbANJL/s/Pv23gpr03QFWD8VRyZjc/week3)
+## [3주차 데브노트](https://jin-11.gitbook.io/jin-devnote/week3)
 
 ## 1. 고민이 많았던 한주
 
