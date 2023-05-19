@@ -8,7 +8,7 @@ image: review-5
 featured: true
 ---
 
-## [5주차 데브노트](https://app.gitbook.com/o/rpCdeGOgdsnJBUGbANJL/s/Pv23gpr03QFWD8VRyZjc/week5)
+## [5주차 데브노트](https://jin-11.gitbook.io/jin-devnote/week5)
 
 ## 1. 4주차 학습 + Test추가 학습
 
