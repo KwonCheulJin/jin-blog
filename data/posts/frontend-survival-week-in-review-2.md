@@ -7,6 +7,7 @@ path: frontend-survival-week-in-review-2
 image: megaptera
 featured: true
 ---
+## [2주차 데브노트](https://jin-11.gitbook.io/jin-devnote/week2)
 
 ## 1. 잊어버리지 말자 JSX
 
