@@ -2,7 +2,7 @@
 title: 프론트엔드 생존코스 3기 10주차 회고
 date: '2023-06-15'
 category: 주간회고, 메가테라, 프론트엔드 생존코스, jest, React testing library, E2E,
-description: 온라인 쇼핑몰을 만들어보자 - 2!
+description: 온라인 쇼핑몰을 만들어보자! - 2
 path: frontend-survival-week-in-review-10
 image: review-10
 featured: true
