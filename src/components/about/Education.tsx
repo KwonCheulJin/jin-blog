@@ -30,6 +30,12 @@ export default function Education() {
           className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2"
         >
           <EducationDetails
+            type="메가테라"
+            time="2023-2023"
+            place="(주)시드웨일"
+            info="프론트엔드 생존코스 3기"
+          />
+          <EducationDetails
             type="구공팩토리"
             time="2021-2021"
             place="(주)흥미랩"
