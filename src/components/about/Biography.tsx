@@ -18,7 +18,7 @@ export default function Biography() {
           사용한 기술은 Java, JSP, Mybatis를 사용하였습니다.
           <br /> 이곳에서는 기본적인 관리자 화면 CRUD 기능에 대한 작업을 진행했었습니다.
         </p>
-        <p className="my-4 prose prose-slate font-medium text-lg max-w-full">
+        <p className="my-4 prose prose-slate dark:prose-invert font-medium text-lg max-w-full">
           프리픽스 이후 옵스테크로 이직 후에 이곳에서는 리버스쿨(보안 교육 플랫폼) 프론트엔드를
           담당하고 있습니다.
           <br /> 현재 사용하고 있는 기술 스팩은 <code>React</code>, <code>Typescript</code>,{' '}
