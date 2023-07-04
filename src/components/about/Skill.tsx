@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion';
 
 type Props = {
+  children: React.ReactNode;
   name: string;
   x?: string;
   y?: string;
 };
-export default function Skill({ name, x, y }: Props) {
+export default function Skill({ children, name, x, y }: Props) {
   return (
     <motion.div
       className="flex items-center justify-center rounded-full font-semibold
@@ -21,7 +22,8 @@ export default function Skill({ name, x, y }: Props) {
       transition={{ duration: 1.5 }}
       viewport={{ once: true }}
     >
-      {name}
+      {children}
+      <p className="ml-2">{name}</p>
     </motion.div>
   );
 }
