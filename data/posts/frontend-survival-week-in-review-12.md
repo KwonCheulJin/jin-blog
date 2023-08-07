@@ -134,7 +134,7 @@ export const DarkBlue1: Story = {
 };
 ```
 
-![shadcn-ui-button.png](/images/frontend-survival-week-in-review-12/shadcn-ui-button.png)
+![shadcn-ui-button.webp](/images/frontend-survival-week-in-review-12/shadcn-ui-button.webp)
 
 `stories/components/MaterialButton.stories.ts`
 
@@ -162,7 +162,7 @@ export const LightBlue: Story = {
 };
 ```
 
-![material-tailwind-button.png](/images/frontend-survival-week-in-review-12/material-tailwind-button.png)
+![material-tailwind-button.webp](/images/frontend-survival-week-in-review-12/material-tailwind-button.webp)
 
 컴포넌트를 구성할 때 프로젝트 기간의 제약이 있어서 styled-component로 스타일을 구현하는 방법보다 tailwindCSS를 사용해서 제작하는 방향으로 스팩을 구성하면서 tailwindCSS와 호환성이 좋은 ui library - [shadcn/ui](https://ui.shadcn.com/)을 사용하였다.
 

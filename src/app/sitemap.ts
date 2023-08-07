@@ -1,6 +1,6 @@
 import { getAllPosts } from '@/service/posts';
 import { MetadataRoute } from 'next';
-const URL = 'https://jin-blog-blush.vercel.app';
+const URL = 'https://www.jin-blog.dev';
 export default function sitemap(): MetadataRoute.Sitemap {
   const getSortedPostsData = getAllPosts();
   const posts = getSortedPostsData.map(({ path, date }) => ({

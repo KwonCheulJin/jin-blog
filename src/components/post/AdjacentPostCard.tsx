@@ -17,7 +17,7 @@ export default function AdjacentPostCard({
     <Link href={`/posts/${path}`} className="relative w-full bg-black max-h-60">
       <Image
         className="w-full h-full opacity-40"
-        src={`/images/posts/${image}.png`}
+        src={`/images/posts/${image}.webp`}
         alt={title}
         width={150}
         height={100}

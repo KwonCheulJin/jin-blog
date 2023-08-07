@@ -58,32 +58,32 @@ featured: false
 IntelliJ 메뉴에서 [File] -> [New] -> [Project]를 선택해서 프로젝트를 생성한다.
 <br> 나는 maven 대신 gradle로 프로젝트를 생성했다.
 
-![create-project.png](/images/TDD-practice-1/create-project.png)
+![create-project.webp](/images/TDD-practice-1/create-project.webp)
 
-![project-name.png](/images/TDD-practice-1/project-name.png)
+![project-name.webp](/images/TDD-practice-1/project-name.webp)
 
 Account 클래스를 만든적이 없어서 당연한 에러가 난다.<br>
 이런 식으로 진행하는 이유는 테스트 케이스 작성 시 흐름을 잃지 않기 위해서라고 책에서 기술하고 있다.
 
-![accountTestClass.png](/images/TDD-practice-1/accountTestClass.png)
+![accountTestClass.webp](/images/TDD-practice-1/accountTestClass.webp)
 
-![mainMethodTest.png](/images/TDD-practice-1/mainMethodTest.png)
+![mainMethodTest.webp](/images/TDD-practice-1/mainMethodTest.webp)
 
 IntelliJ에서는 동인한 오류 화면을 표시해 준다.
 
-![accountClassSymbolError.png](/images/TDD-practice-1/accountClassSymbolError.png)
+![accountClassSymbolError.webp](/images/TDD-practice-1/accountClassSymbolError.webp)
 
 이제, 시스템의 메시지에 응답해서 계좌가 생성 테스트 케이스를 통과하는 코드를 작성해본다.
 
 ### `질문 -> [응답] -> 정제`
 
-![createAccountClass.png](/images/TDD-practice-1/createAccountClass.png)
+![createAccountClass.webp](/images/TDD-practice-1/createAccountClass.webp)
 
-![mainJavaDir.png](/images/TDD-practice-1/mainJavaDir.png)
+![mainJavaDir.webp](/images/TDD-practice-1/mainJavaDir.webp)
 
 main > java package에 Account Class를 생성
 
-![throwException.png](/images/TDD-practice-1/throwException.png)
+![throwException.webp](/images/TDD-practice-1/throwException.webp)
 
 예외(Exception)를 호출하는 쪽으로 던져버리도록 한다.
 
@@ -113,7 +113,7 @@ class AccountTest {
 }
 ```
 
-![testSuccess.png](/images/TDD-practice-1/testSuccess.png)
+![testSuccess.webp](/images/TDD-practice-1/testSuccess.webp)
 
 #### [**저자한마디**]
 
@@ -166,7 +166,7 @@ class AccountTest {
 <br>
 이제 `main method`는 제외하고 테스트를 다시 실행해보자.
 
-![addJunitTest.png](/images/TDD-practice-1/addJunitTest.png)
+![addJunitTest.webp](/images/TDD-practice-1/addJunitTest.webp)
 
 테스트가 성공 하였다. 다음은 테스트 코드를 좀 더 간결하게 변경을 해준다.
 <br>
@@ -211,9 +211,9 @@ class AccountTest {
 
 이번엔 잔고 조회 시나리에 맞춰 테스트 메소를 작성해 보도록 하겠다.
 
-![getBalance.png](/images/TDD-practice-1/getBalance.png)
+![getBalance.webp](/images/TDD-practice-1/getBalance.webp)
 
-![createGetBalance.png](/images/TDD-practice-1/createGetBalance.png)
+![createGetBalance.webp](/images/TDD-practice-1/createGetBalance.webp)
 
 `fail()`은 JUnit에서 제공하는 메소드로 fail 메소드가 호출되면 해당 테스트 케이스는 그 순간 무조건 실패한다.<br>
 `fail` 메소드 대신에 `throw new Exception();` 형태로 작성할 수 있다.<br>
@@ -236,7 +236,7 @@ public class Account {
 
 이렇게 위와 같이 인자(argument)로 `int`를 갖는 생성자와 getBalance() 메소드를 생성해 주면 아래와 같이 처음에 클래스 생성때 만들어 놓았던 테스트에서 에러가 발생한다.
 
-![testAccountError.png](/images/TDD-practice-1/testAccountError.png)
+![testAccountError.webp](/images/TDD-practice-1/testAccountError.webp)
 
 이유는 `Account` 클래스 안에 인자(argument)로 `int`를 갖는 생성자만 생기고 인자를 갖지 않는 기본생성자는 가지고 있지 않기 때문에 오류가 발생한다.
 
@@ -302,7 +302,7 @@ void testGetBalance() {
 
 테스트 케이스를 보강 후 다시 테스트를 진행해 보자.
 
-![getBalanceError.png](/images/TDD-practice-1/getBalanceError.png)
+![getBalanceError.webp](/images/TDD-practice-1/getBalanceError.webp)
 
 테스트가 실패하면서 로직에 문제가 있음을 발견하고, `충분한 만큼`의 테스트 케이스가 작성됐다고 생각되면, 다시 `Account`클래스의 `getBalance`메소드를 제대로 다시 구현해보자
 
@@ -322,7 +322,7 @@ public class Account {
 
 ```
 
-![getBalanceSuccess.png](/images/TDD-practice-1/getBalanceSuccess.png)
+![getBalanceSuccess.webp](/images/TDD-practice-1/getBalanceSuccess.webp)
 
 책에서는 좀 더 상세하게 step-by-step으로 진행을 하는데 글이 너무 길어져 중간 과정은 조금 생략을 하였다.
 
@@ -371,7 +371,7 @@ void testGetBalance() {
 }
 ```
 
-![assertEquals.png](/images/TDD-practice-1/assertEquals.png)
+![assertEquals.webp](/images/TDD-practice-1/assertEquals.webp)
 이상없이 테스트를 성공하였다
 
 ### 3. 입금과 출금 테스트
@@ -425,7 +425,7 @@ void testWithdraw(){
 }
 ```
 
-![deposit-withdraw.png](/images/TDD-practice-1/deposit-withdraw.png)
+![deposit-withdraw.webp](/images/TDD-practice-1/deposit-withdraw.webp)
 
 새로 만든 구 개의 테스트가 모두 실패! 각 항목을 클릭해 예상값과 결과값이 어떻게 나와서 실패하는가를 확인한다.
 
@@ -445,7 +445,7 @@ public void withdraw(int money) {
 
 `Account` 클래스에 두 메소드를 구현하고 테스트 실행!
 
-![allSuccess.png](/images/TDD-practice-1/allSuccess.png)
+![allSuccess.webp](/images/TDD-practice-1/allSuccess.webp)
 
 > ~~- 클래스 이름은 Account~~
 >
