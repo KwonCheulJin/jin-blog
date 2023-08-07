@@ -47,7 +47,7 @@ export default function Biography() {
       </div>
       <div className="col-span-3 relative h-3/4 rounded-2xl border-2 border-solid border-dark bg-light p-8 dark:bg-dark dark:border-light md:order-1 md:col-span-8">
         <Image
-          src="/images/about.png"
+          src="/images/about.webp"
           alt="JIN"
           className="w-full h-full rounded-2xl bg-dark py-6 dark:bg-light"
           width={250}

@@ -301,7 +301,7 @@ public class ThreadSafeIntegerIterator {
 
 ### 명령형 인수 구문 분석기
 
-![code-init.png](/images/CleanCode-12/code-init.png)
+![code-init.webp](/images/CleanCode-12/code-init.webp)
 
 #### 코드 초안
 
@@ -310,7 +310,7 @@ public class ThreadSafeIntegerIterator {
 - 이제는 개선해야 할 때라는 걸 깨닫고, 변경 전후 시스템이 동일 하게 돌아간다는 사실을 확인하기 위해 테스트들을 작성해뒀다.
 - 자잘하게 점진적으로 개선해나갔다.
 
-![code-complete.png](/images/CleanCode-12/code-complete.png)
+![code-complete.webp](/images/CleanCode-12/code-complete.webp)
 
 #### 코드 완성본
 

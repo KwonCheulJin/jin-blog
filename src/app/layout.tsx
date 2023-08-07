@@ -15,6 +15,7 @@ const mont = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.jin-blog.dev'),
   title: {
     default: `Jin's Dev Log`,
     template: `Jin's Dev Log | %s`,
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    images: 'https://jin-blog-blush.vercel.app/images/my-profile.png',
+    images: '/images/my-profile.png',
   },
   other: {
     'google-site-verification': 'PeVMqbjqq47qprclWhUS3i860ni8J5wXWOfc8Xy1_98',
