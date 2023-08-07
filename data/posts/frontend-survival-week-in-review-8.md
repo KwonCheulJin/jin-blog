@@ -152,7 +152,7 @@ export default function OrderButton({
         aria-label={`${image}`}
         width="18.2rem"
         height="18.3rem"
-        src={`/images/${image}.png`}
+        src={`/images/${image}.webp`}
         alt={`${image}`}
       />
       <Title isDarkMode={isDarkMode}>{name}</Title>
@@ -203,7 +203,7 @@ describe('OrderButton', () => {
 });
 ```
 
-![week-8-problem.png](/images/frontend-survival-week-in-review-8/week-8-problem.png)
+![week-8-problem.webp](/images/frontend-survival-week-in-review-8/week-8-problem.webp)
 
 HomePage에 매장 주문 버튼을 테스트하는 과정에서 문제가 발생하다.
 기본적으로 스타일 컴포넌트에 지정된 스타일은 테스트상 크게 문제가 없었으나 남겨놓은 코드 테스트에서 userEvent.hover를 이용해서 마우스가 버튼 위에 위치했을 때 버튼의 배경색이 지정된 색으로 잘 나오는지에 대한 테스트를 진행해보고 싶었다. 하지만 정상적으로 진행이 되지 않고 스샷과 같은 에러를 발생하고 있어서 해당 부분에 대한 테스트를 해결하지는 못했다.

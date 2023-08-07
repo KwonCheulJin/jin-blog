@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="w-[49%] pr-16 md:w-full md:pr-0 md:pb-12">
         <Image
           className="rounded-full w-full h-auto lg:hidden md:inline-block md:w-full"
-          src="/images/my-profile.png"
+          src="/images/my-profile.webp"
           alt="my-profile"
           width={250}
           height={250}

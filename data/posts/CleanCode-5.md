@@ -160,7 +160,7 @@ public class Circle implements Shape{
 
 ## 02. 객체 - 디미터 법칙
 
-![lawofdemeter.png](/images/CleanCode-5/lawofdemeter.png)
+![lawofdemeter.webp](/images/CleanCode-5/lawofdemeter.webp)
 Image from [https://blog.knoldus.com/the-law-of-demeter/](https://blog.knoldus.com/the-law-of-demeter/)
 
 - 내 친구를 호출하는 것은 되지만 친구의 친구를 호출하는 것은 접근하면 안된다.
@@ -258,7 +258,7 @@ bob.save();
 
 Reference from [https://sites.google.com/site/unclebobconsultingllc/active-record-vs-objects](https://sites.google.com/site/unclebobconsultingllc/active-record-vs-objects)
 
-![activerecord.png](/images/CleanCode-5/activerecord.png)
+![activerecord.webp](/images/CleanCode-5/activerecord.webp)
 
 ### Active Record
 
@@ -268,7 +268,7 @@ Reference from [https://sites.google.com/site/unclebobconsultingllc/active-recor
 
 Reference from [https://martinfowler.com/eaaCatalog/activeRecord.html](https://martinfowler.com/eaaCatalog/activeRecord.html)
 
-![datamapper.png](/images/CleanCode-5/datamapper.png)
+![datamapper.webp](/images/CleanCode-5/datamapper.webp)
 
 ### Data Mapper
 

@@ -34,7 +34,7 @@ export default function PostPage({ params: { slug } }: Props) {
         <article className="rounded-2xl overflow-hidden bg-light shadow-lg border-2 border-solid dark:bg-dark dark:border-light">
           <Image
             className="w-full h-1/5 max-h-[500px]"
-            src={`/images/posts/${image}.png`}
+            src={`/images/posts/${image}.webp`}
             alt={title}
             width={760}
             height={420}

@@ -28,7 +28,7 @@ export default function FeaturedPost({ post: { title, description, date, path, i
           className="w-full rounded-lg md:h-auto"
           whileHover={{ scale: 1.025 }}
           transition={{ duration: 0.2 }}
-          src={`/images/posts/${image}.png`}
+          src={`/images/posts/${image}.webp`}
           alt={title}
           width={300}
           height={200}

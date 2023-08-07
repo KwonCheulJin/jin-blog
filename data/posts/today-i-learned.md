@@ -48,11 +48,11 @@ featured: true
 이번주에 메가테라에서 배운 강의에서 `keyof` 문법을 활용해서 해당 object의 key값을 가져와
 object[key]를 활용해서 내가 원하는 값을 추출하는 작업을 수행하려고 했다.
 
-![key-type.png](/images/today-i-learned/key-type.png)
+![key-type.webp](/images/today-i-learned/key-type.webp)
 
 위에서 보이는 것처럼 해당 key타입들이 정의되어있어서 내가 필요로하는 key값을 넘겨주었는데 아래의 화면처럼 key가 undefined로 넘어와서 조금 의아했다.
 
-![console-log.png](/images/today-i-learned/console-log.png)
+![console-log.webp](/images/today-i-learned/console-log.webp)
 
 해당 부분을 검색했을 때 내가 원하는 성과를 얻지 못해서 chat GPT에 내가 사용한 코드를 이용해서 어떤 부분이 잘 못 되었는지 질문을 하였다.
 
