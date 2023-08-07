@@ -14,17 +14,17 @@ featured: true
 
 사용법은 위의 사이트로가서 해당 순서대로 진행해주면 된다.
 
-![utterances-1.png](/images/today-i-learned-2/utterances-1.png)
+![utterances-1.webp](/images/today-i-learned-2/utterances-1.webp)
 
-![utterances-2.png](/images/today-i-learned-2/utterances-2.png)
+![utterances-2.webp](/images/today-i-learned-2/utterances-2.webp)
 
 순서에 맞게 진행 후 해당 스크립트를 원하는 부분에 지정을 해주면 되는데 next/Script를 사용해서 해당 부분을 추가하게 되면 아래와 같은 에러가 발생한다.
 
-![script-error.png](/images/today-i-learned-2/script-error.png)
+![script-error.webp](/images/today-i-learned-2/script-error.webp)
 
 해당 Script에 정의되어있는 속성을 보게되면 `repo`에 관한 것이 없기 때문에 에러가 발생한다.
 
-![ScriptHTMLAttributes.png](/images/today-i-learned-2/ScriptHTMLAttributes.png)
+![ScriptHTMLAttributes.webp](/images/today-i-learned-2/ScriptHTMLAttributes.webp)
 
 이를 적용하기 위해서 [Comments with Utterances on Next.js](https://ianobermiller.com/blog/comments-utterances-nextjs) 해당 블로그에서 나와있는대로
 
@@ -67,7 +67,7 @@ export default function PostPage({ params: { slug } }: Props) {
         <article className="rounded-2xl overflow-hidden bg-light shadow-lg border-2 border-solid dark:bg-dark dark:border-light">
           <Image
             className="w-full h-1/5 max-h-[500px]"
-            src={`/images/posts/${image}.png`}
+            src={`/images/posts/${image}.webp`}
             alt={title}
             width={760}
             height={420}
@@ -94,10 +94,10 @@ export default function PostPage({ params: { slug } }: Props) {
 
 내 깃헙 `settings > applications > utterances > configure`에 들어가서 해당 리포지토리를 연결해주어야 한다.
 
-![github-settings.png](/images/today-i-learned-2/github-settings.png)
+![github-settings.webp](/images/today-i-learned-2/github-settings.webp)
 
 이제 다 완료되었다.
 
 `마지막으로 테스트 댓글 스샷!`
 
-![comment.png](/images/today-i-learned-2/comment.png)
+![comment.webp](/images/today-i-learned-2/comment.webp)

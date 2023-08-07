@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    images: 'https://jin-blog-blush.vercel.app/images/my-profile.png',
+    images: 'https://jin-blog-blush.vercel.app/images/my-profile.webp',
   },
   other: {
     'google-site-verification': 'user-comment-key',
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
 };
 ```
 
-![title-template.png](/images/next-13-new-metadata/title-template.png)
+![title-template.webp](/images/next-13-new-metadata/title-template.webp)
 
 이외에 추가적으로 사이트를 소개하는 `description`, sns를 공유 할 때 사용되는 `open-graph` 설정, 그 이외의 테그는 `other`에 정의 해주면 된다.
 `other`에는 사용자정의 태그가 들어간다고 생각하면 된다.(google search console 연결을 위한 테그, naver 등등)
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    images: 'https://jin-blog-blush.vercel.app/images/my-profile.png',
+    images: 'https://jin-blog-blush.vercel.app/images/my-profile.webp',
   },
   other: {
     'google-site-verification': 'user-comment-key',
@@ -131,7 +131,7 @@ export function generateMetadata({ params: { slug } }: Props): Metadata {
 `generateMetadata`라는 함수를 이용해서 현재 블로그 포스트 주소를 통해서 해당 포스트의 데이터를 받아 온 후에 지정하고 싶은
 메타데이터를 위와 같이 리턴해주면 된다.
 
-![dynamic-metadata.png](/images/next-13-new-metadata/dynamic-metadata.png)
+![dynamic-metadata.webp](/images/next-13-new-metadata/dynamic-metadata.webp)
 
 추가로 `robots.txt`와 `sitemap.xml`은 `app` 디렉토리에 `robots.ts`와 `sitemap.ts`를 추가해주면 `Next.js`에서 자동으로 생성해준다.
 

@@ -66,8 +66,8 @@ export default function select<T extends FilterType>(items: T[]):string {
 }
 ```
 
-![search-filter.png](/images/frontend-survival-week-in-review-3/search-filter.png)
-![query-parameters.png](/images/frontend-survival-week-in-review-3/query-parameters.png)
+![search-filter.webp](/images/frontend-survival-week-in-review-3/search-filter.webp)
+![query-parameters.webp](/images/frontend-survival-week-in-review-3/query-parameters.webp)
 
 그리고 `keyof` 문법을 활용해서 해당 object의 key값을 가져와
 object[key]를 활용해서 내가 원하는 값을 추출하는 작업도 공통 컴포넌트 리팩토링 하는 작업에서 활용해보았다.
@@ -179,7 +179,7 @@ const CheckBoxTemplate = styled.div<StyleProps>`
 
 이번주를 계기로 조금 더 성장했다고 생각해야겠다.
 
-![migration.png](/images/frontend-survival-week-in-review-3/migration.png)
+![migration.webp](/images/frontend-survival-week-in-review-3/migration.webp)
 
 `이번주는 강의에서 배운 것도 적용해보고 관리자 페이지를 리팩토링 하면서 배운 부분을 활용해서 적용해 본 부분이 가장 뿌듯하다`<br />
 `다음주는 어떤 강의가 나를 반겨줄지 기대도 되고 앞으로 난이도가 증가하면 내가 소화 할 수 있을까 하는 걱정도 되지만 잘 할 수 있을거라 생각된다.`<br />

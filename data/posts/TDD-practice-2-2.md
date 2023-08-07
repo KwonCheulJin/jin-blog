@@ -48,7 +48,7 @@ void testAssertDouble() {
 }
 ```
 
-![assertEquals-double.png](/images/TDD-practice-2-2/assertEquals-double.png)
+![assertEquals-double.webp](/images/TDD-practice-2-2/assertEquals-double.webp)
 
 ```java
 @Test
@@ -57,7 +57,7 @@ void testAssertDouble() {
 }
 ```
 
-![assertEquals-double-success.png](/images/TDD-practice-2-2/assertEquals-double-success.png)
+![assertEquals-double-success.webp](/images/TDD-practice-2-2/assertEquals-double-success.webp)
 
 - 예상값와 같은 소수자리를 맞춰주어야 테스트에 성공을 한다.
 - 책에서는 float타입끼리의 비교는 제공하지 않는다라고 되어있는데 현재 JUnit API 문서에는 float도 비교가 가능한 것으로 되어있다.(2010년도에 나왔던 당시에는 불가 했던 것 같다.)
@@ -128,7 +128,7 @@ void testNUllAccount() {
 }
 ```
 
-![assertNull.png](/images/TDD-practice-2-2/assertNull.png)
+![assertNull.webp](/images/TDD-practice-2-2/assertNull.webp)
 
 ```java
 static void assertNull(Object actual, String message) {

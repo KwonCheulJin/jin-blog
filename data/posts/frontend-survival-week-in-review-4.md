@@ -92,7 +92,7 @@ hook들이 어떻게 작성 되었는지 직접 코드도 확인 할 수 있어�
 과제 디자인은 자유롭게 해도 된다고 하여 tailwindcss를 적용해서 작업을 진행하였다.
 처음에 [Tailwind CLI](https://tailwindcss.com/docs/installation)를 보고 파일 세팅을 하고 작업이 완료된 후에 pr을 진행하면서 ci를 통과하지 못하는 에러가 발생하였다.
 
-![build-error.png](/images/frontend-survival-week-in-review-4/build-error.png)
+![build-error.webp](/images/frontend-survival-week-in-review-4/build-error.webp)
 
 확인 결과 parcel을 사용시에 추가로 구성해줘야하는 config파일이 있었다.
 
@@ -100,7 +100,7 @@ hook들이 어떻게 작성 되었는지 직접 코드도 확인 할 수 있어�
 
 해당 가이드를 보고 `.postcssrc`파일을 추가하고 `index.html`에 내용도 수정하고 다시 pr을 진행했더니 이상없이 ci를 통과하였다.
 
-![week4-complete.png](/images/frontend-survival-week-in-review-4/week4-complete.png)
+![week4-complete.webp](/images/frontend-survival-week-in-review-4/week4-complete.webp)
 
 내가 사용하고 있는 프로젝트의 기술 스텍에 맞는 가이드를 찾아서 적용하는 습관을 들여야겠다.
 

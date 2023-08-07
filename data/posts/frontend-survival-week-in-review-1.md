@@ -25,8 +25,8 @@ featured: true
 - 이번주에 제일 관심이 많이 갔던 것은 WakaTime에 제일 신경이 많이 쓰였다. 출근해서부터 개발 작업을 하기
 때문에 시간은 많이 채워지는데 등수가 눈에 직접적으로 보이다 보니깐 조금이라도 더 채우고 싶은 욕심?!이 들었다.
 
-![waka-time-dashboard](/images/frontend-survival-week-in-review-1/waka-time-dashboard.png)
-![waka-time-leaderboard](/images/frontend-survival-week-in-review-1/waka-time-leaderboard.png)
+![waka-time-dashboard](/images/frontend-survival-week-in-review-1/waka-time-dashboard.webp)
+![waka-time-leaderboard](/images/frontend-survival-week-in-review-1/waka-time-leaderboard.webp)
 
 - 앞으로 진행되는 강의에서 현재 내가 개발을 하면서 놓치고 있었던 부분은 무엇이고 무엇을 중점적으로 고민하면서
 개발을 해야하는지 생각하면서 강의를 들어봐야겠다!

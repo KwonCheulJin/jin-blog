@@ -18,9 +18,9 @@ featured: true
 테스트를 진행하면서 `어디서부터 어디까지 테스트를 해야하는가?`라는 고민에서 시작해서 강의에서 배운 것을 차근차근 따라해보고 과제 코드에 적용해보면서 고민을 해소하는 시간이었다.
 아직 테스트코드 자체가 익숙하지 않기 때문에 내가 테스트코드를 잘 작성하였는지 여부와 관계없이 처음으로 내가 만든 컴포넌트에 대해서 안정성을 검증하는 시간을 가졌던 것 같아서 개인적으로 뿌듯한 한주였다.
 
-![4주차.png](/images/frontend-survival-week-in-review-5/4주차.png)
+![4주차.webp](/images/frontend-survival-week-in-review-5/4주차.webp)
 
-![5주차.png](/images/frontend-survival-week-in-review-5/5주차.png)
+![5주차.webp](/images/frontend-survival-week-in-review-5/5주차.webp)
 
 과제 진행 시간만 단순 비교를 해봐도 4주차 과제 작성 시간보다 5주차 작성시간이 거의 2.5배정도 걸렸다.
 테스트가 익숙하지 않아서 오래걸렸던 부분도 있지만 컴포넌트 작성시 사용되는 custom hooks와 api를 통해서 주고 받는 비동기 통신에 대한 mocking작업이 생각보다 쉽지않았던게 컸던 것 같다.
@@ -100,7 +100,7 @@ import '../../../tests/localStorage';
 
 모든게 다 처음이었는데 테스트를 통과하는게 신기했다. 어떤 원리로 동작하는지 궁금증도 생겼지만 아직은... 이 부분은 미래의 나에게 책임을 넘기도록 해야겠다.
 
-![unit-test-coverage.png](/images/frontend-survival-week-in-review-5/unit-test-coverage.png)
+![unit-test-coverage.webp](/images/frontend-survival-week-in-review-5/unit-test-coverage.webp)
 
 마지막 커버리지를 보고 한주 고생한 보람이 있었던 것 같다.
 

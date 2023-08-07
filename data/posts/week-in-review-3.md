@@ -216,7 +216,7 @@ setup('기업 로그인', async ({ page }) => {
 });
 ```
 
-![e2e-test.png](/images/week-in-review-3/e2e-test.png)
+![e2e-test.webp](/images/week-in-review-3/e2e-test.webp)
 
 관리자, 사용자, 비회원 테스트가 잘 진행되어서 뿌듯했다.
 

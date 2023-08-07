@@ -86,7 +86,7 @@ public class BoldWidget extends ParentWidget {
 
 ## 03. Java Class Declarations
 
-![javaclassdeclarations.png](/images/CleanCode-4/javaclassdeclarations.png)
+![javaclassdeclarations.webp](/images/CleanCode-4/javaclassdeclarations.webp)
 
 ### Reference From [https://www.oracle.com/java/technologies/javase/codeconventions-fileorganization.html#1852](https://www.oracle.com/java/technologies/javase/codeconventions-fileorganization.html#1852)
 

@@ -43,7 +43,7 @@ export default function MovingImage({ path, title, image }: Props) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1, transition: { duration: 0.2 } }}
         className="z-30 w-96 h-auto hidden absolute rounded-lg md:!hidden"
-        src={`/images/posts/${image}.png`}
+        src={`/images/posts/${image}.webp`}
         alt={title}
         width={300}
         height={200}
