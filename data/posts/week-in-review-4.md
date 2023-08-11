@@ -1,5 +1,5 @@
 ---
-title: 8월 1주차 주간 회고
+title: 늦은 7월 4주차 주간 회고
 date: '2023-08-08'
 category: 주간회고, 프론트엔드, Next.js 13, middleware
 description: Next.js middleware를 활용하여 사용자별 페이지 라우트를 처리해보자!
