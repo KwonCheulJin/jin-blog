@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const getSortedPostsData = getAllPosts();
   const posts = getSortedPostsData.map(({ path, date }) => ({
     url: `${URL}/posts/${path}`,
-    lastModified: date,
+    lastModified: new Date(date).toISOString(),
   }));
 
   const routes = ['', '/about', '/posts', '/contact'].map((route) => ({
