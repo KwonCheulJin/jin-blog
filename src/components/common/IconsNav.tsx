@@ -3,10 +3,21 @@
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
 import { motion } from 'framer-motion';
-import useThemeSwitcher from '@/components/hooks/useThemeSwitcher';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export default function IconsNav() {
-  const [mode, setMode] = useThemeSwitcher();
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <nav className="flex items-center justify-center flex-wrap">
@@ -36,9 +47,9 @@ export default function IconsNav() {
         type="button"
         aria-label="toggleTheme"
         className="w-6 ml-3 text-2xl rounded-full"
-        onClick={() => setMode((prev) => (prev === 'light' ? 'dark' : 'light'))}
+        onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
       >
-        {mode === 'dark' ? (
+        {theme === 'dark' ? (
           <BsSunFill className="text-yellow-500 m-0" />
         ) : (
           <BsMoonStarsFill className="hover:text-gray-500" />

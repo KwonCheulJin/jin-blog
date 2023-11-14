@@ -19,13 +19,6 @@ export default function ManageScript() {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5738419932125263"
         crossOrigin="anonymous"
       ></Script>
-      <Script id="theme-switcher">
-        {`if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark')
-        } else {
-          document.documentElement.classList.remove('dark')
-        }`}
-      </Script>
     </>
   );
 }

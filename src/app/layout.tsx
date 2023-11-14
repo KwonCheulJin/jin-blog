@@ -1,4 +1,5 @@
 import './globals.css';
+import '@mdxeditor/editor/style.css';
 
 import { Montserrat } from 'next/font/google';
 import Header from '@/components/common/Header';
@@ -8,6 +9,7 @@ import type { Metadata } from 'next';
 import ScrollUp from '@/components/common/ScrollUp';
 import { Analytics } from '@vercel/analytics/react';
 import ManageScript from '@/components/common/ManageScript';
+import { ThemeProviders } from '@/context/theme-provider';
 
 const mont = Montserrat({
   subsets: ['latin'],
@@ -36,16 +38,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={mont.className}>
+    <html lang="ko" className={mont.className} suppressHydrationWarning>
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <ManageScript />
       <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
-        <ScrollUp />
-        <Header />
-        <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
-          {children}
-        </main>
-        <Footer />
-        <Analytics />
+        <ThemeProviders>
+          <ScrollUp />
+          <Header />
+          <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
+            {children}
+          </main>
+          <Footer />
+          <Analytics />
+        </ThemeProviders>
       </body>
     </html>
   );

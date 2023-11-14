@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdxeditor/editor": "^1.9.0",
     "@types/node": "18.15.5",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -16,7 +17,9 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.16.1",
+    "mdast-util-directive": "^3.0.0",
     "next": "13.5.6",
+    "next-themes": "^0.2.1",
     "nodemailer": "^6.9.1",
     "path-browserify": "^1.0.1",
     "react": "18.2.0",
@@ -29,9 +32,11 @@
     "remark-gfm": "^3.0.1",
     "stream-browserify": "^3.0.0",
     "typescript": "^5.0.4",
+    "usehooks-ts": "^2.9.1",
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@ngneat/falso": "^7.1.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/nodemailer": "^6.4.7",
     "@types/react-syntax-highlighter": "^15.5.6",
