@@ -10,34 +10,33 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <header className="w-full px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 lg:px-16 md:px-12 sm:px-8">
+    <header className="relative z-10 flex w-full items-center justify-between px-32 py-8 font-medium dark:text-light sm:px-8 md:px-12 lg:px-16">
       <button
-        className="flex-col justify-center items-center hidden lg:flex"
-        onClick={() => setIsOpen((prev) => !prev)}
+        className="hidden flex-col items-center justify-center lg:flex"
+        onClick={() => setIsOpen(prev => !prev)}
       >
         <span
-          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-            isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'
+          className={`block h-0.5 w-6 rounded-sm bg-dark transition-all duration-300 ease-out dark:bg-light ${
+            isOpen ? 'translate-y-1 rotate-45' : '-translate-y-0.5'
           }`}
         ></span>
         <span
-          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
+          className={`my-0.5 block h-0.5 w-6 rounded-sm bg-dark transition-all duration-300 ease-out dark:bg-light ${
             isOpen ? 'opacity-0' : 'opacity-100'
           }`}
         ></span>
         <span
-          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-            isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'
+          className={`block h-0.5 w-6 rounded-sm bg-dark transition-all duration-300 ease-out dark:bg-light ${
+            isOpen ? '-translate-y-1 -rotate-45' : 'translate-y-0.5'
           }`}
         ></span>
       </button>
 
-      <div className="w-full flex justify-between items-center lg:hidden">
+      <div className="flex w-full items-center justify-between lg:hidden">
         <nav>
           <CustomLink href="/" title="home" className="mr-4" />
           <CustomLink href="/about" title="About" className="mx-4" />
           <CustomLink href="/posts" title="Posts" className="mx-4" />
-          <CustomLink href="/contact" title="Contact" className="ml-4" />
         </nav>
 
         <IconsNav />

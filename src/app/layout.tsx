@@ -1,19 +1,20 @@
-import './globals.css';
+import '@/styles/globals.css';
 import '@mdxeditor/editor/style.css';
 
-import { Montserrat } from 'next/font/google';
+import { Inter as FontSans } from 'next/font/google';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import type { Metadata } from 'next';
 
-import ScrollUp from '@/components/common/ScrollUp';
 import { Analytics } from '@vercel/analytics/react';
 import ManageScript from '@/components/common/ManageScript';
 import { ThemeProviders } from '@/context/theme-provider';
+import { cn } from '@/lib/utils';
+import ScrollUp from '@/components/common/ScrollUp';
 
-const mont = Montserrat({
+const fontSans = FontSans({
   subsets: ['latin'],
-  variable: '--font-mont',
+  variable: '--font-sans',
 });
 
 export const metadata: Metadata = {
@@ -36,17 +37,34 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="ko" className={mont.className} suppressHydrationWarning>
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
+    <html lang="ko" suppressHydrationWarning>
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: light)"
+        content="#fff"
+      />
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: dark)"
+        content="#000"
+      />
       <ManageScript />
-      <body className="font-mont bg-light w-full min-h-screen dark:bg-dark">
+      <ScrollUp />
+      <body
+        className={cn(
+          'font-mont min-h-screen w-full bg-light dark:bg-dark',
+          fontSans.variable,
+        )}
+      >
         <ThemeProviders>
-          <ScrollUp />
           <Header />
-          <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
+          <main className="flex min-h-screen w-full items-center text-dark dark:text-light">
             {children}
           </main>
           <Footer />
