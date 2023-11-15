@@ -1,13 +1,8 @@
 import Layout from '@/components/common/Layout';
-import AnimatedText from '@/components/common/AnimatedText';
-import { getAllPosts } from '@/service/posts';
 
 import type { Metadata } from 'next';
-import FeaturedPosts from '@/components/post/FeaturedPosts';
-import PostCard from '@/components/post/PostCard';
 import TransitionEffect from '@/components/common/TransitionEffect';
 import { Suspense } from 'react';
-import { MDXEditorMethods } from '@mdxeditor/editor';
 import dynamic from 'next/dynamic';
 
 const EditorComp = dynamic(() => import('@/components/editor/InitializedMDXEditor'), {

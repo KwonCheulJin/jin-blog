@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Layout from './Layout';
 
 export default function Footer() {
@@ -8,13 +9,13 @@ export default function Footer() {
         <div className="flex items-center lg:py-2">
           Design <span className="text-primary dark:text-primaryDark text-2xl px-1">&#9825;</span>
           by&nbsp;{' '}
-          <a
+          <Link
             href="https://www.youtube.com/watch?v=Yw7yWHigGKI&list=WL&index=22"
             target="_blank"
             className="underline underline-offset-2"
           >
             CodeBucks
-          </a>
+          </Link>
         </div>
         <div className="flex items-center">
           Build with{' '}

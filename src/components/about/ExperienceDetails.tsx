@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import LiIcon from './LiIcon';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 type Props = {
   position: string;
@@ -36,13 +37,13 @@ export default function ExperienceDetail({
       >
         <div className="flex items-center justify-start md:flex-col md:items-start">
           <h3 className="capitalize font-bold text-2xl sm:text-xl xs:text-lg">{position}&nbsp;</h3>
-          <a
+          <Link
             href={companyLink}
             target="_blank"
             className="text-primary dark:text-primaryDark capitalize font-bold text-2xl sm:text-xl xs:text-lg"
           >
             @{company}
-          </a>
+          </Link>
         </div>
         <span className="capitalize font-medium text-dark/75 dark:text-light/75 xs:text-sm">
           {time} | {address}

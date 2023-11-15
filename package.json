@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install",
+    "pre-commit": "next lint && git add -A ."
   },
   "dependencies": {
     "@mdxeditor/editor": "^1.9.0",
@@ -36,13 +38,25 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^14.0.2",
     "@ngneat/falso": "^7.1.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/nodemailer": "^6.4.7",
     "@types/react-syntax-highlighter": "^15.5.6",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
     "autoprefixer": "^10.4.14",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "gray-matter": "^4.0.3",
+    "husky": "^8.0.0",
     "postcss": "^8.4.21",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.2.7"
   }
 }
