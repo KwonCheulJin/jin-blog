@@ -53,7 +53,9 @@ export function getPostData(fileName: string): PostData {
   const fileContents = readFileSync(`${FOLDER}/${fileName}.md`, 'utf-8');
   const posts = getAllPosts();
   const post = posts.find((post) => post.path === fileName);
-  if (!post) throw new Error(`${fileName}에 해당하는 포스트를 찾을 수 없음`);
+  if (!post) {
+    throw new Error(`${fileName}에 해당하는 포스트를 찾을 수 없음`);
+  }
 
   const index = posts.indexOf(post);
   const next = index > 0 ? posts[index - 1] : null;

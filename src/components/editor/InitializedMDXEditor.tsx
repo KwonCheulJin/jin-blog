@@ -6,7 +6,6 @@ import {
   diffSourcePlugin,
   markdownShortcutPlugin,
   AdmonitionDirectiveDescriptor,
-  DirectiveDescriptor,
   directivesPlugin,
   frontmatterPlugin,
   headingsPlugin,
@@ -24,9 +23,7 @@ import {
   sandpackPlugin,
   KitchenSinkToolbar,
 } from '@mdxeditor/editor';
-import { LeafDirective } from 'mdast-util-directive';
 import { useTheme } from 'next-themes';
-import { FC } from 'react';
 interface EditorProps {
   markdown: string;
   editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
