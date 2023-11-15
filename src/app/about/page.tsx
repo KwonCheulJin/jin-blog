@@ -4,7 +4,6 @@ import AnimatedText from '@/components/common/AnimatedText';
 import Skills from '@/components/about/Skills';
 import Experience from '@/components/about/Experience';
 import Education from '@/components/about/Education';
-import Biography from '@/components/about/Biography';
 import TransitionEffect from '@/components/common/TransitionEffect';
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export default function AboutPage() {
             text="Be positive and Authenticity!"
             className="mb-16 dark:text-light lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
           />
-          <Biography />
           <Skills />
           <Experience />
           <Education />

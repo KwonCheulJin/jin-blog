@@ -1,14 +1,14 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function ScrollUp() {
-  const params = useParams();
+  const pathname = usePathname();
 
   useEffect(() => {
-    window.document.body?.scrollTo(0, 0);
-  }, [params]);
+    window.scroll(0, 0);
+  }, [pathname]);
 
-  return null;
+  return <></>;
 }

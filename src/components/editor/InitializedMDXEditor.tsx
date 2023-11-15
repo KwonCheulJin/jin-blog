@@ -27,6 +27,7 @@ import { useTheme } from 'next-themes';
 interface EditorProps {
   markdown: string;
   editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
+  onChange: (markdown: string) => void;
 }
 
 const defaultSnippetContent = `
@@ -81,7 +82,10 @@ export const virtuosoSampleSandpackConfig: SandpackConfig = {
 export async function expressImageUploadHandler(image: File) {
   const formData = new FormData();
   formData.append('image', image);
-  const response = await fetch('/uploads/new', { method: 'POST', body: formData });
+  const response = await fetch('/uploads/new', {
+    method: 'POST',
+    body: formData,
+  });
   const json = (await response.json()) as { url: string };
   return json.url;
 }
@@ -89,18 +93,20 @@ export async function expressImageUploadHandler(image: File) {
  * Extend this Component further with the necessary plugins or props you need.
  * proxying the ref is necessary. Next.js dynamically imported components don't support refs.
  */
-export default function InitializedMDXEditor({ markdown, editorRef }: EditorProps) {
+export default function InitializedMDXEditor({
+  markdown,
+  editorRef,
+  onChange,
+}: EditorProps) {
   const { theme } = useTheme();
-  const handleChange = (markdown: string) => {
-    console.log('🚀 ~ file: page.tsx:30 ~ handleChange ~ markdown:', markdown);
-  };
+
   return (
     <MDXEditor
       className={`${
         theme === 'dark' ? 'dark-theme dark-editor' : 'light-theme'
-      } border dark:border-gray-100 border-black`}
+      } border border-black dark:border-gray-100`}
       contentEditableClassName="prose dark:prose-invert"
-      onChange={handleChange}
+      onChange={onChange}
       ref={editorRef}
       markdown={markdown}
       plugins={[
@@ -122,7 +128,12 @@ export default function InitializedMDXEditor({ markdown, editorRef }: EditorProp
         codeBlockPlugin({ defaultCodeBlockLanguage: 'txt' }),
         sandpackPlugin({ sandpackConfig: virtuosoSampleSandpackConfig }),
         codeMirrorPlugin({
-          codeBlockLanguages: { js: 'JavaScript', css: 'CSS', txt: 'text', tsx: 'TypeScript' },
+          codeBlockLanguages: {
+            js: 'JavaScript',
+            css: 'CSS',
+            txt: 'text',
+            tsx: 'TypeScript',
+          },
         }),
         directivesPlugin({
           directiveDescriptors: [AdmonitionDirectiveDescriptor],
