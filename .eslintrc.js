@@ -27,6 +27,7 @@ module.exports = {
       parserOptions: {
         sourceType: 'script',
       },
+      extends: ['plugin:testing-library/react'],
     },
   ],
   parser: '@typescript-eslint/parser',
