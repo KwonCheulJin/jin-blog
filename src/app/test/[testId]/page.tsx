@@ -10,13 +10,13 @@ export default function TestDetailPage() {
   return (
     <>
       <TransitionEffect />
-      <section className="h-screen w-full">
-        <Layout className="pt-16">
+      <Layout className="pt-16">
+        <section className="w-full">
           <PostLayout>
             <MarkdownViewer content={tempMarkdown} />
           </PostLayout>
-        </Layout>
-      </section>
+        </section>
+      </Layout>
     </>
   );
 }

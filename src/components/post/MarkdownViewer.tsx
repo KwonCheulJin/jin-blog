@@ -16,15 +16,27 @@ export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
       className="prose
-      prose-code:bg-primary dark:prose-code:bg-primaryDark prose-code:rounded-sm prose-code:px-2 prose-code:py-1 prose-code:my-1 dark:prose-code:text-dark
-      dark:prose-invert max-w-none font-medium text-xl dark:text-light"
+      max-w-none text-xl font-medium dark:prose-invert prose-p:text-base prose-code:my-1 prose-code:rounded-sm
+      prose-code:bg-primary prose-code:px-2 prose-code:py-1 prose-li:text-base dark:text-light dark:prose-code:bg-primaryDark dark:prose-code:text-dark"
       remarkPlugins={[[remarkGfm, { fence: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
-        code({ node, inline, className, children, style, ...props }: CodeProps) {
+        code({
+          node,
+          inline,
+          className,
+          children,
+          style,
+          ...props
+        }: CodeProps) {
           const match = /language-(\w+)/.exec(className || '');
           return !inline && match ? (
-            <SyntaxHighlighter style={oneDark} language={match[1]} PreTag="div" {...props}>
+            <SyntaxHighlighter
+              style={oneDark}
+              language={match[1]}
+              PreTag="div"
+              {...props}
+            >
               {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>
           ) : (
@@ -33,10 +45,10 @@ export default function MarkdownViewer({ content }: Props) {
             </code>
           );
         },
-        img: (image) => (
-          <div className="flex justify-center w-full">
+        img: image => (
+          <div className="flex w-full justify-center">
             <Image
-              className="w-[70%] h-auto object-fit"
+              className="object-fit h-auto w-[70%]"
               src={image.src || ''}
               alt={image.alt || ''}
               width={500}
