@@ -11,19 +11,24 @@ type Props = {
 
 const FramerImage = motion(Image);
 
-export default function FeaturedPost({ post: { title, description, date, path, image } }: Props) {
+export default function FeaturedPost({
+  post: { title, description, date, path, image },
+}: Props) {
   return (
-    <li className="relative col-span-1 w-full p-4 bg-light border border-solid border-dark rounded-2xl dark:bg-dark dark:border-light">
+    <li className="relative col-span-1 w-full rounded-2xl border border-solid border-dark bg-light p-4 dark:border-light dark:bg-dark">
       <div
-        className="absolute top-0 -z-10 -right-4 w-[102%] h-[103%] rounded-[2.25rem]
-      xl:w-[103%] xl:h-[105%] xl:rounded-[2rem]
-      lg:w-[102%] lg:h-[104%] lg:rounded-[2rem]
-      md:w-[102%] md:h-[104%] md:rounded-[1.8rem]
-      sm:w-[103%] sm:h-[104%] sm:rounded-[1.8rem]
-      xs:w-[104.5%] xs:h-[105%] xs:rounded-[1.8rem]
-      bg-dark rounded-br-3xl dark:bg-light "
+        className="absolute top-0 -right-4 -z-10 h-[103%] w-[102%] rounded-[2.25rem]
+      rounded-br-3xl bg-dark dark:bg-light
+      sm:h-[104%] sm:w-[103%] sm:rounded-[1.8rem]
+      md:h-[104%] md:w-[102%] md:rounded-[1.8rem]
+      lg:h-[104%] lg:w-[102%] lg:rounded-[2rem]
+      xl:h-[105%] xl:w-[103%] xl:rounded-[2rem]
+      xs:h-[105%] xs:w-[104.5%] xs:rounded-[1.8rem] "
       />
-      <Link href={`/posts/${path}`} className="w-full cursor-pointer overflow-hidden rounded-lg">
+      <Link
+        href={`/posts/${path}`}
+        className="w-full cursor-pointer overflow-hidden rounded-lg"
+      >
         <FramerImage
           className="w-full rounded-lg md:h-auto"
           whileHover={{ scale: 1.025 }}
@@ -37,12 +42,12 @@ export default function FeaturedPost({ post: { title, description, date, path, i
         />
       </Link>
       <Link href={`/posts/${path}`}>
-        <h2 className="capitalize text-2xl truncate font-bold my-2 mt-4 hover:underline dark:text-light xs:text-lg">
+        <h2 className="my-2 mt-4 truncate text-2xl font-bold capitalize hover:underline dark:text-light xs:text-lg">
           {title}
         </h2>
       </Link>
-      <p className="text-sm mb-2 truncate dark:text-light">{description}</p>
-      <time className="text-primary dark:text-primaryDark font-semibold">
+      <p className="mb-2 truncate text-sm dark:text-light">{description}</p>
+      <time className="text-primary-500 font-semibold dark:text-primaryDark">
         {date.toLocaleString('ko-KR', {
           year: 'numeric',
           month: 'numeric',

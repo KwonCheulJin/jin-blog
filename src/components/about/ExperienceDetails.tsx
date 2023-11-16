@@ -41,7 +41,7 @@ export default function ExperienceDetail({
           <Link
             href={companyLink}
             target="_blank"
-            className="text-2xl font-bold capitalize text-primary dark:text-primaryDark sm:text-xl xs:text-lg"
+            className="text-primary-500 text-2xl font-bold capitalize dark:text-primaryDark sm:text-xl xs:text-lg"
           >
             @{company}
           </Link>
