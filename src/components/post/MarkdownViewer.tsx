@@ -17,7 +17,7 @@ export default function MarkdownViewer({ content }: Props) {
     <ReactMarkdown
       className="prose
       prose-code:bg-primary dark:prose-code:bg-primaryDark prose-code:rounded-sm prose-code:px-2 prose-code:py-1 prose-code:my-1 dark:prose-code:text-dark
-      dark:prose-invert max-w-none font-medium text-xl dark:text-light"
+      dark:prose-invert max-w-none font-medium text-xl dark:text-light prose-li:text-base prose-p:text-base"
       remarkPlugins={[[remarkGfm, { fence: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{

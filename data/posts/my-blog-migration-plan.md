@@ -1,5 +1,5 @@
 ---
-title: 글 작성이 불편한 블로그 개선 해보자 Part.1
+title: 글 작성이 불편한 블로그를 개선 해보자 Part.1
 date: '2023-11-16'
 category: 블로그, SSG, markdown blog, migration, Next.js
 description: 스스로에게 주는 첼린지
@@ -36,3 +36,15 @@ featured: true
 하루에 2~3시간 정도씩 할애해서 올해가 가기전에는 완료 하는게 목표이다.
 
 ## 현재까지 진행상황
+
+`추가된 에디터`
+![editor-component.webp](/images/my-blog-migration-plan/editor-component.webp)
+
+`새로운 포스트 화면`
+![new-post-style.webp](/images/my-blog-migration-plan/new-post-style.webp)
+
+일단은 불편하더라도 진행상황을 dev 브랜치와 새롭게 작업하고 있는 브랜치를 왔다갔다 하면서 진행하도록 해야겠다.
+
+## 참고
+
+- [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
