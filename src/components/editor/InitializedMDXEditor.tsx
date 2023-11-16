@@ -104,8 +104,8 @@ export default function InitializedMDXEditor({
     <MDXEditor
       className={`${
         theme === 'dark' ? 'dark-theme dark-editor' : 'light-theme'
-      } border border-black dark:border-gray-100`}
-      contentEditableClassName="prose dark:prose-invert"
+      } h-full w-full overflow-y-scroll border border-black dark:border-gray-100`}
+      contentEditableClassName="prose dark:prose-invert min-w-fit min-h-fit"
       onChange={onChange}
       ref={editorRef}
       markdown={markdown}
@@ -113,7 +113,7 @@ export default function InitializedMDXEditor({
         toolbarPlugin({ toolbarContents: () => <KitchenSinkToolbar /> }),
         listsPlugin(),
         quotePlugin(),
-        headingsPlugin({ allowedHeadingLevels: [1, 2, 3] }),
+        headingsPlugin({ allowedHeadingLevels: [1, 2, 3, 4, 5, 6] }),
         linkPlugin(),
         linkDialogPlugin(),
         imagePlugin({

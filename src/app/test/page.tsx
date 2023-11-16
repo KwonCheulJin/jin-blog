@@ -13,7 +13,7 @@ export default function TestPage() {
   return (
     <>
       <TransitionEffect />
-      <section className="flex w-full flex-col items-center justify-center overflow-hidden">
+      <section className="w-full">
         <Layout className="pt-16">
           <EditorContainer />
         </Layout>
