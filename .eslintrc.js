@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -18,7 +19,11 @@ module.exports = {
       env: {
         node: true,
       },
-      files: ['.eslintrc.{js,cjs}'],
+      files: [
+        '.eslintrc.{js,cjs}',
+        '**/__tests__/**/*.[jt]s?(x)',
+        '**/?(*.)+(spec|test).[jt]s?(x)',
+      ],
       parserOptions: {
         sourceType: 'script',
       },
@@ -36,6 +41,7 @@ module.exports = {
     'react',
     'jsx-a11y',
     'react-hooks',
+    'testing-library',
   ],
   rules: {
     'no-trailing-spaces': 'error',
@@ -96,7 +102,7 @@ module.exports = {
     'prefer-template': 'error',
     '@typescript-eslint/no-unused-vars': 'off', // or ,
     'unused-imports/no-unused-imports': 'error',
-    'import/no-unresolved': [2, { commonjs: true, amd: true }],
+    'import/no-unresolved': 'off',
     'import/named': 'off',
     'import/namespace': 2,
     'import/default': 2,

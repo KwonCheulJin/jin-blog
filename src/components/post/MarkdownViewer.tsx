@@ -15,9 +15,7 @@ type Props = {
 export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
-      className="prose
-      max-w-none text-xl font-medium dark:prose-invert prose-p:text-base prose-code:my-1 prose-code:rounded-sm
-      prose-code:bg-primary prose-code:px-2 prose-code:py-1 prose-li:text-base dark:text-light dark:prose-code:bg-primaryDark dark:prose-code:text-dark"
+      className="prose max-w-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light"
       remarkPlugins={[[remarkGfm, { fence: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
@@ -29,6 +27,12 @@ export default function MarkdownViewer({ content }: Props) {
           style,
           ...props
         }: CodeProps) {
+          // console.log(
+          // '🚀 ~ file: MarkdownViewer.tsx:24 ~ code ~ className:',
+          // className?.split(':'),
+          // );
+
+          //TODO: 코드 타이틀 스타일 만들것
           const match = /language-(\w+)/.exec(className || '');
           return !inline && match ? (
             <SyntaxHighlighter

@@ -10,9 +10,9 @@ export default function PostContent({ post }: Props) {
   const { title, description, date, content } = post;
   return (
     <section className="flex flex-col p-8 md:p-4">
-      <div className="flex items-center self-end text-primary dark:text-primaryDark">
+      <div className="text-primary-500 flex items-center self-end dark:text-primaryDark">
         <AiTwotoneCalendar />
-        <p className="font-semibold ml-2">
+        <p className="ml-2 font-semibold">
           {date.toLocaleString('ko-KR', {
             year: 'numeric',
             month: 'numeric',
@@ -21,9 +21,13 @@ export default function PostContent({ post }: Props) {
           })}
         </p>
       </div>
-      <h1 className="text-4xl font-bold mt-4 text-dark dark:text-light">{title}</h1>
-      <p className="text-xl font-bold mt-4 text-dark dark:text-light">{description}</p>
-      <div className="w-80 border-2 border-primary dark:border-primaryDark mt-4 mb-8"></div>
+      <h1 className="mt-4 text-4xl font-bold text-dark dark:text-light">
+        {title}
+      </h1>
+      <p className="mt-4 text-xl font-bold text-dark dark:text-light">
+        {description}
+      </p>
+      <div className="border-primary-500 mt-4 mb-8 w-80 border-2 dark:border-primaryDark"></div>
       <MarkdownViewer content={content} />
     </section>
   );
