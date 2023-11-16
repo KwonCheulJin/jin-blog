@@ -10,7 +10,7 @@ export default function TestDetailPage() {
   return (
     <>
       <TransitionEffect />
-      <section className="flex w-full flex-col items-center justify-center overflow-hidden">
+      <section className="h-screen w-full">
         <Layout className="pt-16">
           <PostLayout>
             <MarkdownViewer content={tempMarkdown} />

@@ -21,6 +21,10 @@ export default function EditorContainer() {
     tempMarkdown,
   );
   const handleChange = (markdown: string) => {
+    console.log(
+      '🚀 ~ file: EditorContainer.tsx:24 ~ handleChange ~ markdown:',
+      markdown,
+    );
     setMarkdown(markdown);
   };
 
@@ -30,7 +34,7 @@ export default function EditorContainer() {
   };
 
   return (
-    <div>
+    <div className="h-[70vh]">
       <Suspense fallback={null}>
         <Editor
           markdown={markdown}
@@ -38,7 +42,9 @@ export default function EditorContainer() {
           editorRef={editorRef}
         />
       </Suspense>
-      <Button onClick={handelMarkdown}>Save</Button>
+      <Button className="w-full" onClick={handelMarkdown}>
+        Save
+      </Button>
     </div>
   );
 }

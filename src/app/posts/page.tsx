@@ -20,14 +20,14 @@ export default function PostsPage() {
   return (
     <>
       <TransitionEffect />
-      <section className="w-full flex flex-col items-center justify-center overflow-hidden">
+      <section className="flex w-full flex-col items-center justify-center overflow-hidden">
         <Layout className="pt-16">
           <AnimatedText
             text="Be positive and Authenticity!"
-            className="mb-16 dark:text-light lg:!text-7xl sm:!text-6xl xs:!text-5xl sm:mb-8"
+            className="mb-16 dark:text-light sm:mb-8 sm:!text-6xl lg:!text-7xl xs:!text-5xl"
           />
           <FeaturedPosts />
-          <h2 className="font-bold text-4xl w-full text-center my-16 mt-32 dark:text-light">
+          <h2 className="my-16 mt-32 w-full text-center text-4xl font-bold dark:text-light">
             All Posts
           </h2>
           <ul key="all-posts">{allPosts}</ul>
