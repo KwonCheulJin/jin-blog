@@ -13,7 +13,7 @@ export default function TestPage() {
   return (
     <>
       <TransitionEffect />
-      <section className="w-full">
+      <section className="h-screen w-full">
         <Layout className="pt-16">
           <EditorContainer />
         </Layout>
