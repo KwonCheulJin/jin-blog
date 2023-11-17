@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 
 import { Analytics } from '@vercel/analytics/react';
 import ManageScript from '@/components/common/ManageScript';
-import { ThemeProviders } from '@/context/theme-provider';
+import { Providers } from '@/context/Providers';
 import { cn } from '@/lib/utils';
 import ScrollUp from '@/components/common/ScrollUp';
 
@@ -58,18 +58,18 @@ export default function RootLayout({
       <ScrollUp />
       <body
         className={cn(
-          'font-mont min-h-screen w-full bg-light dark:bg-dark',
+          'min-h-screen w-full bg-light font-mont dark:bg-dark',
           fontSans.variable,
         )}
       >
-        <ThemeProviders>
+        <Providers>
           <Header />
           <main className="flex min-h-screen w-full items-center text-dark dark:text-light">
             {children}
           </main>
           <Footer />
           <Analytics />
-        </ThemeProviders>
+        </Providers>
       </body>
     </html>
   );
