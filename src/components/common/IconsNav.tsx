@@ -5,6 +5,7 @@ import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import AuthButton from '@/components/auth/AuthButton';
 
 export default function IconsNav() {
   const [mounted, setMounted] = useState(false);
@@ -20,7 +21,7 @@ export default function IconsNav() {
   }
 
   return (
-    <nav className="flex items-center justify-center flex-wrap">
+    <nav className="flex flex-wrap items-center justify-center">
       <motion.a
         href="https://twitter.com/Charles_kwon77"
         aria-label="Go to Twitter"
@@ -28,7 +29,7 @@ export default function IconsNav() {
         rel="noreferrer"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.9 }}
-        className="w-6 mr-3 text-3xl"
+        className="mr-3 w-6 text-3xl"
       >
         <AiOutlineTwitter className="text-sky-400" />
       </motion.a>
@@ -38,23 +39,28 @@ export default function IconsNav() {
         target="_blank"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.9 }}
-        className="w-6 mx-3 text-3xl"
+        className="mx-3 w-6 text-3xl"
       >
-        <AiFillGithub className="bg-light dark:bg-dark rounded-full" />
+        <AiFillGithub className="rounded-full bg-light dark:bg-dark" />
       </motion.a>
 
       <button
         type="button"
         aria-label="toggleTheme"
-        className="w-6 ml-3 text-2xl rounded-full"
-        onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
+        className="ml-3 w-6 rounded-full text-2xl"
+        onClick={() =>
+          setTheme(
+            theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark',
+          )
+        }
       >
         {theme === 'dark' ? (
-          <BsSunFill className="text-yellow-500 m-0" />
+          <BsSunFill className="m-0 text-yellow-500" />
         ) : (
           <BsMoonStarsFill className="hover:text-gray-500" />
         )}
       </button>
+      <AuthButton />
     </nav>
   );
 }

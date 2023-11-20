@@ -5,7 +5,6 @@ import CustomLink from './CustomLink';
 import MobileNav from './MobileNav';
 import IconsNav from './IconsNav';
 import { useState } from 'react';
-import SigninButton from '@/components/auth/SigninButton';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -41,7 +40,6 @@ export default function Header() {
         </nav>
 
         <IconsNav />
-        <SigninButton />
       </div>
 
       {isOpen ? <MobileNav setIsOpen={setIsOpen} /> : null}
