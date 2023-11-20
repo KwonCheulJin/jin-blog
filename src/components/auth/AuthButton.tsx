@@ -1,11 +1,11 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { signIn, signOut, useSession } from 'next-auth/react';
-export default function SigninButton() {
+export default function AuthButton() {
   const { data: session } = useSession();
   if (session && session.user) {
     return (
-      <div className="ml-auto flex gap-4">
+      <div className="ml-4 flex items-center gap-4">
         <p className="text-primary-500 dark:text-primaryDark">
           {session.user.name}
         </p>
@@ -22,7 +22,7 @@ export default function SigninButton() {
   return (
     <Button
       variant="ghost"
-      className="text-primaryDark"
+      className="ml-4 text-primaryDark"
       onClick={() => signIn()}
     >
       Sign In
