@@ -35,7 +35,7 @@ export default function MarkdownViewer({ content }: Props) {
           // );
 
           //TODO: 코드 타이틀 스타일 만들것
-          const match = /language-(\w+)/.exec(className || '');
+          const match = /language-(\w+)/.exec(className ?? '');
           return !inline && match ? (
             <SyntaxHighlighter
               style={oneDark}
@@ -55,8 +55,8 @@ export default function MarkdownViewer({ content }: Props) {
           <div className="flex w-full justify-center">
             <Image
               className="object-fit h-auto w-[70%]"
-              src={image.src || ''}
-              alt={image.alt || ''}
+              src={image.src ?? ''}
+              alt={image.alt ?? ''}
               width={500}
               height={550}
               priority
