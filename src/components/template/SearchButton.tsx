@@ -1,6 +1,6 @@
 import { AlgoliaButton } from 'pliny/search/AlgoliaButton';
 
-const SearchButton = () => {
+export default function SearchButton() {
   // if (
   //   siteMetadata.search &&
   //   (siteMetadata.search.provider === 'algolia' || siteMetadata.search.provider === 'kbar')
@@ -26,6 +26,5 @@ const SearchButton = () => {
       </svg>
     </AlgoliaButton>
   );
-};
+}
 
-export default SearchButton;

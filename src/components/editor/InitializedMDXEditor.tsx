@@ -1,5 +1,6 @@
 'use client';
 
+import { FC } from 'react';
 import {
   MDXEditor,
   MDXEditorMethods,
@@ -89,17 +90,13 @@ export async function expressImageUploadHandler(image: File) {
   const json = (await response.json()) as { url: string };
   return json.url;
 }
+
 /**
  * Extend this Component further with the necessary plugins or props you need.
  * proxying the ref is necessary. Next.js dynamically imported components don't support refs.
  */
-export default function InitializedMDXEditor({
-  markdown,
-  editorRef,
-  onChange,
-}: EditorProps) {
+const Editor: FC<EditorProps> = ({ markdown, onChange, editorRef }) => {
   const { theme } = useTheme();
-
   return (
     <MDXEditor
       className={`${
@@ -107,8 +104,8 @@ export default function InitializedMDXEditor({
       } h-full w-full overflow-y-scroll rounded-sm border border-black dark:border-gray-100`}
       contentEditableClassName="prose dark:prose-invert max-w-full py-4 px-8"
       onChange={onChange}
-      ref={editorRef}
       markdown={markdown}
+      ref={editorRef}
       plugins={[
         toolbarPlugin({ toolbarContents: () => <KitchenSinkToolbar /> }),
         listsPlugin(),
@@ -143,4 +140,6 @@ export default function InitializedMDXEditor({
       ]}
     />
   );
-}
+};
+
+export default Editor;
