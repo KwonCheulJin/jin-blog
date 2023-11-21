@@ -5,12 +5,9 @@ import dynamic from 'next/dynamic';
 import { Suspense, useRef, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 
-const Editor = dynamic(
-  () => import('@/components/editor/InitializedMDXEditor'),
-  {
-    ssr: false,
-  },
-);
+const Editor = dynamic(() => import('./InitializedMDXEditor'), {
+  ssr: false,
+});
 
 export default function EditorContainer() {
   const editorRef = useRef<MDXEditorMethods>(null);
