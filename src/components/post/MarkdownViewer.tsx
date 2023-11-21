@@ -15,18 +15,30 @@ type Props = {
 export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
-      className="prose
-      prose-code:bg-primary dark:prose-code:bg-primaryDark prose-code:rounded-sm prose-code:px-2 prose-code:py-1 prose-code:my-1 dark:prose-code:text-dark
-      dark:prose-invert max-w-none font-medium text-xl dark:text-light prose-li:text-base prose-p:text-base"
+      className="prose max-w-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light rounded-none"
       remarkPlugins={[[remarkGfm, { fence: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
         code({ node, inline, className, children, style, ...props }: CodeProps) {
+          const title = className?.split(':')[1];
           const match = /language-(\w+)/.exec(className || '');
           return !inline && match ? (
-            <SyntaxHighlighter style={oneDark} language={match[1]} PreTag="div" {...props}>
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
+            <div>
+              {title && (
+                <header className="px-3 py-5 rounded-tl-sm rounded-tr-sm bg-zinc-700 font-mono font-bold">
+                  {title}
+                </header>
+              )}
+              <SyntaxHighlighter
+                style={oneDark}
+                language={match[1]}
+                PreTag="div"
+                className="!rounded-tl-none !rounded-tr-none !mt-0"
+                {...props}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            </div>
           ) : (
             <code className={className} {...props}>
               {children}
