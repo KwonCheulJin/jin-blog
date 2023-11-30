@@ -1,6 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 export default function AuthButton() {
   const { data: session } = useSession();
   if (session && session.user) {
@@ -20,12 +21,10 @@ export default function AuthButton() {
     );
   }
   return (
-    <Button
-      variant="ghost"
-      className="ml-4 text-primaryDark"
-      onClick={() => signIn()}
-    >
-      Sign In
-    </Button>
+    <Link href="/signin">
+      <Button variant="ghost" className="ml-4 text-primaryDark">
+        Sign In
+      </Button>
+    </Link>
   );
 }

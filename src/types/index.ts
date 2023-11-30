@@ -13,3 +13,10 @@ export type Education = {
   place: string;
   info: string;
 };
+
+export type Post = {
+  title: string;
+  subTitle: string;
+  content: string;
+  tags: string[];
+};

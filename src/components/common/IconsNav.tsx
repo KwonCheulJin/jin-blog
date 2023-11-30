@@ -6,12 +6,16 @@ import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import AuthButton from '@/components/auth/AuthButton';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 export default function IconsNav() {
+  const { data: session } = useSession();
+
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
 
-  // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -22,6 +26,16 @@ export default function IconsNav() {
 
   return (
     <nav className="flex flex-wrap items-center justify-center">
+      {session && (
+        <Link href="/write" className="mr-4">
+          <Button
+            className="rounded-3xl border-black dark:border-white"
+            variant="outline"
+          >
+            새 글 작성
+          </Button>
+        </Link>
+      )}
       <motion.a
         href="https://twitter.com/Charles_kwon77"
         aria-label="Go to Twitter"

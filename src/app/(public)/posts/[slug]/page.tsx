@@ -30,10 +30,10 @@ export default function PostPage({ params: { slug } }: Props) {
   return (
     <>
       <TransitionEffect />
-      <Layout className="pt-16 md:pt-12 sm:pt-8 md:p-8 sm:p-4">
-        <article className="rounded-2xl overflow-hidden bg-light shadow-lg border-2 border-solid dark:bg-dark dark:border-light">
+      <Layout className="pt-16 sm:p-4 sm:pt-8 md:p-8 md:pt-12">
+        <article className="overflow-hidden rounded-2xl border-2 border-solid bg-light shadow-lg dark:border-light dark:bg-dark">
           <Image
-            className="w-full h-1/5 max-h-[500px]"
+            className="h-1/5 max-h-[500px] w-full"
             src={`/images/posts/${image}.webp`}
             alt={title}
             width={760}
@@ -44,7 +44,7 @@ export default function PostPage({ params: { slug } }: Props) {
           <section className="w-full border-t border-light">
             <Comment />
           </section>
-          <section className="flex lg:flex-row md:flex-col sm:flex-col shadow-md border-t border-light">
+          <section className="flex border-t border-light shadow-md sm:flex-col md:flex-col lg:flex-row">
             {prev && <AdjacentPostCard post={prev} type="prev" />}
             {next && <AdjacentPostCard post={next} type="next" />}
           </section>
@@ -56,7 +56,7 @@ export default function PostPage({ params: { slug } }: Props) {
 
 export function generateStaticParams() {
   const posts = getAllPosts();
-  return posts.map((post) => ({
+  return posts.map(post => ({
     slug: post.path,
   }));
 }
