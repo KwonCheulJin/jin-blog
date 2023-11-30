@@ -3,7 +3,7 @@ import { Post } from '@/types';
 export enum ActionKind {
   title = 'title',
   subTitle = 'subTitle',
-  content = 'content',
+  markdown = 'markdown',
   tags = 'tags',
   clear = 'clear',
 }
@@ -18,7 +18,7 @@ export type Action =
       payload: string;
     }
   | {
-      type: ActionKind.content;
+      type: ActionKind.markdown;
       payload: string;
     }
   | {
@@ -44,10 +44,10 @@ export function postReducer(state: Post, action: Action): Post {
         ...state,
         subTitle: payload,
       };
-    case ActionKind.content:
+    case ActionKind.markdown:
       return {
         ...state,
-        content: payload,
+        markdown: payload,
       };
     case ActionKind.tags:
       return {
@@ -58,7 +58,7 @@ export function postReducer(state: Post, action: Action): Post {
       return {
         title: '',
         subTitle: '',
-        content: '',
+        markdown: '',
         tags: [],
       };
     default:
@@ -69,6 +69,6 @@ export function postReducer(state: Post, action: Action): Post {
 export const initialState: Post = {
   title: '',
   subTitle: '',
-  content: '',
+  markdown: '',
   tags: [],
 };

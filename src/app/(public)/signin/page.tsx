@@ -18,8 +18,10 @@ export default async function SignInPage() {
   return (
     <>
       <TransitionEffect />
-      <Layout className="pt-0 sm:pt-0 md:pt-4 lg:pt-8">
-        <SignIn providers={providers} />
+      <Layout className="flex justify-center pt-0 sm:pt-0 md:pt-4 lg:pt-8">
+        <div className="mb-16 h-80 md:w-2/3 lg:w-96 xl:w-[420px] xs:w-2/3">
+          <SignIn providers={providers} />
+        </div>
       </Layout>
     </>
   );

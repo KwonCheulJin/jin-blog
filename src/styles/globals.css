@@ -101,4 +101,22 @@ body {
   [role='textbox'] {
     height: 30rem;
   }
+  .modal-effect {
+    background: #e8ebf2;
+    box-shadow:
+      inset 9.01px 9.01px 11px #b7babf,
+      inset -9.01px -9.01px 11px #ffffff;
+  }
+  .effect {
+    background: #eef0f4;
+    box-shadow:
+      2.1px 2.1px 8px #77787a,
+      -2.1px -2.1px 8px #ffffff;
+  }
+  .reverse-effect {
+    background: #eef0f4;
+    box-shadow:
+      inset 2.1px 2.1px 8px #77787a,
+      inset -2.1px -2.1px 8px #ffffff;
+  }
 }

@@ -2,7 +2,9 @@
 import { Button } from '@/components/ui/button';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 export default function AuthButton() {
+  const pathname = usePathname();
   const { data: session } = useSession();
   if (session && session.user) {
     return (
@@ -21,7 +23,7 @@ export default function AuthButton() {
     );
   }
   return (
-    <Link href="/signin">
+    <Link href={`/signin?callbackUrl=${pathname}`}>
       <Button variant="ghost" className="ml-4 text-primaryDark">
         Sign In
       </Button>

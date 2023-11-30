@@ -1,5 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { createSupabaseClient } from '@/service/supabase';
+import { createSupabaseAuthClient } from '@/service/supabase';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   if (!supabaseAccessToken) {
     return new Response('Authentication Error', { status: 401 });
   }
-  const supabase = createSupabaseClient(supabaseAccessToken);
+  const supabase = createSupabaseAuthClient(supabaseAccessToken);
 
   const formData = await req.formData();
 
