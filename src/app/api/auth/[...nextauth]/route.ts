@@ -36,6 +36,17 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      const callbackUrl = url.split('?callbackUrl=')[1];
+      if (callbackUrl) {
+        return `${baseUrl}${callbackUrl}`;
+      } else if (url.startsWith('/')) {
+        return `${baseUrl}${url}`;
+      } else if (new URL(url).origin === baseUrl) {
+        return url;
+      }
+      return baseUrl;
+    },
   },
   pages: {
     signIn: '/signin',

@@ -27,7 +27,7 @@ export default function IconsNav() {
   return (
     <nav className="flex flex-wrap items-center justify-center">
       {session && (
-        <Link href="/write" className="mr-4">
+        <Link href="/write" className="mr-4 lg:hidden">
           <Button
             className="rounded-3xl border-black dark:border-white"
             variant="outline"
@@ -74,7 +74,9 @@ export default function IconsNav() {
           <BsMoonStarsFill className="hover:text-gray-500" />
         )}
       </button>
-      <AuthButton />
+      <div className="lg:hidden">
+        <AuthButton />
+      </div>
     </nav>
   );
 }

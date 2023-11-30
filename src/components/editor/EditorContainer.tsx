@@ -33,18 +33,18 @@ export default function EditorContainer() {
     dispatch({ type: ActionKind.subTitle, payload: value });
   };
   const handleMarkdownChange = (markdown: string) => {
-    dispatch({ type: ActionKind.content, payload: markdown });
+    dispatch({ type: ActionKind.markdown, payload: markdown });
   };
 
   return (
     <div className="h-[65vh] w-full p-4 dark:bg-transparent">
-      <Title onChange={handleTitleChange} />
-      <SubTitle onChange={handleSubTitleChange} />
+      <Title title={state.title} onChange={handleTitleChange} />
+      <SubTitle subTitle={state.subTitle} onChange={handleSubTitleChange} />
       <Separate />
       <Tags tags={state.tags} dispatch={dispatch} />
       <Suspense fallback={<Skeleton className="h-[623px] w-full" />}>
         <Editor
-          markdown={state.content}
+          markdown={state.markdown}
           onChange={handleMarkdownChange}
           editorRef={editorRef}
         />

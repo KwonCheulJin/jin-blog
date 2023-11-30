@@ -10,14 +10,14 @@ type Props = {
   editorRef: RefObject<MDXEditorMethods | null>;
 };
 export default function PublishButton({ state, dispatch, editorRef }: Props) {
-  const { title, subTitle, content, tags } = state;
+  const { title, subTitle, markdown, tags } = state;
   const handelMarkdown = async () => {
     const response = await fetch('/api/post', {
       method: 'POST',
       body: JSON.stringify({
         title,
         subTitle,
-        content,
+        markdown,
         tags,
       }),
     });

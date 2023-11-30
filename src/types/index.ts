@@ -17,6 +17,6 @@ export type Education = {
 export type Post = {
   title: string;
   subTitle: string;
-  content: string;
+  markdown: string;
   tags: string[];
 };
