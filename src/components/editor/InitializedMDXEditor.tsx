@@ -20,7 +20,7 @@ import {
 import { useTheme } from 'next-themes';
 interface EditorProps {
   markdown: string;
-  editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
+  editorRef: React.MutableRefObject<MDXEditorMethods | null>;
   onChange: (markdown: string) => void;
 }
 
@@ -30,20 +30,21 @@ export default function Editor({ markdown, onChange, editorRef }: EditorProps) {
     <MDXEditor
       className={`${
         theme === 'dark' ? 'dark-theme dark-editor' : 'light-theme'
-      } h-full w-full overflow-y-scroll rounded-sm border border-black dark:border-gray-100`}
-      contentEditableClassName="prose dark:prose-invert max-w-full py-4 px-8"
+      } h-full w-full overflow-y-scroll dark:bg-transparent dark:caret-primary-500`}
+      contentEditableClassName="prose dark:prose-invert min-w-full min-h-full py-4 text-lg"
+      placeholder="당신의 이야기를 적어보세요...."
       onChange={onChange}
       markdown={markdown}
       ref={editorRef}
       plugins={[
         toolbarPlugin({
           toolbarContents: () => (
-            <>
+            <div className="flex w-full">
               <BlockTypeSelect />
               <BoldItalicUnderlineToggles />
               <ListsToggle />
               <UndoRedo />
-            </>
+            </div>
           ),
         }),
         listsPlugin(),

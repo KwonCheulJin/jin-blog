@@ -1,5 +1,5 @@
 'use client';
-import Layout from '@/components/common/Layout';
+import ComponentLayout from '@/components/common/ComponentLayout';
 import TransitionEffect from '@/components/common/TransitionEffect';
 import MarkdownViewer from '@/components/post/MarkdownViewer';
 import PostLayout from '@/components/post/PostLayout';
@@ -10,13 +10,13 @@ export default function TestDetailPage() {
   return (
     <>
       <TransitionEffect />
-      <Layout className="pt-16">
-        <section className="w-full">
+      <section className="w-full">
+        <ComponentLayout className="pt-16">
           <PostLayout>
             <MarkdownViewer content={tempMarkdown} />
           </PostLayout>
-        </section>
-      </Layout>
+        </ComponentLayout>
+      </section>
     </>
   );
 }

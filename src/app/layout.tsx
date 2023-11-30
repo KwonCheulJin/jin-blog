@@ -2,8 +2,6 @@ import '@/styles/globals.css';
 import '@mdxeditor/editor/style.css';
 
 import { Inter as FontSans } from 'next/font/google';
-import Header from '@/components/common/Header';
-import Footer from '@/components/common/Footer';
 import type { Metadata } from 'next';
 
 import { Analytics } from '@vercel/analytics/react';
@@ -63,11 +61,7 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <Header />
-          <main className="flex min-h-screen w-full items-center text-dark dark:text-light">
-            {children}
-          </main>
-          <Footer />
+          {children}
           <Analytics />
         </Providers>
       </body>
