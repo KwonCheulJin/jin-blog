@@ -1,6 +1,6 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import Modal from '@/components/auth/Modal';
 import SignIn from '@/components/auth/SignIn';
+import { authOptions } from '@/service/auth';
 import { getServerSession } from 'next-auth';
 import { getProviders } from 'next-auth/react';
 import { redirect } from 'next/navigation';
