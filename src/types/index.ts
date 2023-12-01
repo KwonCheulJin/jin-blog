@@ -20,3 +20,14 @@ export type Post = {
   markdown: string;
   tags: string[];
 };
+
+export type PostDetail = {
+  id: string;
+  author: string;
+  title: string;
+  sub_title: string;
+  markdown: string;
+  tags: string[];
+  created_at: string;
+  updated_at: string;
+};
