@@ -1,7 +1,7 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import SignIn from '@/components/auth/SignIn';
 import Layout from '@/components/common/Layout';
 import TransitionEffect from '@/components/common/TransitionEffect';
+import { authOptions } from '@/service/auth';
 import { getServerSession } from 'next-auth';
 import { getProviders } from 'next-auth/react';
 import { redirect } from 'next/navigation';

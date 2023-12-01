@@ -1,4 +1,4 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/service/auth';
 import { createSupabaseAuthClient } from '@/service/supabase';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
