@@ -13,36 +13,30 @@ type Props = {
 export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
-      className="prose-code:bg-primary
-      prose max-w-none text-xl font-medium dark:prose-invert prose-p:text-base prose-code:my-1
-      prose-code:rounded-sm prose-code:px-2 prose-code:py-1 prose-li:text-base dark:text-light dark:prose-code:bg-primaryDark dark:prose-code:text-dark"
+      className="prose max-w-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light rounded-none"
       remarkPlugins={[[remarkGfm, { fence: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
-        code({
-          node,
-          inline,
-          className,
-          children,
-          style,
-          ...props
-        }: CodeProps) {
-          // console.log(
-          // '🚀 ~ file: MarkdownViewer.tsx:24 ~ code ~ className:',
-          // className?.split(':'),
-          // );
-
-          //TODO: 코드 타이틀 스타일 만들것
-          const match = /language-(\w+)/.exec(className ?? '');
+        code({ node, inline, className, children, style, ...props }: CodeProps) {
+          const title = className?.split(':')[1];
+          const match = /language-(\w+)/.exec(className || '');
           return !inline && match ? (
-            <SyntaxHighlighter
-              style={oneDark}
-              language={match[1]}
-              PreTag="div"
-              {...props}
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
+            <div>
+              {title && (
+                <header className="px-3 py-5 rounded-tl-sm rounded-tr-sm bg-zinc-700 font-mono font-bold">
+                  {title}
+                </header>
+              )}
+              <SyntaxHighlighter
+                style={oneDark}
+                language={match[1]}
+                PreTag="div"
+                className="!rounded-tl-none !rounded-tr-none !mt-0"
+                {...props}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            </div>
           ) : (
             <code className={className} {...props}>
               {children}
