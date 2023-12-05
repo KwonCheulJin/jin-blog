@@ -4,7 +4,7 @@ import { readdirSync, readFileSync } from 'fs';
 export type Post = {
   title: string;
   description: string;
-  date: Date;
+  date: string;
   category: string;
   path: string;
   image: string;
@@ -29,7 +29,7 @@ export const getAllPosts = () => {
       return {
         title: matterResult.data.title as string,
         description: matterResult.data.description as string,
-        date: matterResult.data.date as Date,
+        date: matterResult.data.date as string,
         category: matterResult.data.category as string,
         path: matterResult.data.path as string,
         image: matterResult.data.image as string,

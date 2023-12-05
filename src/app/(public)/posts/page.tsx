@@ -3,9 +3,9 @@ import AnimatedText from '@/components/common/AnimatedText';
 import { getAllPosts } from '@/service/posts';
 
 import type { Metadata } from 'next';
-import FeaturedPosts from '@/components/post/FeaturedPosts';
 import PostCard from '@/components/post/PostCard';
 import TransitionEffect from '@/components/common/TransitionEffect';
+import ListLayoutWithTags from '@/components/post/ListLayoutWithTags';
 
 export const metadata: Metadata = {
   title: 'All Posts',
@@ -26,11 +26,7 @@ export default function PostsPage() {
             text="Be positive and Authenticity!"
             className="mb-16 dark:text-light sm:mb-8 sm:!text-6xl lg:!text-7xl xs:!text-5xl"
           />
-          <FeaturedPosts />
-          <h2 className="my-16 mt-32 w-full text-center text-4xl font-bold dark:text-light">
-            All Posts
-          </h2>
-          <ul key="all-posts">{allPosts}</ul>
+          <ListLayoutWithTags posts={posts} title="Posts" />
         </Layout>
       </section>
     </>
