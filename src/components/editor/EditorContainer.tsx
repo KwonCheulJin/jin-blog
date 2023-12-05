@@ -12,16 +12,13 @@ import {
 } from '@/components/editor/reducer';
 
 import { Skeleton } from '@/components/ui/skeleton';
-import { MDXEditorMethods } from '@mdxeditor/editor';
 import dynamic from 'next/dynamic';
-import { ChangeEvent, Suspense, useReducer, useRef } from 'react';
+import { ChangeEvent, Suspense, useReducer } from 'react';
+import { ContextStore } from '@uiw/react-md-editor';
+import onImagePasted from '@/components/editor/onImagePasted';
 
-const Editor = dynamic(() => import('./InitializedMDXEditor'), {
-  ssr: false,
-});
-
+const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 export default function EditorContainer() {
-  const editorRef = useRef<MDXEditorMethods>(null);
   const [state, dispatch] = useReducer(postReducer, initialState);
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +29,19 @@ export default function EditorContainer() {
     const { value } = e.target;
     dispatch({ type: ActionKind.subTitle, payload: value });
   };
-  const handleMarkdownChange = (markdown: string) => {
-    dispatch({ type: ActionKind.markdown, payload: markdown });
+  const handleMarkdownChange = (
+    value?: string,
+    event?: ChangeEvent<HTMLTextAreaElement>,
+    state?: ContextStore,
+  ) => {
+    value && dispatch({ type: ActionKind.markdown, payload: value });
+  };
+
+  const handleImageMarkdown = (value: string) => {
+    dispatch({
+      type: ActionKind.markdown,
+      payload: value,
+    });
   };
 
   return (
@@ -43,19 +51,18 @@ export default function EditorContainer() {
       <Separate />
       <Tags tags={state.tags} dispatch={dispatch} />
       <Suspense fallback={<Skeleton className="h-[623px] w-full" />}>
-        <Editor
-          markdown={state.markdown}
+        <MDEditor
+          value={state.markdown}
           onChange={handleMarkdownChange}
-          editorRef={editorRef}
+          height={500}
+          onDrop={async event => {
+            await onImagePasted(event.dataTransfer, handleImageMarkdown);
+          }}
         />
       </Suspense>
       <div className="flex w-full justify-between border-b border-t py-3">
         <GoBackButton />
-        <PublishButton
-          state={state}
-          dispatch={dispatch}
-          editorRef={editorRef}
-        />
+        <PublishButton state={state} dispatch={dispatch} />
       </div>
     </div>
   );

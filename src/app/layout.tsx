@@ -1,5 +1,4 @@
 import '@/styles/globals.css';
-import '@mdxeditor/editor/style.css';
 
 import { Inter as FontSans } from 'next/font/google';
 import type { Metadata } from 'next';

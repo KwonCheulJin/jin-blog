@@ -1,5 +1,6 @@
-import '@/styles/globals.css';
-import '@mdxeditor/editor/style.css';
+import '@/styles/write-globals.css';
+import '@uiw/react-md-editor/markdown-editor.css';
+import '@uiw/react-markdown-preview/markdown.css';
 
 export default function WriteLayout({
   children,

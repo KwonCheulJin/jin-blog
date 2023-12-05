@@ -1,15 +1,13 @@
 import { Action, ActionKind } from '@/components/editor/reducer';
 import { Button } from '@/components/ui/button';
 import { Post } from '@/types';
-import { MDXEditorMethods } from '@mdxeditor/editor';
-import { Dispatch, RefObject } from 'react';
+import { Dispatch } from 'react';
 
 type Props = {
   state: Post;
   dispatch: Dispatch<Action>;
-  editorRef: RefObject<MDXEditorMethods | null>;
 };
-export default function PublishButton({ state, dispatch, editorRef }: Props) {
+export default function PublishButton({ state, dispatch }: Props) {
   const { title, subTitle, markdown, tags } = state;
   const handelMarkdown = async () => {
     const response = await fetch('/api/post', {
@@ -27,7 +25,6 @@ export default function PublishButton({ state, dispatch, editorRef }: Props) {
       json,
     );
     dispatch({ type: ActionKind.clear, payload: null });
-    editorRef.current?.setMarkdown('');
   };
   return (
     <Button

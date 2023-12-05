@@ -13,17 +13,24 @@ type Props = {
 export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
-      className="prose max-w-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light rounded-none"
+      className="prose max-w-none rounded-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light"
       remarkPlugins={[[remarkGfm, { fence: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
-        code({ node, inline, className, children, style, ...props }: CodeProps) {
+        code({
+          node,
+          inline,
+          className,
+          children,
+          style,
+          ...props
+        }: CodeProps) {
           const title = className?.split(':')[1];
           const match = /language-(\w+)/.exec(className || '');
           return !inline && match ? (
             <div>
               {title && (
-                <header className="px-3 py-5 rounded-tl-sm rounded-tr-sm bg-zinc-700 font-mono font-bold">
+                <header className="overflow-x-scroll rounded-tl-sm rounded-tr-sm bg-zinc-700 px-3 py-5 font-mono font-bold">
                   {title}
                 </header>
               )}
@@ -31,7 +38,7 @@ export default function MarkdownViewer({ content }: Props) {
                 style={oneDark}
                 language={match[1]}
                 PreTag="div"
-                className="!rounded-tl-none !rounded-tr-none !mt-0"
+                className="!mt-0 !rounded-tl-none !rounded-tr-none"
                 {...props}
               >
                 {String(children).replace(/\n$/, '')}
@@ -43,18 +50,41 @@ export default function MarkdownViewer({ content }: Props) {
             </code>
           );
         },
-        img: image => (
-          <div className="flex w-full justify-center">
-            <Image
-              className="object-fit h-auto w-[70%]"
-              src={image.src ?? ''}
-              alt={image.alt ?? ''}
-              width={500}
-              height={550}
-              priority
-            />
-          </div>
-        ),
+        p: (paragraph: { node?: any; children: React.ReactNode }) => {
+          const { node } = paragraph;
+
+          if (node.children[0].tagName === 'img') {
+            const image = node.children[0];
+            const metastring = image.properties.alt;
+            const alt = metastring?.replace(/ *\{[^)]*\} */g, '');
+            const metaWidth = metastring.match(/{([^}]+)x/);
+            const metaHeight = metastring.match(/x([^}]+)}/);
+            const width = metaWidth ? metaWidth[1] : '768';
+            const height = metaHeight ? metaHeight[1] : '432';
+            const isPriority = metastring?.toLowerCase().match('{priority}');
+            const hasCaption = metastring?.toLowerCase().includes('{caption:');
+            const caption = metastring?.match(/{caption: (.*?)}/)?.pop();
+
+            return (
+              <div className="flex w-full justify-center">
+                <Image
+                  src={image.properties.src}
+                  width={width}
+                  height={height}
+                  className="object-fit h-auto w-[70%]"
+                  alt={alt}
+                  priority={isPriority}
+                />
+                {hasCaption ? (
+                  <div className="caption" aria-label={caption}>
+                    {caption}
+                  </div>
+                ) : null}
+              </div>
+            );
+          }
+          return <p>{paragraph.children}</p>;
+        },
       }}
     >
       {content}
