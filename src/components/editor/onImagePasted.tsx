@@ -1,5 +1,5 @@
 import { imageUploadHandler } from '@/lib/imageUploader';
-import insertToTextArea from '@/lib/InsertToTextArea';
+import insertToTextArea from '@/lib/insertToTextArea';
 
 const onImagePasted = async (
   dataTransfer: DataTransfer,

@@ -17,7 +17,7 @@ export default function FeaturedPost({
   return (
     <li className="relative col-span-1 w-full rounded-2xl border border-solid border-dark bg-light p-4 dark:border-light dark:bg-dark">
       <div
-        className="absolute top-0 -right-4 -z-10 h-[103%] w-[102%] rounded-[2.25rem]
+        className="absolute -right-4 top-0 -z-10 h-[103%] w-[102%] rounded-[2.25rem]
       rounded-br-3xl bg-dark dark:bg-light
       sm:h-[104%] sm:w-[103%] sm:rounded-[1.8rem]
       md:h-[104%] md:w-[102%] md:rounded-[1.8rem]
@@ -47,8 +47,8 @@ export default function FeaturedPost({
         </h2>
       </Link>
       <p className="mb-2 truncate text-sm dark:text-light">{description}</p>
-      <time className="text-primary-500 font-semibold dark:text-primaryDark">
-        {date.toLocaleString('ko-KR', {
+      <time className="font-semibold text-primary-500 dark:text-primaryDark">
+        {new Date(date).toLocaleString('ko-KR', {
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',
