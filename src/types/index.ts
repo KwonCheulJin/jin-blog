@@ -16,7 +16,7 @@ export type Education = {
 
 export type Post = {
   title: string;
-  subTitle: string;
+  sub_title: string;
   markdown: string;
   tags: string[];
 };
@@ -30,4 +30,15 @@ export type PostDetail = {
   tags: string[];
   created_at: string;
   updated_at: string;
+};
+
+export type SimplePost = Omit<PostDetail, 'markdown' | 'author'>;
+
+export type Tags = {
+  tags: string;
+};
+
+export type AdjacentPost = {
+  id: string;
+  title: string;
 };

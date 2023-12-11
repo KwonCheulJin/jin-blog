@@ -37,16 +37,18 @@ export default function Modal({ children }: { children: React.ReactNode }) {
   }, [onKeyDown]);
 
   return (
-    <div
-      ref={overlay}
-      className="fixed bottom-0 left-0 right-0 top-0 z-10 mx-auto bg-black/60"
-      onClick={onClick}
-    >
+    <div className=" pt-1">
       <div
-        ref={wrapper}
-        className="absolute left-1/2 top-1/2 h-1/3 -translate-x-1/2 -translate-y-1/2 md:w-2/3 lg:w-96 xl:w-[420px] xs:w-2/3"
+        ref={overlay}
+        className="fixed bottom-0 left-0 right-0 top-0 z-10 mx-auto bg-black/60"
+        onClick={onClick}
       >
-        {children}
+        <div
+          ref={wrapper}
+          className="absolute left-1/2 top-1/2 h-1/3 w-[420px] -translate-x-1/2 -translate-y-1/2 xs:w-[340px]"
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

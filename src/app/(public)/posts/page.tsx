@@ -1,9 +1,7 @@
-import Layout from '@/components/common/Layout';
 import AnimatedText from '@/components/common/AnimatedText';
-import { getAllPosts } from '@/service/posts';
+import { getAllTags, getAllPostsData } from '@/service/posts';
 
 import type { Metadata } from 'next';
-import PostCard from '@/components/post/PostCard';
 import TransitionEffect from '@/components/common/TransitionEffect';
 import ListLayoutWithTags from '@/components/post/ListLayoutWithTags';
 
@@ -12,23 +10,34 @@ export const metadata: Metadata = {
   description: '나의 개발 기록 저장소',
 };
 
-export default function PostsPage() {
-  const posts = getAllPosts();
-  const allPosts = posts.map((post, index) => (
-    <PostCard key={`${post.path}-${index}`} post={post} />
-  ));
+type Props = {
+  searchParams: { [key: string]: string | undefined };
+};
+
+export default async function PostsPage({ searchParams }: Props) {
+  const { start, end, entries, posts } = await getAllPostsData({
+    page: searchParams['page'],
+    per_page: searchParams['per_page'],
+    tag: searchParams['tag'],
+  });
+  const tags = await getAllTags();
+
   return (
     <>
       <TransitionEffect />
-      <section className="flex w-full flex-col items-center justify-center overflow-hidden">
-        <Layout className="pt-16">
-          <AnimatedText
-            text="Be positive and Authenticity!"
-            className="mb-16 dark:text-light sm:mb-8 sm:!text-6xl lg:!text-7xl xs:!text-5xl"
-          />
-          <ListLayoutWithTags posts={posts} title="Posts" />
-        </Layout>
-      </section>
+      <div className="flex w-full flex-col">
+        <AnimatedText
+          text="Be positive and Authenticity!"
+          className="mb-16 mt-4 text-center dark:text-light sm:mb-8"
+        />
+        <ListLayoutWithTags
+          posts={entries}
+          tags={tags}
+          start={start}
+          end={end}
+          total={posts.length}
+        />
+      </div>
     </>
   );
 }

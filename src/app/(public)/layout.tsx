@@ -1,5 +1,6 @@
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
+import SectionContainer from '@/components/common/SectionContainer';
 
 export default function PageLayout({
   children,
@@ -9,13 +10,13 @@ export default function PageLayout({
   modal: React.ReactNode;
 }) {
   return (
-    <>
+    <SectionContainer>
       <Header />
-      <main className="flex min-h-screen w-full items-center text-dark dark:text-light">
+      <main className="flex w-full items-center text-dark dark:text-light">
         {children}
         {modal}
       </main>
       <Footer />
-    </>
+    </SectionContainer>
   );
 }

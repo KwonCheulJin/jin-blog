@@ -1,9 +1,7 @@
 'use client';
 import { ClientSafeProvider, signIn } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { useScreen } from 'usehooks-ts';
 import { v1 } from 'uuid';
 
 type Props = {
@@ -23,11 +21,6 @@ const providerIcons: Record<string, React.ReactNode> = {
   ),
 };
 export default function SignIn({ providers }: Props) {
-  const screen = useScreen();
-
-  if (screen && screen?.width <= 1023) {
-    return redirect('/');
-  }
   return (
     <div className="modal-effect flex h-full w-full items-center justify-center gap-8 rounded-xl bg-white xs:flex-col">
       {Object.values(providers)

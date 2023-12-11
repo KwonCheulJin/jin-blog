@@ -1,6 +1,9 @@
+'use client';
 import { Action, ActionKind } from '@/components/editor/reducer';
 import { Button } from '@/components/ui/button';
+import { AddPost } from '@/service/posts';
 import { Post } from '@/types';
+import { useRouter } from 'next/navigation';
 import { Dispatch } from 'react';
 
 type Props = {
@@ -8,23 +11,13 @@ type Props = {
   dispatch: Dispatch<Action>;
 };
 export default function PublishButton({ state, dispatch }: Props) {
-  const { title, subTitle, markdown, tags } = state;
+  const router = useRouter();
   const handelMarkdown = async () => {
-    const response = await fetch('/api/post', {
-      method: 'POST',
-      body: JSON.stringify({
-        title,
-        subTitle,
-        markdown,
-        tags,
-      }),
-    });
-    const json = await response.json();
-    console.log(
-      '🚀 ~ file: PublishButton.tsx:23 ~ handelMarkdown ~ json:',
-      json,
-    );
-    dispatch({ type: ActionKind.clear, payload: null });
+    const result = await AddPost({ ...state });
+    if (result.status === 200) {
+      dispatch({ type: ActionKind.clear, payload: null });
+      router.push('/posts');
+    }
   };
   return (
     <Button

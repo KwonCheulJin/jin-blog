@@ -2,7 +2,7 @@ import { Post } from '@/types';
 
 export enum ActionKind {
   title = 'title',
-  subTitle = 'subTitle',
+  sub_title = 'sub_title',
   markdown = 'markdown',
   tags = 'tags',
   clear = 'clear',
@@ -14,7 +14,7 @@ export type Action =
       payload: string;
     }
   | {
-      type: ActionKind.subTitle;
+      type: ActionKind.sub_title;
       payload: string;
     }
   | {
@@ -39,10 +39,10 @@ export function postReducer(state: Post, action: Action): Post {
         ...state,
         title: payload,
       };
-    case ActionKind.subTitle:
+    case ActionKind.sub_title:
       return {
         ...state,
-        subTitle: payload,
+        sub_title: payload,
       };
     case ActionKind.markdown:
       return {
@@ -57,7 +57,7 @@ export function postReducer(state: Post, action: Action): Post {
     case ActionKind.clear:
       return {
         title: '',
-        subTitle: '',
+        sub_title: '',
         markdown: '',
         tags: [],
       };
@@ -68,7 +68,7 @@ export function postReducer(state: Post, action: Action): Post {
 
 export const initialState: Post = {
   title: '',
-  subTitle: '',
+  sub_title: '',
   markdown: '',
   tags: [],
 };

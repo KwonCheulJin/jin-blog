@@ -1,15 +1,14 @@
 'use client';
 
-import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
-import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import AuthButton from '@/components/auth/AuthButton';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import { motion } from 'framer-motion';
 
+const MotionButton = motion(Button);
 export default function IconsNav() {
   const { data: session } = useSession();
 
@@ -25,43 +24,33 @@ export default function IconsNav() {
   }
 
   return (
-    <nav className="flex flex-wrap items-center justify-center">
+    <nav className="flex items-center justify-center">
       {session && (
         <Link href="/write" className="mr-4 lg:hidden">
-          <Button
-            className="rounded-3xl border-black dark:border-white"
+          <MotionButton
+            className="rounded-3xl border-black bg-black text-white hover:text-white dark:border-white"
             variant="outline"
+            whileHover={{
+              backgroundColor: [
+                '#121212',
+                'rgba(131,58,180,1)',
+                'rgba(253,29,29,1)',
+                'rgba(252,176,69,1)',
+                'rgba(131,58,180,1)',
+                '#121212',
+              ],
+              transition: { duration: 1, repeat: Infinity },
+            }}
           >
             새 글 작성
-          </Button>
+          </MotionButton>
         </Link>
       )}
-      <motion.a
-        href="https://twitter.com/Charles_kwon77"
-        aria-label="Go to Twitter"
-        target="_blank"
-        rel="noreferrer"
-        whileHover={{ y: -4 }}
-        whileTap={{ scale: 0.9 }}
-        className="mr-3 w-6 text-3xl"
-      >
-        <AiOutlineTwitter className="text-sky-400" />
-      </motion.a>
-      <motion.a
-        href="https://github.com/KwonCheulJin"
-        aria-label="Go to GitHub"
-        target="_blank"
-        whileHover={{ y: -4 }}
-        whileTap={{ scale: 0.9 }}
-        className="mx-3 w-6 text-3xl"
-      >
-        <AiFillGithub className="rounded-full bg-light dark:bg-dark" />
-      </motion.a>
 
       <button
         type="button"
         aria-label="toggleTheme"
-        className="ml-3 w-6 rounded-full text-2xl"
+        className="ml-3 w-6 rounded-full text-2xl lg:ml-0"
         onClick={() =>
           setTheme(
             theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark',
@@ -74,9 +63,6 @@ export default function IconsNav() {
           <BsMoonStarsFill className="hover:text-gray-500" />
         )}
       </button>
-      <div className="lg:hidden">
-        <AuthButton />
-      </div>
     </nav>
   );
 }

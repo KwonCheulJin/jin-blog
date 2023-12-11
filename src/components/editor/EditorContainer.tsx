@@ -27,7 +27,7 @@ export default function EditorContainer() {
   };
   const handleSubTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    dispatch({ type: ActionKind.subTitle, payload: value });
+    dispatch({ type: ActionKind.sub_title, payload: value });
   };
   const handleMarkdownChange = (
     value?: string,
@@ -47,7 +47,7 @@ export default function EditorContainer() {
   return (
     <div className="h-[65vh] w-full p-4 dark:bg-transparent">
       <Title title={state.title} onChange={handleTitleChange} />
-      <SubTitle subTitle={state.subTitle} onChange={handleSubTitleChange} />
+      <SubTitle sub_title={state.sub_title} onChange={handleSubTitleChange} />
       <Separate />
       <Tags tags={state.tags} dispatch={dispatch} />
       <Suspense fallback={<Skeleton className="h-[623px] w-full" />}>

@@ -22,7 +22,7 @@ export default function Experience() {
       <div ref={ref} className="relative mx-auto w-[75%] md:w-full lg:w-[90%]">
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className="absolute left-9 top-4 h-full w-[4px] origin-top bg-dark dark:bg-light md:left-[30px] md:w-[2px] xs:left-[20px]"
+          className="absolute left-9 top-2 h-full w-[4px] origin-top bg-dark dark:bg-primaryDark dark:shadow-2xl md:left-[30px] md:w-[2px] xs:left-[20px]"
         />
 
         <ul className="ml-4 flex w-full flex-col items-start justify-between xs:ml-2">
