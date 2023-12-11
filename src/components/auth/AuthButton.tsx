@@ -8,23 +8,18 @@ export default function AuthButton() {
   const { data: session } = useSession();
   if (session && session.user) {
     return (
-      <div className="ml-4 flex items-center gap-4">
-        <p className="text-primary-500 dark:text-primaryDark">
-          {session.user.name}
-        </p>
-        <Button
-          variant="ghost"
-          className="text-primary-500"
-          onClick={() => signOut()}
-        >
-          Sign Out
-        </Button>
-      </div>
+      <Button
+        variant="ghost"
+        className="hover:bg-transparent"
+        onClick={() => signOut()}
+      >
+        Sign Out
+      </Button>
     );
   }
   return (
     <Link href={`/signin?callbackUrl=${pathname}`}>
-      <Button variant="ghost" className="ml-4 text-primaryDark">
+      <Button variant="ghost" className="hover:bg-transparent">
         Sign In
       </Button>
     </Link>

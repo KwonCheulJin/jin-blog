@@ -1,6 +1,6 @@
-import '@/styles/write-globals.css';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
+import SectionContainer from '@/components/common/SectionContainer';
 
 export default function WriteLayout({
   children,
@@ -8,8 +8,10 @@ export default function WriteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex min-h-screen w-full items-center text-dark dark:text-light">
-      {children}
-    </main>
+    <SectionContainer>
+      <main className="flex min-h-screen w-full items-center text-dark dark:text-light">
+        {children}
+      </main>
+    </SectionContainer>
   );
 }

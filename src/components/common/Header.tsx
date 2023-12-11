@@ -10,7 +10,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <header className="relative z-10 flex w-full items-center justify-between px-32 py-8 font-medium dark:text-light sm:px-8 md:px-12 lg:px-16">
+    <header className="relative z-10 flex w-full items-center justify-between py-10 font-medium dark:text-light lg:px-4">
       <button
         className="hidden flex-col items-center justify-center lg:flex"
         onClick={() => setIsOpen(prev => !prev)}
@@ -38,15 +38,15 @@ export default function Header() {
           <CustomLink href="/about" title="About" className="mx-4" />
           <CustomLink href="/posts" title="Posts" className="mx-4" />
         </nav>
-
-        <IconsNav />
       </div>
 
       {isOpen ? <MobileNav setIsOpen={setIsOpen} /> : null}
 
-      <div className="absolute left-[50%] top-2 translate-x-[-50%]">
+      <div className="absolute left-[50%] top-6 translate-x-[-50%] lg:top-2">
         <Logo />
       </div>
+
+      <IconsNav />
     </header>
   );
 }

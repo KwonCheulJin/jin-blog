@@ -11,7 +11,6 @@ export async function GET(
     .select('*')
     .eq('id', slug)
     .single();
-  console.log('🚀 ~ file: route.ts:13 ~ data, error:', data, error);
 
   return NextResponse.json(data);
 }

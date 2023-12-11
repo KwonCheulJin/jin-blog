@@ -81,13 +81,16 @@ body {
   overflow-x: hidden;
 }
 
-@layer components {
-  .w-md-editor-preview {
-    ul,
-    ol {
-      list-style: revert !important;
-    }
+body .w-md-editor-preview {
+  ul {
+    list-style: disc;
   }
+  ol {
+    list-style: decimal;
+  }
+}
+
+@layer components {
   .modal-effect {
     background: #e8ebf2;
     box-shadow:

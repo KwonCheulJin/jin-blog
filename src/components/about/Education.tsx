@@ -10,18 +10,17 @@ export default function Education() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'center start'],
-    layoutEffect: false,
+    offset: ['start end', 'center center'],
   });
 
   return (
-    <div className="my-64 md:my-32">
+    <div className="mb-16 mt-64 md:mt-32">
       <h2 className="my-32 w-full text-center text-8xl font-bold md:mb-16 md:text-6xl xs:text-4xl">
         Education
       </h2>
       <div ref={ref} className="relative mx-auto w-[75%] md:w-full lg:w-[90%]">
         <motion.div
-          className="absolute left-9 top-6 h-full w-[4px] origin-top bg-dark dark:bg-light md:left-[30px] md:w-[2px] xs:left-[20px]"
+          className="absolute left-9 top-2 h-full w-[4px] origin-top rounded-full bg-dark dark:bg-primaryDark dark:shadow-2xl md:left-[30px] md:w-[2px] xs:left-[20px]"
           style={{ scaleY: scrollYProgress }}
         />
 

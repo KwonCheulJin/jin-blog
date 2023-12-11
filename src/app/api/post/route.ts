@@ -1,8 +1,25 @@
 import { authOptions } from '@/service/auth';
-import { createSupabaseAuthClient } from '@/service/supabase';
+import {
+  createSupabaseAuthClient,
+  createSupabaseClient,
+} from '@/service/supabase';
 import { Post } from '@/types';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET() {
+  const supabase = createSupabaseClient();
+  const { data, error } = await supabase
+    .from('posts')
+    .select('id, title, sub_title, tags, created_at, updated_at');
+
+  return NextResponse.json(data);
+}
+
+export type DataResponse = {
+  data: any[] | null;
+  status: number;
+};
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -13,14 +30,11 @@ export async function POST(req: NextRequest) {
   }
   const supabase = createSupabaseAuthClient(supabaseAccessToken);
 
-  const { title, subTitle, markdown, tags } = (await req.json()) as Post;
+  const { title, sub_title, markdown, tags } = (await req.json()) as Post;
   const { data, error } = await supabase
     .from('posts')
-    .insert([
-      { author: session.user.name, title, sub_title: subTitle, markdown, tags },
-    ])
+    .insert([{ author: session.user.name, title, sub_title, markdown, tags }])
     .select();
-
-  return NextResponse.json(data);
+  const response = { data, status: 200 };
+  return NextResponse.json(response);
 }
-// 'bd03226f-9dbe-4cb2-bcfc-e3b2a8090716'

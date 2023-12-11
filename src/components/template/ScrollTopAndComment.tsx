@@ -19,8 +19,8 @@ export default function ScrollTopAndComment() {
   };
   return (
     <div
-      className={`fixed bottom-8 right-8 hidden flex-col gap-3 ${
-        show ? 'md:flex' : 'md:hidden'
+      className={`fixed bottom-8 right-8 flex-col gap-3 ${
+        show ? 'flex' : 'hidden'
       }`}
     >
       <button
@@ -39,4 +39,3 @@ export default function ScrollTopAndComment() {
     </div>
   );
 }
-

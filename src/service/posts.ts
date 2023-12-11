@@ -1,5 +1,5 @@
-import matter from 'gray-matter';
-import { readdirSync, readFileSync } from 'fs';
+import { DataResponse } from '@/app/api/post/route';
+import { AdjacentPost, PostDetail, SimplePost } from '@/types';
 
 export type Post = {
   title: string;
@@ -11,55 +11,127 @@ export type Post = {
   featured: boolean;
 };
 
-export type PostData = Post & {
-  content: string;
-  next: Post | null;
-  prev: Post | null;
+export type PostData = PostDetail & {
+  next: AdjacentPost | null;
+  prev: AdjacentPost | null;
 };
 
-const FOLDER = 'data/posts';
+const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://www.jin-blog.dev/';
 
-export const getAllPosts = () => {
-  const files = readdirSync(FOLDER);
-  const markdownPosts = files.filter(file => file.endsWith('.md'));
-  const posts = markdownPosts
-    .map(fileName => {
-      const fileContents = readFileSync(`${FOLDER}/${fileName}`, 'utf-8');
-      const matterResult = matter(fileContents);
-      return {
-        title: matterResult.data.title as string,
-        description: matterResult.data.description as string,
-        date: matterResult.data.date as string,
-        category: matterResult.data.category as string,
-        path: matterResult.data.path as string,
-        image: matterResult.data.image as string,
-        featured: matterResult.data.featured as boolean,
-      };
-    })
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+export async function getPostDetail(id: string) {
+  const data = await fetch(`${baseUrl}/api/post/${id}`, {
+    headers: {
+      Accept: 'application/json',
+    },
+    method: 'GET',
+    next: {
+      revalidate: 0,
+    },
+  });
+  const post = (await data.json()) as PostDetail;
+  return post;
+}
 
-  return posts;
+export async function getAllPosts() {
+  const data = await fetch(`${baseUrl}/api/post`, {
+    headers: {
+      Accept: 'application/json',
+    },
+    method: 'GET',
+    next: {
+      revalidate: 0,
+    },
+  });
+  const posts = (await data.json()) as SimplePost[];
+  return posts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
+}
+
+export async function getAllTags() {
+  const posts = await getAllPosts();
+  const tagsArray = posts.map(result => result.tags).flat();
+  const tags = tagsArray.reduce((acc: Record<string, number>, cur: string) => {
+    acc[cur] ? (acc[cur] += 1) : (acc[cur] = 1);
+    return acc;
+  }, {});
+  return tags;
+}
+
+type AllPostsData = {
+  page?: string;
+  per_page?: string;
+  tag?: string;
 };
 
-export function getFeaturedPosts(): Post[] {
-  return getAllPosts().filter(post => post.featured);
+export const DEFAULT_PAGE = '1';
+export const DEFAULT_PER_PAGE = '5';
+
+export async function getAllPostsData({ page, per_page, tag }: AllPostsData) {
+  const posts = await getAllPosts();
+
+  const start =
+    (Number(page ?? DEFAULT_PAGE) - 1) * Number(per_page ?? DEFAULT_PER_PAGE);
+  const end = start + Number(per_page ?? DEFAULT_PER_PAGE);
+
+  const filteredPosts = tag
+    ? posts.filter(post => post.tags.map(tag => tag).includes(tag))
+    : posts;
+
+  const entries = filteredPosts.slice(start, end);
+
+  return {
+    start,
+    end,
+    entries,
+    posts: filteredPosts,
+  };
 }
 
-export function getNonFeaturedPosts(): Post[] {
-  return getAllPosts().filter(post => !post.featured);
-}
-
-export function getPostData(fileName: string): PostData {
-  const fileContents = readFileSync(`${FOLDER}/${fileName}.md`, 'utf-8');
-  const posts = getAllPosts();
-  const post = posts.find(post => post.path === fileName);
-  if (!post) {
-    throw new Error(`${fileName}에 해당하는 포스트를 찾을 수 없음`);
+export async function getPostData(id: string): Promise<PostData> {
+  const { author, markdown } = await getPostDetail(id);
+  const posts = await getAllPosts();
+  const targetPost = posts.find(post => post.id === id);
+  if (!targetPost) {
+    throw new Error(`${id}에 해당하는 포스트를 찾을 수 없음`);
   }
 
-  const index = posts.indexOf(post);
-  const next = index > 0 ? posts[index - 1] : null;
-  const prev = index < posts.length ? posts[index + 1] : null;
-  const content = matter(fileContents).content;
-  return { ...post, content, next, prev };
+  const index = posts.indexOf(targetPost);
+  const next =
+    index > 0
+      ? { id: posts[index - 1].id, title: posts[index - 1].title }
+      : null;
+  const prev =
+    index < posts.length
+      ? { id: posts[index + 1].id, title: posts[index + 1].title }
+      : null;
+  const post = { ...targetPost, author, markdown, next, prev };
+  return post;
+}
+
+export type AddPostType = {
+  title: string;
+  sub_title: string;
+  markdown: string;
+  tags: string[];
+};
+
+export async function AddPost({
+  title,
+  sub_title,
+  markdown,
+  tags,
+}: AddPostType) {
+  const response = await fetch('/api/post', {
+    method: 'POST',
+    body: JSON.stringify({
+      title,
+      sub_title,
+      markdown,
+      tags,
+    }),
+  });
+  const result = (await response.json()) as DataResponse;
+  return result;
 }

@@ -1,11 +1,8 @@
-import { getAllPosts, getPostData } from '@/service/posts';
-import Image from 'next/image';
-import AdjacentPostCard from '@/components/post/AdjacentPostCard';
-import PostContent from '@/components/post/PostContent';
+import { getPostDetail, getAllPosts, getPostData } from '@/service/posts';
 import type { Metadata } from 'next';
-import Layout from '@/components/common/Layout';
 import TransitionEffect from '@/components/common/TransitionEffect';
-import Comment from '@/components/post/Comment';
+import PostLayout from '@/components/post/PostLayout';
+import MarkdownViewer from '@/components/post/MarkdownViewer';
 
 type Props = {
   params: {
@@ -13,50 +10,44 @@ type Props = {
   };
 };
 
-export function generateMetadata({ params: { slug } }: Props): Metadata {
-  const post = getPostData(slug);
-  const { title, description, category } = post;
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const post = await getPostDetail(slug);
+  const { title, sub_title, tags } = post;
 
   return {
     title,
-    description,
-    keywords: category,
+    description: sub_title,
+    keywords: tags,
   };
 }
 
-export default function PostPage({ params: { slug } }: Props) {
-  const post = getPostData(slug);
-  const { title, image, next, prev } = post;
+export default async function PostPage({ params: { slug } }: Props) {
+  const post = await getPostData(slug);
+  const { title, author, tags, created_at, markdown, prev, next } = post;
   return (
     <>
       <TransitionEffect />
-      <Layout className="pt-16 sm:p-4 sm:pt-8 md:p-8 md:pt-12">
-        <article className="overflow-hidden rounded-2xl border-2 border-solid bg-light shadow-lg dark:border-light dark:bg-dark">
-          <Image
-            className="h-1/5 max-h-[500px] w-full"
-            src={`/images/posts/${image}.webp`}
-            alt={title}
-            width={760}
-            height={420}
-            priority
-          />
-          <PostContent post={post} />
-          <section className="w-full border-t border-light">
-            <Comment />
-          </section>
-          <section className="flex border-t border-light shadow-md sm:flex-col md:flex-col lg:flex-row">
-            {prev && <AdjacentPostCard post={prev} type="prev" />}
-            {next && <AdjacentPostCard post={next} type="next" />}
-          </section>
-        </article>
-      </Layout>
+      <section className="w-full">
+        <PostLayout
+          title={title}
+          author={author}
+          tags={tags}
+          created_at={created_at}
+          prev={prev}
+          next={next}
+        >
+          <MarkdownViewer content={markdown} />
+        </PostLayout>
+      </section>
     </>
   );
 }
 
-export function generateStaticParams() {
-  const posts = getAllPosts();
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
   return posts.map(post => ({
-    slug: post.path,
+    slug: post.id,
   }));
 }

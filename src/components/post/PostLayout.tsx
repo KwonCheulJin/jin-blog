@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
 import Link from '@/components/template/Link';
 import PageTitle from '@/components/template/PageTitle';
-import SectionContainer from '@/components/template/SectionContainer';
+
 import ScrollTopAndComment from '@/components/template/ScrollTopAndComment';
 import Image from '@/components/template/Image';
 import Tag from '@/components/template/Tag';
+import { v1 } from 'uuid';
+import { AdjacentPost } from '@/types';
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -15,40 +17,54 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 };
 
 interface LayoutProps {
-  next?: { path: string; title: string };
-  prev?: { path: string; title: string };
+  title: string;
+  author: string;
+  tags: string[];
   children: ReactNode;
+  created_at: string;
+  next: AdjacentPost | null;
+  prev: AdjacentPost | null;
 }
 
-export default function PostLayout({ next, prev, children }: LayoutProps) {
-  const tags = ['blog', 'test', 'post'];
+export default function PostLayout({
+  title,
+  author,
+  tags,
+  children,
+  created_at,
+  next,
+  prev,
+}: LayoutProps) {
   return (
-    <SectionContainer>
+    <>
       <ScrollTopAndComment />
       <article>
-        <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
-          <header className="pt-6 xl:pb-6">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700">
+          <header className="pb-6 pt-6 lg:pb-0">
             <div className="space-y-1 text-center">
               <dl className="space-y-10">
                 <div>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                     <time>
-                      {new Date().toLocaleDateString('ko-KR', postDateTemplate)}
+                      {new Date(created_at).toLocaleDateString(
+                        'ko-KR',
+                        postDateTemplate,
+                      )}
                     </time>
                   </dd>
                 </div>
               </dl>
               <div>
-                <PageTitle>Hello</PageTitle>
+                <PageTitle>{title}</PageTitle>
               </div>
             </div>
           </header>
-          <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
-            <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
+          <div className="grid grid-cols-4 grid-rows-[auto_1fr] gap-x-6 divide-y-0 divide-gray-200 dark:divide-gray-700 lg:block lg:divide-y lg:border-none lg:pb-8">
+            <dl className="border-b border-gray-200 pb-10 pt-11 dark:border-gray-700 lg:border-none lg:pt-6">
               <dt className="sr-only">Authors</dt>
               <dd>
-                <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
+                <ul className="block space-x-0 space-y-8 sm:space-x-12 lg:flex lg:flex-wrap lg:justify-center lg:gap-4">
                   <li className="flex items-center space-x-2">
                     <Image
                       src="/images/my-profile.webp"
@@ -57,89 +73,63 @@ export default function PostLayout({ next, prev, children }: LayoutProps) {
                       alt="avatar"
                       className="h-10 w-10 rounded-full"
                     />
-                    <dl className="whitespace-nowrap text-sm font-medium leading-5">
+                    <dl className="whitespace-nowrap font-medium">
                       <dt className="sr-only">Name</dt>
-                      <dd className="text-gray-900 dark:text-gray-100">
-                        Charles
+                      <dd className="leading-10 text-gray-900 dark:text-gray-100">
+                        {author}
                       </dd>
-                      <dt className="sr-only">Twitter</dt>
-                      {/* <dd>
-                          {author.twitter && (
-                            <Link
-                              href={author.twitter}
-                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                            >
-                              {author.twitter.replace('https://twitter.com/', '@')}
-                            </Link>
-                          )}
-                        </dd> */}
                     </dl>
                   </li>
                 </ul>
               </dd>
             </dl>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pb-8 pt-10 dark:prose-invert">
+            <div className="col-span-3 row-span-2 divide-gray-200 pb-0 dark:divide-gray-700">
+              <div className="prose max-w-none pt-10 dark:prose-invert lg:pb-8">
                 {children}
               </div>
-              <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
-                {/* <Link href={discussUrl(path)} rel="nofollow">
-                  Discuss on Twitter
-                </Link> */}
-                {` • `}
-                {/* <Link href={editUrl(filePath)}>View on GitHub</Link> */}
-              </div>
-              {/* {siteMetadata.comments && (
-                <div
-                  className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
-                  id="comment"
-                >
-                  <Comments slug={slug} />
-                </div>
-              )} */}
             </div>
             <footer>
-              <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
+              <div className="col-start-1 row-start-2 divide-y divide-gray-200 dark:divide-gray-700 md:text-sm md:font-medium md:leading-5">
                 {tags && (
-                  <div className="py-4 xl:py-8">
+                  <div className="py-8 md:py-4">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                       Tags
                     </h2>
                     <div className="flex flex-wrap">
                       {tags.map(tag => (
-                        <Tag key={tag} text={tag} />
+                        <Tag key={v1()} text={tag} />
                       ))}
                     </div>
                   </div>
                 )}
                 {(next || prev) && (
-                  <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                    {prev && prev.path && (
+                  <div className="block space-y-8 py-8 md:flex md:justify-between md:py-4">
+                    {prev && prev.id && (
                       <div>
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${prev.path}`}>{prev.title}</Link>
+                          <Link href={`/posts/${prev.id}`}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
-                    {next && next.path && (
+                    {next && next.id && (
                       <div>
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${next.path}`}>{next.title}</Link>
+                          <Link href={`/posts/${next.id}`}>{next.title}</Link>
                         </div>
                       </div>
                     )}
                   </div>
                 )}
               </div>
-              <div className="pt-4 xl:pt-8">
+              <div className="pt-8 md:pt-4">
                 <Link
-                  href=""
+                  href="/posts"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                   aria-label="Back to the blog"
                 >
@@ -150,6 +140,6 @@ export default function PostLayout({ next, prev, children }: LayoutProps) {
           </div>
         </div>
       </article>
-    </SectionContainer>
+    </>
   );
 }
