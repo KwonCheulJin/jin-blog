@@ -14,6 +14,8 @@ type Props = {
   searchParams: { [key: string]: string | undefined };
 };
 
+export const revalidate = 3600;
+
 export default async function PostsPage({ searchParams }: Props) {
   const { start, end, entries, posts } = await getAllPostsData({
     page: searchParams['page'],
