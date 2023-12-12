@@ -103,7 +103,7 @@ export default function PostLayout({
                   </div>
                 )}
                 {(next || prev) && (
-                  <div className="block space-y-8 py-8 md:flex md:justify-between md:py-4">
+                  <div className="block space-y-8 py-8 md:flex md:justify-between md:gap-4 md:space-y-0 md:py-4">
                     {prev && prev.id && (
                       <div>
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
