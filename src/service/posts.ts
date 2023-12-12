@@ -19,7 +19,7 @@ export type PostData = PostDetail & {
 const baseUrl =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://www.jin-blog.dev/';
+    : 'http://localhost:3000';
 
 export async function getPostDetail(id: string) {
   const data = await fetch(`${baseUrl}/api/post/${id}`, {
