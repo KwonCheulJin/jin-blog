@@ -27,9 +27,6 @@ export async function getPostDetail(id: string) {
       Accept: 'application/json',
     },
     method: 'GET',
-    next: {
-      revalidate: 0,
-    },
   });
   const post = (await data.json()) as PostDetail;
   return post;
@@ -41,9 +38,6 @@ export async function getAllPosts() {
       Accept: 'application/json',
     },
     method: 'GET',
-    next: {
-      revalidate: 0,
-    },
   });
   const posts = (await data.json()) as SimplePost[];
   return posts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
