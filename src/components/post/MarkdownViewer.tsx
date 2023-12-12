@@ -1,5 +1,3 @@
-'use client';
-
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
@@ -15,17 +13,24 @@ type Props = {
 export default function MarkdownViewer({ content }: Props) {
   return (
     <ReactMarkdown
-      className="prose max-w-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light rounded-none"
+      className="prose max-w-none rounded-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light"
       remarkPlugins={[[remarkGfm, { fence: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
-        code({ node, inline, className, children, style, ...props }: CodeProps) {
+        code({
+          node,
+          inline,
+          className,
+          children,
+          style,
+          ...props
+        }: CodeProps) {
           const title = className?.split(':')[1];
           const match = /language-(\w+)/.exec(className || '');
           return !inline && match ? (
             <div>
               {title && (
-                <header className="px-3 py-5 rounded-tl-sm rounded-tr-sm bg-zinc-700 font-mono font-bold">
+                <header className="overflow-x-scroll rounded-tl-sm rounded-tr-sm bg-zinc-700 px-3 py-5 font-mono font-bold">
                   {title}
                 </header>
               )}
@@ -33,7 +38,7 @@ export default function MarkdownViewer({ content }: Props) {
                 style={oneDark}
                 language={match[1]}
                 PreTag="div"
-                className="!rounded-tl-none !rounded-tr-none !mt-0"
+                className="!mt-0 !rounded-tl-none !rounded-tr-none"
                 {...props}
               >
                 {String(children).replace(/\n$/, '')}
@@ -45,18 +50,18 @@ export default function MarkdownViewer({ content }: Props) {
             </code>
           );
         },
-        img: (image) => (
-          <div className="flex justify-center w-full">
+        img: image => {
+          return (
             <Image
-              className="w-[70%] h-auto object-fit"
-              src={image.src || ''}
-              alt={image.alt || ''}
+              className="object-fit h-auto w-full"
+              src={image.src ?? ''}
+              alt={image.alt ?? ''}
               width={500}
               height={550}
               priority
             />
-          </div>
-        ),
+          );
+        },
       }}
     >
       {content}

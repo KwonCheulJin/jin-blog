@@ -3,48 +3,37 @@
 import { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import EducationDetails from './EducationDetails';
+import { educations } from '@/fixtures/education';
+import { v1 } from 'uuid';
 
 export default function Education() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'center start'],
-    layoutEffect: false,
+    offset: ['start end', 'center center'],
   });
 
   return (
-    <div className="my-64 md:my-32">
-      <h2 className="font-bold text-8xl my-32 w-full text-center md:text-6xl xs:text-4xl md:mb-16">
+    <div className="mb-16 mt-64 md:mt-32">
+      <h2 className="my-32 w-full text-center text-8xl font-bold md:mb-16 md:text-6xl xs:text-4xl">
         Education
       </h2>
-      <div ref={ref} className="relative w-[75%] mx-auto lg:w-[90%] md:w-full">
+      <div ref={ref} className="relative mx-auto w-[75%] md:w-full lg:w-[90%]">
         <motion.div
-          className="absolute left-9 top-0 w-[4px] h-full bg-dark origin-top dark:bg-light md:w-[2px] md:left-[30px] xs:left-[20px]"
+          className="absolute left-9 top-2 h-full w-[4px] origin-top rounded-full bg-dark dark:bg-primaryDark dark:shadow-2xl md:left-[30px] md:w-[2px] xs:left-[20px]"
           style={{ scaleY: scrollYProgress }}
         />
 
-        <ul
-          key="education-details"
-          className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2"
-        >
-          <EducationDetails
-            type="메가테라"
-            time="2023-2023"
-            place="(주)시드웨일"
-            info="프론트엔드 생존코스 3기"
-          />
-          <EducationDetails
-            type="구공팩토리"
-            time="2021-2021"
-            place="(주)흥미랩"
-            info="90일 간의 코딩 프로젝트 프로그램(부트캠프)"
-          />
-          <EducationDetails
-            type="스파르타 코딩클럽"
-            time="2021-2021"
-            place="팀스파르타(주)"
-            info="온라인 개발 교육 플랫폼(웹개발 기본교육 수료)"
-          />
+        <ul className="ml-4 flex w-full flex-col items-start justify-between xs:ml-2">
+          {educations.map(education => (
+            <EducationDetails
+              key={v1()}
+              type={education.type}
+              time={education.time}
+              place={education.place}
+              info={education.info}
+            />
+          ))}
         </ul>
       </div>
     </div>

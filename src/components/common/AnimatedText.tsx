@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
 const quote = {
@@ -34,17 +35,24 @@ type Props = {
   className?: string;
 };
 
-export default function AnimatedText({ text, className = '' }: Props) {
+export default function AnimatedText({ text, className }: Props) {
   return (
-    <div className="w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden sm:py-0">
+    <div className="mx-auto flex w-full items-center justify-center overflow-hidden py-2 text-center sm:py-0">
       <motion.h1
-        className={`inline-block w-full text-dark font-bold capitalize text-8xl ${className}`}
+        className={cn(
+          'w-full text-left text-7xl font-bold capitalize text-dark dark:text-light sm:text-4xl lg:text-center lg:text-5xl xs:text-4xl',
+          className,
+        )}
         variants={quote}
         initial="initial"
         animate="animate"
       >
         {text.split(' ').map((word, index) => (
-          <motion.span key={`${word}-${index}`} className="inline-block" variants={singleWord}>
+          <motion.span
+            key={`${word}-${index}`}
+            className="inline-block"
+            variants={singleWord}
+          >
             {word}&nbsp;
           </motion.span>
         ))}
