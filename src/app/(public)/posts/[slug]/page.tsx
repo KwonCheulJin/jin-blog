@@ -23,6 +23,8 @@ export async function generateMetadata({
   };
 }
 
+export const revalidate = 3600;
+
 export default async function PostPage({ params: { slug } }: Props) {
   const post = await getPostData(slug);
   const { title, author, tags, created_at, markdown, prev, next } = post;
