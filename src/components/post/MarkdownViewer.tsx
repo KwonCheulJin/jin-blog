@@ -50,40 +50,17 @@ export default function MarkdownViewer({ content }: Props) {
             </code>
           );
         },
-        p: (paragraph: { node?: any; children: React.ReactNode }) => {
-          const { node } = paragraph;
-
-          if (node.children[0].tagName === 'img') {
-            const image = node.children[0];
-            const metastring = image.properties.alt;
-            const alt = metastring?.replace(/ *\{[^)]*\} */g, '');
-            const metaWidth = metastring.match(/{([^}]+)x/);
-            const metaHeight = metastring.match(/x([^}]+)}/);
-            const width = metaWidth ? metaWidth[1] : '768';
-            const height = metaHeight ? metaHeight[1] : '432';
-            const isPriority = metastring?.toLowerCase().match('{priority}');
-            const hasCaption = metastring?.toLowerCase().includes('{caption:');
-            const caption = metastring?.match(/{caption: (.*?)}/)?.pop();
-
-            return (
-              <div className="flex w-full justify-center">
-                <Image
-                  src={image.properties.src}
-                  width={width}
-                  height={height}
-                  className="object-fit h-auto w-[70%]"
-                  alt={alt}
-                  priority={isPriority}
-                />
-                {hasCaption ? (
-                  <div className="caption" aria-label={caption}>
-                    {caption}
-                  </div>
-                ) : null}
-              </div>
-            );
-          }
-          return <p>{paragraph.children}</p>;
+        img: image => {
+          return (
+            <Image
+              className="object-fit h-auto w-full"
+              src={image.src ?? ''}
+              alt={image.alt ?? ''}
+              width={500}
+              height={550}
+              priority
+            />
+          );
         },
       }}
     >

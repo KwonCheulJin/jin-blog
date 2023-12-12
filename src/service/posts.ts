@@ -92,18 +92,20 @@ export async function getAllPostsData({ page, per_page, tag }: AllPostsData) {
 export async function getPostData(id: string): Promise<PostData> {
   const { author, markdown } = await getPostDetail(id);
   const posts = await getAllPosts();
+
   const targetPost = posts.find(post => post.id === id);
   if (!targetPost) {
     throw new Error(`${id}에 해당하는 포스트를 찾을 수 없음`);
   }
 
   const index = posts.indexOf(targetPost);
+
   const next =
     index > 0
       ? { id: posts[index - 1].id, title: posts[index - 1].title }
       : null;
   const prev =
-    index < posts.length
+    index < posts.length - 1
       ? { id: posts[index + 1].id, title: posts[index + 1].title }
       : null;
   const post = { ...targetPost, author, markdown, next, prev };
