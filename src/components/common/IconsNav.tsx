@@ -11,7 +11,6 @@ import { motion } from 'framer-motion';
 const MotionButton = motion(Button);
 export default function IconsNav() {
   const { data: session } = useSession();
-  console.log('🚀 ~ file: IconsNav.tsx:14 ~ IconsNav ~ session:', session);
 
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
