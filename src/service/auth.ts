@@ -34,6 +34,7 @@ export const authOptions: NextAuthOptions = {
         };
         session.supabaseAccessToken = jwt.sign(payload, signingSecret);
       }
+      session.user.type = user.type;
       return session;
     },
     async redirect({ url, baseUrl }) {
