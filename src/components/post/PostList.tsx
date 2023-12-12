@@ -17,7 +17,7 @@ export default function PostList({ posts }: Props) {
         return (
           <li
             key={v1()}
-            className="min-w-[744px] max-w-[744px] py-5 xl:min-w-[456px] xl:max-w-[456px] xs:min-w-[350px] xs:max-w-[350px]"
+            className="min-w-[724px] max-w-[724px] py-5 xl:min-w-[436px] xl:max-w-[436px] xs:min-w-[350px] xs:max-w-[350px]"
           >
             <article className="flex flex-col space-y-2">
               <dl>
@@ -55,7 +55,7 @@ export default function PostList({ posts }: Props) {
       {Array.from({ length: EMPTY_LENGTH }).map(_ => (
         <li
           key={v1()}
-          className="h-[164px] min-w-[744px] max-w-[744px] py-5 xl:min-w-[456px] xl:max-w-[456px] xs:min-w-[350px] xs:max-w-[350px]"
+          className="h-[164px] min-w-[724px] max-w-[724px] py-5 xl:min-w-[436px] xl:max-w-[436px] xs:min-w-[350px] xs:max-w-[350px]"
         ></li>
       ))}
     </ul>

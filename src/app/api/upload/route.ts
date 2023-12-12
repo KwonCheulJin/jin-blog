@@ -15,13 +15,15 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData();
 
   const file = formData.get('image') as File;
+  const formats = file.type.split('/')[1];
+
   if (!file) {
     return NextResponse.json({ error: 'No files received.' }, { status: 400 });
   }
 
   const { data, error } = await supabase.storage
     .from('images')
-    .upload(`post_${Date.now()}.png`, file);
+    .upload(`post_${Date.now()}.${formats}`, file);
   const { data: url } = supabase.storage
     .from('images')
     .getPublicUrl(data?.path ?? '');
