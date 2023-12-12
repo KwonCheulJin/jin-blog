@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 const MotionButton = motion(Button);
 export default function IconsNav() {
   const { data: session } = useSession();
+  console.log('🚀 ~ file: IconsNav.tsx:14 ~ IconsNav ~ session:', session);
 
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -25,7 +26,7 @@ export default function IconsNav() {
 
   return (
     <nav className="flex items-center justify-center">
-      {session && (
+      {session && session.user.type === 'HOST' && (
         <Link href="/write" className="mr-4 lg:hidden">
           <MotionButton
             className="rounded-3xl border-black bg-black text-white hover:text-white dark:border-white"

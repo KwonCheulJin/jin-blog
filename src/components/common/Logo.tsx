@@ -30,8 +30,8 @@ export default function Logo() {
         ) : (
           <p>
             {session?.user
-              ? session?.user.name?.slice(0, 3).toUpperCase()
-              : 'JIN'}
+              ? session?.user.name?.slice(0, 1).toUpperCase()
+              : 'DEV'}
           </p>
         )}
       </motion.div>
