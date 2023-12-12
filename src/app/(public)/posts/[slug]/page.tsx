@@ -1,5 +1,6 @@
-import { getPostDetail, getAllPosts, getPostData } from '@/service/posts';
-import type { Metadata } from 'next';
+// import { getPostDetail, getAllPosts } from '@/service/posts';
+import { getPostData } from '@/service/posts';
+// import type { Metadata } from 'next';
 import TransitionEffect from '@/components/common/TransitionEffect';
 import PostLayout from '@/components/post/PostLayout';
 import MarkdownViewer from '@/components/post/MarkdownViewer';
@@ -10,18 +11,18 @@ type Props = {
   };
 };
 
-export async function generateMetadata({
-  params: { slug },
-}: Props): Promise<Metadata> {
-  const post = await getPostDetail(slug);
-  const { title, sub_title, tags } = post;
+// export async function generateMetadata({
+//   params: { slug },
+// }: Props): Promise<Metadata> {
+//   const post = await getPostDetail(slug);
+//   const { title, sub_title, tags } = post;
 
-  return {
-    title,
-    description: sub_title,
-    keywords: tags,
-  };
-}
+//   return {
+//     title,
+//     description: sub_title,
+//     keywords: tags,
+//   };
+// }
 
 export default async function PostPage({ params: { slug } }: Props) {
   const post = await getPostData(slug);
@@ -45,9 +46,9 @@ export default async function PostPage({ params: { slug } }: Props) {
   );
 }
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map(post => ({
-    slug: post.id,
-  }));
-}
+// export async function generateStaticParams() {
+//   const posts = await getAllPosts();
+//   return posts.map(post => ({
+//     slug: post.id,
+//   }));
+// }
