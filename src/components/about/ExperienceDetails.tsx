@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import LiIcon from './LiIcon';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 type Props = {
   position: string;
@@ -23,9 +24,8 @@ export default function ExperienceDetail({
   const ref = useRef<HTMLLIElement>(null);
   return (
     <li
-      key={company}
       ref={ref}
-      className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-start justify-between
+      className="my-8 mx-auto flex w-[60%] flex-col items-start justify-between first:mt-0 last:mb-0
       md:w-[80%]"
     >
       <LiIcon reference={ref} />
@@ -35,19 +35,21 @@ export default function ExperienceDetail({
         transition={{ duration: 0.5, type: 'spring' }}
       >
         <div className="flex items-center justify-start md:flex-col md:items-start">
-          <h3 className="capitalize font-bold text-2xl sm:text-xl xs:text-lg">{position}&nbsp;</h3>
-          <a
+          <h3 className="text-2xl font-bold capitalize sm:text-xl xs:text-lg">
+            {position}&nbsp;
+          </h3>
+          <Link
             href={companyLink}
             target="_blank"
-            className="text-primary dark:text-primaryDark capitalize font-bold text-2xl sm:text-xl xs:text-lg"
+            className="text-primary-500 text-2xl font-bold capitalize dark:text-primaryDark sm:text-xl xs:text-lg"
           >
             @{company}
-          </a>
+          </Link>
         </div>
-        <span className="capitalize font-medium text-dark/75 dark:text-light/75 xs:text-sm">
+        <span className="font-medium capitalize text-dark/75 dark:text-light/75 xs:text-sm">
           {time} | {address}
         </span>
-        <p className="font-medium w-full md:text-sm">{work}</p>
+        <p className="w-full font-medium md:text-sm">{work}</p>
       </motion.div>
     </li>
   );

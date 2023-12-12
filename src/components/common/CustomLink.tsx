@@ -11,11 +11,18 @@ type Props = {
 export default function CustomLink({ href, title, className = '' }: Props) {
   const pathname = usePathname()?.split('/')[1];
   return (
-    <Link href={href} className={`${className} relative group`}>
+    <Link
+      href={href}
+      className={`${className} group relative hover:text-primary-500 ${
+        `/${pathname}` === href ? 'text-primary-500 dark:text-primary-500' : ''
+      }`}
+    >
       {title}
       <span
-        className={`h-[2px] inline-block w-0 bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-          `/${pathname}` === href ? 'w-full' : 'w-0'
+        className={`ease absolute -bottom-0.5 left-0 inline-block h-[2px] w-0 bg-dark transition-[width] duration-300 group-hover:w-full group-hover:bg-primary-500 ${
+          `/${pathname}` === href
+            ? 'w-full bg-primary-500 dark:bg-primary-500'
+            : 'w-0'
         } dark:bg-light`}
       >
         &nbsp;

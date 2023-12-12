@@ -15,7 +15,7 @@ export default function LiIcon({ reference }: Props) {
   return (
     <figure className="absolute left-0 stroke-dark dark:stroke-light">
       <svg
-        className="-rotate-90 md:w-[60px] md:h-[60px] xs:w-[40px] xs:h-[40px]"
+        className="-rotate-90 md:h-[60px] md:w-[60px] xs:h-[40px] xs:w-[40px]"
         width="75"
         height="75"
         viewBox="0 0 100 100"
@@ -24,20 +24,20 @@ export default function LiIcon({ reference }: Props) {
           cx="75"
           cy="50"
           r="20"
-          className="stoke-primary dark:stroke-primaryDark stroke-1 fill-none"
+          className="stoke-primary-500 fill-none stroke-1 dark:stroke-primaryDark"
         />
         <motion.circle
           cx="75"
           cy="50"
           r="20"
-          className="stroke-[5px] fill-light dark:fill-dark"
+          className="fill-light stroke-[5px] dark:fill-dark"
           style={{ pathLength: scrollYProgress }}
         />
         <circle
           cx="75"
           cy="50"
           r="10"
-          className="animate-pulse stroke-1 fill-primary dark:fill-primaryDark"
+          className="fill-primary-500 animate-pulse stroke-1 dark:fill-primaryDark"
         />
       </svg>
     </figure>

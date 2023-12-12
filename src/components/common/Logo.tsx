@@ -1,15 +1,16 @@
 'use client';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-
-const MotionLink = motion(Link);
+import AuthButton from '@/components/auth/AuthButton';
+import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 export default function Logo() {
+  const { data: session } = useSession();
+  const [isVisible, setIsVisible] = useState(false);
   return (
-    <div className="flex items-center justify-center mt-2">
-      <MotionLink
-        href="/"
-        className="w-16 h-16 bg-dark text-light flex items-center justify-center rounded-full text-2xl font-bold border-2 border-solid border-transparent dark:border-light"
+    <div className="mt-2 flex flex-col items-center justify-center">
+      <motion.div
+        className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-solid border-transparent bg-dark text-2xl font-bold text-light dark:border-light"
         whileHover={{
           backgroundColor: [
             '#121212',
@@ -21,9 +22,19 @@ export default function Logo() {
           ],
           transition: { duration: 1, repeat: Infinity },
         }}
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
       >
-        JIN
-      </MotionLink>
+        {isVisible ? (
+          <AuthButton />
+        ) : (
+          <p>
+            {session?.user
+              ? session?.user.name?.slice(0, 3).toUpperCase()
+              : 'JIN'}
+          </p>
+        )}
+      </motion.div>
     </div>
   );
 }
