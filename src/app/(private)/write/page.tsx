@@ -6,10 +6,10 @@ import EditorContainer from '@/components/editor/EditorContainer';
 
 export const metadata: Metadata = {
   title: '새 글 작성',
-  description: '나의 개발 기록 저장소',
+  description: '에디터 페이지',
 };
 
-export default function TestPage() {
+export default function WritePage() {
   return (
     <>
       <TransitionEffect />

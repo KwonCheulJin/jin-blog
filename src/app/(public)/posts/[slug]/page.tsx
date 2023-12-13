@@ -14,6 +14,13 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const post = await getPostDetail(slug);
+  if (!post) {
+    return {
+      title: null,
+      description: null,
+      keywords: null,
+    };
+  }
   const { title, sub_title, tags } = post;
 
   return {
@@ -27,6 +34,7 @@ export const revalidate = 3600;
 
 export default async function PostPage({ params: { slug } }: Props) {
   const post = await getPostData(slug);
+
   const { title, author, tags, created_at, markdown, prev, next } = post;
   return (
     <>

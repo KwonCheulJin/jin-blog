@@ -3,8 +3,9 @@ import Tag from '@/components/template/Tag';
 import Link from '@/components/template/Link';
 import { SimplePost } from '@/types';
 import { v1 } from 'uuid';
+import { MAX_LENGTH } from '@/lib/constants';
+import TimeAgoContainer from '@/components/post/TimeAgoContainer';
 
-const MAX_LENGTH = 5;
 type Props = {
   posts: SimplePost[];
 };
@@ -25,6 +26,9 @@ export default function PostList({ posts }: Props) {
                 <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                   <time dateTime={created_at}>
                     {formatDate(created_at, 'ko-KR')}
+                  </time>
+                  <time className="ml-2 text-primary-500">
+                    (<TimeAgoContainer datetime={created_at} />)
                   </time>
                 </dd>
               </dl>
