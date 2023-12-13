@@ -5,32 +5,14 @@ import CustomLink from './CustomLink';
 import MobileNav from './MobileNav';
 import IconsNav from './IconsNav';
 import { useState } from 'react';
+import HamburgerBar from '@/components/common/HamburgerBar';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <header className="relative z-10 flex w-full items-center justify-between py-10 font-medium dark:text-light lg:px-4">
-      <button
-        className="hidden flex-col items-center justify-center lg:flex"
-        onClick={() => setIsOpen(prev => !prev)}
-      >
-        <span
-          className={`block h-0.5 w-6 rounded-sm bg-dark transition-all duration-300 ease-out dark:bg-light ${
-            isOpen ? 'translate-y-1 rotate-45' : '-translate-y-0.5'
-          }`}
-        ></span>
-        <span
-          className={`my-0.5 block h-0.5 w-6 rounded-sm bg-dark transition-all duration-300 ease-out dark:bg-light ${
-            isOpen ? 'opacity-0' : 'opacity-100'
-          }`}
-        ></span>
-        <span
-          className={`block h-0.5 w-6 rounded-sm bg-dark transition-all duration-300 ease-out dark:bg-light ${
-            isOpen ? '-translate-y-1 -rotate-45' : 'translate-y-0.5'
-          }`}
-        ></span>
-      </button>
+      <HamburgerBar isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <div className="flex w-full items-center justify-between lg:hidden">
         <nav>

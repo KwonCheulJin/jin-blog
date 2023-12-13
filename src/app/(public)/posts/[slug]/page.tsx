@@ -14,6 +14,13 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const post = await getPostDetail(slug);
+  if (!post) {
+    return {
+      title: null,
+      description: null,
+      keywords: null,
+    };
+  }
   const { title, sub_title, tags } = post;
 
   return {
