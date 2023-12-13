@@ -3,12 +3,8 @@ import Tag from '@/components/template/Tag';
 import Link from '@/components/template/Link';
 import { SimplePost } from '@/types';
 import { v1 } from 'uuid';
-import TimeAgo from 'timeago-react';
-import * as timeago from 'timeago.js';
-import ko from 'timeago.js/lib/lang/ko';
 import { MAX_LENGTH } from '@/lib/constants';
-
-timeago.register('ko', ko);
+import TimeAgoContainer from '@/components/post/TimeAgoContainer';
 
 type Props = {
   posts: SimplePost[];
@@ -32,7 +28,7 @@ export default function PostList({ posts }: Props) {
                     {formatDate(created_at, 'ko-KR')}
                   </time>
                   <time className="ml-2 text-primary-500">
-                    (<TimeAgo datetime={created_at} locale="ko" />)
+                    (<TimeAgoContainer datetime={created_at} />)
                   </time>
                 </dd>
               </dl>
