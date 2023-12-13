@@ -2,7 +2,7 @@ import { createSupabaseClient } from '@/service/supabase';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-  request: NextRequest,
+  _: NextRequest,
   { params: { slug } }: { params: { slug: string } },
 ) {
   const supabase = createSupabaseClient();
@@ -12,5 +12,8 @@ export async function GET(
     .eq('id', slug)
     .single();
 
+  if (error) {
+    return new NextResponse('Not Found', { status: 404 });
+  }
   return NextResponse.json(data);
 }

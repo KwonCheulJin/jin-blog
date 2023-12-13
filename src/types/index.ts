@@ -42,3 +42,21 @@ export type AdjacentPost = {
   id: string;
   title: string;
 };
+
+export type PostData = PostDetail & {
+  next: AdjacentPost | null;
+  prev: AdjacentPost | null;
+};
+
+export type AllPostsData = {
+  page?: string;
+  per_page?: string;
+  tag?: string;
+};
+
+export type AddPostType = {
+  title: string;
+  sub_title: string;
+  markdown: string;
+  tags: string[];
+};
