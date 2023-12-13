@@ -1,6 +1,7 @@
 'use client';
 import Link from '@/components/template/Link';
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/service/posts';
+import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
+
 import { useSearchParams } from 'next/navigation';
 import { v1 } from 'uuid';
 type Props = {
@@ -26,7 +27,7 @@ export default function TagList({ tags }: Props) {
             All Posts
           </Link>
         )}
-        <div className="h-full max-h-[calc(100vh-203px)] overflow-auto">
+        <div className="h-full max-h-[764px] overflow-auto">
           <ul>
             {sortedTags.map(tag => {
               return (

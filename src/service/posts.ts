@@ -1,34 +1,26 @@
 import { DataResponse } from '@/app/api/post/route';
-import { AdjacentPost, PostDetail, SimplePost } from '@/types';
-
-export type Post = {
-  title: string;
-  description: string;
-  date: string;
-  category: string;
-  path: string;
-  image: string;
-  featured: boolean;
-};
-
-export type PostData = PostDetail & {
-  next: AdjacentPost | null;
-  prev: AdjacentPost | null;
-};
-
-const baseUrl =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : 'https://www.jin-blog.dev/';
+import { DEFAULT_PAGE, DEFAULT_PER_PAGE, baseUrl } from '@/lib/constants';
+import {
+  AddPostType,
+  AllPostsData,
+  PostData,
+  PostDetail,
+  SimplePost,
+} from '@/types';
 
 export async function getPostDetail(id: string) {
-  const data = await fetch(`${baseUrl}/api/post/${id}`, {
+  const res = await fetch(`${baseUrl}/api/post/${id}`, {
     headers: {
       Accept: 'application/json',
     },
     method: 'GET',
   });
-  const post = (await data.json()) as PostDetail;
+  const { data, status } = await res.json();
+
+  if (status === 404) {
+    return null;
+  }
+  const post = data as PostDetail;
   return post;
 }
 
@@ -39,6 +31,7 @@ export async function getAllPosts() {
     },
     method: 'GET',
   });
+
   const posts = (await data.json()) as SimplePost[];
   return posts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 }
@@ -52,15 +45,6 @@ export async function getAllTags() {
   }, {});
   return tags;
 }
-
-type AllPostsData = {
-  page?: string;
-  per_page?: string;
-  tag?: string;
-};
-
-export const DEFAULT_PAGE = '1';
-export const DEFAULT_PER_PAGE = '5';
 
 export async function getAllPostsData({ page, per_page, tag }: AllPostsData) {
   const posts = await getAllPosts();
@@ -84,7 +68,10 @@ export async function getAllPostsData({ page, per_page, tag }: AllPostsData) {
 }
 
 export async function getPostData(id: string): Promise<PostData> {
-  const { author, markdown } = await getPostDetail(id);
+  const detail = await getPostDetail(id);
+  if (!detail) {
+    throw new Error(`${id}에 해당하는 포스트를 찾을 수 없음`);
+  }
   const posts = await getAllPosts();
 
   const targetPost = posts.find(post => post.id === id);
@@ -102,16 +89,15 @@ export async function getPostData(id: string): Promise<PostData> {
     index < posts.length - 1
       ? { id: posts[index + 1].id, title: posts[index + 1].title }
       : null;
-  const post = { ...targetPost, author, markdown, next, prev };
+  const post = {
+    ...targetPost,
+    author: detail.author,
+    markdown: detail.markdown,
+    next,
+    prev,
+  };
   return post;
 }
-
-export type AddPostType = {
-  title: string;
-  sub_title: string;
-  markdown: string;
-  tags: string[];
-};
 
 export async function AddPost({
   title,

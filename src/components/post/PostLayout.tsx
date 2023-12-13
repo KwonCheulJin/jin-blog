@@ -1,3 +1,4 @@
+'use client';
 import { ReactNode } from 'react';
 import Link from '@/components/template/Link';
 import PageTitle from '@/components/template/PageTitle';
@@ -7,6 +8,10 @@ import Image from '@/components/template/Image';
 import Tag from '@/components/template/Tag';
 import { v1 } from 'uuid';
 import { AdjacentPost } from '@/types';
+import TimeAgo from 'timeago-react';
+import * as timeago from 'timeago.js';
+import ko from 'timeago.js/lib/lang/ko';
+timeago.register('ko', ko);
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -51,6 +56,9 @@ export default function PostLayout({
                         'ko-KR',
                         postDateTemplate,
                       )}
+                    </time>
+                    <time className="ml-2 text-primary-500">
+                      (<TimeAgo datetime={created_at} locale="ko" />)
                     </time>
                   </dd>
                 </div>
