@@ -13,7 +13,7 @@ export async function GET(
     .single();
 
   if (error) {
-    return NextResponse.json({ data: null, status: 404 });
+    return new NextResponse('Not Found', { status: 404 });
   }
-  return NextResponse.json({ data, status: 200 });
+  return NextResponse.json(data);
 }

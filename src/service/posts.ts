@@ -7,20 +7,21 @@ import {
   PostDetail,
   SimplePost,
 } from '@/types';
+import { notFound } from 'next/navigation';
 
 export async function getPostDetail(id: string) {
-  const res = await fetch(`${baseUrl}/api/post/${id}`, {
+  const data = await fetch(`${baseUrl}/api/post/${id}`, {
     headers: {
       Accept: 'application/json',
     },
     method: 'GET',
   });
-  const { data, status } = await res.json();
 
-  if (status === 404) {
-    return null;
+  if (data.status === 404) {
+    return undefined;
   }
-  const post = data as PostDetail;
+  const post = (await data.json()) as PostDetail;
+
   return post;
 }
 
@@ -68,15 +69,15 @@ export async function getAllPostsData({ page, per_page, tag }: AllPostsData) {
 }
 
 export async function getPostData(id: string): Promise<PostData> {
-  const detail = await getPostDetail(id);
-  if (!detail) {
-    throw new Error(`${id}에 해당하는 포스트를 찾을 수 없음`);
+  const postDetail = await getPostDetail(id);
+  if (!postDetail) {
+    notFound();
   }
   const posts = await getAllPosts();
 
   const targetPost = posts.find(post => post.id === id);
   if (!targetPost) {
-    throw new Error(`${id}에 해당하는 포스트를 찾을 수 없음`);
+    notFound();
   }
 
   const index = posts.indexOf(targetPost);
@@ -91,8 +92,8 @@ export async function getPostData(id: string): Promise<PostData> {
       : null;
   const post = {
     ...targetPost,
-    author: detail.author,
-    markdown: detail.markdown,
+    author: postDetail?.author,
+    markdown: postDetail?.markdown,
     next,
     prev,
   };
