@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     icon: ['/images/favicon-32x32.png', '/images/favicon-16x16.png'],
     apple: '/images/apple-touch-icon.png',
   },
-  manifest: '/images/site.webmanifest',
   openGraph: {
     images: '/images/ogImage.png',
   },
