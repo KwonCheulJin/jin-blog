@@ -1,10 +1,10 @@
 'use client';
 
 import PostList from '@/components/post/PostList';
-import TagList from '@/components/post/TagList';
-import Pagination from '@/components/post/Pagination';
 import { SimplePost } from '@/types';
 import { Suspense } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
+import dynamic from 'next/dynamic';
 
 type ListLayoutProps = {
   posts: SimplePost[];
@@ -13,6 +13,13 @@ type ListLayoutProps = {
   end: number;
   total: number;
 };
+
+const TagList = dynamic(() => import('@/components/post/TagList'), {
+  ssr: false,
+});
+const Pagination = dynamic(() => import('@/components/post/Pagination'), {
+  ssr: false,
+});
 
 export default function ListLayoutWithTags({
   posts,
@@ -24,12 +31,18 @@ export default function ListLayoutWithTags({
   return (
     <div className="flex flex-col">
       <div className="flex justify-center">
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <Skeleton className="h-[820px] min-w-[300px] max-w-[300px]" />
+          }
+        >
           <TagList tags={tags} />
         </Suspense>
         <PostList posts={posts} />
       </div>
-      <Suspense fallback={null}>
+      <Suspense
+        fallback={<Skeleton className="h-[80px] min-w-[744px] max-w-[744px]" />}
+      >
         <Pagination
           hasNextPage={end < total}
           hasPrevPage={start > 0}
