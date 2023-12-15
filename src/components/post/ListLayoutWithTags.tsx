@@ -1,10 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 'use client';
 
 import PostList from '@/components/post/PostList';
 import TagList from '@/components/post/TagList';
 import Pagination from '@/components/post/Pagination';
 import { SimplePost } from '@/types';
+import { Suspense } from 'react';
 
 type ListLayoutProps = {
   posts: SimplePost[];
@@ -24,14 +24,18 @@ export default function ListLayoutWithTags({
   return (
     <div className="flex flex-col">
       <div className="flex justify-center">
-        <TagList tags={tags} />
+        <Suspense fallback={null}>
+          <TagList tags={tags} />
+        </Suspense>
         <PostList posts={posts} />
       </div>
-      <Pagination
-        hasNextPage={end < total}
-        hasPrevPage={start > 0}
-        total={total}
-      />
+      <Suspense fallback={null}>
+        <Pagination
+          hasNextPage={end < total}
+          hasPrevPage={start > 0}
+          total={total}
+        />
+      </Suspense>
     </div>
   );
 }
