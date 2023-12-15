@@ -115,9 +115,7 @@ export default function PostLayout({
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/posts/${prev.id}`} prefetch={false}>
-                            {prev.title}
-                          </Link>
+                          <Link href={`/posts/${prev.id}`}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
@@ -127,9 +125,7 @@ export default function PostLayout({
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/posts/${next.id}`} prefetch={false}>
-                            {next.title}
-                          </Link>
+                          <Link href={`/posts/${next.id}`}>{next.title}</Link>
                         </div>
                       </div>
                     )}
@@ -139,7 +135,6 @@ export default function PostLayout({
               <div className="pt-8 md:pt-4">
                 <Link
                   href="/posts"
-                  prefetch={false}
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                   aria-label="Back to the blog"
                 >
