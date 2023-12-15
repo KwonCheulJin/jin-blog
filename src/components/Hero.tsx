@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="w-[49%] pr-16 lg:pb-12 lg:pr-0">
         <Image
           className="h-auto w-full rounded-full"
-          src="/images/my-profile.webp"
+          src="/images/my-profile.png"
           alt="my-profile"
           width={250}
           height={250}

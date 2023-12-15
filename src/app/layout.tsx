@@ -24,10 +24,12 @@ export const metadata: Metadata = {
     'Jin, blog, front-end, 프론트앤드, 개발, 개발 블로그, React, Next.js, Dev Log, Dev, Log',
   description: 'front-end developer Jin',
   icons: {
-    icon: '/favicon.ico',
+    icon: ['/images/favicon-32x32.png', '/images/favicon-16x16.png'],
+    apple: '/images/apple-touch-icon.png',
   },
+  manifest: '/images/site.webmanifest',
   openGraph: {
-    images: '/images/my-profile.png',
+    images: '/images/ogImage.png',
   },
   other: {
     'google-site-verification': 'PeVMqbjqq47qprclWhUS3i860ni8J5wXWOfc8Xy1_98',
