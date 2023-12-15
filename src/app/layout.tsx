@@ -2,7 +2,7 @@ import '@/styles/globals.css';
 
 import { Inter as FontSans } from 'next/font/google';
 import type { Metadata } from 'next';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import ManageScript from '@/components/common/ManageScript';
 import { Providers } from '@/context/Providers';
@@ -68,6 +68,7 @@ export default function RootLayout({
           {children}
           <Analytics />
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
