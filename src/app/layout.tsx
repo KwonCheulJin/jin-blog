@@ -8,6 +8,7 @@ import ManageScript from '@/components/common/ManageScript';
 import { Providers } from '@/context/Providers';
 import { cn } from '@/lib/utils';
 import ScrollUp from '@/components/common/ScrollUp';
+import { Suspense } from 'react';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -54,7 +55,9 @@ export default function RootLayout({
         content="#000"
       />
       <ManageScript />
-      <ScrollUp />
+      <Suspense fallback={null}>
+        <ScrollUp />
+      </Suspense>
       <body
         className={cn(
           'min-h-screen w-full bg-light font-mont dark:bg-dark',
