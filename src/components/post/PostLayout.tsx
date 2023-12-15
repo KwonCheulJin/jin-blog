@@ -72,7 +72,7 @@ export default function PostLayout({
                 <ul className="block space-x-0 space-y-8 sm:space-x-12 lg:flex lg:flex-wrap lg:justify-center lg:gap-4">
                   <li className="flex items-center space-x-2">
                     <Image
-                      src="/images/my-profile.webp"
+                      src="/images/author.png"
                       width={38}
                       height={38}
                       alt="avatar"
