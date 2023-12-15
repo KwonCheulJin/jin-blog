@@ -19,6 +19,7 @@
     "@uiw/react-markdown-preview": "^4.2.2",
     "@uiw/react-md-editor": "^4.0.1",
     "@vercel/analytics": "^0.1.11",
+    "@vercel/speed-insights": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "eslint": "8.36.0",
