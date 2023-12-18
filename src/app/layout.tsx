@@ -40,20 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <meta
-        name="theme-color"
-        media="(prefers-color-scheme: light)"
-        content="#fff"
-      />
-      <meta
-        name="theme-color"
-        media="(prefers-color-scheme: dark)"
-        content="#000"
-      />
       <ManageScript />
-      {/* <Suspense fallback={null}>
-        <ScrollUp />
-      </Suspense> */}
       <body
         className={cn(
           'min-h-screen w-full bg-light font-mont dark:bg-dark',
