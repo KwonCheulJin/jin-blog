@@ -21,26 +21,33 @@ export const authOptions: NextAuthOptions = {
     url: process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY ?? '',
   }) as Adapter,
+  session: { strategy: 'jwt' },
   callbacks: {
-    async session({ session, user }) {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.type;
+      }
+      return token;
+    },
+    async session({ session, token }) {
       const signingSecret = process.env.SUPABASE_JWT_SECRET;
-      if (signingSecret && user.type === 'HOST') {
+      if (signingSecret && token.role === 'HOST') {
         const payload = {
           aud: 'authenticated',
           exp: Math.floor(new Date(session.expires).getTime() / 1000),
-          sub: user.id,
-          email: user.email,
+          sub: token.id,
+          email: token.email,
           role: 'authenticated',
         };
         session.supabaseAccessToken = jwt.sign(payload, signingSecret);
       }
-      session.user.type = user.type;
+      session.user.type = token.role as 'HOST' | 'VISITORS';
       return session;
     },
     async redirect({ url, baseUrl }) {
       const callbackUrl = url.split('?callbackUrl=')[1];
       if (callbackUrl) {
-        return `${baseUrl}${callbackUrl}`;
+        return `${baseUrl}${callbackUrl.replaceAll('%2F', '/')}`;
       } else if (url.startsWith('/')) {
         return `${baseUrl}${url}`;
       } else if (new URL(url).origin === baseUrl) {
@@ -49,7 +56,9 @@ export const authOptions: NextAuthOptions = {
       return baseUrl;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
   pages: {
     signIn: '/signin',
   },
