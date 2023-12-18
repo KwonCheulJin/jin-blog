@@ -5,7 +5,7 @@ category: 나의생각
 description: 오랜만에 테스트 블로그, 생각들 정리
 path: test-blog
 image: test-blog
-featured: true
+featured: false
 ---
 
 ## 1. 기본에 사용하던 맥북 정리
