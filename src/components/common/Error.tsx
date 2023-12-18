@@ -19,7 +19,7 @@ export default function Error({ message }: Props) {
       </div>
       <div>
         <MotionImage
-          src="/images/ghost.png"
+          src="https://iozhvnavvkkqttsrqiyc.supabase.co/storage/v1/object/public/images/ghost.png"
           alt="ghost"
           width={250}
           height={250}

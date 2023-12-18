@@ -50,6 +50,7 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.0.4",
     "@next/eslint-plugin-next": "^14.0.2",
     "@ngneat/falso": "^7.1.1",
     "@tailwindcss/typography": "^0.5.9",
@@ -69,6 +70,7 @@
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",

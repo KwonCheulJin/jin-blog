@@ -26,7 +26,6 @@ export const metadata: Metadata = {
   description: 'front-end developer Jin',
   icons: {
     icon: ['/images/favicon-32x32.png', '/images/favicon-16x16.png'],
-    apple: '/images/apple-touch-icon.png',
   },
   openGraph: {
     images: '/images/ogImage.png',

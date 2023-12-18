@@ -57,7 +57,7 @@ export default function IconsNav() {
           )
         }
       >
-        {theme === 'dark' ? (
+        {theme === 'dark' || resolvedTheme === 'dark' ? (
           <BsSunFill className="m-0 text-yellow-500" />
         ) : (
           <BsMoonStarsFill className="hover:text-gray-500" />
