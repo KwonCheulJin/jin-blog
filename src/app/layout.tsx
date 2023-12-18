@@ -2,13 +2,11 @@ import '@/styles/globals.css';
 
 import { Inter as FontSans } from 'next/font/google';
 import type { Metadata } from 'next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from '@vercel/analytics/react';
 import ManageScript from '@/components/common/ManageScript';
 import { Providers } from '@/context/Providers';
 import { cn } from '@/lib/utils';
-import ScrollUp from '@/components/common/ScrollUp';
-import { Suspense } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -53,9 +51,9 @@ export default function RootLayout({
         content="#000"
       />
       <ManageScript />
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <ScrollUp />
-      </Suspense>
+      </Suspense> */}
       <body
         className={cn(
           'min-h-screen w-full bg-light font-mont dark:bg-dark',
@@ -64,9 +62,9 @@ export default function RootLayout({
       >
         <Providers>
           {children}
-          <Analytics />
+          <Analytics mode="production" />
+          <SpeedInsights />
         </Providers>
-        <SpeedInsights />
       </body>
     </html>
   );

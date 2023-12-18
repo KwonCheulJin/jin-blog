@@ -1,3 +1,4 @@
+'use client';
 import Script from 'next/script';
 import { GTM_ID } from '@/lib/gtm';
 
@@ -6,7 +7,7 @@ export default function ManageScript() {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
-        crossOrigin="anonymous"
+        strategy="afterInteractive"
       />
       <Script id="google-analytics">
         {`
