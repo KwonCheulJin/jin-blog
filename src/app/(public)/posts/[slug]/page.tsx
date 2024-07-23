@@ -1,8 +1,8 @@
-import { getPostDetail, getAllPosts, getPostData } from '@/service/posts';
-import type { Metadata } from 'next';
 import TransitionEffect from '@/components/common/TransitionEffect';
-import PostLayout from '@/components/post/PostLayout';
 import MarkdownViewer from '@/components/post/MarkdownViewer';
+import PostLayout from '@/components/post/PostLayout';
+import { getAllPosts, getPostData, getPostDetail } from '@/service/posts';
+import type { Metadata } from 'next';
 
 type Props = {
   params: {
@@ -30,7 +30,7 @@ export async function generateMetadata({
   };
 }
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export default async function PostPage({ params: { slug } }: Props) {
   const post = await getPostData(slug);
