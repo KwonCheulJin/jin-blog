@@ -2,9 +2,9 @@
 import GoBackButton from '@/components/editor/GoBackButton';
 import PublishButton from '@/components/editor/PublishButton';
 import Separate from '@/components/editor/Separate';
-import SubTitle from '@/components/editor/SubTitle';
-import Tags from '@/components/editor/Tags';
-import Title from '@/components/editor/Title';
+import SubTitleInput from '@/components/editor/SubTitleInput';
+import TagsInput from '@/components/editor/TagsInput';
+import TitleInput from '@/components/editor/TitleInput';
 
 import onImagePasted from '@/components/editor/onImagePasted';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -32,10 +32,10 @@ export default function EditorContainer() {
 
   return (
     <div className="h-[65vh] w-full p-4 dark:bg-transparent">
-      <Title />
-      <SubTitle />
+      <TitleInput />
+      <SubTitleInput />
       <Separate />
-      <Tags />
+      <TagsInput />
       <Suspense fallback={<Skeleton className="h-[623px] w-full" />}>
         <MDEditor
           value={addPost.markdown}
