@@ -1,14 +1,14 @@
+
 import { authOptions } from '@/service/auth';
-import {
-  createSupabaseAuthClient,
-  createSupabaseClient,
-} from '@/service/supabase';
-import { Post } from '@/types';
+import { Post, PostDetail } from '@/types';
+import { supabaseServer } from '@/utils/supabase/server';
 import { getServerSession } from 'next-auth';
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
-  const supabase = createSupabaseClient();
+  const cookieStore = cookies()
+  const supabase = supabaseServer(cookieStore);
   const { data, error } = await supabase
     .from('posts')
     .select('id, title, sub_title, tags, created_at, updated_at');
@@ -16,25 +16,29 @@ export async function GET() {
   return NextResponse.json(data);
 }
 
-export type DataResponse = {
-  data: any[] | null;
+export type DataResponse<T> = {
+  data: T | null;
   status: number;
 };
 
 export async function POST(req: NextRequest) {
+  const cookieStore = cookies()
   const session = await getServerSession(authOptions);
   const supabaseAccessToken = session?.supabaseAccessToken;
 
   if (!supabaseAccessToken) {
     return new Response('Authentication Error', { status: 401 });
   }
-  const supabase = createSupabaseAuthClient(supabaseAccessToken);
+  const supabase = supabaseServer(cookieStore, supabaseAccessToken);
 
   const { title, sub_title, markdown, tags } = (await req.json()) as Post;
   const { data, error } = await supabase
     .from('posts')
-    .insert([{ author: session.user.name, title, sub_title, markdown, tags }])
+    .insert([{ author: session.user.name ?? '', title, sub_title, markdown, tags }])
     .select();
-  const response = { data, status: 200 };
+  if (error) {
+    return new Response('Not Found Error', { status: 404 });
+  }
+  const response:Array<PostDetail> = data ;
   return NextResponse.json(response);
 }

@@ -1,16 +1,9 @@
-import { DataResponse } from '@/app/api/post/route';
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
-import {
-  AddPostType,
-  AllPostsData,
-  PostData,
-  PostDetail,
-  SimplePost,
-} from '@/types';
+import { BASE_URL, DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
+import { AllPostsData, PostData, PostDetail, SimplePost } from '@/types';
 import { notFound } from 'next/navigation';
 
 export async function getPostDetail(id: string) {
-  const data = await fetch(`/api/post/${id}`, {
+  const data = await fetch(`${BASE_URL}/api/post/${id}`, {
     headers: {
       Accept: 'application/json',
     },
@@ -26,7 +19,7 @@ export async function getPostDetail(id: string) {
 }
 
 export async function getAllPosts() {
-  const data = await fetch(`/api/post`, {
+  const data = await fetch(`${BASE_URL}/api/post`, {
     headers: {
       Accept: 'application/json',
     },
@@ -98,23 +91,4 @@ export async function getPostData(id: string): Promise<PostData> {
     prev,
   };
   return post;
-}
-
-export async function AddPost({
-  title,
-  sub_title,
-  markdown,
-  tags,
-}: AddPostType) {
-  const response = await fetch(`/api/post`, {
-    method: 'POST',
-    body: JSON.stringify({
-      title,
-      sub_title,
-      markdown,
-      tags,
-    }),
-  });
-  const result = (await response.json()) as DataResponse;
-  return result;
 }

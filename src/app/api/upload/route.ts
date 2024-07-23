@@ -1,16 +1,19 @@
+
 import { authOptions } from '@/service/auth';
-import { createSupabaseAuthClient } from '@/service/supabase';
+import { supabaseServer } from '@/utils/supabase/server';
 import { getServerSession } from 'next-auth';
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
+  const cookieStore = cookies()
   const session = await getServerSession(authOptions);
   const supabaseAccessToken = session?.supabaseAccessToken;
 
   if (!supabaseAccessToken) {
     return new Response('Authentication Error', { status: 401 });
   }
-  const supabase = createSupabaseAuthClient(supabaseAccessToken);
+  const supabase = supabaseServer(cookieStore, supabaseAccessToken);
 
   const formData = await req.formData();
 
