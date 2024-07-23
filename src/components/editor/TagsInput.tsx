@@ -5,7 +5,7 @@ import { usePostStore } from '@/store/post';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { v1 } from 'uuid';
 
-export default function Tags() {
+export default function TagsInput() {
   const { addPost, setAddPost } = usePostStore();
   const [input, setInput] = useState('');
 
