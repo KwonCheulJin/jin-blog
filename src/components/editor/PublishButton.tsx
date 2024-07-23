@@ -1,23 +1,19 @@
 'use client';
-import { Action, ActionKind } from '@/components/editor/reducer';
 import { Button } from '@/components/ui/button';
-import { AddPost } from '@/service/posts';
-import { Post } from '@/types';
+import { usePostStore } from '@/store/post';
 import { useRouter } from 'next/navigation';
-import { Dispatch } from 'react';
 
-type Props = {
-  state: Post;
-  dispatch: Dispatch<Action>;
-};
-export default function PublishButton({ state, dispatch }: Props) {
+export default function PublishButton() {
+  const { addPost, setAddPostInit } = usePostStore();
   const router = useRouter();
   const handelMarkdown = async () => {
-    const result = await AddPost({ ...state });
-    if (result.status === 200) {
-      dispatch({ type: ActionKind.clear, payload: null });
-      router.push('/posts');
-    }
+    console.log('🚀 ~ handelMarkdown ~ addPost:', addPost);
+    setAddPostInit();
+    // const result = await AddPost(addPost);
+    // if (result.status === 200) {
+    //   setAddPostInit();
+    //   router.push('/posts');
+    // }
   };
   return (
     <Button
