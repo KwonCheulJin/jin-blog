@@ -1,6 +1,6 @@
 import { usePostStore } from '@/store/post';
 
-export default function Title() {
+export default function TitleInput() {
   const { addPost, setAddPost } = usePostStore();
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
