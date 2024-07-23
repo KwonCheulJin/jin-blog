@@ -1,19 +1,23 @@
-import { createSupabaseClient } from '@/service/supabase';
+
+import { PostDetail } from '@/types';
+import { supabaseServer } from '@/utils/supabase/server';
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   _: NextRequest,
   { params: { slug } }: { params: { slug: string } },
 ) {
-  const supabase = createSupabaseClient();
+  const cookieStore = cookies()
+  const supabase = supabaseServer(cookieStore);
   const { data, error } = await supabase
     .from('posts')
     .select('*')
     .eq('id', slug)
-    .single();
+    .single()
 
   if (error) {
     return new NextResponse('Not Found', { status: 404 });
   }
-  return NextResponse.json(data);
+  return NextResponse.json<PostDetail>(data);
 }

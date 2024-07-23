@@ -1,22 +1,30 @@
 'use client';
-import { Action, ActionKind } from '@/components/editor/reducer';
 import { Button } from '@/components/ui/button';
-import { AddPost } from '@/service/posts';
-import { Post } from '@/types';
+import { toast } from '@/components/ui/use-toast';
+import { revalidatePostsAll } from '@/lib/action';
+import { postApi } from '@/service/api/postApi';
+import { usePostStore } from '@/store/post';
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { Dispatch } from 'react';
 
-type Props = {
-  state: Post;
-  dispatch: Dispatch<Action>;
-};
-export default function PublishButton({ state, dispatch }: Props) {
+export default function PublishButton() {
+  const { addPost, setAddPostInit } = usePostStore();
   const router = useRouter();
   const handelMarkdown = async () => {
-    const result = await AddPost({ ...state });
-    if (result.status === 200) {
-      dispatch({ type: ActionKind.clear, payload: null });
+    try {
+      await postApi.publishPost(addPost);
+      setAddPostInit();
+      revalidatePostsAll();
       router.push('/posts');
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 404) {
+          toast({
+            variant: 'destructive',
+            description: `${e.response.data.message}`,
+          });
+        }
+      }
     }
   };
   return (

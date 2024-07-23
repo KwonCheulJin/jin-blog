@@ -1,6 +1,4 @@
-
 import { authOptions } from '@/service/auth';
-import { Post, PostDetail } from '@/types';
 import { supabaseServer } from '@/utils/supabase/server';
 import { getServerSession } from 'next-auth';
 import { cookies } from 'next/headers';
@@ -10,16 +8,13 @@ export async function GET() {
   const cookieStore = cookies()
   const supabase = supabaseServer(cookieStore);
   const { data, error } = await supabase
-    .from('posts')
-    .select('id, title, sub_title, tags, created_at, updated_at');
+    .from('comments')
+    .select(
+      'id, blog_post_id, parent_comment_id, user_id, content, created_at, updated_at',
+    );
 
   return NextResponse.json(data);
 }
-
-export type DataResponse<T> = {
-  data: T | null;
-  status: number;
-};
 
 export async function POST(req: NextRequest) {
   const cookieStore = cookies()
@@ -31,14 +26,9 @@ export async function POST(req: NextRequest) {
   }
   const supabase = supabaseServer(cookieStore, supabaseAccessToken);
 
-  const { title, sub_title, markdown, tags } = (await req.json()) as Post;
   const { data, error } = await supabase
-    .from('posts')
-    .insert([{ author: session.user.name ?? '', title, sub_title, markdown, tags }])
+    .from('comments')
     .select();
-  if (error) {
-    return new Response('Not Found Error', { status: 404 });
-  }
-  const response:Array<PostDetail> = data ;
+  const response = { data, status: 200 };
   return NextResponse.json(response);
 }
