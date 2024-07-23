@@ -1,19 +1,31 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { toast } from '@/components/ui/use-toast';
+import { revalidatePostsAll } from '@/lib/action';
+import { postApi } from '@/service/api/postApi';
 import { usePostStore } from '@/store/post';
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 export default function PublishButton() {
   const { addPost, setAddPostInit } = usePostStore();
   const router = useRouter();
   const handelMarkdown = async () => {
-    console.log('🚀 ~ handelMarkdown ~ addPost:', addPost);
-    setAddPostInit();
-    // const result = await AddPost(addPost);
-    // if (result.status === 200) {
-    //   setAddPostInit();
-    //   router.push('/posts');
-    // }
+    try {
+      await postApi.publishPost(addPost);
+      setAddPostInit();
+      revalidatePostsAll();
+      router.push('/posts');
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 404) {
+          toast({
+            variant: 'destructive',
+            description: `${e.response.data.message}`,
+          });
+        }
+      }
+    }
   };
   return (
     <Button

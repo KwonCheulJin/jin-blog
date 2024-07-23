@@ -1,7 +1,9 @@
+import { BASE_URL } from '@/lib/constants';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export default class BaseApi {
   protected static instance: AxiosInstance = axios.create({
+    baseURL: BASE_URL,
     headers: {
       'Content-Type': 'application/json',
     },

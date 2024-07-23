@@ -1,9 +1,9 @@
 import AnimatedText from '@/components/common/AnimatedText';
-import { getAllTags, getAllPostsData } from '@/service/posts';
+import { getAllPostsData, getAllTags } from '@/service/posts';
 
-import type { Metadata } from 'next';
 import TransitionEffect from '@/components/common/TransitionEffect';
 import ListLayoutWithTags from '@/components/post/ListLayoutWithTags';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'All Posts',
@@ -14,7 +14,7 @@ type Props = {
   searchParams: { [key: string]: string | undefined };
 };
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export default async function PostsPage({ searchParams }: Props) {
   const { start, end, entries, posts } = await getAllPostsData({
