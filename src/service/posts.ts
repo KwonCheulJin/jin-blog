@@ -1,5 +1,5 @@
 import { DataResponse } from '@/app/api/post/route';
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE, baseUrl } from '@/lib/constants';
+import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
 import {
   AddPostType,
   AllPostsData,
@@ -10,7 +10,7 @@ import {
 import { notFound } from 'next/navigation';
 
 export async function getPostDetail(id: string) {
-  const data = await fetch(`${baseUrl}/api/post/${id}`, {
+  const data = await fetch(`/api/post/${id}`, {
     headers: {
       Accept: 'application/json',
     },
@@ -26,7 +26,7 @@ export async function getPostDetail(id: string) {
 }
 
 export async function getAllPosts() {
-  const data = await fetch(`${baseUrl}/api/post`, {
+  const data = await fetch(`/api/post`, {
     headers: {
       Accept: 'application/json',
     },
@@ -106,7 +106,7 @@ export async function AddPost({
   markdown,
   tags,
 }: AddPostType) {
-  const response = await fetch('/api/post', {
+  const response = await fetch(`/api/post`, {
     method: 'POST',
     body: JSON.stringify({
       title,

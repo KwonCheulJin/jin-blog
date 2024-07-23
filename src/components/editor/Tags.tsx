@@ -1,16 +1,12 @@
 'use client';
 
-import { Action, ActionKind } from '@/components/editor/reducer';
 import { Button } from '@/components/ui/button';
-import { KeyboardEvent, ChangeEvent, useState, Dispatch } from 'react';
+import { usePostStore } from '@/store/post';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { v1 } from 'uuid';
 
-type Props = {
-  tags: string[];
-  dispatch: Dispatch<Action>;
-};
-
-export default function Tags({ tags, dispatch }: Props) {
+export default function Tags() {
+  const { addPost, setAddPost } = usePostStore();
   const [input, setInput] = useState('');
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -23,8 +19,8 @@ export default function Tags({ tags, dispatch }: Props) {
       e.preventDefault();
       const trimmedInput = input.trim();
 
-      if (trimmedInput.length > 0 && !tags.includes(trimmedInput)) {
-        dispatch({ type: ActionKind.tags, payload: [...tags, trimmedInput] });
+      if (trimmedInput.length > 0 && !addPost.tags.includes(trimmedInput)) {
+        setAddPost({ ...addPost, tags: [...addPost.tags, trimmedInput] });
       }
       setInput('');
     }
@@ -35,14 +31,14 @@ export default function Tags({ tags, dispatch }: Props) {
   };
 
   const onRemoveTag = (targetTag: string) => {
-    dispatch({
-      type: ActionKind.tags,
-      payload: tags.filter(tag => tag !== targetTag),
+    setAddPost({
+      ...addPost,
+      tags: addPost.tags.filter(tag => tag !== targetTag),
     });
   };
   return (
     <div className="my-3 px-3">
-      {tags.map(tag => (
+      {addPost.tags.map(tag => (
         <Button
           className="mr-3 rounded-3xl bg-primary-500 hover:bg-primaryDark hover:text-black"
           variant="ghost"
