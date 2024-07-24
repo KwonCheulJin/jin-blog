@@ -1,0 +1,85 @@
+'use client';
+
+import { CloseIcon } from '@/components/liveblocks/icons/CloseIcon';
+import { DocumentCompleteIcon } from '@/components/liveblocks/icons/DocumentCompleteIcon';
+import { DocumentMagnifyingIcon } from '@/components/liveblocks/icons/DocumentMagnifyingIcon';
+import { PlusIcon } from '@/components/liveblocks/icons/PlusIcon';
+import { ThreadData } from '@liveblocks/client';
+import { Thread } from '@liveblocks/react-ui';
+import { useThreads } from '@liveblocks/react/suspense';
+import { useMemo } from 'react';
+import styles from './Sidebar.module.css';
+
+type Props = {
+  onClose: () => void;
+};
+
+export function Sidebar({ onClose }: Props) {
+  const { threads } = useThreads();
+
+  const resolvedThreadCount = useMemo(() => {
+    return threads.filter(thread => thread.resolved).length;
+  }, [threads]);
+
+  return (
+    <div className={styles.sidebarWrapper}>
+      <div className={styles.sidebar} data-scrollbar="thin">
+        <div className={styles.sidebarTop}>
+          <div className={styles.sidebarThreadsResolved}>
+            {resolvedThreadCount === threads.length ? (
+              <DocumentCompleteIcon opacity="0.7" />
+            ) : (
+              <DocumentMagnifyingIcon opacity="0.7" />
+            )}
+            {resolvedThreadCount}/{threads.length} threads resolved
+          </div>
+          <button onClick={onClose} className={styles.sidebarClose}>
+            <span className="sr-only">Close menu</span>
+            <CloseIcon width={12} height={12} />
+          </button>
+        </div>
+        <div className={styles.sidebarThreadList}>
+          {threads.length ? (
+            threads.sort(sortResolved).map(thread => (
+              <div
+                key={thread.id}
+                className={styles.sidebarThread}
+                data-thread-resolved={thread.resolved || undefined}
+              >
+                <Thread thread={thread} indentCommentContent={false} />
+              </div>
+            ))
+          ) : (
+            <CreateThreadMessage />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CreateThreadMessage() {
+  return (
+    <div>
+      Create a thread with the{' '}
+      <PlusIcon
+        style={{ display: 'inline', marginTop: '-2px' }}
+        height={9}
+        width={9}
+      />{' '}
+      plus icon in the toolbar.
+    </div>
+  );
+}
+
+function sortResolved(a: ThreadData, b: ThreadData) {
+  if (a.resolved && !b.resolved) {
+    return 1;
+  }
+
+  if (!a.resolved && b.resolved) {
+    return -1;
+  }
+
+  return 0;
+}

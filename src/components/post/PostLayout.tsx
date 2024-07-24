@@ -1,14 +1,15 @@
 'use client';
-import { ReactNode } from 'react';
 import Link from '@/components/template/Link';
 import PageTitle from '@/components/template/PageTitle';
+import { ReactNode } from 'react';
 
-import ScrollTopAndComment from '@/components/template/ScrollTopAndComment';
-import Image from '@/components/template/Image';
-import Tag from '@/components/template/Tag';
-import { v1 } from 'uuid';
-import { AdjacentPost } from '@/types';
 import TimeAgoContainer from '@/components/post/TimeAgoContainer';
+import Image from '@/components/template/Image';
+import ScrollTopAndComment from '@/components/template/ScrollTopAndComment';
+import Tag from '@/components/template/Tag';
+import { AdjacentPost } from '@/types';
+import { useThreads } from '@liveblocks/react';
+import { v1 } from 'uuid';
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -37,6 +38,7 @@ export default function PostLayout({
   next,
   prev,
 }: LayoutProps) {
+  const { threads } = useThreads();
   return (
     <>
       <ScrollTopAndComment />

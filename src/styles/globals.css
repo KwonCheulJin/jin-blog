@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '@liveblocks/react-ui/styles.css';
+@import './comments.css';
+
 @layer base {
   :root {
     --background: 0 0% 100%;
