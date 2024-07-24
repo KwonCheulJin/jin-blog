@@ -38,7 +38,7 @@ function getQueryClient() {
   }
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export async function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
   return (
     <SessionProvider>
