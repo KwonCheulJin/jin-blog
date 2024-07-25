@@ -39,7 +39,7 @@ export default async function PostPage({ params: { slug } }: Props) {
 
   const { title, author, tags, created_at, markdown, prev, next } = post;
   return (
-    <Room>
+    <Room slug={slug}>
       <TransitionEffect />
       <section className="w-full">
         <PostLayout

@@ -1,10 +1,12 @@
 'use client';
 
+import { PinnedThread } from '@/components/liveblocks/PinnedThread';
 import {
   getCoordsFromAccurateCursorPositions,
   getCoordsFromElement,
   getElementBeneath,
 } from '@/lib/coords';
+import { useMaxZIndex } from '@/lib/useMaxZIndex';
 import { ThreadData } from '@liveblocks/client';
 import {
   useEditThreadMetadata,
@@ -13,9 +15,6 @@ import {
 } from '@liveblocks/react/suspense';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './CommentsOverlay.module.css';
-
-import { PinnedThread } from '@/components/liveblocks/PinnedThread';
-import { useMaxZIndex } from '@/lib/useMaxZIndex';
 
 export function CommentsOverlay() {
   const { threads } = useThreads();

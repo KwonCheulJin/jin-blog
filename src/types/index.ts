@@ -1,4 +1,3 @@
-
 export type Experience = {
   position: string;
   company: string;
@@ -62,3 +61,10 @@ export type AddPostType = {
   tags: string[];
 };
 
+export type User = {
+  email: string;
+  id: string;
+  image: string;
+  name: string;
+  type: string;
+};

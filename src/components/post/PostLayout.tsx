@@ -8,7 +8,6 @@ import Image from '@/components/template/Image';
 import ScrollTopAndComment from '@/components/template/ScrollTopAndComment';
 import Tag from '@/components/template/Tag';
 import { AdjacentPost } from '@/types';
-import { useThreads } from '@liveblocks/react';
 import { v1 } from 'uuid';
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
@@ -38,7 +37,6 @@ export default function PostLayout({
   next,
   prev,
 }: LayoutProps) {
-  const { threads } = useThreads();
   return (
     <>
       <ScrollTopAndComment />

@@ -83,6 +83,7 @@ export function PinnedThread({
           <Thread
             thread={thread}
             indentCommentContent={false}
+            showResolveAction={false}
             onFocus={onFocus}
           />
         </div>
