@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
 import { CommentsOverlay } from '@/components/liveblocks/CommentsOverlay';
@@ -9,7 +8,6 @@ import styles from './Toolbar.module.css';
 
 export function Comments() {
   return (
-    /* @ts-ignore */
     <ErrorBoundary
       fallback={
         <div className={styles.toolbar}>

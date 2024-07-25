@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useOthers, useSelf } from '@liveblocks/react/suspense';
 import styles from './ToolbarAvatars.module.css';
 
 export function ToolbarAvatars() {
-  const users = useOthers();
   const currentUser = useSelf();
+  const users = useOthers();
 
   return (
     <div className={styles.toolbarAvatars}>

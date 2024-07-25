@@ -1,9 +1,10 @@
+import { getUserInfo } from '@/service/users';
 import { createQueryKeys } from '@lukemorales/query-key-factory';
 
 export const users = createQueryKeys('users', {
   all: null,
-  detail: (userId: string) => ({
+  userInfo: (userId: string) => ({
     queryKey: [userId],
-    queryFn: () => {},
+    queryFn: () => getUserInfo(userId),
   }),
 });

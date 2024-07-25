@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-autofocus */
 'use client';
 
 import { PointerEventHandler } from 'react';
@@ -31,7 +30,7 @@ export function PinnedComposer({
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
       >
-        <Image src={user.avatar} alt={user.name} width={28} height={28} />
+        <Image width={28} height={28} src={user.avatar} alt={user.name} />
       </div>
       <div className={styles.pinnedContent}>
         <Composer
@@ -40,6 +39,7 @@ export function PinnedComposer({
             // Don't send up a click event from emoji popout and close the composer
             e.stopPropagation();
           }}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={true}
         />
       </div>

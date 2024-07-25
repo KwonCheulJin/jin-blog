@@ -18,6 +18,12 @@ const nextConfig = {
         port: '',
         pathname: '/a/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'liveblocks.io',
+        port: '',
+        pathname: '/avatars/**',
+      },
     ],
   },
 };
