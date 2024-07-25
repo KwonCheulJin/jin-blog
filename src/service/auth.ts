@@ -1,9 +1,9 @@
 import { SupabaseAdapter } from '@auth/supabase-adapter';
+import jwt from 'jsonwebtoken';
 import { NextAuthOptions } from 'next-auth';
+import { Adapter } from 'next-auth/adapters';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
-import jwt from 'jsonwebtoken';
-import { Adapter } from 'next-auth/adapters';
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
@@ -42,6 +42,7 @@ export const authOptions: NextAuthOptions = {
         session.supabaseAccessToken = jwt.sign(payload, signingSecret);
       }
       session.user.type = token.role as 'HOST' | 'VISITORS';
+      session.user.id = token.sub as string;
       return session;
     },
     async redirect({ url, baseUrl }) {

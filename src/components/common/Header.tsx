@@ -1,13 +1,18 @@
 'use client';
 
-import Logo from './Logo';
-import CustomLink from './CustomLink';
-import MobileNav from './MobileNav';
-import IconsNav from './IconsNav';
-import { useState } from 'react';
+import AnimateColorArrowWithText from '@/components/common/AnimateColorArrowWithText';
 import HamburgerBar from '@/components/common/HamburgerBar';
+import { useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import CustomLink from './CustomLink';
+import IconsNav from './IconsNav';
+import Logo from './Logo';
+import MobileNav from './MobileNav';
 
 export default function Header() {
+  const { data: session } = useSession();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -25,7 +30,10 @@ export default function Header() {
       {isOpen ? <MobileNav setIsOpen={setIsOpen} /> : null}
 
       <div className="absolute left-[50%] top-6 translate-x-[-50%] lg:top-2">
-        <Logo />
+        <div className="relative">
+          <Logo session={session} pathname={pathname} />
+          {!session && pathname !== '/signin' && <AnimateColorArrowWithText />}
+        </div>
       </div>
 
       <IconsNav />

@@ -1,6 +1,10 @@
 import TransitionEffect from '@/components/common/TransitionEffect';
+import { Comments } from '@/components/liveblocks/Comments';
+import { Cursors } from '@/components/liveblocks/cursors/Cursors';
 import MarkdownViewer from '@/components/post/MarkdownViewer';
 import PostLayout from '@/components/post/PostLayout';
+import Room from '@/context/Room';
+
 import { getAllPosts, getPostData, getPostDetail } from '@/service/posts';
 import type { Metadata } from 'next';
 
@@ -30,14 +34,12 @@ export async function generateMetadata({
   };
 }
 
-// export const revalidate = 3600;
-
 export default async function PostPage({ params: { slug } }: Props) {
   const post = await getPostData(slug);
 
   const { title, author, tags, created_at, markdown, prev, next } = post;
   return (
-    <>
+    <Room slug={slug}>
       <TransitionEffect />
       <section className="w-full">
         <PostLayout
@@ -51,7 +53,9 @@ export default async function PostPage({ params: { slug } }: Props) {
           <MarkdownViewer content={markdown} />
         </PostLayout>
       </section>
-    </>
+      <Cursors />
+      <Comments />
+    </Room>
   );
 }
 
