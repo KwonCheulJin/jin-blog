@@ -1,4 +1,3 @@
-
 import { authOptions } from '@/service/auth';
 import { Post, PostDetail } from '@/types';
 import { supabaseServer } from '@/utils/supabase/server';
@@ -7,7 +6,7 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
-  const cookieStore = cookies()
+  const cookieStore = cookies();
   const supabase = supabaseServer(cookieStore);
   const { data, error } = await supabase
     .from('posts')
@@ -22,7 +21,7 @@ export type DataResponse<T> = {
 };
 
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies()
+  const cookieStore = cookies();
   const session = await getServerSession(authOptions);
   const supabaseAccessToken = session?.supabaseAccessToken;
 
@@ -34,11 +33,13 @@ export async function POST(req: NextRequest) {
   const { title, sub_title, markdown, tags } = (await req.json()) as Post;
   const { data, error } = await supabase
     .from('posts')
-    .insert([{ author: session.user.name ?? '', title, sub_title, markdown, tags }])
+    .insert([
+      { author: session.user.name ?? '', title, sub_title, markdown, tags },
+    ])
     .select();
   if (error) {
     return new Response('Not Found Error', { status: 404 });
   }
-  const response:Array<PostDetail> = data ;
+  const response: Array<PostDetail> = data;
   return NextResponse.json(response);
 }
