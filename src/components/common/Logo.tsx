@@ -1,11 +1,15 @@
 'use client';
-import { motion } from 'framer-motion';
 import AuthButton from '@/components/auth/AuthButton';
+import { motion } from 'framer-motion';
+import { Session } from 'next-auth';
+import Image from 'next/image';
 import { useState } from 'react';
-import { useSession } from 'next-auth/react';
 
-export default function Logo() {
-  const { data: session } = useSession();
+type Props = {
+  session: Session | null;
+  pathname: string;
+};
+export default function Logo({ session, pathname }: Props) {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <div className="mt-2 flex flex-col items-center justify-center">
@@ -25,14 +29,20 @@ export default function Logo() {
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
       >
-        {isVisible ? (
+        {isVisible && pathname !== '/signin' ? (
           <AuthButton />
+        ) : session ? (
+          <Image
+            width={64}
+            height={64}
+            alt={session.user.name}
+            src={session.user.image}
+            className="rounded-full"
+          />
         ) : (
-          <p>
-            {session?.user
-              ? session?.user.name?.slice(0, 1).toUpperCase()
-              : 'DEV'}
-          </p>
+          <div className="flex h-16 w-16 items-center justify-center rounded-full pt-1">
+            <p>DEV</p>
+          </div>
         )}
       </motion.div>
     </div>
