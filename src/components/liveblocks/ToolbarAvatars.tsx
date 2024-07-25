@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useOthers, useSelf } from '@liveblocks/react/suspense';
+import Image from 'next/image';
 import styles from './ToolbarAvatars.module.css';
 
 export function ToolbarAvatars() {
@@ -23,9 +23,9 @@ export function ToolbarAvatars() {
 
 export function Avatar({ src, name }: { src: string; name: string }) {
   return (
-    <img
-      width="28px"
-      height="28px"
+    <Image
+      width={28}
+      height={28}
       alt={name}
       src={src}
       className={styles.toolbarAvatar}

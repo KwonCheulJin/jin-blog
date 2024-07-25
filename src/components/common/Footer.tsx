@@ -1,6 +1,6 @@
 'use client';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { AiFillGithub, AiFillLinkedin, AiOutlineTwitter } from 'react-icons/ai';
 
 export default function Footer() {
@@ -41,7 +41,7 @@ export default function Footer() {
             whileTap={{ scale: 0.9 }}
             className="flex w-6 items-center justify-center text-3xl"
           >
-            <div className="relative z-0 flex h-5 w-5 items-center justify-center bg-white">
+            <div className="relative flex h-5 w-5 items-center justify-center bg-white">
               <AiFillLinkedin className="absolute text-sky-500" />
             </div>
           </motion.a>

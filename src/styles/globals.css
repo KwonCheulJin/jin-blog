@@ -95,16 +95,20 @@ body .w-md-editor-preview {
 
 @layer components {
   .modal-effect {
-    background: #e8ebf2;
-    box-shadow:
-      inset 9.01px 9.01px 11px #b7babf,
-      inset -9.01px -9.01px 11px #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
-  .effect {
-    background: #eef0f4;
-    box-shadow:
-      2.1px 2.1px 8px #77787a,
-      -2.1px -2.1px 8px #ffffff;
+  .button-effect {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
   .reverse-effect {
     background: #eef0f4;
