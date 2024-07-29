@@ -1126,17 +1126,29 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.0.0"
 
-"@liveblocks/client@2.3.0", "@liveblocks/client@^2.3.0":
+"@liveblocks/client@2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@liveblocks/client/-/client-2.3.0.tgz#11b6f50ba982366eee31eed3aeec90ceee64a0e7"
   integrity sha512-UN4v7874zL7VI0Yqwb16qOMA4cxKZh53ufbwsSbtj32bFqGfD9KzWQNW8Uh1nFfaW3465a54mtVY12D5sep99A==
   dependencies:
     "@liveblocks/core" "2.3.0"
 
+"@liveblocks/client@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@liveblocks/client/-/client-2.4.0.tgz#20dd80e6dc42cad372710350ee0f95a3b0e01d92"
+  integrity sha512-R1r22QrpxMYSgbUv8UWAQgHioMwXThkgUtk8MVsKfHFUB9lY57igVeNgmx7g4sz5D2lEspsK62fHPZrRy4wTnw==
+  dependencies:
+    "@liveblocks/core" "2.4.0"
+
 "@liveblocks/core@2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@liveblocks/core/-/core-2.3.0.tgz#b1e57225629c131d59cbd60d45317f286adcc74c"
   integrity sha512-GhP5Dwvyaqk5/fKFeg4j741NwzCFDXlDlSTUt3MCa593Rw2c1+or20Uq4o3FlEJMfre3+ngG5Rsk2Wl0g/Wbjw==
+
+"@liveblocks/core@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@liveblocks/core/-/core-2.4.0.tgz#fbf60ccc395314f13e3333c660993163d297211a"
+  integrity sha512-QECTaY9Bku3hQwZQwTbZEv+wrnuoemYYKy8fdgwJMNwLUn+MRsUHK/8vyE1ZqkBqbvo/eagRv8fiyZz2Qn3RRw==
 
 "@liveblocks/node@^2.3.0":
   version "2.3.0"
