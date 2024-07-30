@@ -13,7 +13,7 @@
     "pre-commit": "next lint && git add -A ."
   },
   "dependencies": {
-    "@auth/supabase-adapter": "^0.1.7",
+    "@auth/supabase-adapter": "^1.1.0",
     "@liveblocks/client": "^2.4.0",
     "@liveblocks/node": "^2.3.0",
     "@liveblocks/react": "^2.3.0",
