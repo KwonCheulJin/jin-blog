@@ -52,7 +52,8 @@ Jin's Dev Log는 Next.js 14로 개발된 개인 블로그 프로젝트입니다.
 
 - Vercel
 
-### Architecture
+### 아키텍쳐
+![architecture](https://github.com/user-attachments/assets/e963f5c8-c7ac-4ff0-b636-6837de82feba)
 
 ## 디자인 참고
 
