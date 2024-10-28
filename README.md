@@ -1,20 +1,28 @@
 # Jin's Dev Log
 
-## Next.js 14로 개발된 개인 블로그 입니다
+Jin's Dev Log는 Next.js 14로 개발된 개인 블로그 프로젝트입니다.
+
+## 프로젝트 개요
+
+이 블로그는 개인의 성장과 지식 공유를 목적으로 제작되었습니다. 주요 특징은 다음과 같습니다:
+
+- 회고록 및 개발 일지 작성을 통한 지식 공유
+- SEO 최적화 및 Google Analytics, Google Search Console 활용
+- Vercel을 통한 CI/CD 구현
+
+## 버전 히스토리
 
 ### Version 1
 
-- md file로 블로그 글을 생성 후 빌드, 배포 과정을 통해서 블로그 글 퍼블리싱 하였습니다.
-- 나만의 공간에서 회고록 및 개발 일지를 작성하여 지식을 공유하고 성장하고자 제작 하였습니다.
-- SEO 최적화 기법 활용 및 Google Analytics와 Google Search Console을 사용하여 사이트 사용자 추적 및 색인 생성 경험을 쌓았습니다.
-- vercel을 통한 CI/CD 경험
+- Markdown 파일을 사용한 블로그 글 생성 및 퍼블리싱
+- 빌드 및 배포 과정을 통한 콘텐츠 관리
 
 ### Version 2
 
-- 블로그 Version 1에서 수동적인 글 생성에 불편을 느껴서 블로그를 개선하였습니다.
-- 수동적인 글 생성에서 에디터 기능 추가로 글 생성에 대한 사용성 개선을 통해서 기술을 통한 사용자 경험의 중요성에 대해서 느꼈습니다.
+- 에디터 기능 추가로 글 작성 사용성 개선
+- 기술을 통한 사용자 경험 향상에 중점
 
-## Tech Requirement (Tech Stack)
+## 기술 스택
 
 ### Front-End
 
@@ -32,7 +40,7 @@
 - supabase
 - Auth.js
 
-### Development Tools
+### 개발 도구
 
 - husky
 - Github Actions
@@ -40,16 +48,16 @@
 - Prettier
 - Yarn
 
-### Infrastructure
+### 인프라
 
 - Vercel
 
 ### Architecture
 
-## Style
+## 디자인 참고
 
-- [CodeBucks](https://www.youtube.com/watch?v=Yw7yWHigGKI&list=WL&index=22)님의 유튜브 영상을 참고하여 홈페이지와 소개 페이지를 제작
-- [Next.js Starter Blog](https://tailwind-nextjs-starter-blog.vercel.app/)의 소스코드를 활용하여 게시물 목록 및 상세 페이지 구현
+- [CodeBucks](https://www.youtube.com/watch?v=Yw7yWHigGKI&list=WL&index=22)님의 유튜브 영상을 참고(홈페이지 및 소개 페이지)
+- [Next.js Starter Blog](https://tailwind-nextjs-starter-blog.vercel.app/)의 소스코드를 활용(게시물 목록 및 상세 페이지)
 
 ## Node Version
 
