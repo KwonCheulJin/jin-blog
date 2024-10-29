@@ -63,7 +63,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^14.0.4",
     "@next/eslint-plugin-next": "^14.0.2",
-    "@tailwindcss/typography": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
     "@tanstack/eslint-plugin-query": "^5.51.12",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^15.0.7",
