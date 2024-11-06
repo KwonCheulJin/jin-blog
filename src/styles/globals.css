@@ -117,3 +117,17 @@ body .w-md-editor-preview {
       inset -2.1px -2.1px 8px #ffffff;
   }
 }
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.slider-controler .slider-arrow svg {
+  font-size: 2rem;
+  color: #222224;
+}
+
+.slider-controler .slider-arrow::after {
+  content: '';
+}

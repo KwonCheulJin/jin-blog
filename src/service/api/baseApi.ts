@@ -9,14 +9,14 @@ export default class BaseApi {
     },
   });
 
-  async get<T = any, R = AxiosResponse<T>, D = any>(
+  protected async get<T = any, R = AxiosResponse<T>, D = any>(
     url: string,
     config?: AxiosRequestConfig<D>,
   ) {
     return BaseApi.instance.get<T, R, D>(url, config);
   }
 
-  async post<T = any, R = AxiosResponse<T>, D = any>(
+  protected async post<T = any, R = AxiosResponse<T>, D = any>(
     url: string,
     data?: D,
     config?: AxiosRequestConfig<D>,
@@ -24,7 +24,7 @@ export default class BaseApi {
     return BaseApi.instance.post<T, R, D>(url, data, config);
   }
 
-  async put<T = any, R = AxiosResponse<T>, D = any>(
+  protected async put<T = any, R = AxiosResponse<T>, D = any>(
     url: string,
     data?: D,
     config?: AxiosRequestConfig<D>,
@@ -32,7 +32,7 @@ export default class BaseApi {
     return BaseApi.instance.put<T, R, D>(url, data, config);
   }
 
-  async delete<T = any, R = AxiosResponse<T>, D = any>(
+  protected async delete<T = any, R = AxiosResponse<T>, D = any>(
     url: string,
     config?: AxiosRequestConfig<D>,
   ) {

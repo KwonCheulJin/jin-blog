@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
-import Layout from '@/components/common/Layout';
-import AnimatedText from '@/components/common/AnimatedText';
-import Skills from '@/components/about/Skills';
-import Experience from '@/components/about/Experience';
 import Education from '@/components/about/Education';
+import Experience from '@/components/about/Experience';
+import Projects from '@/components/about/Projects';
+import Skills from '@/components/about/Skills';
+import AnimatedText from '@/components/common/AnimatedText';
+import Layout from '@/components/common/Layout';
 import TransitionEffect from '@/components/common/TransitionEffect';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Me',
@@ -19,11 +20,12 @@ export default function AboutPage() {
       <Layout className="pt-16">
         <AnimatedText
           text="Be positive and Authenticity!"
-          className="mb-16 text-center dark:text-light sm:mb-8"
+          className="mb-8 text-center dark:text-light sm:mb-4"
         />
-        <Skills />
         <Experience />
+        <Projects />
         <Education />
+        <Skills />
       </Layout>
     </>
   );

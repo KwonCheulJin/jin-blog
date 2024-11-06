@@ -1,20 +1,139 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaHtml5, FaCss3Alt, FaGithub } from 'react-icons/fa';
+import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
+import { useRef } from 'react';
+import { FaCss3Alt, FaGithub, FaHtml5 } from 'react-icons/fa';
 import {
+  SiJavascript,
+  SiNextdotjs,
+  SiReact,
+  SiStyledcomponents,
   SiTailwindcss,
   SiTypescript,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiStyledcomponents,
 } from 'react-icons/si';
-import Skill from './Skill';
+import Skill, { SkillType } from './Skill';
+
+const skills: Array<Omit<SkillType, 'isInView'>> = [
+  {
+    name: 'HTML',
+    x: '-25vw',
+    y: '-5vw',
+    children: (
+      <div className="relative z-0 h-4 w-3 bg-white">
+        <FaHtml5 className="absolute -left-[6px] -top-1 z-10 h-6 w-6 text-orange-500" />
+      </div>
+    ),
+  },
+  {
+    name: 'CSS',
+    x: '-15vw',
+    y: '-10vw',
+    children: (
+      <div className="relative z-0 h-4 w-3 bg-white">
+        <FaCss3Alt className="absolute -left-[6px] -top-1 h-6 w-6 text-blue-500" />
+      </div>
+    ),
+  },
+  {
+    name: 'TailwindCSS',
+    x: '-10vw',
+    y: '-20vw',
+    children: <SiTailwindcss className="h-6 w-6 text-[#38BDF8]" />,
+  },
+  {
+    name: 'styled-components',
+    x: '-5vw',
+    y: '-15vw',
+    children: <SiStyledcomponents className="h-6 w-6 text-[#DE83C3]" />,
+  },
+  {
+    name: 'JavaScript',
+    x: '-10vw',
+    y: '16vw',
+    children: (
+      <div className="relative z-0 h-5 w-5 bg-black">
+        <SiJavascript className="absolute -left-[2px] -top-[3px] h-6 w-6 text-[#EAD41C]" />
+      </div>
+    ),
+  },
+  {
+    name: 'TypeScript',
+    x: '-12vw',
+    y: '20vw',
+    children: (
+      <div className="relative z-0 h-5 w-5 bg-white">
+        <SiTypescript className="absolute -left-[2px] -top-[3px] h-6 w-6 text-[#3178C6]" />
+      </div>
+    ),
+  },
+  {
+    name: 'React',
+    x: '-22vw',
+    y: '4vw',
+    children: <SiReact className="h-6 w-6 text-[#61DAFB]" />,
+  },
+  {
+    name: 'NextJS',
+    x: '-15vw',
+    y: '10vw',
+    children: <SiNextdotjs className="h-6 w-6" />,
+  },
+  {
+    name: 'Jest',
+    x: '15vw',
+    y: '15vw',
+    children: (
+      <Image
+        className="h-6 w-6"
+        src="/images/jest-icon.svg"
+        alt="jest-icon"
+        width={24}
+        height={24}
+      />
+    ),
+  },
+  {
+    name: 'Playwright',
+    x: '20vw',
+    y: '20vw',
+    children: (
+      <Image
+        className="h-6 w-6"
+        src="/images/playwright-logo.svg"
+        alt="playwright-logo"
+        width={24}
+        height={24}
+      />
+    ),
+  },
+  {
+    name: 'TanStack Query',
+    x: '20vw',
+    y: '-20vw',
+    children: (
+      <Image
+        className="h-6 w-6"
+        src="/images/tanstack-query-icon.png"
+        alt="tanstack-query-icon"
+        width={24}
+        height={24}
+      />
+    ),
+  },
+  {
+    name: 'GitHub',
+    x: '25vw',
+    y: '-5vw',
+    children: <FaGithub className="h-6 w-6" />,
+  },
+];
 
 export default function Skills() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: false });
   return (
-    <>
+    <div ref={ref}>
       <h2 className="mt-32 w-full text-center text-8xl font-bold md:mt-32 md:text-6xl">
         Skills
       </h2>
@@ -32,42 +151,18 @@ export default function Skills() {
         >
           WEB
         </motion.div>
-        <Skill name="HTML" x="-25vw" y="-5vw">
-          <div className="relative z-0 h-4 w-3 bg-white">
-            <FaHtml5 className="absolute -left-[6px] -top-1 z-10 h-6 w-6 text-orange-500" />
-          </div>
-        </Skill>
-        <Skill name="CSS" x="-15vw" y="-10vw">
-          <div className="relative z-0 h-4 w-3 bg-white">
-            <FaCss3Alt className="absolute -left-[6px] -top-1 h-6 w-6 text-blue-500" />
-          </div>
-        </Skill>
-        <Skill name="TailwindCSS" x="-10vw" y="-20vw">
-          <SiTailwindcss className="h-6 w-6 text-[#38BDF8]" />
-        </Skill>
-        <Skill name="styled-components" x="-5vw" y="-15vw">
-          <SiStyledcomponents className="h-6 w-6 text-[#DE83C3]" />
-        </Skill>
-        <Skill name="JavaScript" x="20vw" y="6vw">
-          <div className="relative z-0 h-5 w-5 bg-black">
-            <SiJavascript className="absolute -left-[2px] -top-[3px] h-6 w-6 text-[#EAD41C]" />
-          </div>
-        </Skill>
-        <Skill name="TypeScript" x="22vw" y="16vw">
-          <div className="relative z-0 h-5 w-5 bg-white">
-            <SiTypescript className="absolute -left-[2px] -top-[3px] h-6 w-6 text-[#3178C6]" />
-          </div>
-        </Skill>
-        <Skill name="React" x="-20vw" y="12vw">
-          <SiReact className="h-6 w-6 text-[#61DAFB]" />
-        </Skill>
-        <Skill name="NextJs" x="-13vw" y="18vw">
-          <SiNextdotjs className="h-6 w-6" />
-        </Skill>
-        <Skill name="GitHub" x="25vw" y="-5vw">
-          <FaGithub className="h-6 w-6" />
-        </Skill>
+        {skills.map(skill => (
+          <Skill
+            key={skill.name}
+            name={skill.name}
+            x={skill.x}
+            y={skill.y}
+            isInView={isInView}
+          >
+            {skill.children}
+          </Skill>
+        ))}
       </div>
-    </>
+    </div>
   );
 }
