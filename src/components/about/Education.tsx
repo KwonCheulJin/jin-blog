@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
-import EducationDetails from './EducationDetails';
 import { educations } from '@/fixtures/education';
+import { motion, useScroll } from 'framer-motion';
+import { useRef } from 'react';
 import { v1 } from 'uuid';
+import EducationDetails from './EducationDetails';
 
 export default function Education() {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,7 +14,7 @@ export default function Education() {
   });
 
   return (
-    <div className="mb-16 mt-64 md:mt-32">
+    <div className="mb-16 mt-32">
       <h2 className="my-32 w-full text-center text-8xl font-bold md:mb-16 md:text-6xl xs:text-4xl">
         Education
       </h2>

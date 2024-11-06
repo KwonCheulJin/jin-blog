@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
-import ExperienceDetails from './ExperienceDetails';
 import { experiences } from '@/fixtures/experience';
+import { motion, useScroll } from 'framer-motion';
+import { useRef } from 'react';
 import { v1 } from 'uuid';
+import ExperienceDetails from './ExperienceDetails';
 
 export default function Experience() {
   const ref = useRef<HTMLDivElement>(null);
@@ -15,7 +15,7 @@ export default function Experience() {
   });
 
   return (
-    <div className="my-64 md:my-32">
+    <div className="mb-16 mt-32 md:my-16">
       <h2 className="mb-32 w-full text-center text-8xl font-bold md:mb-16 md:text-6xl xs:text-4xl">
         Experience
       </h2>
@@ -27,15 +27,7 @@ export default function Experience() {
 
         <ul className="ml-4 flex w-full flex-col items-start justify-between xs:ml-2">
           {experiences.map(experience => (
-            <ExperienceDetails
-              key={v1()}
-              position={experience.position}
-              company={experience.company}
-              companyLink={experience.companyLink}
-              time={experience.time}
-              address={experience.address}
-              work={experience.work}
-            />
+            <ExperienceDetails key={v1()} {...experience} />
           ))}
         </ul>
       </div>
