@@ -1,5 +1,7 @@
 'use client';
 
+import { userApi } from '@/service/api/userApi';
+import { anonymousUser } from '@/service/users';
 import { LiveblocksProvider } from '@liveblocks/react/suspense';
 import {
   isServer,
@@ -50,26 +52,24 @@ export function Providers({ children }: { children: React.ReactNode }) {
             const searchParams = new URLSearchParams(
               userIds.map(userId => ['userIds', userId]),
             );
-            const response = await fetch(`/api/user-info?${searchParams}`);
-
-            if (!response.ok) {
-              throw new Error('Problem resolving users');
+            try {
+              const response = await userApi.resolveUsers(searchParams);
+              return response.data;
+            } catch (error) {
+              console.error('Error resolving users:', error);
+              return [anonymousUser.info];
             }
-
-            const users = await response.json();
-            return users;
           }}
           resolveMentionSuggestions={async ({ text }) => {
-            const response = await fetch(
-              `/api/user-info/search?text=${encodeURIComponent(text)}`,
-            );
-
-            if (!response.ok) {
-              throw new Error('Problem resolving mention suggestions');
+            try {
+              const response = await userApi.resolveMentionSuggestions(
+                encodeURIComponent(text),
+              );
+              return response.data;
+            } catch (error) {
+              console.error('Error resolving mention suggestions:', error);
+              return [];
             }
-
-            const userIds = await response.json();
-            return userIds;
           }}
         >
           <Suspense fallback={<></>}>

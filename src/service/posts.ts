@@ -1,32 +1,15 @@
-import { BASE_URL, DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
-import { AllPostsData, PostData, PostDetail, SimplePost } from '@/types';
+import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
+import { postApi } from '@/service/api/postApi';
+import { AllPostsData, PostData } from '@/types';
 import { notFound } from 'next/navigation';
 
 export async function getPostDetail(id: string) {
-  const data = await fetch(`${BASE_URL}/api/post/${id}`, {
-    headers: {
-      Accept: 'application/json',
-    },
-    method: 'GET',
-  });
-
-  if (data.status === 404) {
-    return undefined;
-  }
-  const post = (await data.json()) as PostDetail;
-
+  const { data: post } = await postApi.postDetail(id);
   return post;
 }
 
 export async function getAllPosts() {
-  const data = await fetch(`${BASE_URL}/api/post`, {
-    headers: {
-      Accept: 'application/json',
-    },
-    method: 'GET',
-  });
-
-  const posts = (await data.json()) as SimplePost[];
+  const { data: posts } = await postApi.allPost();
   return posts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 }
 

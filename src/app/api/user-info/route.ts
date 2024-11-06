@@ -17,9 +17,8 @@ export async function GET(request: NextRequest) {
   if (!users || !Array.isArray(users)) {
     return new NextResponse('Missing or invalid userIds', { status: 400 });
   }
-
-  return NextResponse.json(
-    userIds.map(userId => getUser({ users, userId })?.info || null),
-    { status: 200 },
+  const allUser = userIds.map(
+    userId => getUser({ users, userId })?.info || null,
   );
+  return NextResponse.json(allUser, { status: 200 });
 }
