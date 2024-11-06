@@ -1,14 +1,9 @@
 import { getUserColor } from '@/lib/utils';
+import { userApi } from '@/service/api/userApi';
 import { User } from '@/types';
 
 export async function getUserInfo(userId: string) {
-  const response = await fetch(`/api/users?userId=${userId}`);
-
-  if (!response.ok) {
-    throw new Error('Problem resolving users');
-  }
-
-  const user = (await response.json()) as Liveblocks['UserMeta']['info'];
+  const { data: user } = await userApi.userInfo(userId);
   return user;
 }
 

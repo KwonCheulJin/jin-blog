@@ -1,18 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
-import LiIcon from './LiIcon';
+import { Experience } from '@/types';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRef } from 'react';
+import LiIcon from './LiIcon';
 
-type Props = {
-  position: string;
-  company: string;
-  companyLink: string;
-  time: string;
-  address: string;
-  work: string;
-};
 export default function ExperienceDetail({
   position,
   company,
@@ -20,12 +13,13 @@ export default function ExperienceDetail({
   time,
   address,
   work,
-}: Props) {
+  projects,
+}: Experience) {
   const ref = useRef<HTMLLIElement>(null);
   return (
     <li
       ref={ref}
-      className="my-8 mx-auto flex w-[60%] flex-col items-start justify-between first:mt-0 last:mb-0
+      className="mx-auto my-8 flex w-[60%] flex-col items-start justify-between first:mt-0 last:mb-0
       md:w-[80%]"
     >
       <LiIcon reference={ref} />
@@ -41,7 +35,7 @@ export default function ExperienceDetail({
           <Link
             href={companyLink}
             target="_blank"
-            className="text-primary-500 text-2xl font-bold capitalize dark:text-primaryDark sm:text-xl xs:text-lg"
+            className="text-2xl font-bold capitalize text-primary-500 dark:text-primaryDark sm:text-xl xs:text-lg"
           >
             @{company}
           </Link>
@@ -50,6 +44,22 @@ export default function ExperienceDetail({
           {time} | {address}
         </span>
         <p className="w-full font-medium md:text-sm">{work}</p>
+        {projects && (
+          <ul className="space-y-2">
+            {projects.map(project => (
+              <li key={project.title}>
+                <p className="w-full font-bold md:text-sm">{project.title}</p>
+                <ul>
+                  {project.description.map(desc => (
+                    <li key={desc.slice(0, 3)} className="ml-4 list-disc">
+                      <p className="w-full font-medium md:text-sm">{desc}</p>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        )}
       </motion.div>
     </li>
   );

@@ -1,10 +1,15 @@
+export type Project = {
+  title: string;
+  description: string[];
+};
 export type Experience = {
   position: string;
   company: string;
   companyLink: string;
   time: string;
   address: string;
-  work: string;
+  work?: string;
+  projects?: Project[];
 };
 
 export type Education = {
@@ -21,13 +26,10 @@ export type Post = {
   tags: string[];
 };
 
-export type PostDetail = {
+export type PostDetail = Post & {
   id: string;
   author: string;
   title: string;
-  sub_title: string;
-  markdown: string;
-  tags: string[];
   created_at: string;
   updated_at: string;
 };
@@ -54,12 +56,7 @@ export type AllPostsData = {
   tag?: string;
 };
 
-export type AddPostType = {
-  title: string;
-  sub_title: string;
-  markdown: string;
-  tags: string[];
-};
+export type AddPostType = Post;
 
 export type User = {
   email: string;
