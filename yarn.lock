@@ -2003,10 +2003,10 @@
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
 
-"@tanstack/eslint-plugin-query@^5.51.12":
-  version "5.51.12"
-  resolved "https://registry.yarnpkg.com/@tanstack/eslint-plugin-query/-/eslint-plugin-query-5.51.12.tgz#1adb208617008ac33c9e4f2dad3c25bc8c1119a4"
-  integrity sha512-vzUXXIVzDP2c6wVSJ+1imPGaKQ2ILuWnta64FJc/JnQ5WunfO17bQJSk6uKDbzTQG/YKgPYBMG3C9qFA4b7Ayg==
+"@tanstack/eslint-plugin-query@^5.52.3":
+  version "5.52.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/eslint-plugin-query/-/eslint-plugin-query-5.52.3.tgz#40c14090f5b17665e24571f35afce18996d20016"
+  integrity sha512-FAApj04uO4OkWsx+ZS9TpEgv8YyacLN/hWlAfqSZGHGcPSnUVxuE+tKyuHhfwN0ebBazxL8+lJ19OtLbm+dE8w==
   dependencies:
     "@typescript-eslint/utils" "8.0.0-alpha.30"
 
