@@ -1,10 +1,10 @@
-import { formatDate } from 'pliny/utils/formatDate';
-import Tag from '@/components/template/Tag';
-import Link from '@/components/template/Link';
-import { SimplePost } from '@/types';
-import { v1 } from 'uuid';
-import { MAX_LENGTH } from '@/lib/constants';
 import TimeAgoContainer from '@/components/post/TimeAgoContainer';
+import Link from '@/components/template/Link';
+import Tag from '@/components/template/Tag';
+import { MAX_LENGTH } from '@/lib/constants';
+import { SimplePost } from '@/types';
+import { formatDate } from 'pliny/utils/formatDate';
+import { v1 } from 'uuid';
 
 type Props = {
   posts: SimplePost[];
@@ -37,7 +37,7 @@ export default function PostList({ posts }: Props) {
                   <h2 className="text-2xl font-bold leading-8 tracking-tight">
                     <Link
                       href={`/posts/${id}`}
-                      className="text-gray-900 dark:text-gray-100"
+                      className="break-keep text-gray-900 dark:text-gray-100"
                     >
                       {title}
                     </Link>
