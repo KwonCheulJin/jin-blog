@@ -1206,10 +1206,10 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-"@next/bundle-analyzer@^15.0.2":
-  version "15.0.2"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-15.0.2.tgz#bbce45c5f6f5df9de575eef065b567a3367f6915"
-  integrity sha512-bV566k+rDsaqXSUgHBof0iMIDx5DWtLx/98jvYtqb9x85e+WJzv+8cpDvbjtxQMf7nFC/LUkPmpruj1cOKfz4A==
+"@next/bundle-analyzer@^15.0.4":
+  version "15.0.4"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-15.0.4.tgz#0bd2690f41679dbe3d85e0380539de3900514bad"
+  integrity sha512-0If3/mxqUWYC0lAdV5cChGA1Xs1BENjaLyJkdqpI2df86HqprcDZagiB2IU1xc5ph7xZHRdi5mT2cY7VkyibTQ==
   dependencies:
     webpack-bundle-analyzer "4.10.1"
 
