@@ -1116,17 +1116,29 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.0.0"
 
-"@liveblocks/client@2.12.1", "@liveblocks/client@^2.4.0":
+"@liveblocks/client@2.12.1":
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/@liveblocks/client/-/client-2.12.1.tgz#aabca6f64fc0e92ae70c46dfc603f07fc8d43fc3"
   integrity sha512-WGq6MsvzJPDkUBy/Iubh991X9jCkHibnyI0yd4rEvTt92+K/JV4UCEnv6mNvM+/tgXXMISKd9Hf4WEbm1sqzyA==
   dependencies:
     "@liveblocks/core" "2.12.1"
 
+"@liveblocks/client@2.15.1", "@liveblocks/client@^2.4.0":
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/@liveblocks/client/-/client-2.15.1.tgz#26d473f36567dba76d0f369ab47452118c4a486c"
+  integrity sha512-R4zpISMYxQzMQxCbGWldVCDmvtz8I/32ihyqG/SYccK1UfJxrlFaHyy0Y8DvxYoKLnlmfddqJ6phkuSWodEEMg==
+  dependencies:
+    "@liveblocks/core" "2.15.1"
+
 "@liveblocks/core@2.12.1":
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/@liveblocks/core/-/core-2.12.1.tgz#6d87284f5e313a48f18fd629f399c39c088e4410"
   integrity sha512-KcMhedNhypABDAwsCPopJ/O6pI/zIx3TWuqxRZIFz6RBrSAZUBOX0sGnbW1NvwXME6VQsvevk2sOC/BNfetBQw==
+
+"@liveblocks/core@2.15.1":
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/@liveblocks/core/-/core-2.15.1.tgz#77d411cbf5bdf1d039434d22023c06fe4226fcc3"
+  integrity sha512-/rVOTgE8ACFOSyIKJ8uMyF/NKANqB3bCymfa3yhB9vrQ7CPKfAkhjyD7TFfHiWqthyYQeOaio6084wijHnpV6w==
 
 "@liveblocks/core@2.3.0":
   version "2.3.0"
@@ -1164,7 +1176,7 @@
     slate-react "^0.110.3"
     use-sync-external-store "^1.2.2"
 
-"@liveblocks/react@2.12.1", "@liveblocks/react@^2.3.0":
+"@liveblocks/react@2.12.1":
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/@liveblocks/react/-/react-2.12.1.tgz#f769d242f8840ce1b26e7e68193182d32cb08b4f"
   integrity sha512-HE1DZW7HVdZ4r7QeF+By1Ozd/zM/2BQeiagOAXigJrcJNJqmwa8+ywYGsHbv0fanfcnkBvbBvhjfEvDEXKzCEA==
@@ -1172,6 +1184,14 @@
     "@liveblocks/client" "2.12.1"
     "@liveblocks/core" "2.12.1"
     use-sync-external-store "^1.2.2"
+
+"@liveblocks/react@^2.15.1":
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/@liveblocks/react/-/react-2.15.1.tgz#cb190cef7092e83bcb2ea707f3ca8f58b9f94ebf"
+  integrity sha512-mESv75dAKgPjwlZKtMe0TxSBnAJL+Wk/HU5w+F+rGC7tXQ9pm2xBH3usm10pbvpfC/1KVo2hDi6jDxxyYGxP3w==
+  dependencies:
+    "@liveblocks/client" "2.15.1"
+    "@liveblocks/core" "2.15.1"
 
 "@lukemorales/query-key-factory@^1.3.4":
   version "1.3.4"
