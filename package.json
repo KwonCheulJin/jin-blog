@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@auth/supabase-adapter": "^1.7.4",
-    "@liveblocks/client": "^2.4.0",
+    "@liveblocks/client": "^2.15.2",
     "@liveblocks/node": "^2.3.0",
     "@liveblocks/react": "^2.3.0",
     "@liveblocks/react-ui": "^2.12.1",
