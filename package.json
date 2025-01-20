@@ -62,7 +62,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^15.0.4",
+    "@next/bundle-analyzer": "^15.1.5",
     "@next/eslint-plugin-next": "^14.0.2",
     "@tailwindcss/typography": "^0.5.15",
     "@tanstack/eslint-plugin-query": "^5.52.3",
