@@ -52,7 +52,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
-    "tailwind-merge": "^2.5.5",
+    "tailwind-merge": "^3.0.1",
     "swiper": "^11.1.15",
     "tailwindcss-animate": "^1.0.7",
     "timeago-react": "^3.0.6",
