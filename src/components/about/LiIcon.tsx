@@ -2,7 +2,7 @@
 import { motion, useScroll } from 'framer-motion';
 
 type Props = {
-  reference: React.RefObject<HTMLLIElement>;
+  reference: React.RefObject<HTMLLIElement | null>;
 };
 
 export default function LiIcon({ reference }: Props) {
@@ -37,7 +37,7 @@ export default function LiIcon({ reference }: Props) {
           cx="75"
           cy="50"
           r="10"
-          className="fill-primary-500 animate-pulse stroke-1 dark:fill-primaryDark"
+          className="animate-pulse fill-primary-500 stroke-1 dark:fill-primaryDark"
         />
       </svg>
     </figure>
