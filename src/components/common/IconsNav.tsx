@@ -1,14 +1,14 @@
 'use client';
 
-import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { useSession } from 'next-auth/react';
 import { motion } from 'framer-motion';
+import { useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
 
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);
 export default function IconsNav() {
   const { data: session } = useSession();
 
