@@ -1,14 +1,13 @@
 import { getUser } from '@/service/users';
 import { User } from '@/types';
 import { supabaseServer } from '@/utils/supabase/server';
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const userIds = searchParams.getAll('userIds');
-  const cookieStore = cookies();
-  const supabase = supabaseServer(cookieStore);
+
+  const supabase = await supabaseServer();
   const { data: users, error } = await supabase
     .from('users')
     .select('*')

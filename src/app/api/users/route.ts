@@ -1,13 +1,11 @@
 import { getUserColor } from '@/lib/utils';
 import { supabaseServer } from '@/utils/supabase/server';
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const userId = searchParams.get('userId');
-  const cookieStore = cookies();
-  const supabase = supabaseServer(cookieStore);
+  const supabase = await supabaseServer();
   const { data: users, error } = await supabase
     .from('users')
     .select('*')

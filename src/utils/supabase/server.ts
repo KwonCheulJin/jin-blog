@@ -3,10 +3,8 @@ import { Database } from '@/types/supabase';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
-export function supabaseServer(
-  cookieStore: ReturnType<typeof cookies>,
-  token?: string,
-) {
+export async function supabaseServer(token?: string) {
+  const cookieStore = await cookies();
   const globalHeaders = token
     ? {
         global: {
@@ -20,12 +18,12 @@ export function supabaseServer(
     ...globalHeaders,
     cookies: {
       async getAll() {
-        return (await cookieStore).getAll();
+        return cookieStore.getAll();
       },
       setAll(cookiesToSet) {
         try {
-          cookiesToSet.forEach(async ({ name, value, options }) =>
-            (await cookieStore).set(name, value, options),
+          cookiesToSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options),
           );
         } catch {
           // The `setAll` method was called from a Server Component.
