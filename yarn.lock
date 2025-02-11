@@ -1140,17 +1140,17 @@
   resolved "https://registry.yarnpkg.com/@liveblocks/core/-/core-2.15.2.tgz#96f5aeb2592f94698b5607a99f4053e283487b2d"
   integrity sha512-t2k5tTSkWgwQyfc4BRuu+ZXW8gX0epo+h2NE2C571i4ascQHZw3g4giD+pPQ+9tW0k3FGBqV841ZdDN+db7wfQ==
 
-"@liveblocks/core@2.16.2":
-  version "2.16.2"
-  resolved "https://registry.yarnpkg.com/@liveblocks/core/-/core-2.16.2.tgz#0235bc1ef305afdda076c9f4e4ad3f94f7f712c5"
-  integrity sha512-gtwzGii/w070FE+izaXDsq8dMYISnb5QKb9ulx5wxfTYm9zEfJSlGi2ffWwbsNL7cJ/4fbqOZm2LhFf5e0OAQQ==
+"@liveblocks/core@2.17.0":
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/@liveblocks/core/-/core-2.17.0.tgz#029aaa0bc6581f5ed57f5de9a789d6005dc3f44a"
+  integrity sha512-bWhgllqvatQoUJbaZsKQ3cRQP+QfoyG9MApThmUJ1FAVVhQGUTCzq15dPaS85dMO8zpJuaRFyiqzq5qw9bAc+w==
 
-"@liveblocks/node@^2.16.2":
-  version "2.16.2"
-  resolved "https://registry.yarnpkg.com/@liveblocks/node/-/node-2.16.2.tgz#e6d14bb3a43cea435b4c4daaf8f5995d9cea9a06"
-  integrity sha512-Hi9emiaRC7EZTGATte+7OdoL2gL4QaRoZmBJid4LnwJFOAijiJd4hzQKXh5OMBvG4VPJrULm7hKRznj1uKy0kA==
+"@liveblocks/node@^2.17.0":
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/@liveblocks/node/-/node-2.17.0.tgz#ee7faf60b7f9a3c263b7856dc917a41310b67922"
+  integrity sha512-2/UVKP9OlCvgxoP6/GBGeVGfn7lAxhOvbpwFb0xMXHrMUWPR78RQ/CHw9wa+XUpRon9ME4nmdbdceV29C3aMxw==
   dependencies:
-    "@liveblocks/core" "2.16.2"
+    "@liveblocks/core" "2.17.0"
     "@stablelib/base64" "^1.0.1"
     fast-sha256 "^1.3.0"
     node-fetch "^2.6.1"
