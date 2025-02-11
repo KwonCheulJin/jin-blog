@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 type Props = {
   message: string;
 };
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 export default function Error({ message }: Props) {
   return (
-    <div className="flex w-4/5 items-center justify-between gap-10 dark:text-light  lg:flex-col lg:justify-center xl:w-full">
+    <div className="flex w-4/5 items-center justify-between gap-10 dark:text-light lg:flex-col lg:justify-center xl:w-full">
       <div className="flex flex-col items-center justify-center">
         <p className="text-3xl sm:text-2xl">{message}</p>
         <Link
