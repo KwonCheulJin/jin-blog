@@ -38,7 +38,7 @@ export function NewThread({ children }: Props) {
   const dragOffset = useRef({ x: 0, y: 0 });
   const dragStart = useRef({ x: 0, y: 0 });
 
-  const lastPointerEvent = useRef<PointerEvent>();
+  const lastPointerEvent = useRef<PointerEvent>(null);
   const [allowUseComposer, setAllowUseComposer] = useState(false);
   const allowComposerRef = useRef(allowUseComposer);
   allowComposerRef.current = allowUseComposer;
