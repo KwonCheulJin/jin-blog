@@ -2,12 +2,10 @@ import { authOptions } from '@/service/auth';
 import { Post, PostDetail } from '@/types';
 import { supabaseServer } from '@/utils/supabase/server';
 import { getServerSession } from 'next-auth';
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
-  const cookieStore = cookies();
-  const supabase = supabaseServer(cookieStore);
+  const supabase = await supabaseServer();
   const { data, error } = await supabase
     .from('posts')
     .select('id, title, sub_title, tags, created_at, updated_at');
@@ -21,14 +19,13 @@ export type DataResponse<T> = {
 };
 
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies();
   const session = await getServerSession(authOptions);
   const supabaseAccessToken = session?.supabaseAccessToken;
 
   if (!supabaseAccessToken) {
     return new Response('Authentication Error', { status: 401 });
   }
-  const supabase = supabaseServer(cookieStore, supabaseAccessToken);
+  const supabase = await supabaseServer(supabaseAccessToken);
 
   const { title, sub_title, markdown, tags } = (await req.json()) as Post;
   const { data, error } = await supabase

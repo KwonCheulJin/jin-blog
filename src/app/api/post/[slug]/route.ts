@@ -1,6 +1,5 @@
 import { PostDetail } from '@/types';
 import { supabaseServer } from '@/utils/supabase/server';
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
@@ -8,8 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await params;
-  const cookieStore = cookies();
-  const supabase = supabaseServer(cookieStore);
+  const supabase = await supabaseServer();
   const { data, error } = await supabase
     .from('posts')
     .select('*')
