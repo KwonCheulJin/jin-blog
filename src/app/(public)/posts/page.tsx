@@ -11,14 +11,15 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 };
 
 export default async function PostsPage({ searchParams }: Props) {
+  const { page, per_page, tag } = await searchParams;
   const { start, end, entries, posts } = await getAllPostsData({
-    page: searchParams['page'],
-    per_page: searchParams['per_page'],
-    tag: searchParams['tag'],
+    page,
+    per_page,
+    tag,
   });
   const tags = await getAllTags();
 

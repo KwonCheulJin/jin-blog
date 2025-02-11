@@ -9,14 +9,13 @@ import { getAllPosts, getPostData, getPostDetail } from '@/service/posts';
 import type { Metadata } from 'next';
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-export async function generateMetadata({
-  params: { slug },
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
   const post = await getPostDetail(slug);
   if (!post) {
     return {
@@ -34,7 +33,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({ params: { slug } }: Props) {
+export default async function PostPage({ params }: Props) {
+  const { slug } = await params;
   const post = await getPostData(slug);
 
   const { title, author, tags, created_at, markdown, prev, next } = post;
