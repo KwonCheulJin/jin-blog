@@ -16,7 +16,9 @@ type CommentParams = {
   userId: string;
 };
 export const createComment = async ({ userId, email }: CreateCommentParams) => {
-  console.log('🚀 ~ createComment ~ { userId, email }:', { userId, email });
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🚀 ~ createComment ~ { userId, email }:', { userId, email });
+  }
   const roomId = nanoid();
 
   try {
@@ -34,13 +36,18 @@ export const createComment = async ({ userId, email }: CreateCommentParams) => {
       usersAccesses,
       metadata,
     });
-    console.log('🚀 ~ createComment ~ room:', room);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🚀 ~ createComment ~ room:', room);
+    }
 
     revalidatePath('/posts/*');
 
     return parseStringify(room) as RoomData;
   } catch (error) {
-    console.log(`Error happened while creating a room ${error}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Error happened while creating a room ${error}`);
+    }
+    throw error;
   }
 };
 
@@ -54,6 +61,9 @@ export const getComment = async ({ roomId, userId }: CommentParams) => {
       throw new Error('You do not have access to this comment');
     }
   } catch (error) {
-    console.log(`Error happened while getting a room ${error}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Error happened while getting a room ${error}`);
+    }
+    throw error;
   }
 };

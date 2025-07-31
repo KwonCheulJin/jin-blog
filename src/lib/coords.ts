@@ -5,7 +5,7 @@ export function getCoordsFromPointerEvent<El>(
   e: PointerEvent,
   dragOffset: DragOffset = { x: 0, y: 0 },
 ): AccurateCursorPositions | null {
-  if (!e.target || !(e.target as any)?.getBoundingClientRect) {
+  if (!e.target || !(e.target as Element)?.getBoundingClientRect) {
     return null;
   }
 
@@ -13,7 +13,9 @@ export function getCoordsFromPointerEvent<El>(
 
   // Get all parent elements
   const pathArray: HTMLElement[] =
-    (e as any)._savedComposedPath || e.composedPath() || (e as any).path;
+    (e as PointerEvent & { _savedComposedPath?: HTMLElement[]; path?: HTMLElement[] })._savedComposedPath ||
+    e.composedPath() as HTMLElement[] ||
+    (e as PointerEvent & { path?: HTMLElement[] }).path || [];
 
   // Generate a set of CSS selectors using the path
   const cursorSelectors = generateSelectors(pathArray);
