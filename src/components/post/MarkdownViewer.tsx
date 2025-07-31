@@ -47,7 +47,7 @@ export default function MarkdownViewer({ content }: Props) {
           return (
             <Image
               className="object-fit h-auto w-full"
-              src={image.src ?? ''}
+              src={typeof image.src === 'string' ? image.src : ''}
               alt={image.alt ?? ''}
               width={500}
               height={550}

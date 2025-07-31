@@ -7,6 +7,8 @@ export default function HamburgerBar({ isOpen, setIsOpen }: Props) {
     <button
       className="hidden flex-col items-center justify-center lg:flex"
       onClick={() => setIsOpen(prev => !prev)}
+      aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
+      aria-expanded={isOpen}
     >
       <span
         className={`block h-0.5 w-6 rounded-sm bg-dark transition-all duration-300 ease-out dark:bg-light ${

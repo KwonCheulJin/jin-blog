@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+export const parseStringify = <T>(value: T): T => JSON.parse(JSON.stringify(value));
 
 export function getRandomColor() {
   const avoidColors = ['#000000', '#FFFFFF', '#8B4513']; // Black, White, Brown in hex format

@@ -1,7 +1,8 @@
-import Hero from '@/components/Hero';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest'
+import Hero from '@/components/Hero'
+import { render, screen } from '@testing-library/react'
 
-const context = describe;
+const context = describe
 
 describe('Hero', () => {
   function renderHero() {

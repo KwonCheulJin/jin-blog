@@ -12,7 +12,10 @@ export default function ErrorPage({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error);
+    }
+    // TODO: 프로덕션에서는 실제 에러 리포팅 서비스 사용 (예: Sentry)
   }, [error]);
 
   return (
