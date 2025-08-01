@@ -56,7 +56,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
               const response = await userApi.resolveUsers(searchParams);
               return response.data;
             } catch (error) {
-              console.error('Error resolving users:', error);
+              if (process.env.NODE_ENV === 'development') {
+                console.error('Error resolving users:', error);
+              }
               return [anonymousUser.info];
             }
           }}
@@ -67,7 +69,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
               );
               return response.data;
             } catch (error) {
-              console.error('Error resolving mention suggestions:', error);
+              if (process.env.NODE_ENV === 'development') {
+                console.error('Error resolving mention suggestions:', error);
+              }
               return [];
             }
           }}
