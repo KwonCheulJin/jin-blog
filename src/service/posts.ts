@@ -1,18 +1,31 @@
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
-import { postApi } from '@/service/api/postApi';
-import { AllPostsData, PostData } from '@/types';
+import { postRepository } from '@/repositories/postRepository';
+import { AllPostsData, PostData, Post } from '@/types';
 import { notFound } from 'next/navigation';
 
 export async function getPostDetail(id: string) {
-  const { data: post } = await postApi.postDetail(id);
-  return post;
+  return await postRepository.getPostDetail(id);
+}
+
+export async function getAllPostsSorted() {
+  const posts = await postRepository.getAllPosts();
+  return posts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 }
 
 export async function getAllPosts() {
-  const { data: posts } = await postApi.allPost();
-  if (!posts || !Array.isArray(posts)) {
-    return [];
-  }
+  return await getAllPostsSorted();
+}
+
+export async function createPost(postData: Post, authorName: string) {
+  const newPostData = {
+    ...postData,
+    author: authorName,
+  };
+  return await postRepository.createPost(newPostData);
+}
+
+export async function getAllPostsStatic() {
+  const posts = await postRepository.getAllPostsStatic();
   return posts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 }
 
@@ -52,7 +65,7 @@ export async function getPostData(id: string): Promise<PostData> {
   if (!postDetail) {
     notFound();
   }
-  const posts = await getAllPosts();
+  const posts = await getAllPostsSorted();
 
   const targetPost = posts.find(post => post.id === id);
   if (!targetPost) {

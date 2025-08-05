@@ -16,18 +16,20 @@ import { ChangeEvent, Suspense } from 'react';
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
 export default function EditorContainer() {
-  const { addPost, setAddPost } = usePostStore();
+  const { addPost, updateMarkdown } = usePostStore();
 
   const handleMarkdownChange = (
     value?: string,
     event?: ChangeEvent<HTMLTextAreaElement>,
     state?: ContextStore,
   ) => {
-    value && setAddPost({ ...addPost, markdown: value });
+    if (value !== undefined) {
+      updateMarkdown(value);
+    }
   };
 
   const handleImageMarkdown = (value: string) => {
-    setAddPost({ ...addPost, markdown: value });
+    updateMarkdown(value);
   };
 
   return (

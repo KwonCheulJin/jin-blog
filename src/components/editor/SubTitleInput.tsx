@@ -1,10 +1,9 @@
 import { usePostStore } from '@/store/post';
 
 export default function SubTitleInput() {
-  const { addPost, setAddPost } = usePostStore();
+  const { addPost, updateSubTitle } = usePostStore();
   const handleSubTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setAddPost({ ...addPost, sub_title: value });
+    updateSubTitle(e.target.value);
   };
   return (
     <input
