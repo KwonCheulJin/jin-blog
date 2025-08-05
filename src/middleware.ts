@@ -11,4 +11,10 @@ export default withAuth({
   },
 });
 
-export const config = { matcher: ['/write'] };
+export const config = {
+  matcher: [
+    '/write',
+    '/api/post/:path*',
+    '/api/upload/:path*',
+  ],
+};

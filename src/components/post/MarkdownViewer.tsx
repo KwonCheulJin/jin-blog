@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 
 type Props = {
@@ -14,7 +15,7 @@ export default function MarkdownViewer({ content }: Props) {
     <ReactMarkdown
       className="prose max-w-none rounded-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light"
       remarkPlugins={[[remarkGfm]]}
-      rehypePlugins={[rehypeRaw]}
+      rehypePlugins={[rehypeRaw, rehypeSanitize]}
       components={{
         code(props) {
           const { children, className, node, ref, ...rest } = props;
