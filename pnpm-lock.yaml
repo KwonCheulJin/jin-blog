@@ -23,8 +23,8 @@ importers:
         specifier: ^2.16.2
         version: 2.24.3
       '@liveblocks/react':
-        specifier: ^2.3.0
-        version: 2.24.3(react@19.1.1)
+        specifier: ^3.2.1
+        version: 3.2.1(@types/json-schema@7.0.15)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react@19.1.1)
       '@liveblocks/react-ui':
         specifier: ^2.12.1
         version: 2.24.3(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -972,8 +972,16 @@ packages:
   '@liveblocks/client@2.24.3':
     resolution: {integrity: sha512-DkCZ58WypMzEL2bDmhAjgzwRxs0Df0BWmDk7nwazAaE54/DGUmcJhuDtde8or1HG7My03/fiiLzIN/xqZYzXuA==}
 
+  '@liveblocks/client@3.2.1':
+    resolution: {integrity: sha512-l0QW+pl6BnURY2hIKr15GVySSkKOUZJ79Y1aCn2h3hZSCOXt+4QHqY6yZovUY/vO8h+uwqZBYdTrY1/DSJ2CBQ==}
+
   '@liveblocks/core@2.24.3':
     resolution: {integrity: sha512-a0OL6VJ9jBexIcv7dAB+d0IPENZ8knFBxD/OzHUakQFVHNztriXVEQtZ84SYIxMGf0LayZO9UgA0gR9Qx0inIQ==}
+
+  '@liveblocks/core@3.2.1':
+    resolution: {integrity: sha512-Xy0zMkjrlhIdmLEhDYpOZQVAp8JE4bhfHdBE2zGYxFuyy0OG7g+zoVPYa9nnBxmrTKvALzOpKIx3kgINGcz3Dg==}
+    peerDependencies:
+      '@types/json-schema': ^7
 
   '@liveblocks/node@2.24.3':
     resolution: {integrity: sha512-BLQop7nFTDDOOzWA4ywOgGVNILXUCm1XP4jmhli7mKcOovj7OaZHnCDwS7EETLNJEsYlORfDmbUgEm++ftSz0Q==}
@@ -987,6 +995,18 @@ packages:
     resolution: {integrity: sha512-XFjoQpt/NSSqe4y4PZHQHab7ff9OwZ6trcmXxMFIGxpX8dEcYVFSwdR4Q+uIBE9ymktiJMgVrw8gg7StTo8iCw==}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
+
+  '@liveblocks/react@3.2.1':
+    resolution: {integrity: sha512-x1Rl/sqGIoAi1g3ydnUOvn2nWZSJ2/pZ7Z+uDpEY8q05Rem/u5R6KtI4OWKC1UkO6OLjK1XN8Zdci62dF4aauw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18 || ^19 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
 
   '@lukemorales/query-key-factory@1.3.4':
     resolution: {integrity: sha512-A3frRDdkmaNNQi6mxIshsDk4chRXWoXa05US8fBo4kci/H+lVmujS6QrwQLLGIkNIRFGjMqp2uKjC4XsLdydRw==}
@@ -6423,7 +6443,17 @@ snapshots:
     dependencies:
       '@liveblocks/core': 2.24.3
 
+  '@liveblocks/client@3.2.1(@types/json-schema@7.0.15)':
+    dependencies:
+      '@liveblocks/core': 3.2.1(@types/json-schema@7.0.15)
+    transitivePeerDependencies:
+      - '@types/json-schema'
+
   '@liveblocks/core@2.24.3': {}
+
+  '@liveblocks/core@3.2.1(@types/json-schema@7.0.15)':
+    dependencies:
+      '@types/json-schema': 7.0.15
 
   '@liveblocks/node@2.24.3':
     dependencies:
@@ -6461,6 +6491,17 @@ snapshots:
       '@liveblocks/client': 2.24.3
       '@liveblocks/core': 2.24.3
       react: 19.1.1
+
+  '@liveblocks/react@3.2.1(@types/json-schema@7.0.15)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react@19.1.1)':
+    dependencies:
+      '@liveblocks/client': 3.2.1(@types/json-schema@7.0.15)
+      '@liveblocks/core': 3.2.1(@types/json-schema@7.0.15)
+      react: 19.1.1
+    optionalDependencies:
+      '@types/react': 19.1.9
+      '@types/react-dom': 19.1.7(@types/react@19.1.9)
+    transitivePeerDependencies:
+      - '@types/json-schema'
 
   '@lukemorales/query-key-factory@1.3.4(@tanstack/query-core@5.83.1)(@tanstack/react-query@5.83.1(react@19.1.1))':
     dependencies:
