@@ -21,7 +21,10 @@ export const authOptions: NextAuthOptions = {
     url: process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY ?? '',
   }) as Adapter,
-  session: { strategy: 'jwt' },
+  session: {
+    strategy: 'jwt',
+    maxAge: 24 * 60 * 60, // 24시간
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
