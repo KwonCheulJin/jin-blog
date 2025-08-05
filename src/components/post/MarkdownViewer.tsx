@@ -12,11 +12,11 @@ type Props = {
 
 export default function MarkdownViewer({ content }: Props) {
   return (
-    <ReactMarkdown
-      className="prose max-w-none rounded-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light"
-      remarkPlugins={[[remarkGfm]]}
-      rehypePlugins={[rehypeRaw, rehypeSanitize]}
-      components={{
+    <div className="prose max-w-none rounded-none font-medium dark:prose-invert prose-p:text-base prose-pre:bg-dark prose-pre:p-0 prose-li:text-base dark:text-light">
+      <ReactMarkdown
+        remarkPlugins={[[remarkGfm]]}
+        rehypePlugins={[rehypeRaw, rehypeSanitize]}
+        components={{
         code(props) {
           const { children, className, node, ref, ...rest } = props;
           const title = className?.split(':')[1];
@@ -56,9 +56,10 @@ export default function MarkdownViewer({ content }: Props) {
             />
           );
         },
-      }}
-    >
-      {content}
-    </ReactMarkdown>
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    </div>
   );
 }

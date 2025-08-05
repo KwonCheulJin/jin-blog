@@ -1,6 +1,7 @@
 'use client';
 
-import { AnimatedTooltip } from '@/components/liveblocks/AnimatedTooltip';
+import { UnifiedAnimatedTooltip } from '@/components/common/UnifiedAnimatedTooltip';
+import { STORAGE_KEYS } from '@/constants/localStorage';
 import { NewThread } from '@/components/liveblocks/NewThread';
 import { ToolbarAvatars } from '@/components/liveblocks/ToolbarAvatars';
 import { PlusIcon } from '@/components/liveblocks/icons/PlusIcon';
@@ -13,7 +14,7 @@ export function Toolbar() {
 
   // 컴포넌트 마운트 시 localStorage에서 tooltip 비활성화 상태 확인
   useEffect(() => {
-    const hasSeenTooltip = localStorage.getItem('liveblocks-tooltip-seen');
+    const hasSeenTooltip = localStorage.getItem(STORAGE_KEYS.LIVEBLOCKS_TOOLTIP_SEEN);
     if (hasSeenTooltip) {
       setIsTooltipDisabled(true);
     }
@@ -50,10 +51,16 @@ export function Toolbar() {
           </Button>
         </NewThread>
 
-        <AnimatedTooltip
+        <UnifiedAnimatedTooltip
           text="댓글은 해당 스레드를 눌러서 달아보세요"
           show={showTooltip}
-          deg="155"
+          position="top"
+          arrowDegree={155}
+          localStorageKey={STORAGE_KEYS.LIVEBLOCKS_TOOLTIP_SEEN}
+          onTooltipClick={() => {
+            setShowTooltip(false);
+            setIsTooltipDisabled(true);
+          }}
         />
       </div>
       <div className="mx-4 h-4 w-[1px] bg-gray-200" />
