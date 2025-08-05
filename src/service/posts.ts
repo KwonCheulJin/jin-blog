@@ -10,6 +10,9 @@ export async function getPostDetail(id: string) {
 
 export async function getAllPosts() {
   const { data: posts } = await postApi.allPost();
+  if (!posts || !Array.isArray(posts)) {
+    return [];
+  }
   return posts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 }
 

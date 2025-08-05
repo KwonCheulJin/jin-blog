@@ -10,7 +10,12 @@ export async function GET() {
     .from('posts')
     .select('id, title, sub_title, tags, created_at, updated_at');
 
-  return NextResponse.json(data);
+  if (error) {
+    console.error('Error fetching posts:', error);
+    return NextResponse.json([], { status: 500 });
+  }
+
+  return NextResponse.json(data || []);
 }
 
 export type DataResponse<T> = {
