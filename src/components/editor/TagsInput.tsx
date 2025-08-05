@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { usePostStore } from '@/store/post';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - tag 값으로 key 사용
 
 export default function TagsInput() {
   const { addPost, updateTags } = usePostStore();
@@ -39,7 +39,7 @@ export default function TagsInput() {
         <Button
           className="mr-3 rounded-3xl bg-primary-500 hover:bg-primaryDark hover:text-black"
           variant="ghost"
-          key={v1()}
+          key={tag}
           onClick={() => onRemoveTag(tag)}
         >
           {tag}

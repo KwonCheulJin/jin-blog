@@ -9,7 +9,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
-    'plugin:@next/next/recommended',
+    // 'plugin:@next/next/core-web-vitals', // 임시 비활성화 - 호환성 문제
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react/jsx-runtime',
@@ -45,6 +45,9 @@ module.exports = {
     'testing-library',
   ],
   rules: {
+    '@next/next/no-html-link-for-pages': 'off', // App Router 사용으로 비활성화
+    '@next/next/no-img-element': 'off', // Next.js Image 컴포넌트 사용 선택사항으로 변경
+    '@next/next/no-page-custom-font': 'off', // App Router 호환성 문제로 비활성화
     'no-trailing-spaces': 'error',
     curly: 'error',
     'brace-style': 'error',

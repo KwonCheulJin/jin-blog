@@ -14,7 +14,13 @@ export function Comments() {
         </div>
       }
     >
-      <ClientSideSuspense fallback={null}>
+      <ClientSideSuspense
+        fallback={
+          <div className="fixed bottom-4 right-4 z-50">
+            <div className="animate-pulse rounded-full bg-gray-200 dark:bg-gray-700 h-12 w-12"></div>
+          </div>
+        }
+      >
         <Toolbar />
         <CommentsOverlay />
       </ClientSideSuspense>

@@ -14,7 +14,7 @@ import {
   useUser,
 } from '@liveblocks/react/suspense';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import styles from './CommentsOverlay.module.css';
+// CommentsOverlay.module.css migrated to TailwindCSS
 
 export function CommentsOverlay() {
   const { threads } = useThreads();
@@ -227,7 +227,7 @@ function OverlayThread({
     <div
       ref={threadRef}
       id={`thread-${thread.id}`}
-      className={styles.overlayWrapper}
+      className="absolute top-0 left-0 flex gap-4"
       style={{
         transform: `translate(${coords.x}px, ${coords.y}px)`,
         zIndex: draggingRef.current ? 9999999 : thread.metadata.zIndex,

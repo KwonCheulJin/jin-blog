@@ -3,7 +3,7 @@
 import { experiences } from '@/fixtures/experience';
 import { motion, useScroll } from 'framer-motion';
 import { useRef } from 'react';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - company+time 조합으로 key 사용
 import ExperienceDetails from './ExperienceDetails';
 
 export default function Experience() {
@@ -11,7 +11,6 @@ export default function Experience() {
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'center start'],
-    layoutEffect: false,
   });
 
   return (
@@ -27,7 +26,7 @@ export default function Experience() {
 
         <ul className="ml-4 flex w-full flex-col items-start justify-between xs:ml-2">
           {experiences.map(experience => (
-            <ExperienceDetails key={v1()} {...experience} />
+            <ExperienceDetails key={`${experience.company}-${experience.time}`} {...experience} />
           ))}
         </ul>
       </div>

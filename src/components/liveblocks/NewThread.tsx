@@ -16,7 +16,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import styles from './NewThread.module.css';
+// NewThread.module.css migrated to TailwindCSS
 
 type ComposerCoords = null | { x: number; y: number };
 
@@ -239,7 +239,7 @@ export function NewThread({ children }: Props) {
       </Slot>
       {composerCoords && creatingCommentState === 'placed' ? (
         <Portal.Root
-          className={styles.composerWrapper}
+          className="absolute top-0 left-0 z-50"
           style={{
             pointerEvents: allowUseComposer ? 'initial' : 'none',
             transform: `translate(${composerCoords.x}px, ${composerCoords.y}px)`,
