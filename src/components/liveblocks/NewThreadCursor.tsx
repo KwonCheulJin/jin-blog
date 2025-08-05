@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import * as Portal from "@radix-ui/react-portal";
-import styles from "./NewThreadCursor.module.css";
+// NewThreadCursor.module.css migrated to TailwindCSS
 
 export function NewThreadCursor({ display }: { display: boolean }) {
   const [coords, setCoords] = useState({
@@ -42,7 +42,7 @@ export function NewThreadCursor({ display }: { display: boolean }) {
   return (
     <Portal.Root>
       <div
-        className={styles.newThreadCursor}
+        className="fixed top-0 left-0 pointer-events-none z-50 select-none w-9 h-9 shadow-md rounded-tl rounded-tr-[50%] rounded-br-[50%] rounded-bl-[50%] cursor-grab bg-white"
         style={{
           transform: `translate(${coords.x}px, ${coords.y}px)`,
         }}

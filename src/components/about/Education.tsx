@@ -3,7 +3,7 @@
 import { educations } from '@/fixtures/education';
 import { motion, useScroll } from 'framer-motion';
 import { useRef } from 'react';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - education.type으로 key 사용
 import EducationDetails from './EducationDetails';
 
 export default function Education() {
@@ -27,7 +27,7 @@ export default function Education() {
         <ul className="ml-4 flex w-full flex-col items-start justify-between xs:ml-2">
           {educations.map(education => (
             <EducationDetails
-              key={v1()}
+              key={education.type}
               type={education.type}
               time={education.time}
               place={education.place}

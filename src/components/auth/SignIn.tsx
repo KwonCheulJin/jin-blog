@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ClientSafeProvider, signIn } from 'next-auth/react';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - provider.id로 key 사용
 
 type Props = {
   providers: Record<string, ClientSafeProvider>;
@@ -41,7 +41,7 @@ export default function SignIn({ providers }: Props) {
         {Object.values(providers)
           .map(provider => (
             <button
-              key={v1()}
+              key={provider.id}
               onClick={() => signIn(provider.id)}
               className="flex h-16 w-full items-center justify-center rounded-full bg-white/90 text-dark"
             >

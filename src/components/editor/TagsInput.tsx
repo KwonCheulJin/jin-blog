@@ -3,10 +3,10 @@
 import { Button } from '@/components/ui/button';
 import { usePostStore } from '@/store/post';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - tag 값으로 key 사용
 
 export default function TagsInput() {
-  const { addPost, setAddPost } = usePostStore();
+  const { addPost, updateTags } = usePostStore();
   const [input, setInput] = useState('');
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -20,7 +20,7 @@ export default function TagsInput() {
       const trimmedInput = input.trim();
 
       if (trimmedInput.length > 0 && !addPost.tags.includes(trimmedInput)) {
-        setAddPost({ ...addPost, tags: [...addPost.tags, trimmedInput] });
+        updateTags([...addPost.tags, trimmedInput]);
       }
       setInput('');
     }
@@ -31,10 +31,7 @@ export default function TagsInput() {
   };
 
   const onRemoveTag = (targetTag: string) => {
-    setAddPost({
-      ...addPost,
-      tags: addPost.tags.filter(tag => tag !== targetTag),
-    });
+    updateTags(addPost.tags.filter(tag => tag !== targetTag));
   };
   return (
     <div className="my-3 px-3">
@@ -42,7 +39,7 @@ export default function TagsInput() {
         <Button
           className="mr-3 rounded-3xl bg-primary-500 hover:bg-primaryDark hover:text-black"
           variant="ghost"
-          key={v1()}
+          key={tag}
           onClick={() => onRemoveTag(tag)}
         >
           {tag}

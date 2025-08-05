@@ -3,7 +3,7 @@ import Link from '@/components/template/Link';
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
 
 import { useSearchParams } from 'next/navigation';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - tag로 key 사용
 type Props = {
   tags: Record<string, number>;
 };
@@ -31,7 +31,7 @@ export default function TagList({ tags }: Props) {
           <ul>
             {sortedTags.map(tag => {
               return (
-                <li key={v1()} className="my-3">
+                <li key={tag} className="my-3">
                   {targetTag === tag ? (
                     <h3 className="inline px-3 py-2 text-sm font-bold uppercase text-primary-500">
                       {`${tag} (${tags[tag]})`}

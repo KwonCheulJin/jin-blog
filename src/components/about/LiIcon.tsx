@@ -9,7 +9,6 @@ export default function LiIcon({ reference }: Props) {
   const { scrollYProgress } = useScroll({
     target: reference,
     offset: ['start end', 'end end'],
-    layoutEffect: false,
   });
 
   return (

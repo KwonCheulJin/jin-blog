@@ -5,7 +5,7 @@ import MarkdownViewer from '@/components/post/MarkdownViewer';
 import PostLayout from '@/components/post/PostLayout';
 import Room from '@/context/Room';
 
-import { getAllPosts, getPostData, getPostDetail } from '@/service/posts';
+import { getAllPostsStatic, getPostData, getPostDetail } from '@/service/posts';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -60,7 +60,7 @@ export default async function PostPage({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
+  const posts = await getAllPostsStatic();
   return posts.map(post => ({
     slug: post.id,
   }));

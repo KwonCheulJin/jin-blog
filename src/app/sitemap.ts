@@ -1,15 +1,15 @@
-import { getAllPosts } from '@/service/posts';
+import { getAllPostsSorted } from '@/service/posts';
+import { BASE_URL } from '@/lib/constants';
 import { MetadataRoute } from 'next';
-const URL = 'https://www.jin-blog.dev';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const getSortedPostsData = await getAllPosts();
-  const posts = getSortedPostsData.map(({ id, created_at }) => ({
-    url: `${URL}/posts/${id}`,
+  const posts = (await getAllPostsSorted()).map(({ id, created_at }) => ({
+    url: `${BASE_URL}/posts/${id}`,
     lastModified: new Date(created_at).toISOString(),
   }));
 
   const routes = ['', '/about', '/posts'].map(route => ({
-    url: `${URL}${route}`,
+    url: `${BASE_URL}${route}`,
     lastModified: new Date().toISOString(),
   }));
 

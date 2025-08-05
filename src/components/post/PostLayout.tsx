@@ -8,7 +8,7 @@ import Image from '@/components/template/Image';
 import ScrollTopAndComment from '@/components/template/ScrollTopAndComment';
 import Tag from '@/components/template/Tag';
 import { AdjacentPost } from '@/types';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - tag로 key 사용
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -102,7 +102,7 @@ export default function PostLayout({
                     </h2>
                     <div className="flex flex-wrap">
                       {tags.map(tag => (
-                        <Tag key={v1()} text={tag} />
+                        <Tag key={tag} text={tag} />
                       ))}
                     </div>
                   </div>

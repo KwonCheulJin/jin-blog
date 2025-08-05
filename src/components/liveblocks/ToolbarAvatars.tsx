@@ -2,14 +2,14 @@
 
 import { useOthers, useSelf } from '@liveblocks/react/suspense';
 import Image from 'next/image';
-import styles from './ToolbarAvatars.module.css';
+// ToolbarAvatars.module.css migrated to TailwindCSS
 
 export function ToolbarAvatars() {
   const currentUser = useSelf();
   const users = useOthers();
 
   return (
-    <div className={styles.toolbarAvatars}>
+    <div className="flex">
       {currentUser && (
         <Avatar src={currentUser.info.avatar} name={currentUser.info.name} />
       )}
@@ -28,7 +28,7 @@ export function Avatar({ src, name }: { src: string; name: string }) {
       height={28}
       alt={name}
       src={src}
-      className={styles.toolbarAvatar}
+      className="rounded-full border-2 border-white w-8 h-8 -ml-1 first:ml-0"
       draggable={false}
     />
   );

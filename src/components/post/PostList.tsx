@@ -4,7 +4,7 @@ import Tag from '@/components/template/Tag';
 import { MAX_LENGTH } from '@/lib/constants';
 import { SimplePost } from '@/types';
 import { formatDate } from 'pliny/utils/formatDate';
-import { v1 } from 'uuid';
+// UUID 사용 제거 - post.id 및 index로 key 사용
 
 type Props = {
   posts: SimplePost[];
@@ -17,7 +17,7 @@ export default function PostList({ posts }: Props) {
         const { id, created_at, title, sub_title, tags } = post;
         return (
           <li
-            key={v1()}
+            key={id}
             className="min-w-[724px] max-w-[724px] py-5 xl:min-w-[436px] xl:max-w-[436px] xs:min-w-[350px] xs:max-w-[350px]"
           >
             <article className="flex flex-col space-y-2">
@@ -56,9 +56,9 @@ export default function PostList({ posts }: Props) {
           </li>
         );
       })}
-      {Array.from({ length: EMPTY_LENGTH }).map(_ => (
+      {Array.from({ length: EMPTY_LENGTH }).map((_, index) => (
         <li
-          key={v1()}
+          key={`empty-${index}`}
           className="h-[164px] min-w-[724px] max-w-[724px] py-5 xl:min-w-[436px] xl:max-w-[436px] xs:min-w-[350px] xs:max-w-[350px]"
         ></li>
       ))}
