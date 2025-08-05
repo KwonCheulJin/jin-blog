@@ -1,10 +1,10 @@
 'use client';
 
 import PostList from '@/components/post/PostList';
-import { SimplePost } from '@/types';
-import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { SimplePost } from '@/types';
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
 type ListLayoutProps = {
   posts: SimplePost[];
@@ -28,6 +28,7 @@ export default function ListLayoutWithTags({
   end,
   total,
 }: ListLayoutProps) {
+  console.log('🚀 ~ ListLayoutWithTags ~ posts:', posts);
   return (
     <div className="flex flex-col">
       <div className="flex justify-center">
