@@ -7,9 +7,9 @@ type Props = {
 const MotionImage = motion.create(Image);
 export default function Error({ message }: Props) {
   return (
-    <div className="flex w-4/5 items-center justify-between gap-10 dark:text-light lg:flex-col lg:justify-center xl:w-full">
+    <div className="flex w-full flex-col items-center justify-center gap-10 dark:text-light lg:w-4/5 lg:flex-row lg:justify-between">
       <div className="flex flex-col items-center justify-center">
-        <p className="text-3xl sm:text-2xl">{message}</p>
+        <p className="text-2xl lg:text-3xl">{message}</p>
         <Link
           href="/"
           className="mt-8 inline-block rounded-3xl bg-primary-500 px-5 py-2 text-xl hover:bg-accent"

@@ -17,7 +17,7 @@ export default function LeetCodeProblemNotFound() {
         </p>
       </div>
 
-      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
         <Button asChild variant="default">
           <Link href="/leetcode" className="flex items-center gap-2">
             <Search className="h-4 w-4" />

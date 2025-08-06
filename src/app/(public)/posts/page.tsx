@@ -29,7 +29,7 @@ export default async function PostsPage({ searchParams }: Props) {
       <div className="flex w-full flex-col">
         <AnimatedText
           text="Be positive and Authenticity!"
-          className="mb-16 mt-4 text-center dark:text-light sm:mb-8"
+          className="mb-8 mt-4 text-center dark:text-light lg:mb-16"
         />
         <ListLayoutWithTags
           posts={entries}

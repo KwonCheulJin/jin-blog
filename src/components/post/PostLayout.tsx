@@ -8,7 +8,6 @@ import Image from '@/components/template/Image';
 import ScrollTopAndComment from '@/components/template/ScrollTopAndComment';
 import Tag from '@/components/template/Tag';
 import { AdjacentPost } from '@/types';
-// UUID 사용 제거 - tag로 key 사용
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -65,11 +64,11 @@ export default function PostLayout({
               </div>
             </div>
           </header>
-          <div className="grid grid-cols-4 grid-rows-[auto_1fr] gap-x-6 divide-y-0 divide-gray-200 dark:divide-gray-700 lg:block lg:divide-y lg:border-none lg:pb-8">
-            <dl className="border-b border-gray-200 pb-10 pt-11 dark:border-gray-700 lg:border-none lg:pt-6">
+          <div className="block gap-x-6 divide-y divide-gray-200 border-none pb-8 dark:divide-gray-700 lg:grid lg:grid-cols-4 lg:grid-rows-[auto_1fr] lg:divide-y-0">
+            <dl className="border-b border-gray-200 pb-8 pt-4 dark:border-gray-700 lg:border-none lg:pb-4 lg:pt-10">
               <dt className="sr-only">Authors</dt>
               <dd>
-                <ul className="block space-x-0 space-y-8 sm:space-x-12 lg:flex lg:flex-wrap lg:justify-center lg:gap-4">
+                <ul className="flex flex-wrap justify-center gap-4 space-x-12 space-y-8 lg:block lg:space-x-0">
                   <li className="flex items-center space-x-2">
                     <Image
                       src="https://iozhvnavvkkqttsrqiyc.supabase.co/storage/v1/object/public/images/author.png"
@@ -89,14 +88,14 @@ export default function PostLayout({
               </dd>
             </dl>
             <div className="col-span-3 row-span-2 divide-gray-200 pb-0 dark:divide-gray-700">
-              <div className="prose max-w-none pt-10 dark:prose-invert lg:pb-8">
+              <div className="prose max-w-none pb-8 pt-10 dark:prose-invert">
                 {children}
               </div>
             </div>
             <footer>
-              <div className="col-start-1 row-start-2 divide-y divide-gray-200 dark:divide-gray-700 md:text-sm md:font-medium md:leading-5">
+              <div className="col-start-1 row-start-2 divide-y divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700">
                 {tags && (
-                  <div className="py-8 md:py-4">
+                  <div className="py-4 lg:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                       Tags
                     </h2>
@@ -108,7 +107,7 @@ export default function PostLayout({
                   </div>
                 )}
                 {(next || prev) && (
-                  <div className="block space-y-8 py-8 md:flex md:justify-between md:gap-4 md:space-y-0 md:py-4">
+                  <div className="flex justify-between gap-4 space-y-0 py-4 md:space-y-8 lg:block lg:py-8">
                     {prev && prev.id && (
                       <div>
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -132,7 +131,7 @@ export default function PostLayout({
                   </div>
                 )}
               </div>
-              <div className="pt-8 md:pt-4">
+              <div className="pt-4 lg:pt-8">
                 <Link
                   href="/posts"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"

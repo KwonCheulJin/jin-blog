@@ -3,7 +3,7 @@ import Link from '@/components/template/Link';
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
 
 import { useSearchParams } from 'next/navigation';
-// UUID 사용 제거 - tag로 key 사용
+
 type Props = {
   tags: Record<string, number>;
 };
@@ -15,7 +15,7 @@ export default function TagList({ tags }: Props) {
   const tagKeys = Object.keys(tags);
   const sortedTags = tagKeys.sort((a, b) => tags[b] - tags[a]);
   return (
-    <div className="h-full max-h-screen min-w-[300px] max-w-[300px] flex-wrap rounded pt-2 sm:hidden">
+    <div className="hidden h-full max-h-screen min-w-[300px] max-w-[300px] flex-wrap rounded pt-2 lg:block">
       <div className="px-6 py-4">
         {targetTag === '' ? (
           <h3 className="font-bold uppercase text-primary-500">All Posts</h3>

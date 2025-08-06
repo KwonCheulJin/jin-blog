@@ -28,7 +28,6 @@ export default function ListLayoutWithTags({
   end,
   total,
 }: ListLayoutProps) {
-  console.log('🚀 ~ ListLayoutWithTags ~ posts:', posts);
   return (
     <div className="flex flex-col">
       <div className="flex justify-center">
