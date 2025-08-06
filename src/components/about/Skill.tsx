@@ -22,11 +22,7 @@ export default function Skill({ children, name, x, y, isInView }: SkillType) {
   }, [isInView, controls, x, y]);
   return (
     <motion.div
-      className="xd:font-bold absolute flex cursor-pointer items-center
-      justify-center rounded-full bg-dark px-6 py-3 font-semibold text-light
-      shadow-dark dark:bg-light dark:text-dark md:px-3
-      md:py-1.5 md:text-sm lg:px-4 lg:py-2
-      xs:bg-transparent xs:text-dark xs:dark:bg-transparent xs:dark:text-light"
+      className="absolute flex cursor-pointer items-center justify-center rounded-full bg-transparent px-6 py-3 font-semibold text-dark shadow-dark dark:text-light md:px-3 md:py-1.5 md:text-sm md:font-bold md:text-light md:dark:bg-light md:dark:text-dark lg:bg-dark lg:px-4 lg:py-2"
       whileHover={{ scale: 1.05 }}
       initial={{ x: 0, y: 0 }}
       animate={controls}

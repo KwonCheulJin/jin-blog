@@ -20,7 +20,7 @@ export default function AboutPage() {
       <Layout className="pt-16">
         <AnimatedText
           text="Be positive and Authenticity!"
-          className="mb-8 text-center dark:text-light sm:mb-4"
+          className="mb-4 text-center dark:text-light md:mb-8"
         />
         <Experience />
         <Projects />

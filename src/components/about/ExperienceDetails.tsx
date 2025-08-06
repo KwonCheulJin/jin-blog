@@ -19,8 +19,7 @@ export default function ExperienceDetail({
   return (
     <li
       ref={ref}
-      className="mx-auto my-8 flex w-[60%] flex-col items-start justify-between first:mt-0 last:mb-0
-      md:w-[80%]"
+      className="mx-auto my-8 flex w-[80%] flex-col items-start justify-between first:mt-0 last:mb-0"
     >
       <LiIcon reference={ref} />
       <motion.div
@@ -28,31 +27,35 @@ export default function ExperienceDetail({
         whileInView={{ y: 0 }}
         transition={{ duration: 0.5, type: 'spring' }}
       >
-        <div className="flex items-center justify-start md:flex-col md:items-start">
-          <h3 className="text-2xl font-bold capitalize sm:text-xl xs:text-lg">
+        <div className="flex items-center justify-start">
+          <h3 className="text-lg font-bold capitalize md:text-xl lg:text-2xl">
             {position}&nbsp;
           </h3>
           <Link
             href={companyLink}
             target="_blank"
-            className="text-2xl font-bold capitalize text-primary-500 dark:text-primaryDark sm:text-xl xs:text-lg"
+            className="text-lg font-bold capitalize text-primary-500 dark:text-primaryDark md:text-xl lg:text-2xl"
           >
             @{company}
           </Link>
         </div>
-        <span className="font-medium capitalize text-dark/75 dark:text-light/75 xs:text-sm">
+        <span className="text-sm font-medium capitalize text-dark/75 dark:text-light/75 md:text-base">
           {time} | {address}
         </span>
-        <p className="w-full font-medium md:text-sm">{work}</p>
+        <p className="w-full text-sm font-medium md:text-base">{work}</p>
         {projects && (
           <ul className="space-y-2">
             {projects.map(project => (
               <li key={project.title}>
-                <p className="w-full font-bold md:text-sm">{project.title}</p>
+                <p className="w-full text-base font-bold md:text-lg">
+                  {project.title}
+                </p>
                 <ul>
                   {project.description.map(desc => (
-                    <li key={desc.slice(0, 3)} className="ml-4 list-disc">
-                      <p className="w-full font-medium md:text-sm">{desc}</p>
+                    <li key={desc.slice(0, 3)} className="ml-8 list-disc">
+                      <p className="w-full text-sm font-medium md:text-base">
+                        {desc}
+                      </p>
                     </li>
                   ))}
                 </ul>

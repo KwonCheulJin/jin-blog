@@ -14,7 +14,7 @@ export default function LiIcon({ reference }: Props) {
   return (
     <figure className="absolute left-0 stroke-dark dark:stroke-light">
       <svg
-        className="-rotate-90 md:h-[60px] md:w-[60px] xs:h-[40px] xs:w-[40px]"
+        className="h-[40px] w-[40px] -rotate-90 lg:h-[60px] lg:w-[60px]"
         width="75"
         height="75"
         viewBox="0 0 100 100"
