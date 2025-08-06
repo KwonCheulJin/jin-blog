@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import LeetCodeProblemsClient from './LeetCodeProblemsClient';
+import { getAllLeetCodeProblemsData } from '@/service/leetcode';
+import { LeetCodeSearchParams } from '@/types/leetcode';
+import LeetCodeServerContent from '@/components/leetcode/LeetCodeServerContent';
 
 export const metadata: Metadata = {
   title: 'LeetCode 문제 해설 | Jin\'s Dev Blog',
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
 
 function LoadingGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 gap-6">
       {Array.from({ length: 6 }).map((_, i) => (
         <div key={i} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
           <div className="animate-pulse">
@@ -49,7 +51,14 @@ function LoadingGrid() {
   );
 }
 
-export default function LeetCodeProblemsPage() {
+interface Props {
+  searchParams: Promise<LeetCodeSearchParams>;
+}
+
+export default async function LeetCodeProblemsPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const data = await getAllLeetCodeProblemsData(params);
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       {/* 헤더 */}
@@ -65,7 +74,10 @@ export default function LeetCodeProblemsPage() {
 
       {/* 문제 목록 */}
       <Suspense fallback={<LoadingGrid />}>
-        <LeetCodeProblemsClient />
+        <LeetCodeServerContent
+          data={data}
+          searchParams={params}
+        />
       </Suspense>
     </div>
   );

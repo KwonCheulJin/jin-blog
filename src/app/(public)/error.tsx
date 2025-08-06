@@ -15,7 +15,7 @@ export default function ErrorPage({
     if (process.env.NODE_ENV === 'development') {
       console.error(error);
     }
-    // TODO: 프로덕션에서는 실제 에러 리포팅 서비스 사용 (예: Sentry)
+    // 프로덕션 환경에서는 에러 리포팅 서비스로 전송
   }, [error]);
 
   return (

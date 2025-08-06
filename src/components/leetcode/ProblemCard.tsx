@@ -3,16 +3,31 @@
 import { calculateReadingTime } from '@/lib/leetcodeUtils';
 import { cn } from '@/lib/utils';
 import type { ProblemCardProps } from '@/types/leetcode';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Clock, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import DifficultyBadge from './DifficultyBadge';
 import TagList from './TagList';
 
-const cardVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  hover: { y: -4, transition: { duration: 0.2 } },
+const cardVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1], // ✅ Bezier curve array
+    },
+  },
+  hover: {
+    y: -4,
+    transition: {
+      duration: 0.2,
+    },
+  },
 };
 
 export default function ProblemCard({ problem, className }: ProblemCardProps) {

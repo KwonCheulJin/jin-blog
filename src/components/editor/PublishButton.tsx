@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from '@/hooks/use-toast';
 import { revalidatePostsAll } from '@/lib/action';
 import { postApi } from '@/service/api/postApi';
 import { usePostStore } from '@/store/post';

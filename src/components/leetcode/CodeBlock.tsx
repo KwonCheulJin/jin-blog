@@ -29,7 +29,8 @@ export default function CodeBlock({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('코드 복사 실패:', err);
+      // 코드 복사 실패 시 사용자에게 알림
+      setCopied(false);
     }
   };
 

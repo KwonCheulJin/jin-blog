@@ -85,3 +85,26 @@ export interface LeetCodeListResponse {
   page: number;
   limit: number;
 }
+
+export interface LeetCodeSearchParams {
+  page?: string;
+  per_page?: string;
+  difficulty?: 'Easy' | 'Medium' | 'Hard';
+  tags?: string;
+  search?: string;
+  language?: string;
+}
+
+export interface LeetCodeProblemWithNavigation extends LeetCodeProblemRecord {
+  next?: {
+    slug: string;
+    title: string;
+    problem_number: number;
+  } | null;
+  prev?: {
+    slug: string;
+    title: string;
+    problem_number: number;
+  } | null;
+  relatedProblems?: LeetCodeProblemRecord[];
+}
