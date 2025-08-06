@@ -17,8 +17,8 @@ export async function GET(request: NextRequest) {
   const [user] = users;
 
   const commentOwnerInfo: Liveblocks['UserMeta']['info'] = {
-    name: user.name,
-    avatar: user.image,
+    name: user.name || '',
+    avatar: user.image || '',
     color: getUserColor(user.id),
   };
 

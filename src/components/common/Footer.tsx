@@ -5,7 +5,7 @@ import { AiFillGithub, AiFillLinkedin, AiOutlineTwitter } from 'react-icons/ai';
 
 export default function Footer() {
   return (
-    <footer className="w-full text-lg font-medium dark:text-light sm:text-base">
+    <footer className="w-full text-base font-medium dark:text-light sm:text-lg">
       <div className="mt-16 flex flex-col items-center">
         <div className="mb-3 flex w-28 justify-between">
           <motion.a
@@ -17,7 +17,7 @@ export default function Footer() {
             whileTap={{ scale: 0.9 }}
             className="w-6 text-3xl"
           >
-            <div className="flex h-7 w-7 items-center justify-center ">
+            <div className="flex h-7 w-7 items-center justify-center">
               <AiOutlineTwitter className="text-sky-400" />
             </div>
           </motion.a>
@@ -29,7 +29,7 @@ export default function Footer() {
             whileTap={{ scale: 0.9 }}
             className="w-6 text-3xl"
           >
-            <div className="flex h-7 w-7 items-center justify-center ">
+            <div className="flex h-7 w-7 items-center justify-center">
               <AiFillGithub className="rounded-full bg-light dark:bg-dark" />
             </div>
           </motion.a>
@@ -46,11 +46,11 @@ export default function Footer() {
             </div>
           </motion.a>
         </div>
-        <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400 sm:flex-col sm:items-center sm:justify-center">
+        <div className="mb-8 flex flex-col items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400 lg:flex-row">
           <div>Build with by JIN</div>
-          <div className="sm:hidden">{` • `}</div>
+          <div className="hidden lg:block">{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
-          <div className="sm:hidden">{` • `}</div>
+          <div className="hidden lg:block">{` • `}</div>
           <Link
             href="https://www.youtube.com/watch?v=Yw7yWHigGKI&list=WL&index=22"
             target="_blank"
@@ -58,7 +58,7 @@ export default function Footer() {
           >
             Design by CodeBucks
           </Link>
-          <div className="sm:hidden">{` • `}</div>
+          <div className="hidden lg:block">{` • `}</div>
           <Link
             href="https://tailwind-nextjs-starter-blog.vercel.app/"
             target="_blank"

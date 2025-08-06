@@ -37,10 +37,10 @@ type Props = {
 
 export default function AnimatedText({ text, className }: Props) {
   return (
-    <div className="mx-auto flex w-full items-center justify-center overflow-hidden py-2 text-center sm:py-0">
+    <div className="mx-auto flex w-full items-center justify-center overflow-hidden py-0 text-center sm:py-2">
       <motion.h1
         className={cn(
-          'w-full text-left text-7xl font-bold capitalize text-dark dark:text-light sm:text-4xl lg:text-center lg:text-5xl xs:text-4xl',
+          'w-full text-center text-4xl font-bold capitalize text-dark dark:text-light lg:text-left lg:text-7xl xs:text-5xl',
           className,
         )}
         variants={quote}

@@ -5,9 +5,9 @@ type Props = {
 export default function HamburgerBar({ isOpen, setIsOpen }: Props) {
   return (
     <button
-      className="hidden flex-col items-center justify-center lg:flex"
+      className="flex flex-col items-center justify-center lg:hidden"
       onClick={() => setIsOpen(prev => !prev)}
-      aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
+      aria-label={isOpen ? '메뉴 닫기' : '메뉴 열기'}
       aria-expanded={isOpen}
     >
       <span
