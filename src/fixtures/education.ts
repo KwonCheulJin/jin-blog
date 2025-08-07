@@ -3,7 +3,7 @@ import { Education } from '@/types';
 export const educations: Education[] = [
   {
     type: '코드잇 스프린트 - 프론트엔드 단기심화 3기',
-    time: '2024.08-2023.10',
+    time: '2024.08-2024.10',
     place: '(주)코드잇',
     info: '같은 프론트엔드 팀원들과의 협업 경험 및 팀장을 맡아 프로젝트를 리드하는 경험을 하였습니다.',
   },
