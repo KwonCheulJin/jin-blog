@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
+import { memo } from 'react';
 
 interface ProjectCardProps {
   title: string;
@@ -18,7 +19,7 @@ interface ProjectCardProps {
   detailsUrl: string;
 }
 
-export default function ProjectCard({
+const ProjectCard = memo(function ProjectCard({
   title,
   description,
   imageUrl,
@@ -60,4 +61,6 @@ export default function ProjectCard({
       </div>
     </Card>
   );
-}
+});
+
+export default ProjectCard;

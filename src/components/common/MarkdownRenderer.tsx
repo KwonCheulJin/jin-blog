@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import { memo, useMemo } from 'react';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 
@@ -63,12 +64,48 @@ const componentVariants = {
   },
 };
 
-export default function MarkdownRenderer({
+const MarkdownRenderer = memo(function MarkdownRenderer({
   content,
   variant = 'default',
   className = '',
 }: MarkdownRendererProps) {
-  const styles = componentVariants[variant];
+  const styles = useMemo(() => componentVariants[variant], [variant]);
+
+  const markdownComponents = useMemo(() => ({
+    p: ({ children }: any) => <p className={styles.p}>{children}</p>,
+    strong: ({ children }: any) => (
+      <strong className={styles.strong}>{children}</strong>
+    ),
+    code: ({ children }: any) => (
+      <code className={styles.code}>{children}</code>
+    ),
+    ul: ({ children }: any) => <ul className={styles.ul}>{children}</ul>,
+    ol: ({ children }: any) => <ol className={styles.ol}>{children}</ol>,
+    li: ({ children }: any) => <li className={styles.li}>{children}</li>,
+    h1: ({ children }: any) => <h1 className={styles.h1}>{children}</h1>,
+    h2: ({ children }: any) => <h2 className={styles.h2}>{children}</h2>,
+    h3: ({ children }: any) => <h3 className={styles.h3}>{children}</h3>,
+    blockquote: ({ children }: any) => (
+      <blockquote className={styles.blockquote}>{children}</blockquote>
+    ),
+    table: ({ children }: any) => (
+      <div className="mb-4 overflow-x-auto">
+        <table className="min-w-full rounded border border-gray-200 dark:border-gray-700">
+          {children}
+        </table>
+      </div>
+    ),
+    th: ({ children }: any) => (
+      <th className="border border-gray-200 bg-gray-100 px-3 py-2 text-left font-semibold text-gray-900 dark:border-gray-700 dark:bg-gray-800/30 dark:text-gray-100">
+        {children}
+      </th>
+    ),
+    td: ({ children }: any) => (
+      <td className="border border-gray-200 px-3 py-2 text-gray-900 dark:border-gray-700 dark:text-gray-100">
+        {children}
+      </td>
+    ),
+  }), [styles]);
 
   return (
     <div
@@ -77,44 +114,12 @@ export default function MarkdownRenderer({
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
-        components={{
-          p: ({ children }) => <p className={styles.p}>{children}</p>,
-          strong: ({ children }) => (
-            <strong className={styles.strong}>{children}</strong>
-          ),
-          code: ({ children }) => (
-            <code className={styles.code}>{children}</code>
-          ),
-          ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
-          ol: ({ children }) => <ol className={styles.ol}>{children}</ol>,
-          li: ({ children }) => <li className={styles.li}>{children}</li>,
-          h1: ({ children }) => <h1 className={styles.h1}>{children}</h1>,
-          h2: ({ children }) => <h2 className={styles.h2}>{children}</h2>,
-          h3: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
-          blockquote: ({ children }) => (
-            <blockquote className={styles.blockquote}>{children}</blockquote>
-          ),
-          table: ({ children }) => (
-            <div className="mb-4 overflow-x-auto">
-              <table className="min-w-full rounded border border-gray-200 dark:border-gray-700">
-                {children}
-              </table>
-            </div>
-          ),
-          th: ({ children }) => (
-            <th className="border border-gray-200 bg-gray-100 px-3 py-2 text-left font-semibold text-gray-900 dark:border-gray-700 dark:bg-gray-800/30 dark:text-gray-100">
-              {children}
-            </th>
-          ),
-          td: ({ children }) => (
-            <td className="border border-gray-200 px-3 py-2 text-gray-900 dark:border-gray-700 dark:text-gray-100">
-              {children}
-            </td>
-          ),
-        }}
+        components={markdownComponents}
       >
         {content}
       </ReactMarkdown>
     </div>
   );
-}
+});
+
+export default MarkdownRenderer;

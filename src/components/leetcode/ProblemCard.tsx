@@ -5,6 +5,7 @@ import type { ProblemCardProps } from '@/types/leetcode';
 import { motion, Variants } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { memo } from 'react';
 import DifficultyBadge from './DifficultyBadge';
 import TagList from './TagList';
 
@@ -29,7 +30,7 @@ const cardVariants: Variants = {
   },
 };
 
-export default function ProblemCard({ problem, className }: ProblemCardProps) {
+const ProblemCard = memo(function ProblemCard({ problem, className }: ProblemCardProps) {
   return (
     <motion.div
       variants={cardVariants}
@@ -96,4 +97,6 @@ export default function ProblemCard({ problem, className }: ProblemCardProps) {
       </Link>
     </motion.div>
   );
-}
+});
+
+export default ProblemCard;

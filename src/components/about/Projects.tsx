@@ -1,6 +1,18 @@
 'use client';
 
-import Carousel3D from '@/components/about/Carousel3D';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+const Carousel3D = dynamic(() => import('@/components/about/Carousel3D'), {
+  loading: () => (
+    <div className="flex h-64 items-center justify-center">
+      <div className="flex items-center space-x-2">
+        <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
+        <span className="text-gray-600 dark:text-gray-400">3D 캐러셀 로딩 중...</span>
+      </div>
+    </div>
+  ),
+});
 
 const slides = [
   { image: 'reverschool-image.png', title: 'Image 1' },
@@ -15,7 +27,16 @@ export default function Projects() {
         Projects
       </h2>
       <div className="relative mx-auto w-[75%] md:w-[80%]">
-        <Carousel3D />
+        <Suspense fallback={
+          <div className="flex h-64 items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
+              <span className="text-gray-600 dark:text-gray-400">3D 캐러셀 준비 중...</span>
+            </div>
+          </div>
+        }>
+          <Carousel3D />
+        </Suspense>
       </div>
     </div>
   );
