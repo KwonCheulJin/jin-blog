@@ -1,5 +1,5 @@
 import { authOptions } from '@/service/auth';
-import { getAllPostsSorted, createPost } from '@/service/posts';
+import { createPost, getAllPostsSorted } from '@/service/posts';
 import { Post } from '@/types';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
@@ -22,15 +22,34 @@ export type DataResponse<T> = {
 export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session?.user?.name) {
-      return new Response('Authentication Error', { status: 401 });
+
+    if (!session) {
+      return new Response('No session found', { status: 401 });
+    }
+
+    if (!session.user) {
+      return new Response('No user in session', { status: 401 });
+    }
+
+    // HOST 권한 확인 (글 작성은 HOST만 가능)
+    if (session.user.type !== 'HOST') {
+      return new Response('Insufficient permissions', { status: 403 });
+    }
+
+    const supabaseAccessToken = session?.supabaseAccessToken;
+
+    if (!supabaseAccessToken) {
+      return new Response('No Supabase access token', { status: 401 });
     }
 
     const postData = (await req.json()) as Post;
-    const newPost = await createPost(postData, session.user.name);
+    const newPost = await createPost(
+      postData,
+      session.user.name,
+      supabaseAccessToken,
+    );
     return NextResponse.json(newPost);
   } catch (error) {
-    console.error('Error creating post:', error);
     return new Response('Internal Server Error', { status: 500 });
   }
 }

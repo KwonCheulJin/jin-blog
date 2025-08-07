@@ -1,7 +1,7 @@
-import { supabaseServer } from '@/utils/supabase/server';
-import { createClient } from '@supabase/supabase-js';
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from '@/lib/constants';
 import { PostDetail, SimplePost } from '@/types';
+import { supabaseServer } from '@/utils/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 
 export const postRepository = {
   async getAllPosts(): Promise<SimplePost[]> {
@@ -48,14 +48,21 @@ export const postRepository = {
     return data;
   },
 
-  async createPost(postData: {
-    title: string;
-    sub_title: string;
-    markdown: string;
-    tags: string[];
-    author: string;
-  }): Promise<PostDetail[]> {
-    const supabase = await supabaseServer();
+  async createPost(
+    postData: {
+      title: string;
+      sub_title: string;
+      markdown: string;
+      tags: string[];
+      author: string;
+    },
+    supabaseAccessToken: string | undefined,
+  ): Promise<PostDetail[]> {
+    if (!supabaseAccessToken) {
+      throw new Error('Supabase access token이 필요합니다.');
+    }
+
+    const supabase = await supabaseServer(supabaseAccessToken);
     const { data, error } = await supabase
       .from('posts')
       .insert([postData])
