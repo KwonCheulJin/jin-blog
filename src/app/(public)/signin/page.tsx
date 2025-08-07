@@ -18,7 +18,7 @@ export default async function SignInPage() {
   return (
     <>
       <TransitionEffect />
-      <Layout className="flex h-[calc(100vh-280px)] items-center justify-center pt-0 sm:pt-0 md:pt-4 lg:pt-8">
+      <Layout className="flex h-[calc(100vh-280px)] items-center justify-center pt-0 md:pt-4 lg:pt-8">
         <div className="h-80 w-[420px] md:w-2/3 lg:w-96 xs:w-2/3">
           <SignIn providers={providers} />
         </div>

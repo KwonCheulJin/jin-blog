@@ -137,16 +137,9 @@ export default function Skills() {
       <h2 className="mt-32 w-full text-center text-8xl font-bold md:mt-32 md:text-6xl">
         Skills
       </h2>
-      <div
-        className="relative flex h-screen w-full items-center justify-center
-      rounded-full bg-circularLight dark:bg-circularDark sm:h-[60vh] sm:bg-circularLightSm sm:dark:bg-circularDarkSm
-      md:bg-circularLightMd md:dark:bg-circularDarkMd lg:h-[80vh] lg:bg-circularLightLg
-      lg:dark:bg-circularDarkLg xs:h-[50vh] xs:bg-circularLightSm xs:dark:bg-circularDarkSm
-      "
-      >
+      <div className="relative flex h-[50vh] w-full items-center justify-center rounded-full bg-circularLightSm dark:bg-circularDarkSm sm:h-[60vh] sm:bg-circularLightSm sm:dark:bg-circularDarkSm md:h-[80vh] md:bg-circularLightMd md:dark:bg-circularDarkMd lg:h-screen lg:bg-circularLightLg lg:dark:bg-circularDarkLg">
         <motion.div
-          className="flex cursor-pointer items-center justify-center rounded-full
-          bg-dark p-8 font-semibold text-light shadow-dark dark:bg-light dark:text-dark lg:p-6 xs:p-2 xs:text-xs"
+          className="flex cursor-pointer items-center justify-center rounded-full bg-dark p-2 text-xs font-semibold text-light shadow-dark dark:bg-light dark:text-dark md:p-6 lg:p-8"
           whileHover={{ scale: 1.05 }}
         >
           WEB

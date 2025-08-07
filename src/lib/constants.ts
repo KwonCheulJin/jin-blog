@@ -7,7 +7,7 @@ export const BASE_URL =
     : 'https://www.jin-blog.dev/';
 
 export const DEFAULT_PAGE = '1';
-export const DEFAULT_PER_PAGE = '5';
+export const DEFAULT_PER_PAGE = '6';
 
 // supabase
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';

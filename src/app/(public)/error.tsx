@@ -1,7 +1,7 @@
 'use client'; // Error components must be Client Components
 
-import { useEffect } from 'react';
 import Error from '@/components/common/Error';
+import { useEffect } from 'react';
 
 export default function ErrorPage({
   error,
@@ -15,11 +15,11 @@ export default function ErrorPage({
     if (process.env.NODE_ENV === 'development') {
       console.error(error);
     }
-    // TODO: 프로덕션에서는 실제 에러 리포팅 서비스 사용 (예: Sentry)
+    // 프로덕션 환경에서는 에러 리포팅 서비스로 전송
   }, [error]);
 
   return (
-    <div className="flex h-[calc(100vh-280px)] w-full items-center justify-center sm:!h-[calc(100vh-360px)] lg:h-[calc(100vh-246px)]">
+    <div className="flex h-[calc(100vh-360px)] w-full items-center justify-center lg:h-[calc(100vh-280px)]">
       <Error message="잘못된 접근입니다." />
     </div>
   );

@@ -19,7 +19,7 @@ export default function Pagination({ total, hasNextPage, hasPrevPage }: Props) {
 
   return (
     <div className="flex justify-center">
-      <nav className="flex min-w-[744px] max-w-[744px] items-center justify-center gap-10 py-5 xl:min-w-[456px] xl:max-w-[456px] xs:min-w-[350px] xs:max-w-[350px]">
+      <nav className="flex min-w-[350px] max-w-[350px] items-center justify-center gap-10 py-5 md:min-w-[456px] md:max-w-[456px] lg:min-w-[744px] lg:max-w-[744px]">
         <Button
           variant="ghost"
           disabled={!hasPrevPage}

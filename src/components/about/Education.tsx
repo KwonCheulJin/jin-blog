@@ -14,17 +14,20 @@ export default function Education() {
   });
 
   return (
-    <div className="mb-16 mt-32">
-      <h2 className="my-32 w-full text-center text-8xl font-bold md:mb-16 md:text-6xl xs:text-4xl">
+    <div className="my-8 md:my-16 lg:mb-16 lg:mt-24">
+      <h2 className="mb-16 w-full text-center text-4xl font-bold md:text-5xl lg:mb-32 lg:text-7xl">
         Education
       </h2>
-      <div ref={ref} className="relative mx-auto w-[75%] md:w-full lg:w-[90%]">
+      <div
+        ref={ref}
+        className="relative mx-2 w-full md:mx-auto md:w-[90%] lg:w-[75%]"
+      >
         <motion.div
-          className="absolute left-9 top-2 h-full w-[4px] origin-top rounded-full bg-dark dark:bg-primaryDark dark:shadow-2xl md:left-[30px] md:w-[2px] xs:left-[20px]"
+          className="absolute left-[18px] top-4 h-full w-[4px] origin-top bg-dark dark:bg-primaryDark dark:shadow-2xl lg:left-[28px]"
           style={{ scaleY: scrollYProgress }}
         />
 
-        <ul className="ml-4 flex w-full flex-col items-start justify-between xs:ml-2">
+        <ul className="ml-4 flex w-full flex-col items-start justify-between">
           {educations.map(education => (
             <EducationDetails
               key={education.type}

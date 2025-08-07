@@ -8,17 +8,22 @@ type Props = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function CustomMobileLink({ href, title, className = '', setIsOpen }: Props) {
+export default function CustomMobileLink({
+  href,
+  title,
+  className = '',
+  setIsOpen,
+}: Props) {
   const pathname = usePathname()?.split('/')[1];
   return (
     <Link
       href={href}
-      className={`${className} relative group text-light dark:text-dark my-2 last:mb-4`}
-      onClick={() => setIsOpen((prev) => !prev)}
+      className={`${className} group relative my-2 text-light last:mb-4 dark:text-dark`}
+      onClick={() => setIsOpen(prev => !prev)}
     >
       {title}
       <span
-        className={`h-[2px] inline-block w-0 bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+        className={`ease absolute -bottom-0.5 left-0 inline-block h-[2px] w-0 bg-light transition-[width] duration-300 group-hover:w-full ${
           `/${pathname}` === href ? 'w-full' : 'w-0'
         } dark:bg-dark`}
       >

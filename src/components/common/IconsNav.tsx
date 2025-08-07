@@ -26,7 +26,11 @@ export default function IconsNav() {
   return (
     <nav className="flex items-center justify-center">
       {session && session.user.type === 'HOST' && (
-        <Link href="/write" className="mr-4 lg:hidden" aria-label="새 글 작성하기">
+        <Link
+          href="/write"
+          className="mr-4 hidden lg:block"
+          aria-label="새 글 작성하기"
+        >
           <MotionButton
             className="rounded-3xl border-black bg-black text-white hover:text-white dark:border-white"
             variant="outline"
@@ -49,8 +53,12 @@ export default function IconsNav() {
 
       <button
         type="button"
-        aria-label={theme === 'dark' || resolvedTheme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환'}
-        className="ml-3 w-6 rounded-full text-2xl lg:ml-0"
+        aria-label={
+          theme === 'dark' || resolvedTheme === 'dark'
+            ? '라이트 모드로 전환'
+            : '다크 모드로 전환'
+        }
+        className="ml-0 w-6 rounded-full text-2xl lg:ml-3"
         onClick={() =>
           setTheme(
             theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark',

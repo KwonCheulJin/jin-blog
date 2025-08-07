@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
   const supabase = await supabaseServer();
-  const { data, error } = await supabase
+  const { data, error } = await (supabase as any)
     .from('comments')
     .select(
       'id, blog_post_id, parent_comment_id, user_id, content, created_at, updated_at',
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   }
   const supabase = await supabaseServer(supabaseAccessToken);
 
-  const { data, error } = await supabase.from('comments').select();
+  const { data, error } = await (supabase as any).from('comments').select();
   const response = { data, status: 200 };
   return NextResponse.json(response);
 }

@@ -59,10 +59,10 @@ export default function Carousel3D() {
       ))}
 
       <div className="slider-controler">
-        <div className="swiper-button-prev slider-arrow !h-12 !w-12 xs:!top-[28%]">
+        <div className="swiper-button-prev slider-arrow !top-[28%] !h-12 !w-12 md:!top-1/2">
           <FaArrowAltCircleLeft className="!h-12 !w-12 !text-primary-500 hover:!text-primary-500/90 dark:!text-primaryDark dark:hover:!text-primaryDark/90" />
         </div>
-        <div className="swiper-button-next slider-arrow !h-12 !w-12 xs:!top-[28%]">
+        <div className="swiper-button-next slider-arrow !top-[28%] !h-12 !w-12 md:!top-1/2">
           <FaArrowAltCircleRight className="!h-12 !w-12 !text-primary-500 hover:!text-primary-500/90 dark:!text-primaryDark dark:hover:!text-primaryDark/90" />
         </div>
       </div>
