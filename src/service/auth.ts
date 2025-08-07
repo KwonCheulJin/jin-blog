@@ -34,13 +34,15 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       const signingSecret = process.env.SUPABASE_JWT_SECRET;
-      if (signingSecret && token.role === 'HOST') {
+      if (signingSecret && token.sub) {
         const payload = {
           aud: 'authenticated',
           exp: Math.floor(new Date(session.expires).getTime() / 1000),
-          sub: token.id,
+          sub: token.sub,
           email: token.email,
-          role: 'authenticated',
+          role: 'authenticated', // PostgreSQL 표준 role
+          user_role: token.role, // 커스텀 클레임으로 실제 사용자 타입
+          user_type: token.role, // 백업용 커스텀 클레임
         };
         session.supabaseAccessToken = jwt.sign(payload, signingSecret);
       }

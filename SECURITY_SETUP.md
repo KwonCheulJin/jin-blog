@@ -25,11 +25,11 @@ ON public.posts FOR SELECT
 USING (true);
 
 -- HOST 역할을 가진 사용자만 게시물을 생성, 수정, 삭제할 수 있도록 제한
-CREATE POLICY "Allow host to manage posts"
+CREATE POLICY "Enable write for host users"
 ON public.posts FOR ALL
 TO authenticated
-USING (auth.jwt()->>'role' = 'HOST')
-WITH CHECK (auth.jwt()->>'role' = 'HOST');
+USING ((auth.jwt() ->> 'user_role') = 'HOST')
+WITH CHECK ((auth.jwt() ->> 'user_role') = 'HOST');
 ```
 
 ### 1.3 users 테이블 정책
@@ -69,20 +69,20 @@ USING (bucket_id = 'images');
 CREATE POLICY "Allow authenticated uploads to images"
 ON storage.objects FOR INSERT
 TO authenticated
-WITH CHECK (bucket_id = 'images' AND auth.jwt()->>'role' = 'HOST');
+WITH CHECK (bucket_id = 'images' AND (auth.jwt() ->> 'user_role') = 'HOST');
 
 -- HOST 역할만 이미지 업데이트 가능
 CREATE POLICY "Allow authenticated updates to images"
 ON storage.objects FOR UPDATE
 TO authenticated
-USING (bucket_id = 'images' AND auth.jwt()->>'role' = 'HOST')
-WITH CHECK (bucket_id = 'images' AND auth.jwt()->>'role' = 'HOST');
+USING (bucket_id = 'images' AND (auth.jwt() ->> 'user_role') = 'HOST')
+WITH CHECK (bucket_id = 'images' AND (auth.jwt() ->> 'user_role') = 'HOST');
 
 -- HOST 역할만 이미지 삭제 가능
 CREATE POLICY "Allow authenticated deletes to images"
 ON storage.objects FOR DELETE
 TO authenticated
-USING (bucket_id = 'images' AND auth.jwt()->>'role' = 'HOST');
+USING (bucket_id = 'images' AND (auth.jwt() ->> 'user_role') = 'HOST');
 ```
 
 ## 3. 이미지 버킷 설정
@@ -90,12 +90,13 @@ USING (bucket_id = 'images' AND auth.jwt()->>'role' = 'HOST');
 Supabase 대시보드의 Storage 섹션에서 `images` 버킷 설정을 다음과 같이 구성하세요:
 
 ### 3.1 버킷 설정
+
 - **Public**: ✓ (공개 읽기 허용)
 - **File size limit**: 5MB
-- **Allowed MIME types**: 
+- **Allowed MIME types**:
   - `image/jpeg`
   - `image/jpg`
-  - `image/png` 
+  - `image/png`
   - `image/webp`
   - `image/gif`
 
@@ -125,9 +126,11 @@ SELECT * FROM storage.policies;
 ## 5. 보안 테스트
 
 ### 5.1 JWT 토큰 확인
+
 개발자 도구에서 네트워크 탭을 열고 API 요청 시 Authorization 헤더에 올바른 JWT 토큰이 포함되는지 확인하세요.
 
 ### 5.2 권한 확인
+
 - 로그인하지 않은 상태에서 게시물 읽기가 가능한지 확인
 - HOST 역할이 아닌 사용자로 게시물 작성/수정/삭제 시도 시 거부되는지 확인
 - 파일 업로드 시 MIME 타입 및 크기 제한이 작동하는지 확인
@@ -142,6 +145,7 @@ SELECT * FROM storage.policies;
 ## 7. 추가 보안 고려사항
 
 ### 7.1 브루트 포스 공격 방지
+
 ```sql
 -- 연속 로그인 실패 모니터링을 위한 테이블 (선택사항)
 CREATE TABLE IF NOT EXISTS public.login_attempts (
@@ -154,6 +158,7 @@ CREATE TABLE IF NOT EXISTS public.login_attempts (
 ```
 
 ### 7.2 세션 타임아웃 설정
+
 NextAuth.js 설정에서 세션 타임아웃을 적절히 설정하세요:
 
 ```javascript

@@ -1,6 +1,6 @@
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib/constants';
 import { postRepository } from '@/repositories/postRepository';
-import { AllPostsData, PostData, Post } from '@/types';
+import { AllPostsData, Post, PostData } from '@/types';
 import { notFound } from 'next/navigation';
 
 export async function getPostDetail(id: string) {
@@ -16,12 +16,16 @@ export async function getAllPosts() {
   return await getAllPostsSorted();
 }
 
-export async function createPost(postData: Post, authorName: string) {
+export async function createPost(
+  postData: Post,
+  authorName: string,
+  supabaseAccessToken: string | undefined,
+) {
   const newPostData = {
     ...postData,
     author: authorName,
   };
-  return await postRepository.createPost(newPostData);
+  return await postRepository.createPost(newPostData, supabaseAccessToken);
 }
 
 export async function getAllPostsStatic() {
