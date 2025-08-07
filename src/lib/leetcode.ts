@@ -77,7 +77,7 @@ export async function getLeetCodeProblems(
   query = query.order('problem_number', { ascending: true });
 
   // 페이지네이션
-  const limit = filters.limit || 12;
+  const limit = filters.limit || 6;
   const offset = filters.offset || 0;
   query = query.range(offset, offset + limit - 1);
 
@@ -173,7 +173,7 @@ export async function getAvailableLanguages(): Promise<string[]> {
  */
 export async function getRelatedProblems(
   currentProblem: LeetCodeProblemRecord,
-  limit: number = 5,
+  limit: number = 6,
 ): Promise<LeetCodeProblemRecord[]> {
   const supabase = getSupabaseBrowserClient();
 

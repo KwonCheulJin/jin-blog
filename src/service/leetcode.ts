@@ -115,7 +115,7 @@ export async function getAllLeetCodeProblemsData(
  */
 export async function getRelatedProblems(
   currentProblem: LeetCodeProblemRecord,
-  limit: number = 5,
+  limit: number = 6,
 ): Promise<LeetCodeProblemRecord[]> {
   return await leetcodeRepository.getRelatedProblems(currentProblem, limit);
 }
@@ -157,7 +157,7 @@ export async function getLeetCodeProblemData(slug: string) {
       : null;
 
   // 관련 문제들 가져오기
-  const relatedProblems = await getRelatedProblems(problem, 5);
+  const relatedProblems = await getRelatedProblems(problem, 6);
 
   return {
     ...problem,

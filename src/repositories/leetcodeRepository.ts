@@ -77,7 +77,7 @@ export const leetcodeRepository = {
     query = query.order('problem_number', { ascending: true });
 
     // 페이지네이션
-    const limit = filters.limit || 12;
+    const limit = filters.limit || 6;
     const offset = filters.offset || 0;
     query = query.range(offset, offset + limit - 1);
 
@@ -134,7 +134,7 @@ export const leetcodeRepository = {
     query = query.order('problem_number', { ascending: true });
 
     // 페이지네이션
-    const limit = filters.limit || 12;
+    const limit = filters.limit || 6;
     const offset = filters.offset || 0;
     query = query.range(offset, offset + limit - 1);
 
@@ -293,7 +293,7 @@ export const leetcodeRepository = {
    */
   async getRelatedProblems(
     currentProblem: LeetCodeProblemRecord,
-    limit: number = 5,
+    limit: number = 6,
   ): Promise<LeetCodeProblemRecord[]> {
     const supabase = await supabaseServer();
 
@@ -321,7 +321,7 @@ export const leetcodeRepository = {
    */
   async getRelatedProblemsStatic(
     currentProblem: LeetCodeProblemRecord,
-    limit: number = 5,
+    limit: number = 6,
   ): Promise<LeetCodeProblemRecord[]> {
     const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 

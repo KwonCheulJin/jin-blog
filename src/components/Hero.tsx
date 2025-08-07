@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function Hero() {
   return (
     <div className="flex h-[calc(100vh-320px)] w-full flex-col items-center justify-center dark:text-light lg:flex-row">
-      <div className="mb-0 w-[49%] pb-8 sm:pb-12 lg:mb-8 lg:w-full lg:pb-0 lg:pr-16">
+      <div className="mb-0 w-[49%] pb-8 sm:pb-12 lg:mb-8 lg:pb-0 lg:pr-16">
         <Image
           className="h-auto w-full rounded-full"
           src="https://iozhvnavvkkqttsrqiyc.supabase.co/storage/v1/object/public/images/my-profile.png"

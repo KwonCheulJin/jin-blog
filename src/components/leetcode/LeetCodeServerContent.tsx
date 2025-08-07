@@ -1,11 +1,11 @@
 'use client';
 
 import ProblemCard from '@/components/leetcode/ProblemCard';
-import RealTimeFilter from './RealTimeFilter';
-import LeetCodePagination from './LeetCodePagination';
-import { LeetCodeSearchParams } from '@/types/leetcode';
 import { LeetCodePageData } from '@/service/leetcode';
+import { LeetCodeSearchParams } from '@/types/leetcode';
 import { motion } from 'framer-motion';
+import LeetCodePagination from './LeetCodePagination';
+import RealTimeFilter from './RealTimeFilter';
 
 interface Props {
   data: LeetCodePageData;
@@ -51,10 +51,7 @@ export default function LeetCodeServerContent({ data, searchParams }: Props) {
     <>
       {/* 필터 */}
       <div className="mb-6">
-        <RealTimeFilter
-          searchParams={searchParams}
-          availableTags={tags}
-        />
+        <RealTimeFilter searchParams={searchParams} availableTags={tags} />
       </div>
 
       {/* 결과 요약 */}
@@ -69,7 +66,8 @@ export default function LeetCodeServerContent({ data, searchParams }: Props) {
             {page > 1 && (
               <>
                 {' '}
-                (페이지 {page} / {Math.ceil(total / Number(searchParams.per_page || 12))})
+                (페이지 {page} /{' '}
+                {Math.ceil(total / Number(searchParams.per_page || 6))})
               </>
             )}
           </p>
@@ -84,23 +82,20 @@ export default function LeetCodeServerContent({ data, searchParams }: Props) {
         variants={containerVariants}
         initial="initial"
         animate="animate"
-        className="mb-8 grid grid-cols-1 gap-6"
+        className="mb-8 grid grid-cols-1 items-stretch justify-items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3"
       >
         {problems.map(problem => (
-          <motion.div
-            key={problem.id || problem.slug}
-            variants={itemVariants}
-          >
+          <motion.div key={problem.id || problem.slug} variants={itemVariants}>
             <ProblemCard problem={problem} />
           </motion.div>
         ))}
       </motion.div>
 
       {/* 페이지네이션 */}
-      {Math.ceil(total / Number(searchParams.per_page || 12)) > 1 && (
+      {Math.ceil(total / Number(searchParams.per_page || 6)) > 1 && (
         <LeetCodePagination
           currentPage={page}
-          totalPages={Math.ceil(total / Number(searchParams.per_page || 12))}
+          totalPages={Math.ceil(total / Number(searchParams.per_page || 6))}
           hasNext={hasNext}
           hasPrev={hasPrev}
         />
