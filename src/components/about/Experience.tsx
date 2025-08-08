@@ -3,7 +3,7 @@
 import { experiences } from '@/fixtures/experience';
 import { motion, useScroll } from 'framer-motion';
 import { useRef } from 'react';
-// UUID 사용 제거 - company+time 조합으로 key 사용
+
 import ExperienceDetails from './ExperienceDetails';
 
 export default function Experience() {

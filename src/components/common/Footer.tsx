@@ -6,7 +6,7 @@ import { AiFillGithub, AiFillLinkedin, AiOutlineTwitter } from 'react-icons/ai';
 export default function Footer() {
   return (
     <footer className="w-full text-base font-medium dark:text-light sm:text-lg">
-      <div className="mt-16 flex flex-col items-center">
+      <div className="flex flex-col items-center lg:mb-3">
         <div className="mb-3 flex w-28 justify-between">
           <motion.a
             href="https://twitter.com/Charles_kwon77"
@@ -46,7 +46,7 @@ export default function Footer() {
             </div>
           </motion.a>
         </div>
-        <div className="mb-8 flex flex-col items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400 lg:flex-row">
+        <div className="mb-2 flex flex-col items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400 lg:flex-row">
           <div>Build with by JIN</div>
           <div className="hidden lg:block">{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>

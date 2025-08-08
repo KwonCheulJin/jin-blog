@@ -1,9 +1,38 @@
 import TransitionEffect from '@/components/common/TransitionEffect';
-import { Comments } from '@/components/liveblocks/Comments';
-import { Cursors } from '@/components/liveblocks/cursors/Cursors';
 import MarkdownViewer from '@/components/post/MarkdownViewer';
 import PostLayout from '@/components/post/PostLayout';
 import Room from '@/context/Room';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+const Comments = dynamic(
+  () =>
+    import('@/components/liveblocks/Comments').then(mod => ({
+      default: mod.Comments,
+    })),
+  {
+    loading: () => (
+      <div className="flex h-20 items-center justify-center">
+        <div className="flex items-center space-x-2">
+          <div className="border-primary h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></div>
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            댓글 로딩 중...
+          </span>
+        </div>
+      </div>
+    ),
+  },
+);
+
+const Cursors = dynamic(
+  () =>
+    import('@/components/liveblocks/cursors/Cursors').then(mod => ({
+      default: mod.Cursors,
+    })),
+  {
+    loading: () => null, // 커서는 로딩 UI 없이 자연스럽게
+  },
+);
 
 import { getAllPostsStatic, getPostData, getPostDetail } from '@/service/posts';
 import type { Metadata } from 'next';
@@ -54,7 +83,20 @@ export default async function PostPage({ params }: Props) {
         </PostLayout>
       </section>
       <Cursors />
-      <Comments />
+      <Suspense
+        fallback={
+          <div className="flex h-20 items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <div className="border-primary h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></div>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                댓글 준비 중...
+              </span>
+            </div>
+          </div>
+        }
+      >
+        <Comments />
+      </Suspense>
     </Room>
   );
 }

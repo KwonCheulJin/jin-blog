@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/button';
 import { LeetCodeSearchParams } from '@/types/leetcode';
 import { Search, X } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { memo, useCallback, useState, useTransition } from 'react';
 
 interface Props {
   searchParams: LeetCodeSearchParams;
   availableTags: string[];
 }
 
-export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
+const LeetCodeFilter = memo(function LeetCodeFilter({ searchParams, availableTags }: Props) {
   const router = useRouter();
   const urlSearchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
@@ -23,7 +23,7 @@ export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
     language: searchParams.language || '',
   });
 
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     startTransition(() => {
       const params = new URLSearchParams(urlSearchParams.toString());
 
@@ -41,9 +41,9 @@ export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
 
       router.push(`/leetcode?${params.toString()}`);
     });
-  };
+  }, [localFilters, router, startTransition, urlSearchParams]);
 
-  const clearFilters = () => {
+  const clearFilters = useCallback(() => {
     setLocalFilters({
       search: '',
       difficulty: '',
@@ -54,7 +54,29 @@ export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
     startTransition(() => {
       router.push('/leetcode');
     });
-  };
+  }, [router, startTransition]);
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocalFilters(prev => ({ ...prev, search: e.target.value }));
+  }, []);
+
+  const handleDifficultyChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLocalFilters(prev => ({ ...prev, difficulty: e.target.value }));
+  }, []);
+
+  const handleTagsChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLocalFilters(prev => ({ ...prev, tags: e.target.value }));
+  }, []);
+
+  const handleLanguageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLocalFilters(prev => ({ ...prev, language: e.target.value }));
+  }, []);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      applyFilters();
+    }
+  }, [applyFilters]);
 
   const hasActiveFilters = Object.values(localFilters).some(value => value);
 
@@ -86,20 +108,16 @@ export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
             type="text"
             placeholder="문제 제목 검색..."
             value={localFilters.search}
-            onChange={(e) => setLocalFilters(prev => ({ ...prev, search: e.target.value }))}
+            onChange={handleSearchChange}
             className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 pl-10 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-blue-400"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                applyFilters();
-              }
-            }}
+            onKeyDown={handleKeyDown}
           />
         </div>
 
         {/* 난이도 */}
         <select
           value={localFilters.difficulty}
-          onChange={(e) => setLocalFilters(prev => ({ ...prev, difficulty: e.target.value }))}
+          onChange={handleDifficultyChange}
           className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-blue-400"
         >
           <option value="">난이도 선택</option>
@@ -111,7 +129,7 @@ export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
         {/* 태그 */}
         <select
           value={localFilters.tags}
-          onChange={(e) => setLocalFilters(prev => ({ ...prev, tags: e.target.value }))}
+          onChange={handleTagsChange}
           className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-blue-400"
         >
           <option value="">태그 선택</option>
@@ -125,7 +143,7 @@ export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
         {/* 언어 */}
         <select
           value={localFilters.language}
-          onChange={(e) => setLocalFilters(prev => ({ ...prev, language: e.target.value }))}
+          onChange={handleLanguageChange}
           className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-blue-400"
         >
           <option value="">언어 선택</option>
@@ -148,4 +166,6 @@ export default function LeetCodeFilter({ searchParams, availableTags }: Props) {
       </div>
     </div>
   );
-}
+});
+
+export default LeetCodeFilter;
