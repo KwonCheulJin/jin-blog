@@ -5,7 +5,6 @@ import { MAX_LENGTH } from '@/lib/constants';
 import { SimplePost } from '@/types';
 import { formatDate } from 'pliny/utils/formatDate';
 import { memo } from 'react';
-// UUID 사용 제거 - post.id 및 index로 key 사용
 
 type Props = {
   posts: SimplePost[];

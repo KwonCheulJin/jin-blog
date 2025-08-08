@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <div className="flex h-[calc(100vh-320px)] w-full flex-col items-center justify-center dark:text-light lg:flex-row">
+    <div className="flex h-[calc(100vh-232px)] w-full flex-col items-center justify-center dark:text-light lg:h-[calc(100vh-200px)] lg:flex-row">
       <div className="mb-0 w-[49%] pb-8 sm:pb-12 lg:mb-8 lg:pb-0 lg:pr-16">
         <Image
           className="h-auto w-full rounded-full"
@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="flex w-full flex-col items-center self-center lg:w-[49%]">
         <AnimatedText
           text="growing into a developer who can help someone."
-          className=""
+          className="lg:text-left"
         />
         <h2 className="mt-2 w-full text-center text-3xl font-bold lg:text-left">
           {"Hi, I'm Jin"}

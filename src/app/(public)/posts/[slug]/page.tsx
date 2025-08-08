@@ -6,13 +6,18 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
 const Comments = dynamic(
-  () => import('@/components/liveblocks/Comments').then(mod => ({ default: mod.Comments })),
+  () =>
+    import('@/components/liveblocks/Comments').then(mod => ({
+      default: mod.Comments,
+    })),
   {
     loading: () => (
       <div className="flex h-20 items-center justify-center">
         <div className="flex items-center space-x-2">
-          <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
-          <span className="text-sm text-gray-500 dark:text-gray-400">댓글 로딩 중...</span>
+          <div className="border-primary h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></div>
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            댓글 로딩 중...
+          </span>
         </div>
       </div>
     ),
@@ -20,7 +25,10 @@ const Comments = dynamic(
 );
 
 const Cursors = dynamic(
-  () => import('@/components/liveblocks/cursors/Cursors').then(mod => ({ default: mod.Cursors })),
+  () =>
+    import('@/components/liveblocks/cursors/Cursors').then(mod => ({
+      default: mod.Cursors,
+    })),
   {
     loading: () => null, // 커서는 로딩 UI 없이 자연스럽게
   },
@@ -75,14 +83,18 @@ export default async function PostPage({ params }: Props) {
         </PostLayout>
       </section>
       <Cursors />
-      <Suspense fallback={
-        <div className="flex h-20 items-center justify-center">
-          <div className="flex items-center space-x-2">
-            <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
-            <span className="text-sm text-gray-500 dark:text-gray-400">댓글 준비 중...</span>
+      <Suspense
+        fallback={
+          <div className="flex h-20 items-center justify-center">
+            <div className="flex items-center space-x-2">
+              <div className="border-primary h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></div>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                댓글 준비 중...
+              </span>
+            </div>
           </div>
-        </div>
-      }>
+        }
+      >
         <Comments />
       </Suspense>
     </Room>

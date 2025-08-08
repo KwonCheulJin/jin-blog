@@ -3,14 +3,13 @@
 import { educations } from '@/fixtures/education';
 import { motion, useScroll } from 'framer-motion';
 import { useRef } from 'react';
-// UUID 사용 제거 - education.type으로 key 사용
 import EducationDetails from './EducationDetails';
 
 export default function Education() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'center center'],
+    offset: ['start end', 'center start'],
   });
 
   return (

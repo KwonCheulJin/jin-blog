@@ -1,3 +1,4 @@
+import AnimatedText from '@/components/common/AnimatedText';
 import LeetCodeServerContent from '@/components/leetcode/LeetCodeServerContent';
 import { getAllLeetCodeProblemsData } from '@/service/leetcode';
 import { LeetCodeSearchParams } from '@/types/leetcode';
@@ -40,18 +41,10 @@ export default async function LeetCodeProblemsPage({ searchParams }: Props) {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
-      {/* 헤더 */}
-      <div className="mb-8 text-center">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
-          LeetCode 문제 해설
-        </h1>
-        <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-400">
-          체계적인 접근법과 상세한 설명으로 알고리즘 문제 해결 능력을
-          키워보세요. 각 문제마다 시간복잡도와 공간복잡도 분석을 포함한 완전한
-          해설을 제공합니다.
-        </p>
-      </div>
-
+      <AnimatedText
+        text="LeetCode 문제 해설"
+        className="mb-8 mt-4 text-center dark:text-light lg:mb-16"
+      />
       {/* 문제 목록 */}
       <LeetCodeServerContent data={data} searchParams={params} />
     </div>
