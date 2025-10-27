@@ -23,8 +23,8 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1(@types/json-schema@7.0.15)
       '@liveblocks/react':
-        specifier: ^3.2.1
-        version: 3.2.1(@types/json-schema@7.0.15)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react@19.1.1)
+        specifier: ^3.9.1
+        version: 3.9.1(@types/json-schema@7.0.15)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react@19.1.1)
       '@liveblocks/react-ui':
         specifier: ^3.2.1
         version: 3.2.1(@types/json-schema@7.0.15)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -996,8 +996,16 @@ packages:
   '@liveblocks/client@3.2.1':
     resolution: {integrity: sha512-l0QW+pl6BnURY2hIKr15GVySSkKOUZJ79Y1aCn2h3hZSCOXt+4QHqY6yZovUY/vO8h+uwqZBYdTrY1/DSJ2CBQ==}
 
+  '@liveblocks/client@3.9.1':
+    resolution: {integrity: sha512-+Ghc9K/5NYQeemFRAxBVMj+bJEBXm7vvf6jbP2CKiMnyvU/z+N7Lb3cxeijcCaksAtNPdZaGi7O+7TzdOfTZyQ==}
+
   '@liveblocks/core@3.2.1':
     resolution: {integrity: sha512-Xy0zMkjrlhIdmLEhDYpOZQVAp8JE4bhfHdBE2zGYxFuyy0OG7g+zoVPYa9nnBxmrTKvALzOpKIx3kgINGcz3Dg==}
+    peerDependencies:
+      '@types/json-schema': ^7
+
+  '@liveblocks/core@3.9.1':
+    resolution: {integrity: sha512-R1nMgMKBK07VQEksB32Xksal3ZsVB+qff8YHC2tXWPmMnb2aXd6jihSaoK7hImFlcyMR1zIzF8WeG6cJyZWQWg==}
     peerDependencies:
       '@types/json-schema': ^7
 
@@ -1019,6 +1027,18 @@ packages:
 
   '@liveblocks/react@3.2.1':
     resolution: {integrity: sha512-x1Rl/sqGIoAi1g3ydnUOvn2nWZSJ2/pZ7Z+uDpEY8q05Rem/u5R6KtI4OWKC1UkO6OLjK1XN8Zdci62dF4aauw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18 || ^19 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@liveblocks/react@3.9.1':
+    resolution: {integrity: sha512-izuCIdY9O8TU/pBVtdHNsk3N6xKhtD2aEAdeXieHzBy4hQNOW0IN48HcRviali+53IM9kzs3AZ0GwHFmYTK7TA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -6282,7 +6302,17 @@ snapshots:
     transitivePeerDependencies:
       - '@types/json-schema'
 
+  '@liveblocks/client@3.9.1(@types/json-schema@7.0.15)':
+    dependencies:
+      '@liveblocks/core': 3.9.1(@types/json-schema@7.0.15)
+    transitivePeerDependencies:
+      - '@types/json-schema'
+
   '@liveblocks/core@3.2.1(@types/json-schema@7.0.15)':
+    dependencies:
+      '@types/json-schema': 7.0.15
+
+  '@liveblocks/core@3.9.1(@types/json-schema@7.0.15)':
     dependencies:
       '@types/json-schema': 7.0.15
 
@@ -6325,6 +6355,17 @@ snapshots:
     dependencies:
       '@liveblocks/client': 3.2.1(@types/json-schema@7.0.15)
       '@liveblocks/core': 3.2.1(@types/json-schema@7.0.15)
+      react: 19.1.1
+    optionalDependencies:
+      '@types/react': 19.1.9
+      '@types/react-dom': 19.1.7(@types/react@19.1.9)
+    transitivePeerDependencies:
+      - '@types/json-schema'
+
+  '@liveblocks/react@3.9.1(@types/json-schema@7.0.15)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react@19.1.1)':
+    dependencies:
+      '@liveblocks/client': 3.9.1(@types/json-schema@7.0.15)
+      '@liveblocks/core': 3.9.1(@types/json-schema@7.0.15)
       react: 19.1.1
     optionalDependencies:
       '@types/react': 19.1.9
