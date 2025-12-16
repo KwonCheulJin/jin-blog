@@ -4,12 +4,6 @@ import { Resend } from 'resend';
 import { liveblocks } from '@/lib/liveblocks';
 import { generateAnonymousName } from '@/lib/utils';
 
-const webhookHandler = new WebhookHandler(
-  process.env.LIVEBLOCKS_WEBHOOK_SECRET!,
-);
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // 사용자 ID로 친숙한 이름 가져오기
 function getDisplayName(userId: string): string {
   // 이메일 형식이면 @ 앞부분 사용
@@ -24,6 +18,15 @@ function getDisplayName(userId: string): string {
 }
 
 export async function POST(request: Request) {
+  // 환경 변수 확인
+  if (!process.env.LIVEBLOCKS_WEBHOOK_SECRET) {
+    console.error('LIVEBLOCKS_WEBHOOK_SECRET is not configured');
+    return new Response('Webhook not configured', { status: 500 });
+  }
+
+  const webhookHandler = new WebhookHandler(process.env.LIVEBLOCKS_WEBHOOK_SECRET);
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   const body = await request.text();
   const headers = Object.fromEntries(request.headers.entries());
 
