@@ -1,11 +1,11 @@
-import Layout from '@/components/common/Layout';
+import Layout from '@/components/common/layout';
 
 import type { Metadata } from 'next';
-import TransitionEffect from '@/components/common/TransitionEffect';
+import TransitionEffect from '@/components/common/transition-effect';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
-const EditorContainer = dynamic(() => import('@/components/editor/EditorContainer'), {
+const EditorContainer = dynamic(() => import('@/components/editor/editor-container'), {
   loading: () => (
     <div className="flex h-96 items-center justify-center">
       <div className="flex items-center space-x-2">

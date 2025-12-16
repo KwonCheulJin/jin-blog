@@ -1,13 +1,13 @@
-import TransitionEffect from '@/components/common/TransitionEffect';
-import MarkdownViewer from '@/components/post/MarkdownViewer';
-import PostLayout from '@/components/post/PostLayout';
-import Room from '@/context/Room';
+import TransitionEffect from '@/components/common/transition-effect';
+import MarkdownViewer from '@/components/post/markdown-viewer';
+import PostLayout from '@/components/post/post-layout';
+import Room from '@/context/room';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
 const Comments = dynamic(
   () =>
-    import('@/components/liveblocks/Comments').then(mod => ({
+    import('@/components/liveblocks/comments').then(mod => ({
       default: mod.Comments,
     })),
   {
@@ -26,7 +26,7 @@ const Comments = dynamic(
 
 const Cursors = dynamic(
   () =>
-    import('@/components/liveblocks/cursors/Cursors').then(mod => ({
+    import('@/components/liveblocks/cursors/cursors').then(mod => ({
       default: mod.Cursors,
     })),
   {

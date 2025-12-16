@@ -172,10 +172,10 @@ LIVEBLOCKS_SECRET_KEY=
 ```
 
 ### 개발 참고 문서
-- **컴포넌트 개발**: [COMPONENT-PATTERNS.md](./COMPONENT-PATTERNS.md)
-- **LeetCode 통합**: [BLOG_INTEGRATION_GUIDE.md](./BLOG_INTEGRATION_GUIDE.md)
-- **디자인 시스템**: [DESIGN_GUIDE.md](./DESIGN_GUIDE.md)
-- **정보 구조**: [INFORMATION_ARCHITECTURE.md](./INFORMATION_ARCHITECTURE.md)
+- **컴포넌트 개발**: [COMPONENT-PATTERNS.md](./docs/COMPONENT-PATTERNS.md)
+- **LeetCode 통합**: [BLOG_INTEGRATION_GUIDE.md](./docs/BLOG_INTEGRATION_GUIDE.md)
+- **디자인 시스템**: [DESIGN_GUIDE.md](./docs/DESIGN_GUIDE.md)
+- **정보 구조**: [INFORMATION_ARCHITECTURE.md](./docs/INFORMATION_ARCHITECTURE.md)
 
 ---
 

@@ -1,8 +1,7 @@
-import { DefaultUser } from 'next-auth';
+import 'next-auth';
+
 declare module 'next-auth' {
-  // Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
   interface Session {
-    // A JWT which can be used as Authorization header with supabase-js for RLS.
     supabaseAccessToken?: string;
     user: {
       type: 'HOST' | 'VISITORS';
@@ -12,13 +11,12 @@ declare module 'next-auth' {
       image: string;
     };
   }
-  interface User extends DefaultUser {
+  interface User {
     type: 'HOST' | 'VISITORS';
   }
 }
 
-declare module 'next-auth/jwt' {
-  /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
+declare module '@auth/core/jwt' {
   interface JWT {
     role: 'HOST' | 'VISITORS';
   }

@@ -1,7 +1,5 @@
-import { authOptions } from '@/service/auth';
+import { auth } from '@/service/auth';
 import { supabaseServer } from '@/utils/supabase/server';
-import { getServerSession } from 'next-auth';
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 // 허용된 이미지 MIME 타입들
@@ -17,8 +15,7 @@ const ALLOWED_MIME_TYPES = [
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies();
-  const session = await getServerSession(authOptions);
+  const session = await auth();
   const supabaseAccessToken = session?.supabaseAccessToken;
 
   if (!supabaseAccessToken) {

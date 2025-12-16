@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const text = searchParams.get('text') as string;
   const supabase = await supabaseServer();
-  const { data: users, error } = await supabase
+  const { data: users, error: _error } = await supabase
     .from('users')
     .select('*')
     .returns<Array<User>>();

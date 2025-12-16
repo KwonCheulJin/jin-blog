@@ -2,6 +2,23 @@ import { Experience } from '@/types';
 
 export const experiences: Experience[] = [
   {
+    position: 'Software Engineer',
+    company: 'AST Holdings',
+    companyLink: 'https://www.astkorea.net/',
+    time: '2025.10-현재',
+    address: '서울',
+    projects: [
+      {
+        title: '메뉴얼 통합 솔루션',
+        description: ['메뉴얼 통합 솔루션 문서 번역 기능 작업 및 리팩토링'],
+      },
+      {
+        title: 'LX 판토스 W-Craft 프로젝트',
+        description: ['물동 분석 BFF API 개발 및 화면 개발'],
+      },
+    ],
+  },
+  {
     position: 'Front-End Engineer',
     company: 'opstech',
     companyLink: 'https://www.reverschool.com',

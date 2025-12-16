@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const userId = searchParams.get('userId');
   const supabase = await supabaseServer();
-  const { data: users, error } = await supabase
+  const { data: users, error: _error } = await supabase
     .from('users')
     .select('*')
     .eq('email', `${userId}`);

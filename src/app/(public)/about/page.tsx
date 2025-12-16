@@ -1,10 +1,10 @@
-import Education from '@/components/about/Education';
-import Experience from '@/components/about/Experience';
-import Projects from '@/components/about/Projects';
-import Skills from '@/components/about/Skills';
-import AnimatedText from '@/components/common/AnimatedText';
-import Layout from '@/components/common/Layout';
-import TransitionEffect from '@/components/common/TransitionEffect';
+import Education from '@/components/about/education';
+import Experience from '@/components/about/experience';
+import Projects from '@/components/about/projects';
+import Skills from '@/components/about/skills';
+import AnimatedText from '@/components/common/animated-text';
+import Layout from '@/components/common/layout';
+import TransitionEffect from '@/components/common/transition-effect';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

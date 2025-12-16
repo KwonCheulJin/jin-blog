@@ -1,11 +1,11 @@
 'use client'; // Error components must be Client Components
 
-import Error from '@/components/common/Error';
+import Error from '@/components/common/error';
 import { useEffect } from 'react';
 
 export default function ErrorPage({
   error,
-  reset,
+  reset: _reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;

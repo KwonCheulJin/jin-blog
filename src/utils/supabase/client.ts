@@ -3,7 +3,7 @@ import { Database } from '@/types/supabase';
 import { createBrowserClient } from '@supabase/ssr';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
-export function createSupabaseAuthClient(token: string): SupabaseClient {
+export function createSupabaseAuthClient(_token: string): SupabaseClient {
   return createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 
@@ -11,7 +11,7 @@ export function createSupabaseClient(): SupabaseClient {
   return createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 
-export type TypedSupabaseClient = SupabaseClient<Database>
+export type TypedSupabaseClient = SupabaseClient<Database>;
 let client: TypedSupabaseClient | undefined;
 export function getSupabaseBrowserClient(token?: string) {
   if (client) {
@@ -19,14 +19,18 @@ export function getSupabaseBrowserClient(token?: string) {
   }
 
   client = createBrowserClient<Database>(
-    SUPABASE_URL, SUPABASE_ANON_KEY, token ? {
-      global: {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    } : undefined,
-  )
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY,
+    token
+      ? {
+          global: {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        }
+      : undefined,
+  );
 
-  return client
+  return client;
 }

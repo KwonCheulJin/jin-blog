@@ -1,5 +1,5 @@
-import AnimatedText from '@/components/common/AnimatedText';
-import LeetCodeServerContent from '@/components/leetcode/LeetCodeServerContent';
+import AnimatedText from '@/components/common/animated-text';
+import LeetCodeServerContent from '@/components/leetcode/leet-code-server-content';
 import { getAllLeetCodeProblemsData } from '@/service/leetcode';
 import { LeetCodeSearchParams } from '@/types/leetcode';
 import { Metadata } from 'next';

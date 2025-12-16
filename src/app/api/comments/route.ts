@@ -1,12 +1,10 @@
-import { authOptions } from '@/service/auth';
+import { auth } from '@/service/auth';
 import { supabaseServer } from '@/utils/supabase/server';
-import { getServerSession } from 'next-auth';
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
   const supabase = await supabaseServer();
-  const { data, error } = await (supabase as any)
+  const { data, error: _error } = await (supabase as any)
     .from('comments')
     .select(
       'id, blog_post_id, parent_comment_id, user_id, content, created_at, updated_at',
@@ -15,9 +13,8 @@ export async function GET() {
   return NextResponse.json(data);
 }
 
-export async function POST(req: NextRequest) {
-  const cookieStore = cookies();
-  const session = await getServerSession(authOptions);
+export async function POST(_req: NextRequest) {
+  const session = await auth();
   const supabaseAccessToken = session?.supabaseAccessToken;
 
   if (!supabaseAccessToken) {
@@ -25,7 +22,7 @@ export async function POST(req: NextRequest) {
   }
   const supabase = await supabaseServer(supabaseAccessToken);
 
-  const { data, error } = await (supabase as any).from('comments').select();
+  const { data, error: _error2 } = await (supabase as any).from('comments').select();
   const response = { data, status: 200 };
   return NextResponse.json(response);
 }

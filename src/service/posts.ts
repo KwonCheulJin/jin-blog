@@ -37,7 +37,11 @@ export async function getAllTags() {
   const posts = await getAllPosts();
   const tagsArray = posts.map(result => result.tags).flat();
   const tags = tagsArray.reduce((acc: Record<string, number>, cur: string) => {
-    acc[cur] ? (acc[cur] += 1) : (acc[cur] = 1);
+    if (acc[cur]) {
+      acc[cur] += 1;
+    } else {
+      acc[cur] = 1;
+    }
     return acc;
   }, {});
   return tags;
