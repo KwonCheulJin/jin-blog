@@ -4,7 +4,7 @@ import ExamplesSection from '@/components/leetcode/examples-section';
 import ConstraintsSection from '@/components/leetcode/constraints-section';
 import SolutionSection from '@/components/leetcode/solution-section';
 import RelatedProblemsSection from '@/components/leetcode/related-problems-section';
-import { getAllSlugs, getLeetCodeProblemData } from '@/service/leetcode';
+import { getAllSlugs, getLeetCodeProblemDataStatic } from '@/service/leetcode';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -16,7 +16,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { slug } = await params;
-    const problemData = await getLeetCodeProblemData(slug);
+    const problemData = await getLeetCodeProblemDataStatic(slug);
 
     if (!problemData) {
       return {
@@ -101,7 +101,7 @@ function ProblemContent({
 
 export default async function LeetCodeProblemPage({ params }: Props) {
   const { slug } = await params;
-  const problemData = await getLeetCodeProblemData(slug);
+  const problemData = await getLeetCodeProblemDataStatic(slug);
 
   if (!problemData) {
     notFound();

@@ -3,6 +3,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 const nextConfig = {
+  // ESLint는 pnpm lint로 직접 실행하므로 빌드 시 비활성화
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000, // 1년
