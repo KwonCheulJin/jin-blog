@@ -1,6 +1,6 @@
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
-import SectionContainer from '@/components/common/SectionContainer';
+import SectionContainer from '@/components/common/section-container';
 
 export default function WriteLayout({
   children,

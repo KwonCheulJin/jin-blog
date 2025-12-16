@@ -2,6 +2,12 @@ import { Education } from '@/types';
 
 export const educations: Education[] = [
   {
+    type: 'Product Engineer Camp (PEC) 10기',
+    time: '2025.08-2025.10',
+    place: '마중물',
+    info: '8주간의 프로덕트 엔지니어링 과정으로 ICE Framework, Mom Test, Golden Circle 등 사용자 문제 해결 중심의 제품 개발 방법론을 학습하였습니다.',
+  },
+  {
     type: '코드잇 스프린트 - 프론트엔드 단기심화 3기',
     time: '2024.08-2024.10',
     place: '(주)코드잇',

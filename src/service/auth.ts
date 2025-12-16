@@ -1,18 +1,17 @@
 import { SupabaseAdapter } from '@auth/supabase-adapter';
-import jwt from 'jsonwebtoken';
-import { NextAuthOptions } from 'next-auth';
-import { Adapter } from 'next-auth/adapters';
-import GithubProvider from 'next-auth/providers/github';
-import GoogleProvider from 'next-auth/providers/google';
+import { SignJWT } from 'jose';
+import NextAuth from 'next-auth';
+import type { Adapter } from 'next-auth/adapters';
+import GitHub from 'next-auth/providers/github';
+import Google from 'next-auth/providers/google';
 
-export const authOptions: NextAuthOptions = {
-  // Configure one or more authentication providers
+export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
-    GithubProvider({
+    GitHub({
       clientId: process.env.GITHUB_ID ?? '',
       clientSecret: process.env.GITHUB_SECRET ?? '',
     }),
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
     }),
@@ -35,16 +34,19 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       const signingSecret = process.env.SUPABASE_JWT_SECRET;
       if (signingSecret && token.sub) {
-        const payload = {
+        const secret = new TextEncoder().encode(signingSecret);
+        const supabaseToken = await new SignJWT({
           aud: 'authenticated',
-          exp: Math.floor(new Date(session.expires).getTime() / 1000),
           sub: token.sub,
           email: token.email,
           role: 'authenticated', // PostgreSQL 표준 role
           user_role: token.role, // 커스텀 클레임으로 실제 사용자 타입
           user_type: token.role, // 백업용 커스텀 클레임
-        };
-        session.supabaseAccessToken = jwt.sign(payload, signingSecret);
+        })
+          .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
+          .setExpirationTime(new Date(session.expires))
+          .sign(secret);
+        session.supabaseAccessToken = supabaseToken;
       }
       session.user.type = token.role as 'HOST' | 'VISITORS';
       session.user.id = token.sub as string;
@@ -62,10 +64,7 @@ export const authOptions: NextAuthOptions = {
       return baseUrl;
     },
   },
-  jwt: {
-    secret: process.env.NEXTAUTH_SECRET,
-  },
   pages: {
     signIn: '/signin',
   },
-};
+});

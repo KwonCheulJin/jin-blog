@@ -1,7 +1,6 @@
-import { authOptions } from '@/service/auth';
+import { auth } from '@/service/auth';
 import { createPost, getAllPostsSorted } from '@/service/posts';
 import { Post } from '@/types';
-import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
@@ -21,7 +20,7 @@ export type DataResponse<T> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await auth();
 
     if (!session) {
       return new Response('No session found', { status: 401 });
@@ -49,7 +48,7 @@ export async function POST(req: NextRequest) {
       supabaseAccessToken,
     );
     return NextResponse.json(newPost);
-  } catch (error) {
+  } catch (_error) {
     return new Response('Internal Server Error', { status: 500 });
   }
 }

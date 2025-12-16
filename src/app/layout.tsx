@@ -2,8 +2,8 @@ import '@/styles/globals.css';
 
 import { Inter as FontSans } from 'next/font/google';
 import type { Metadata } from 'next';
-import ManageScript from '@/components/common/ManageScript';
-import { Providers } from '@/context/Providers';
+import ManageScript from '@/components/common/manage-script';
+import { Providers } from '@/context/providers';
 import { cn } from '@/lib/utils';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';

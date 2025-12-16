@@ -1,9 +1,9 @@
-import ProblemHeader from '@/components/leetcode/ProblemHeader';
-import ProblemDescription from '@/components/leetcode/ProblemDescription';
-import ExamplesSection from '@/components/leetcode/ExamplesSection';
-import ConstraintsSection from '@/components/leetcode/ConstraintsSection';
-import SolutionSection from '@/components/leetcode/SolutionSection';
-import RelatedProblemsSection from '@/components/leetcode/RelatedProblemsSection';
+import ProblemHeader from '@/components/leetcode/problem-header';
+import ProblemDescription from '@/components/leetcode/problem-description';
+import ExamplesSection from '@/components/leetcode/examples-section';
+import ConstraintsSection from '@/components/leetcode/constraints-section';
+import SolutionSection from '@/components/leetcode/solution-section';
+import RelatedProblemsSection from '@/components/leetcode/related-problems-section';
 import { getAllSlugs, getLeetCodeProblemData } from '@/service/leetcode';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';

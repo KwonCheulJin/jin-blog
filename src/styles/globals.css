@@ -1,9 +1,52 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@import '@liveblocks/react-ui/styles.css';
-@import './comments.css';
+@import '@liveblocks/react-ui/styles.css' layer(utilities);
+@import './comments.css' layer(utilities);
+
+@config '../../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility modal-effect {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@utility button-effect {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@utility reverse-effect {
+  background: #eef0f4;
+  box-shadow:
+    inset 2.1px 2.1px 8px #77787a,
+    inset -2.1px -2.1px 8px #ffffff;
+}
 
 @layer base {
   :root {
@@ -78,43 +121,20 @@
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+@layer utilities {
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 
-body .w-md-editor-preview {
-  ul {
-    list-style: disc;
-  }
-  ol {
-    list-style: decimal;
-  }
-}
-
-@layer components {
-  .modal-effect {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
-  .button-effect {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
-  .reverse-effect {
-    background: #eef0f4;
-    box-shadow:
-      inset 2.1px 2.1px 8px #77787a,
-      inset -2.1px -2.1px 8px #ffffff;
+  body .w-md-editor-preview {
+    ul {
+      list-style: disc;
+    }
+    ol {
+      list-style: decimal;
+    }
   }
 }
 

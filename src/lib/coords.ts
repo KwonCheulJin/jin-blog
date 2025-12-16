@@ -1,7 +1,6 @@
 import { AccurateCursorPositions, DragOffset } from 'liveblocks.config';
 
-
-export function getCoordsFromPointerEvent<El>(
+export function getCoordsFromPointerEvent(
   e: PointerEvent,
   dragOffset: DragOffset = { x: 0, y: 0 },
 ): AccurateCursorPositions | null {
@@ -13,9 +12,15 @@ export function getCoordsFromPointerEvent<El>(
 
   // Get all parent elements
   const pathArray: HTMLElement[] =
-    (e as PointerEvent & { _savedComposedPath?: HTMLElement[]; path?: HTMLElement[] })._savedComposedPath ||
-    e.composedPath() as HTMLElement[] ||
-    (e as PointerEvent & { path?: HTMLElement[] }).path || [];
+    (
+      e as PointerEvent & {
+        _savedComposedPath?: HTMLElement[];
+        path?: HTMLElement[];
+      }
+    )._savedComposedPath ||
+    (e.composedPath() as HTMLElement[]) ||
+    (e as PointerEvent & { path?: HTMLElement[] }).path ||
+    [];
 
   // Generate a set of CSS selectors using the path
   const cursorSelectors = generateSelectors(pathArray);
@@ -37,8 +42,8 @@ export function getCoordsFromPointerEvent<El>(
   };
 }
 
-export function getCoordsFromElement<El>(
-  target: Element,
+export function getCoordsFromElement<El extends Element>(
+  target: El,
   clientX: number,
   clientY: number,
   dragOffset: DragOffset = { x: 0, y: 0 },
@@ -79,7 +84,7 @@ function generateSelectors(pathArray: Element[]): string[] | null {
   let reachedBody = false;
   let lowestId: null | string = null;
 
-  pathArray.forEach((el) => {
+  pathArray.forEach(el => {
     if (reachedBody || dontShowCursors) {
       return;
     }
@@ -89,7 +94,7 @@ function generateSelectors(pathArray: Element[]): string[] | null {
       return;
     }
 
-    if (el.nodeName?.toLowerCase() === "body") {
+    if (el.nodeName?.toLowerCase() === 'body') {
       reachedBody = true;
     }
 
@@ -115,8 +120,8 @@ function generateSelectors(pathArray: Element[]): string[] | null {
     if (el.classList) {
       const classes = Array.prototype.map
         .call(el.classList, CSS.escape)
-        .join(".");
-      classNameSelectors.push(el.nodeName + (classes ? `.${ classes}` : ""));
+        .join('.');
+      classNameSelectors.push(el.nodeName + (classes ? `.${classes}` : ''));
     } else {
       classNameSelectors.push(el.nodeName);
     }
@@ -135,17 +140,17 @@ function generateSelectors(pathArray: Element[]): string[] | null {
   }
 
   // Create CSS selectors
-  const classNamePath = classNameSelectors.reverse().join(">") || "";
-  const nthChildPath = nthChildSelectors.reverse().join(">") || "";
+  const classNamePath = classNameSelectors.reverse().join('>') || '';
+  const nthChildPath = nthChildSelectors.reverse().join('>') || '';
   const nthChildPathFromLowestId =
-    nthChildFromLowestIdSelectors.reverse().join(">") || "";
+    nthChildFromLowestIdSelectors.reverse().join('>') || '';
 
   // If last element has id
   const lastElement = pathArray[pathArray.length - 1];
-  const id = lastElement?.id || "";
+  const id = lastElement?.id || '';
 
   return [id, nthChildPathFromLowestId, nthChildPath, classNamePath].filter(
-    (selector) => selector,
+    selector => selector,
   );
 }
 
@@ -154,7 +159,7 @@ export function getCoordsFromAccurateCursorPositions({
   cursorX,
   cursorY,
 }: AccurateCursorPositions) {
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return null;
   }
 
@@ -171,7 +176,7 @@ export function getCoordsFromAccurateCursorPositions({
             y: top + height * cursorY + window.scrollY,
           };
         }
-      } catch (err) {
+      } catch (_err) {
         // Ignore errors if selectors don't work, and don't render cursors
       }
     }
@@ -186,7 +191,7 @@ export function getElementBeneath(
   clientY: number,
 ): Element | null {
   const prevPointerEvents = el.style.pointerEvents;
-  el.style.pointerEvents = "none";
+  el.style.pointerEvents = 'none';
   const beneathElement = document.elementFromPoint(clientX, clientY);
   el.style.pointerEvents = prevPointerEvents;
   return beneathElement;

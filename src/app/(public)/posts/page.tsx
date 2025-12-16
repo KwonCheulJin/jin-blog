@@ -1,8 +1,8 @@
-import AnimatedText from '@/components/common/AnimatedText';
+import AnimatedText from '@/components/common/animated-text';
 import { getAllPostsData, getAllTags } from '@/service/posts';
 
-import TransitionEffect from '@/components/common/TransitionEffect';
-import ListLayoutWithTags from '@/components/post/ListLayoutWithTags';
+import TransitionEffect from '@/components/common/transition-effect';
+import ListLayoutWithTags from '@/components/post/list-layout-with-tags';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

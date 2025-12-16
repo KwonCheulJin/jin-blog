@@ -1,12 +1,11 @@
 import { liveblocks } from '@/lib/liveblocks';
 import { getUserColor } from '@/lib/utils';
-import { authOptions } from '@/service/auth';
+import { auth } from '@/service/auth';
 import { anonymousUser } from '@/service/users';
-import { getServerSession } from 'next-auth';
 import { NextRequest } from 'next/server';
 
-export async function POST(request: NextRequest) {
-  const session = await getServerSession(authOptions);
+export async function POST(_request: NextRequest) {
+  const session = await auth();
 
   const user = session
     ? {

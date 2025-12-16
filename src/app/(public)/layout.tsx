@@ -1,6 +1,6 @@
-import Footer from '@/components/common/Footer';
-import Header from '@/components/common/Header';
-import SectionContainer from '@/components/common/SectionContainer';
+import Footer from '@/components/common/footer';
+import Header from '@/components/common/header';
+import SectionContainer from '@/components/common/section-container';
 
 export default function PageLayout({
   children,

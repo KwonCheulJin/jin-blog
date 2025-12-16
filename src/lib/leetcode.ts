@@ -203,7 +203,7 @@ export {
   getDifficultyLabel,
   getLanguageMapping,
   calculateReadingTime,
-} from './leetcodeUtils';
+} from './leetcode-utils';
 
 
 
