@@ -82,11 +82,18 @@ export function Providers({ children }: { children: React.ReactNode }) {
                 // 에러 발생 시 캐시되지 않은 사용자를 익명 사용자로 캐시
                 uncachedUserIds.forEach(userId => {
                   if (userId) {
+                    // userId 기반으로 일관된 이름/색상/아바타 생성
+                    const { generateAnonymousName, generateAnonymousColor } = require('@/lib/utils');
+                    let sum = 0;
+                    for (let i = 0; i < userId.length; i++) {
+                      sum += userId.charCodeAt(i);
+                    }
+                    const avatarIndex = (sum % 10) + 1;
                     userCache.set(userId, {
                       id: userId,
-                      name: 'Anonymous User',
-                      color: '#8594F0',
-                      avatar: 'https://liveblocks.io/avatars/avatar-6.png',
+                      name: generateAnonymousName(userId),
+                      color: generateAnonymousColor(userId),
+                      avatar: `https://liveblocks.io/avatars/avatar-${avatarIndex}.png`,
                     });
                   }
                 });
@@ -96,11 +103,21 @@ export function Providers({ children }: { children: React.ReactNode }) {
             // 항상 요청된 userIds와 동일한 길이의 배열 반환
             return userIds.map(userId => {
               const user = userCache.get(userId);
-              return user || {
+              if (user) {
+                return user;
+              }
+              // 캐시에 없는 경우 userId 기반으로 일관된 정보 생성
+              const { generateAnonymousName, generateAnonymousColor } = require('@/lib/utils');
+              let sum = 0;
+              for (let i = 0; i < userId.length; i++) {
+                sum += userId.charCodeAt(i);
+              }
+              const avatarIndex = (sum % 10) + 1;
+              return {
                 id: userId,
-                name: 'Unknown User',
-                color: '#8594F0',
-                avatar: 'https://liveblocks.io/avatars/avatar-6.png',
+                name: generateAnonymousName(userId),
+                color: generateAnonymousColor(userId),
+                avatar: `https://liveblocks.io/avatars/avatar-${avatarIndex}.png`,
               };
             });
           }}

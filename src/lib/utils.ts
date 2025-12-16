@@ -55,3 +55,52 @@ export function getUserColor(userId: string) {
   const colorIndex = sum % brightColors.length;
   return brightColors[colorIndex];
 }
+
+// 익명 사용자를 위한 랜덤 영어 이름 생성
+const firstNames = [
+  'Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey',
+  'Riley', 'Quinn', 'Avery', 'Jamie', 'Skyler',
+  'Charlie', 'Reese', 'Parker', 'Hayden', 'Emery',
+  'Sage', 'River', 'Phoenix', 'Blake', 'Drew',
+  'Cameron', 'Peyton', 'Rowan', 'Eden', 'Kai',
+  'Finley', 'Oakley', 'Marlowe', 'Remy', 'Jules',
+];
+
+const lastNames = [
+  'Smith', 'Johnson', 'Williams', 'Brown', 'Jones',
+  'Garcia', 'Miller', 'Davis', 'Martinez', 'Wilson',
+  'Anderson', 'Taylor', 'Thomas', 'Moore', 'Jackson',
+  'Martin', 'Lee', 'Thompson', 'White', 'Harris',
+  'Clark', 'Lewis', 'Walker', 'Hall', 'Young',
+  'Allen', 'King', 'Wright', 'Scott', 'Green',
+];
+
+export function generateAnonymousName(seed?: string): string {
+  if (seed) {
+    // seed 기반으로 일관된 이름 생성
+    let sum = 0;
+    for (let i = 0; i < seed.length; i++) {
+      sum += seed.charCodeAt(i);
+    }
+    const firstIndex = sum % firstNames.length;
+    const lastIndex = (sum * 7) % lastNames.length;
+    return `${firstNames[firstIndex]} ${lastNames[lastIndex]}`;
+  }
+  // 랜덤 이름 생성
+  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+  return `${firstName} ${lastName}`;
+}
+
+export function generateAnonymousColor(seed?: string): string {
+  if (seed) {
+    // seed 기반으로 일관된 색상 생성
+    let sum = 0;
+    for (let i = 0; i < seed.length; i++) {
+      sum += seed.charCodeAt(i);
+    }
+    return brightColors[sum % brightColors.length];
+  }
+  // 랜덤 색상 생성
+  return brightColors[Math.floor(Math.random() * brightColors.length)];
+}

@@ -31,6 +31,7 @@ declare global {
       cursorSelectors: string;
       cursorX: AccurateCursorPositions['cursorX'];
       cursorY: AccurateCursorPositions['cursorY'];
+      authorEmail?: string; // 익명 사용자의 이메일 (선택적)
     };
   }
 }
