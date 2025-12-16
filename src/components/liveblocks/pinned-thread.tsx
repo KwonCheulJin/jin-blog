@@ -11,7 +11,6 @@ import {
   useRef,
   useState,
 } from 'react';
-// Pinned.module.css migrated to TailwindCSS
 
 type Props = {
   user: Liveblocks['UserMeta']['info'];

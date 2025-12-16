@@ -1,27 +1,36 @@
 'use client';
 
-import { PointerEventHandler } from 'react';
+import { PointerEventHandler, useCallback } from 'react';
 // Pinned.module.css migrated to TailwindCSS
 
+import { AnonymousEmailInput } from '@/components/liveblocks/anonymous-email-input';
 import { Composer, ComposerProps } from '@liveblocks/react-ui';
 import Image from 'next/image';
 
 type Props = {
   user: Liveblocks['UserMeta']['info'];
+  isAnonymous: boolean;
   onPointerDown: PointerEventHandler<HTMLDivElement>;
   onPointerMove: PointerEventHandler<HTMLDivElement>;
   onPointerUp: PointerEventHandler<HTMLDivElement>;
   onComposerSubmit: ComposerProps['onComposerSubmit'];
+  onEmailChange?: (email: string) => void;
 };
 
 export function PinnedComposer({
   user,
+  isAnonymous,
   onPointerDown,
   onPointerMove,
   onPointerUp,
   onComposerSubmit,
+  onEmailChange,
   ...props
 }: Props) {
+  const handleEmailChange = useCallback((newEmail: string) => {
+    onEmailChange?.(newEmail);
+  }, [onEmailChange]);
+
   return (
     <div className="absolute flex gap-4" {...props}>
       <div
@@ -39,13 +48,16 @@ export function PinnedComposer({
         />
       </div>
       <div className="shadow-md bg-white rounded-lg flex flex-col text-sm min-w-60 overflow-hidden">
+        <AnonymousEmailInput
+          isAnonymous={isAnonymous}
+          onEmailChange={handleEmailChange}
+        />
         <Composer
           onComposerSubmit={onComposerSubmit}
           onClick={e => {
             // Don't send up a click event from emoji popout and close the composer
             e.stopPropagation();
           }}
-
           autoFocus={true}
         />
       </div>

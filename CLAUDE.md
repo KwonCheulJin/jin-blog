@@ -169,6 +169,11 @@ NEXTAUTH_URL=
 # Liveblocks
 NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY=
 LIVEBLOCKS_SECRET_KEY=
+LIVEBLOCKS_WEBHOOK_SECRET=          # Liveblocks 대시보드에서 Webhook 생성 시 발급
+
+# Resend (이메일 알림)
+RESEND_API_KEY=                      # https://resend.com 에서 발급
+BLOG_OWNER_EMAIL=                    # 댓글 알림 수신 이메일
 ```
 
 ### 개발 참고 문서

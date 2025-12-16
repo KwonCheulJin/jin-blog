@@ -33,6 +33,7 @@ export function NewThread({ children }: Props) {
 
   const composerRef = useRef<HTMLDivElement>(null);
   const [composerCoords, setComposerCoords] = useState<ComposerCoords>(null);
+  const [anonymousEmail, setAnonymousEmail] = useState('');
 
   const dragging = useRef(false);
   const dragOffset = useRef({ x: 0, y: 0 });
@@ -45,6 +46,9 @@ export function NewThread({ children }: Props) {
 
   const self = useSelf(me => me.id);
   const { user } = useUser(self);
+
+  // 익명 사용자 여부 확인
+  const isAnonymous = self.startsWith('anonymous-');
 
   useEffect(() => {
     if (creatingCommentState === 'complete') {
@@ -211,6 +215,8 @@ export function NewThread({ children }: Props) {
           cursorX,
           cursorY,
           zIndex: maxZIndex + 1,
+          // 익명 사용자가 이메일을 입력한 경우에만 저장
+          ...(isAnonymous && anonymousEmail ? { authorEmail: anonymousEmail } : {}),
         },
       });
 
@@ -218,7 +224,7 @@ export function NewThread({ children }: Props) {
       setCreatingCommentState('complete');
       setAllowUseComposer(false);
     },
-    [createThread, composerCoords, maxZIndex],
+    [createThread, composerCoords, maxZIndex, isAnonymous, anonymousEmail],
   );
 
   if (!user) {
@@ -248,10 +254,12 @@ export function NewThread({ children }: Props) {
         >
           <PinnedComposer
             user={user}
+            isAnonymous={isAnonymous}
             onPointerDown={handlePointerDownOverlay}
             onComposerSubmit={handleComposerSubmit}
             onPointerUp={() => {}}
             onPointerMove={() => {}}
+            onEmailChange={setAnonymousEmail}
           />
         </Portal.Root>
       ) : null}

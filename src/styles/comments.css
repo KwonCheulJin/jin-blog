@@ -22,6 +22,22 @@
   z-index: var(--z-above-comments-sidemenu);
 }
 
+/* Liveblocks dropdown and emoji picker z-index fix */
+.lb-dropdown,
+.lb-dropdown-content,
+.lb-emoji-picker,
+[data-radix-popper-content-wrapper] {
+  z-index: var(--z-above-comments-sidemenu) !important;
+}
+
+/* Ensure all Liveblocks popover menus appear above comments */
+[data-liveblocks-portal],
+.lb-comment-reaction-button-popup,
+.lb-comment-menu,
+.lb-comment-options {
+  z-index: var(--z-above-comments-sidemenu) !important;
+}
+
 .lb-composer .lb-composer-editor {
   outline: none;
 }
