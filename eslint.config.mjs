@@ -1,3 +1,4 @@
+import { defineConfig, globalIgnores } from 'eslint/config';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
@@ -9,19 +10,18 @@ import testingLibraryPlugin from 'eslint-plugin-testing-library';
 import nextPlugin from '@next/eslint-plugin-next';
 import globals from 'globals';
 
-export default tseslint.config(
+export default defineConfig([
   // Global ignores
-  {
-    ignores: [
-      '.next/**',
-      'node_modules/**',
-      'out/**',
-      'public/**',
-      '*.config.js',
-      '*.config.mjs',
-      'next-env.d.ts',
-    ],
-  },
+  globalIgnores([
+    '.next/**',
+    'node_modules/**',
+    'out/**',
+    'public/**',
+    'build/**',
+    '*.config.js',
+    '*.config.mjs',
+    'next-env.d.ts',
+  ]),
 
   // Base ESLint recommended config
   eslint.configs.recommended,
@@ -49,13 +49,13 @@ export default tseslint.config(
       },
     },
     plugins: {
+      '@next/next': nextPlugin,
       '@typescript-eslint': tseslint.plugin,
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
       'jsx-a11y': jsxA11yPlugin,
       import: importPlugin,
       'unused-imports': unusedImportsPlugin,
-      '@next/next': nextPlugin,
     },
     settings: {
       react: {
@@ -67,6 +67,9 @@ export default tseslint.config(
       },
     },
     rules: {
+      // Next.js recommended rules
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs['core-web-vitals'].rules,
       // Unused imports
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
@@ -107,7 +110,10 @@ export default tseslint.config(
       'arrow-spacing': ['error', { before: true, after: true }],
 
       // React rules
-      'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+      'react/jsx-filename-extension': [
+        2,
+        { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+      ],
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
 
@@ -153,4 +159,4 @@ export default tseslint.config(
       ...testingLibraryPlugin.configs['flat/react'].rules,
     },
   },
-);
+]);

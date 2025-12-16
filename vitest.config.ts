@@ -17,13 +17,13 @@ export default defineConfig({
         'src/test/',
         '**/*.d.ts',
         '**/*.config.*',
-        '**/coverage/**'
-      ]
-    }
+        '**/coverage/**',
+      ],
+    },
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src')
-    }
-  }
+      '@': resolve(__dirname, './src'),
+    },
+  },
 })

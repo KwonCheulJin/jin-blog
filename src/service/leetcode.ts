@@ -23,7 +23,7 @@ export interface LeetCodePageData {
 }
 
 /**
- * 모든 LeetCode 문제를 정렬된 상태로 가져옵니다
+ * 모든 LeetCode 문제를 정렬된 상태로 가져옵니다 (Server Side)
  */
 export async function getAllLeetCodeProblemsSorted(): Promise<
   LeetCodeProblemRecord[]
@@ -35,12 +35,33 @@ export async function getAllLeetCodeProblemsSorted(): Promise<
 }
 
 /**
- * 특정 slug로 LeetCode 문제를 가져옵니다
+ * 모든 LeetCode 문제를 정렬된 상태로 가져옵니다 (Static Generation)
+ */
+export async function getAllLeetCodeProblemsSortedStatic(): Promise<
+  LeetCodeProblemRecord[]
+> {
+  const response = await leetcodeRepository.getLeetCodeProblemsStatic({
+    limit: 1000,
+  });
+  return response.problems.sort((a, b) => a.problem_number - b.problem_number);
+}
+
+/**
+ * 특정 slug로 LeetCode 문제를 가져옵니다 (Server Side)
  */
 export async function getLeetCodeProblem(
   slug: string,
 ): Promise<LeetCodeProblemRecord | null> {
   return await leetcodeRepository.getLeetCodeProblem(slug);
+}
+
+/**
+ * 특정 slug로 LeetCode 문제를 가져옵니다 (Static Generation)
+ */
+export async function getLeetCodeProblemStatic(
+  slug: string,
+): Promise<LeetCodeProblemRecord | null> {
+  return await leetcodeRepository.getLeetCodeProblemStatic(slug);
 }
 
 /**
@@ -111,7 +132,7 @@ export async function getAllLeetCodeProblemsData(
 }
 
 /**
- * 관련 문제들을 가져옵니다 (같은 태그를 가진 문제들)
+ * 관련 문제들을 가져옵니다 (같은 태그를 가진 문제들) - Server Side
  */
 export async function getRelatedProblems(
   currentProblem: LeetCodeProblemRecord,
@@ -121,7 +142,17 @@ export async function getRelatedProblems(
 }
 
 /**
- * LeetCode 문제 상세 데이터를 가져옵니다 (이전/다음 문제 포함)
+ * 관련 문제들을 가져옵니다 (같은 태그를 가진 문제들) - Static Generation
+ */
+export async function getRelatedProblemsStatic(
+  currentProblem: LeetCodeProblemRecord,
+  limit: number = 6,
+): Promise<LeetCodeProblemRecord[]> {
+  return await leetcodeRepository.getRelatedProblemsStatic(currentProblem, limit);
+}
+
+/**
+ * LeetCode 문제 상세 데이터를 가져옵니다 (이전/다음 문제 포함) - Server Side
  * posts의 getPostData 패턴을 따름
  */
 export async function getLeetCodeProblemData(slug: string) {
@@ -158,6 +189,53 @@ export async function getLeetCodeProblemData(slug: string) {
 
   // 관련 문제들 가져오기
   const relatedProblems = await getRelatedProblems(problem, 6);
+
+  return {
+    ...problem,
+    next,
+    prev,
+    relatedProblems,
+  };
+}
+
+/**
+ * LeetCode 문제 상세 데이터를 가져옵니다 (이전/다음 문제 포함) - Static Generation
+ * generateStaticParams, generateMetadata에서 사용
+ */
+export async function getLeetCodeProblemDataStatic(slug: string) {
+  const problem = await getLeetCodeProblemStatic(slug);
+  if (!problem) {
+    return null;
+  }
+
+  // 모든 문제를 정렬된 상태로 가져와서 이전/다음 문제 찾기
+  const allProblems = await getAllLeetCodeProblemsSortedStatic();
+  const currentIndex = allProblems.findIndex(p => p.slug === slug);
+
+  if (currentIndex === -1) {
+    return null;
+  }
+
+  const next =
+    currentIndex > 0
+      ? {
+          slug: allProblems[currentIndex - 1].slug,
+          title: allProblems[currentIndex - 1].title_korean,
+          problem_number: allProblems[currentIndex - 1].problem_number,
+        }
+      : null;
+
+  const prev =
+    currentIndex < allProblems.length - 1
+      ? {
+          slug: allProblems[currentIndex + 1].slug,
+          title: allProblems[currentIndex + 1].title_korean,
+          problem_number: allProblems[currentIndex + 1].problem_number,
+        }
+      : null;
+
+  // 관련 문제들 가져오기
+  const relatedProblems = await getRelatedProblemsStatic(problem, 6);
 
   return {
     ...problem,
