@@ -83,7 +83,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "@vitest/ui": "^2.1.9",
     "eslint": "9.39.2",
-    "eslint-config-next": "^16.0.10",
+    "eslint-config-next": "^16.1.1",
     "eslint-import-resolver-typescript": "^3.10.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
